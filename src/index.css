@@ -60,6 +60,8 @@ body {
 
   --fill-color-blue: #C6D7FF;
   --fill-color-white: #F5F5F5;
+  transition: color .25s ease-in-out;
+  transition: background-color .25s ease-in-out;
 }
 
 body.dark {
@@ -122,7 +124,7 @@ button:active {
 
 @media (prefers-color-scheme: dark) {
 
-  body {
+  /* body {
     --primary-color-white: #1C1D26;
     --primary-color-black: #D5DFF5;
     --primary-color-blue: #5082F2;
@@ -135,7 +137,7 @@ button:active {
 
     --fill-color-blue: #272E59;
     --fill-color-white: #1B1B21;
-  }
+  } */
 }
 
 
