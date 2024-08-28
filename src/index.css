@@ -60,6 +60,9 @@ body {
 
   --fill-color-blue: #C6D7FF;
   --fill-color-white: #F5F5F5;
+
+  --box-shadow: 0 4px 8px 0 rgba(64, 123, 255, 0.2);
+
   transition: color .25s ease-in-out;
   transition: background-color .25s ease-in-out;
 }

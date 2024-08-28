@@ -1,6 +1,4 @@
 body {
-    font-family: Arial, sans-serif;
-    background-color: #f0f4ff;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -9,10 +7,10 @@ body {
 }
 
 .calendar-container {
-    background-color: #e9f0ff;
+    background-color: var(--primary-color-white);
     padding: 2px;
     border-radius: 10px;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    box-shadow: var(--box-shadow);
     width: 100%;
     max-width: 1200px;
 }
@@ -31,7 +29,7 @@ body {
 .navigation {
     display: flex;
     align-items: center;
-        color: #407BFF;
+    color: var(--primary-color-blue);
 }
 
 .navigation .prev,
@@ -64,7 +62,7 @@ body {
     padding: 6px;
     width: 32px;
     /* height: 32px; */
-    background-color: white;
+    background-color: var(--primary-color-white);
     border-radius: 50%;
     text-align: center;
 }
@@ -74,17 +72,19 @@ body {
     width: 100%;
     text-align: center;
     line-height: 160%;
-    color: #9EBBFF;
+    color: var(--secondary-color-4);
 }
+
 .unfilled {
-  border: 1px solid #FF9D43;
+    border: 1px solid var(--secondary-color-5-orange);
 }
+
 .modal {
     position: absolute;
-    bottom: 100%; 
+    bottom: 100%;
     left: 50%;
     transform: translateX(-50%);
-    background-color: white;
+    background-color: var(--primary-color-white);
     border: 1px solid #ccc;
     z-index: 10;
     text-align: left;
@@ -94,31 +94,35 @@ body {
     width: 292px;
     height: 188px;
 
-    box-shadow: 0 4px 4px 0 rgba(64, 123, 255, 0.3);
+    box-shadow: var(--box-shadow);
 
     display: flex;
     flex-direction: column;
     justify-content: space-around;
     visibility: hidden;
 }
+
 .day:hover .modal {
-    visibility: visible; 
+    visibility: visible;
 }
+
 .modal-date {
-font-size: 16px;
-line-height: 125%;
-color: #407BFF;
+    font-size: 16px;
+    line-height: 125%;
+    color: #407BFF;
 }
+
 .modal-text {
-font-size: 16px;
-line-height: 125%;
-color: #2F2F2F;
+    font-size: 16px;
+    line-height: 125%;
+    color: #2F2F2F;
 }
+
 .modal-text-blue {
-font-weight: 500;
-font-size: 18px;
-line-height: 133%;
-color: #407BFF;
+    font-weight: 500;
+    font-size: 18px;
+    line-height: 133%;
+    color: #407BFF;
 }
 
 @media (min-width: 768px) {
