@@ -1,8 +1,23 @@
 import { useState, useEffect } from 'react';
 import './Calendar.css';
 
+const months = [
+    { monthName: 'January', monthDays: 31 },
+    { monthName: 'February', monthDays: 28 }, // Високосный год не учитывается для простоты
+    { monthName: 'March', monthDays: 31 },
+    { monthName: 'April', monthDays: 30 },
+    { monthName: 'May', monthDays: 31 },
+    { monthName: 'June', monthDays: 30 },
+    { monthName: 'July', monthDays: 31 },
+    { monthName: 'August', monthDays: 31 },
+    { monthName: 'September', monthDays: 30 },
+    { monthName: 'October', monthDays: 31 },
+    { monthName: 'November', monthDays: 30 },
+    { monthName: 'December', monthDays: 31 },
+];
+
 const Calendar = () => {
-    const [month, setMonth] = useState('April');
+    const [month, setMonth] = useState(3);
     const [year, setYear] = useState(2023);
     const [hoveredDay, setHoveredDay] = useState(null);
     const [days, setDays] = useState([]);
@@ -12,26 +27,38 @@ const Calendar = () => {
         return `${Math.floor(Math.random() * 101)}%`;
     };
 
-   useEffect(() => {
-        const initialDays = Array.from({ length: 30 }, (_, index) => ({
+
+    useEffect(() => {
+        const currentMonth = months[month];
+        const initialDays = Array.from({ length: currentMonth.monthDays }, (_, index) => ({
             date: index + 1,
             percentage: generateRandomPercentage(),
         }));
-       
-          for (let i = 0; i < 30; i+=3) {
-            initialDays[i].percentage = '100%';
-       }
-       
-       
-        setDays(initialDays);
-    }, []);
 
+        for (let i = 0; i < 30; i+=3) {
+            initialDays[i].percentage = '100%';
+            }
+       
+
+        setDays(initialDays);
+}, [month]);
+    
     const handlePrevMonth = () => {
-        // Логика для переключения на предыдущий месяц
+        if (month == 0) { 
+            setMonth(months.length - 1);
+             setYear(year - 1);
+        } 
+        if (month > 0) {
+            setMonth(month - 1);
+        }
     };
 
     const handleNextMonth = () => {
-        // Логика для переключения на следующий месяц
+        if (month < months.length - 1) setMonth(month + 1);
+        if (month == months.length - 1) {
+            setMonth(0);
+            setYear(year + 1);
+        }
     };
 
     const handleMouseEnter = (day) => {
@@ -52,7 +79,7 @@ const Calendar = () => {
                 <h1>Month</h1>
                 <div className="navigation">
                     <span className="prev" onClick={handlePrevMonth}>&lt;</span>
-                    <span className="month-year">{month}, {year}</span>
+                    <span className="month-year">{months[month].monthName}, {year}</span>
                     <span className="next" onClick={handleNextMonth}>&gt;</span>
                 </div>
             </div>
