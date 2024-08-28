@@ -1,4 +1,6 @@
 import "./App.css";
+import Test from "./components/Test/Test";
+
 // import { Calendar } from "./components/Calendar/Calendar";
 
 function App() {
@@ -6,6 +8,7 @@ function App() {
     <>
       <h1>Water Tracker</h1>
       {/* <Calendar /> */}
+      <Test />
     </>
   );
 }
