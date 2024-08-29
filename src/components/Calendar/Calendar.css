@@ -85,7 +85,7 @@ body {
     left: 50%;
     transform: translateX(-50%);
     background-color: var(--primary-color-white);
-    border: 1px solid #ccc;
+    /* border: 1px solid #ccc; */
     z-index: 10;
     text-align: left;
 
@@ -109,20 +109,20 @@ body {
 .modal-date {
     font-size: 16px;
     line-height: 125%;
-    color: #407BFF;
+    color: var(--primary-color-blue);
 }
 
 .modal-text {
     font-size: 16px;
     line-height: 125%;
-    color: #2F2F2F;
+    color: var(--primary-color-black);
 }
 
 .modal-text-blue {
     font-weight: 500;
     font-size: 18px;
     line-height: 133%;
-    color: #407BFF;
+    color: var(--primary-color-blue);
 }
 
 @media (min-width: 768px) {
