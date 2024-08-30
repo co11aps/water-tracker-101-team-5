@@ -1,18 +1,18 @@
 import { useState } from 'react';
-import { useNavigate } from 'react-router-dom'; 
+import { useNavigate } from 'react-router-dom';
 import './AuthForm.css';
 
 const AuthForm = ({ isSignup }) => {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [error, setError] = useState('');
-  const navigate = useNavigate(); 
+  const navigate = useNavigate();
 
   const handleSubmit = async (e) => {
     e.preventDefault();
     setError('');
 
-    const endpoint = isSignup ? '/signup' : '/signin';
+    const endpoint = isSignup ? '/auth/register' : '/auth/login';
     const url = `https://water-tracker-backend-101-team-5.onrender.com${endpoint}`;
 
     try {
@@ -30,7 +30,8 @@ const AuthForm = ({ isSignup }) => {
       }
 
       if (isSignup) {
-        navigate('/signin'); 
+        
+        navigate('/signin');
       } else {
         const data = await response.json();
         
