@@ -1,0 +1,158 @@
+.block {
+  /* margin-bottom: 40px; */
+  padding-left: 20px;
+  padding-right: 20px;
+  margin-bottom: 40px;
+  overflow: hidden; /* Додайте цю властивість */
+}
+
+.main-title {
+  font-size: 28px;
+  font-weight: 700;
+  line-height: 1.14; /* 114.286% */
+  margin-bottom: 16px;
+}
+
+.title {
+  /* font-size: 24px; */
+  font-weight: 400;
+  line-height: 1.25; /* 125% */
+  margin-bottom: 24px;
+}
+
+.card {
+  margin-bottom: 24px;
+}
+
+.card-title {
+  font-size: 18px;
+  font-weight: 500;
+  font-weight: bold;
+  line-height: 1.11; /* 111.111% */
+  margin-bottom: 12px;
+}
+
+.list {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  width: 100%;
+}
+
+.item {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  width: 100%;
+}
+
+.icon {
+  width: 32px;
+  height: 32px;
+  fill: #407bff;
+  flex-shrink: 0;
+}
+
+.text {
+  font-size: 16px;
+  line-height: 1.25; /* 125% */
+  width: 176px; /* Фіксована ширина для тексту */
+  white-space: nowrap;
+}
+
+.button {
+  text-align: center;
+  font-size: 16px;
+  font-weight: 500;
+  line-height: 1.25; /* 125% */
+  color: #fff;
+  display: block;
+  padding: 8px 30px;
+  border: none;
+  border-radius: 10px;
+  background: #407bff;
+  box-shadow: 0px 4px 8px 0px rgba(64, 123, 255, 0.34);
+  cursor: pointer;
+  width: 280px;
+  height: 36px;
+  max-width: 100%; /* Додайте цю властивість */
+  box-sizing: border-box; /* Щоб врахувати padding у ширині */
+  /* flex-shrink: 0; */
+}
+
+.button:hover {
+  box-shadow: 0px 4px 14px 0px rgba(64, 123, 255, 0.54);
+}
+
+.button:focus {
+  box-shadow: none;
+}
+
+@media only screen and (max-width: 767px) {
+  .container {
+    max-width: 767px;
+  }
+}
+
+@media only screen and (min-width: 768px) {
+  .container {
+    background-image: url("../images/background/tablet/icon-light-background-main-page.svg");
+  }
+
+  .block {
+    padding-left: 32px;
+    padding-right: 32px;
+    margin-bottom: 60px;
+  }
+
+  .list {
+    flex-direction: row;
+    /* flex-wrap: wrap; */
+  }
+
+  .item {
+    width: 100%;
+  }
+
+  .icon {
+    width: 40px;
+    height: 40px;
+  }
+
+  .button {
+    font-size: 18px;
+    line-height: 1.33; /* 133.333% */
+    padding: 10px 30px;
+    width: 336px;
+    height: 44px;
+    /* flex-shrink: 0; */
+  }
+}
+
+@media only screen and (min-width: 1440px) {
+  .block {
+    padding-left: 0;
+    padding-right: 0;
+    margin-bottom: 0;
+  }
+
+  .main-title {
+    font-size: 36px;
+    line-height: 1.16; /* 116.667% */
+  }
+
+  .title {
+    font-size: 26px;
+    font-weight: 400;
+    line-height: 1.23; /* 123.077% */
+  }
+
+  .list {
+    flex-direction: column;
+  }
+
+  .button {
+    width: 384px;
+    /* flex-shrink: 0; */
+  }
+}
