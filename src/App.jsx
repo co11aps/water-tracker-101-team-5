@@ -4,7 +4,6 @@ import Calendar from "./components/Calendar/Calendar";
 import { BrowserRouter as Router, Route, Routes, Link } from "react-router-dom";
 import SigninPage from "./pages/SigninPage/SigninPage";
 import SignupPage from "./pages/SignupPage/SignupPage";
-//import Main from "./components/Main/Main"
 import WelcomePage from "./pages/WelcomePage/WelcomePage";
 
 function App() {
@@ -14,22 +13,20 @@ function App() {
         <Route path="/signin" element={<SigninPage />} />
         <Route path="/signup" element={<SignupPage />} />
         <Route path="/" element={<WelcomePage />} />
-        {/* <Route
+        <Route
           path="/"
           element={
-            <> */}
-              {/* <ColorSchemeToggle />
-              <h1>Water Tracker</h1> */}
-
-
-              {/* <div>
+            <>
+              <ColorSchemeToggle />
+              <h1>Water Tracker</h1>
+              <div>
                 <Link to="/signup">Sign Up</Link>
-              </div> */}
-              {/* <Calendar /> */}
+              </div>
+              <Calendar />
 
-            {/* </>
+            </>
           }
-        /> */}
+        />
       </Routes>
     </Router>
   );
