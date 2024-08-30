@@ -4,6 +4,7 @@ import Calendar from "./components/Calendar/Calendar";
 import { BrowserRouter as Router, Route, Routes, Link } from "react-router-dom";
 import SigninPage from "./pages/SigninPage/SigninPage";
 import SignupPage from "./pages/SignupPage/SignupPage";
+import WelcomePage from "./pages/WelcomePage/WelcomePage";
 
 function App() {
   return (
@@ -11,6 +12,7 @@ function App() {
       <Routes>
         <Route path="/signin" element={<SigninPage />} />
         <Route path="/signup" element={<SignupPage />} />
+        <Route path="/" element={<WelcomePage />} />
         <Route
           path="/"
           element={
@@ -21,6 +23,7 @@ function App() {
                 <Link to="/signup">Sign Up</Link>
               </div>
               <Calendar />
+
             </>
           }
         />
