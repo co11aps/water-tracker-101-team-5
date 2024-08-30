@@ -8,7 +8,7 @@ const Icon = ({ id, width, height, className = "" }) => {
       height={height}
       aria-hidden="true"
     >
-      <use href={`/src/images/icons/icons.svg#icon-${id}`}></use>
+      <use href={`/src/images/icons/icons.svg#${id}`}></use>
     </svg>
   );
 };

@@ -1,9 +1,9 @@
 import "./App.css";
 import ColorSchemeToggle from "./components/ColorSchemeToggler/ColorSchemeToggler";
-import Calendar from "./components/Calendar/Calendar";
 import { BrowserRouter as Router, Route, Routes, Link } from "react-router-dom";
 import SigninPage from "./pages/SigninPage/SigninPage";
 import SignupPage from "./pages/SignupPage/SignupPage";
+import HomePage from "./pages/HomePage/HomePage";
 
 function App() {
   return (
@@ -20,7 +20,7 @@ function App() {
               <div>
                 <Link to="/signup">Sign Up</Link>
               </div>
-              <Calendar />
+              <HomePage />
             </>
           }
         />
