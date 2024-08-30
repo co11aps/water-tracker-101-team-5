@@ -1,7 +1,8 @@
 import axios from "axios";
 import { createAsyncThunk } from "@reduxjs/toolkit";
 
-axios.defaults.baseURL = "http://path-to-your-api-server";
+axios.defaults.baseURL =
+  "https://water-tracker-backend-101-team-5.onrender.com";
 
 // Utility to add JWT
 const setAuthHeader = (token) => {
