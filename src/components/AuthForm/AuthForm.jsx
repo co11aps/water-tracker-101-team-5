@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
-import './AuthForm.css';
+import css from './AuthForm.module.css';
 
 const AuthForm = ({ isSignup }) => {
   const [email, setEmail] = useState('');
@@ -30,11 +30,9 @@ const AuthForm = ({ isSignup }) => {
       }
 
       if (isSignup) {
-        
         navigate('/signin');
       } else {
         const data = await response.json();
-        
         localStorage.setItem('token', data.token); 
         navigate('/dashboard'); 
       }
@@ -44,9 +42,9 @@ const AuthForm = ({ isSignup }) => {
   };
 
   return (
-    <div className="auth-form-container">
+    <div className={css.authFormContainer}>
       <form onSubmit={handleSubmit}>
-        <div className="form-group">
+        <div className={css.formGroup}>
           <label htmlFor="email">Email</label>
           <input
             type="email"
@@ -56,7 +54,7 @@ const AuthForm = ({ isSignup }) => {
             required
           />
         </div>
-        <div className="form-group">
+        <div className={css.formGroup}>
           <label htmlFor="password">Password</label>
           <input
             type="password"
@@ -66,17 +64,17 @@ const AuthForm = ({ isSignup }) => {
             required
           />
         </div>
-        {error && <div className="error">{error}</div>}
+        {error && <div className={css.error}>{error}</div>}
         <button type="submit">{isSignup ? 'Sign Up' : 'Sign In'}</button>
       </form>
-      <div className="navigation">
+      <div className={css.navigation}>
         {isSignup ? (
           <p>
             Already have an account? <a href="/signin">Sign in</a>
           </p>
         ) : (
           <p>
-            Don't have an account? <a href="/signup">Sign up</a>
+            Don&apos;t have an account? <a href="/signup">Sign up</a>
           </p>
         )}
       </div>

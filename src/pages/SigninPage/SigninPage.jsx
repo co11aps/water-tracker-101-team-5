@@ -1,10 +1,10 @@
 import AuthForm from '../../components/AuthForm/AuthForm';
-import '../../components/AuthForm/AuthForm.css'
+import css from '../../components/AuthForm/AuthForm.module.css'
 
 const SigninPage = () => {
   return (
     <div>
-      <h1 className='auth-page-title'>Sign In</h1>
+      <h1 className={css.authPageTitle}>Sign In</h1>
       <AuthForm isSignup={false} />
     </div>
   );
