@@ -1,29 +1,44 @@
 import { useState } from 'react';
-import { useHistory } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom'; 
 import './AuthForm.css';
 
 const AuthForm = ({ isSignup }) => {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [error, setError] = useState('');
-  const history = useHistory();
+  const navigate = useNavigate(); 
 
   const handleSubmit = async (e) => {
     e.preventDefault();
     setError('');
 
+    const endpoint = isSignup ? '/signup' : '/signin';
+    const url = `https://water-tracker-backend-101-team-5.onrender.com${endpoint}`;
+
     try {
+      const response = await fetch(url, {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({ email, password }),
+      });
+
+      if (!response.ok) {
+        const errorData = await response.json();
+        throw new Error(errorData.message || 'An error occurred. Please try again.');
+      }
+
       if (isSignup) {
-        // Call your signup API here
-        // Example: await signup({ email, password });
-        history.push('/signin');
+        navigate('/signin'); 
       } else {
-        // Call your signin API here
-        // Example: await signin({ email, password });
-        history.push('/dashboard');
+        const data = await response.json();
+        
+        localStorage.setItem('token', data.token); 
+        navigate('/dashboard'); 
       }
     } catch (err) {
-      setError('An error occurred. Please try again.');
+      setError(err.message);
     }
   };
 
