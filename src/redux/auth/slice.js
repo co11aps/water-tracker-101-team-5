@@ -1,13 +1,3 @@
-// {
-//   user: {
-//     name: null,
-//     email: null,
-//   },
-//   token: null,
-//   isLoggedIn: false,
-//   isRefreshing: false,
-// }
-
 import { createSlice } from "@reduxjs/toolkit";
 import {
   logIn,
@@ -25,6 +15,8 @@ const authSlice = createSlice({
     user: {
       name: null,
       email: null,
+      gender: null,
+      avatar: null,
     },
     token: null,
     isLoggedIn: false,
@@ -57,6 +49,15 @@ const authSlice = createSlice({
       })
       .addCase(refreshUser.rejected, (state) => {
         state.isRefreshing = false;
+      })
+      .addCase(updateAvatar.fulfilled, (state, action) => {
+        state.user.avatar = action.payload;
+      })
+      .addCase(updateUserInfo.fulfilled, (state, action) => {
+        state.user = { ...state.user, ...action.payload };
+      })
+      .addCase(getUserInfo.fulfilled, (state, action) => {
+        state.user = action.payload;
       });
   },
 });
