@@ -5,7 +5,7 @@
 }
 
 .card {
-  display: inline-block; /* Додайте цю властивість */
+  display: inline-block; /* Додала цю властивість */
   padding: 24px 16px;
   border-radius: 10px;
   background: #ecf2ff;
@@ -38,17 +38,17 @@
 .svg {
   width: 8px;
   height: 8px;
-  fill: #407bff;
+  fill: var(--primary-color-blue);
   flex-shrink: 0;
 }
 
 .text {
   font-size: 16px;
   line-height: 1.25; /* 125% */
-  width: auto; /* Змініть з 232px на auto */
-  max-width: 100%; /* Додайте це, щоб текст не виходив за межі */
-  overflow-wrap: break-word; /* Додайте для автоматичного переносу слів */
-  white-space: normal; /* Додайте, якщо хочете, щоб текст міг переноситися */
+  width: auto; /* Змінила з 232px на auto */
+  max-width: 100%; /* Додала, щоб текст не виходив за межі */
+  overflow-wrap: break-word; /* Додала для автоматичного переносу слів */
+  white-space: normal; /* Додала, якщо хочете, щоб текст міг переноситися */
   flex-shrink: 0;
 }
 
