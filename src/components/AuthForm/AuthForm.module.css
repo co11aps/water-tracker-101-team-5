@@ -1,4 +1,4 @@
-.auth-form-container {
+.authFormContainer {
   max-width: 400px;
   margin: 0 auto;
   padding: 1rem;
@@ -8,11 +8,11 @@
   width: 384px;
 }
 
-.form-group {
+.formGroup {
   margin-bottom: 20px;
 }
 
-.form-group label {
+.formGroup label {
   font-size: 18px;
   line-height: 133%;
   color: var(--primary-color-black);
@@ -21,7 +21,7 @@
 }
 
 
-.form-group input {
+.formGroup input {
   width: 100%;
   border: 1px solid var(--secondary-color-5);
   border-radius: 6px;
@@ -68,12 +68,12 @@ button:hover {
   text-decoration: underline;
 }
 
-.form-group input::placeholder {
+.formGroup input::placeholder {
   color: var(--secondary-color-5);
   font-size: 16px;
   line-height: 133%;
 }
-.auth-page-title {
+.authPageTitle {
   font-family: var(--font-family);
   font-weight: 500;
   font-size: 26px;
