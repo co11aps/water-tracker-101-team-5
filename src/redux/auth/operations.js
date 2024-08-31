@@ -136,17 +136,17 @@ export const updateUserInfo = createAsyncThunk(
 );
 
 /*
- * GET @ /auth/info
+ * GET @ /auth/profile
  * headers: Authorization: Bearer token
  */
 export const getUserInfo = createAsyncThunk(
-  "auth/info",
+  "auth/profileInfo",
   async (_, thunkAPI) => {
     const state = thunkAPI.getState();
     const persistedToken = state.auth.token;
     try {
       setAuthHeader(persistedToken);
-      const res = await axios.get("/auth/info");
+      const res = await axios.get("/auth/profile");
       return res.data;
     } catch (error) {
       return thunkAPI.rejectWithValue(error.message);
