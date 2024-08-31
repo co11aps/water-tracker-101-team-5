@@ -1,7 +1,7 @@
 import { useEffect, useCallback } from "react";
 import { createPortal } from "react-dom";
 import PropTypes from "prop-types";
-import sprite from "../images/icons/icons.svg";
+import Icon from "../Icon/Icon";
 import css from "./BaseModal.module.css";
 
 export const BaseModal = ({ isShow, children, title, onClose }) => {
@@ -39,9 +39,7 @@ export const BaseModal = ({ isShow, children, title, onClose }) => {
         <div className={css.modalHeader}>
           <h2>{title}</h2>
           <div className={css.closeBtn} onClick={onClose}>
-            <svg>
-              <use href={`${sprite}#icon-x-mark`}></use>
-            </svg>
+            <Icon id="x-mark" width={24} height={24} className="icon-blue" />
           </div>
         </div>
         {children}
