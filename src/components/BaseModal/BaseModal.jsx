@@ -1,7 +1,9 @@
 import { useEffect, useCallback } from "react";
 import { createPortal } from "react-dom";
 import PropTypes from "prop-types";
+
 import Icon from "../Icon/Icon";
+
 import css from "./BaseModal.module.css";
 
 export const BaseModal = ({ isShow, children, title, onClose }) => {
