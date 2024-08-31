@@ -1,12 +1,15 @@
 .block {
-  /* margin-bottom: 40px; */
-  padding-left: 20px;
-  padding-right: 20px;
+  /* padding-left: 20px;
+  padding-right: 20px; */
   margin-bottom: 40px;
-  overflow: hidden; /* Додайте цю властивість */
+  overflow: hidden;
 }
 
-.main-title {
+.box {
+  margin-bottom: 24px;
+}
+
+.heading {
   font-size: 28px;
   font-weight: 700;
   line-height: 1.14; /* 114.286% */
@@ -17,14 +20,15 @@
   /* font-size: 24px; */
   font-weight: 400;
   line-height: 1.25; /* 125% */
-  margin-bottom: 24px;
+  width: 100%;
+  overflow-wrap: break-word; /* Додала для автоматичного переносу слів */
 }
 
 .card {
   margin-bottom: 24px;
 }
 
-.card-title {
+.cardtitle {
   font-size: 18px;
   font-weight: 500;
   font-weight: bold;
@@ -49,9 +53,17 @@
 .icon {
   width: 32px;
   height: 32px;
-  fill: #407bff;
+  background: transparent;
+  fill: none;
+  stroke: var(--primary-color-blue);
   flex-shrink: 0;
 }
+
+/* .icon-blue {
+  background: transparent;
+  fill: none;
+  stroke: var(--primary-color-blue);
+} */
 
 .text {
   font-size: 16px;
@@ -75,7 +87,7 @@
   cursor: pointer;
   width: 280px;
   height: 36px;
-  max-width: 100%; /* Додайте цю властивість */
+  max-width: 100%;
   box-sizing: border-box; /* Щоб врахувати padding у ширині */
   /* flex-shrink: 0; */
 }
@@ -89,16 +101,9 @@
 }
 
 @media only screen and (max-width: 767px) {
-  .container {
-    max-width: 767px;
-  }
 }
 
 @media only screen and (min-width: 768px) {
-  .container {
-    background-image: url("../images/background/tablet/icon-light-background-main-page.svg");
-  }
-
   .block {
     padding-left: 32px;
     padding-right: 32px;

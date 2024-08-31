@@ -1,5 +1,5 @@
 import { useState, useEffect, useRef } from 'react';
-import './Calendar.css';
+import css from './Calendar.module.css';
 
 const months = [
     { monthName: 'January', monthDays: 31 },
@@ -23,11 +23,9 @@ const Calendar = () => {
     const [days, setDays] = useState([]);
     const modalRef = useRef(null);
 
-
-   const generateRandomPercentage = () => {
+    const generateRandomPercentage = () => {
         return `${Math.floor(Math.random() * 101)}%`;
     };
-
 
     useEffect(() => {
         const currentMonth = months[month];
@@ -36,27 +34,26 @@ const Calendar = () => {
             percentage: generateRandomPercentage(),
         }));
 
-        for (let i = 0; i < 30; i+=3) {
+        for (let i = 0; i < 30; i += 3) {
             initialDays[i].percentage = '100%';
-            }
-       
+        }
 
         setDays(initialDays);
-}, [month]);
-    
+    }, [month]);
+
     const handlePrevMonth = () => {
-        if (month == 0) { 
+        if (month === 0) {
             setMonth(months.length - 1);
-             setYear(year - 1);
-        } 
-        if (month > 0) {
+            setYear(year - 1);
+        } else {
             setMonth(month - 1);
         }
     };
 
     const handleNextMonth = () => {
-        if (month < months.length - 1) setMonth(month + 1);
-        if (month == months.length - 1) {
+        if (month < months.length - 1) {
+            setMonth(month + 1);
+        } else {
             setMonth(0);
             setYear(year + 1);
         }
@@ -70,10 +67,11 @@ const Calendar = () => {
     const handleMouseLeave = () => {
         setHoveredDay(null);
     };
- const adjustModalPosition = () => {
+
+    const adjustModalPosition = () => {
         if (modalRef.current) {
             const modalRect = modalRef.current.getBoundingClientRect();
-            const viewportHeight = window.innerHeight;
+            // const viewportHeight = window.innerHeight;
             const viewportWidth = window.innerWidth;
 
             if (modalRect.top < 0) {
@@ -97,36 +95,37 @@ const Calendar = () => {
             }
         }
     };
+
     const getRandomServings = () => {
         return Math.floor(Math.random() * 10) + 1;
     };
 
     return (
-         <div className="calendar-container">
-            <div className="header">
+        <div className={css.calendarContainer}>
+            <div className={css.header}>
                 <h1>Month</h1>
-                <div className="navigation">
-                    <span className="prev" onClick={handlePrevMonth}>&lt;</span>
-                    <span className="month-year">{months[month].monthName}, {year}</span>
-                    <span className="next" onClick={handleNextMonth}>&gt;</span>
+                <div className={css.navigation}>
+                    <span className={css.prev} onClick={handlePrevMonth}>&lt;</span>
+                    <span>{months[month].monthName}, {year}</span>
+                    <span className={css.next} onClick={handleNextMonth}>&gt;</span>
                 </div>
             </div>
-            <ul className="calendar">
+            <ul className={css.calendar}>
                 {days.map((day) => (
                     <li
-                        className="day"
+                        className={css.day}
                         key={day.date}
                         onMouseEnter={() => handleMouseEnter(day)}
                         onMouseLeave={handleMouseLeave}
                     >
-                        <div className={`date ${parseInt(day.percentage) < 100 ? 'unfilled' : ''}`}>{day.date}</div>
-                        <div className="percentage">{day.percentage}</div>
+                        <div className={`${css.date} ${parseInt(day.percentage) < 100 ? css.unfilled : ''}`}>{day.date}</div>
+                        <div className={css.percentage}>{day.percentage}</div>
                         {hoveredDay && hoveredDay.date === day.date && (
-                            <div className="modal" ref={modalRef}>
-                                <div className="modal-date">{day.date}, {month}</div>
-                                <div className="modal-text">Daily norma: <span className='modal-text-blue'>1.5 L</span></div>
-                                <div className="modal-text">Fulfillment of the daily norm: <span className='modal-text-blue'>{day.percentage}</span></div>
-                                <div className="modal-text">How many servings of water: <span className='modal-text-blue'>{getRandomServings()}</span></div>
+                            <div className={css.modal} ref={modalRef}>
+                                <div className={css.modalDate}>{day.date}, {months[month].monthName}</div>
+                                <div className={css.modalText}>Daily norma: <span className={css.modalTextBlue}>1.5 L</span></div>
+                                <div className={css.modalText}>Fulfillment of the daily norm: <span className={css.modalTextBlue}>{day.percentage}</span></div>
+                                <div className={css.modalText}>How many servings of water: <span className={css.modalTextBlue}>{getRandomServings()}</span></div>
                             </div>
                         )}
                     </li>
