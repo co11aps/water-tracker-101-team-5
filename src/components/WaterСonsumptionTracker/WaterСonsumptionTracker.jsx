@@ -1,5 +1,6 @@
 import { useNavigate } from "react-router-dom";
 import css from "./WaterСonsumptionTracker.module.css";
+import Icon from "../Icon/Icon";
 
 export default function WaterСonsumptionTracker() {
     const navigate = useNavigate();
@@ -11,44 +12,38 @@ export default function WaterСonsumptionTracker() {
   return (
     <div>
       <div className={css.block}>
-        <h1 className={css.mainTitle}>Water consumption tracker</h1>
+        <div className={css.box}>
+          <h1 className={css.heading}>Water consumption tracker</h1>
         <h2 className={css.title}>Record daily water intake and track</h2>
+        </div> 
         <div className={css.card}>
-          <h3 className={css.cardTitle}>Tracker Benefits</h3>
+          <h3 className={css.cardtitle}>Tracker Benefits</h3>
           <ul className={css.list}>
             <li className={css.item}>
-                <svg
+              <Icon
+                id="calendar"
+                width={32}
+                height={32}
                 className={css.icon}
-                  width="32"
-                  height="32"
-                  aria-label="calendar icon"
-                >
-                  <use href="./images/icons/icons.svg#icon-calendar"></use>
-                </svg>
+              />  
               <p className={css.text}>Habit drive</p>
               </li>
-              <li className={css.item}>
-                <svg
-                  className={css.icon}
-                  width="32"
-                  height="32"
-                  aria-label="checkmark icon"
-                >
-                  <use
-                    href="./images/icons/icons.svg#icon-presentation-chart-bar"
-                  ></use>
-                </svg>
+            <li className={css.item}>
+              <Icon
+                id="presentation-chart-bar"
+                width={32}
+                height={32}
+                className={css.icon}
+              />
                 <p className={css.text}>View statistics</p>
               </li>
-              <li className={css.item}>
-                <svg
-                  className={css.icon}
-                  width="32"
-                  height="32"
-                  aria-label="diagram icon"
-                >
-                  <use href="./images/icons/icons.svg#icon-tools"></use>
-                </svg>
+            <li className={css.item}>
+              <Icon
+                id="tools"
+                width={32}
+                height={32}
+                className={css.icon}
+              />
                 <p className={css.text}>Personal rate setting</p>
               </li>
             </ul>
