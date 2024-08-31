@@ -1,5 +1,5 @@
 import { useState, useEffect, useRef } from 'react';
-import './Calendar.css';
+import './Calendar.module.css';
 
 const months = [
     { monthName: 'January', monthDays: 31 },

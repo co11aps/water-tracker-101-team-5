@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
-import './AuthForm.css';
+import './AuthForm.module.css';
 
 const AuthForm = ({ isSignup }) => {
   const [email, setEmail] = useState('');
