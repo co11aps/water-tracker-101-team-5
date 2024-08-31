@@ -101,29 +101,8 @@ body {
   min-height: 100vh;
 }
 
-h1 {
-  font-size: 3.2em;
-  line-height: 1.1;
-}
-
 button {
   cursor: pointer;
-  border-radius: 10px;
-  padding-top: 8px;
-  padding-bottom: 8px;
-  box-shadow: 0 4px 8px 0 rgba(64, 123, 255, 0.34);
-  color: var(--primary-color-white);
-  background: var(--primary-color-blue);
-}
-
-button:hover,
-button:focus,
-button:focus-visible {
-  box-shadow: 0 4px 14px 0 rgba(64, 123, 255, 0.54);
-}
-
-button:active {
-  box-shadow: none;
 }
 
 
@@ -151,10 +130,6 @@ button:active {
     width: 768px;
   }
 
-  button {
-    padding-top: 10px;
-    padding-bottom: 10px;
-  }
 }
 
 @media screen and (min-width: 1440px) {
