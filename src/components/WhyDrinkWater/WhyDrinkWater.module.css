@@ -3,7 +3,7 @@
 }
 
 .card {
-  display: inline-block; /* Додала цю властивість */
+  display: inline-block;
   padding: 24px 16px;
   border-radius: 10px;
   background: var(--secondary-color-2);
@@ -42,11 +42,10 @@
 .text {
   font-size: 16px;
   line-height: 1.25; /* 125% */
-  /*width: auto;*/ /* Змінила з 232px на auto */
-  max-width: 100%; /* Додала, щоб текст не виходив за межі */
+  max-width: 100%;
   width: 232px;
   overflow-wrap: break-word; /* Додала для автоматичного переносу слів */
-  white-space: normal; /* Додала, якщо хочете, щоб текст міг переноситися */
+  white-space: normal; /* Додала, щоб текст міг переноситися */
   flex-shrink: 0;
 }
 
@@ -56,8 +55,7 @@
 @media only screen and (min-width: 768px) {
   .block {
     flex: 1;
-    width: 100%; /* Заповнює всю ширину */
-    /*height: 100%;*/ /* Заповнює всю висоту */
+    width: 100%;
   }
 
   .card {
@@ -72,13 +70,14 @@
 
 @media only screen and (min-width: 1440px) {
   .block {
-    padding-bottom: 0;
-    display: flex; /* Використовуємо Flexbox для .why */
-    flex-direction: column; /* Розміщуємо дочірні елементи в колонку */
-    justify-content: flex-end; /* Вирівнюємо дочірні елементи по нижньому краю */
+    /* position: absolute;
+    bottom: 0;
+    left: 0; */
+    width: 100%;
+    align-self: flex-end; /* Вирівнює до низу контейнера */
   }
 
   .card {
-    width: auto; /* Або вкажіть фіксовану ширину, якщо потрібно */
+    width: auto;
   }
 }

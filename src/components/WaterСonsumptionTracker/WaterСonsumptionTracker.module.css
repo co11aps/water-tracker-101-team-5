@@ -4,7 +4,6 @@
 }
 
 .block {
-  /* margin-bottom: 40px; */
   overflow: hidden;
 }
 
@@ -22,7 +21,6 @@
 .title {
   font-weight: 400;
   line-height: 1.25; /* 125% */
-  /* width: 100%; */
   max-width: 197px;
 }
 
@@ -33,7 +31,6 @@
 .cardtitle {
   font-size: 18px;
   font-weight: 500;
-  /* font-weight: bold; */
   line-height: 1.11; /* 111.111% */
   margin-bottom: 12px;
 }
@@ -83,8 +80,9 @@
   /* width: 280px;
   height: 36px; */
   max-width: 100%;
-  box-sizing: border-box; /* Щоб врахувати padding у ширині */
+  box-sizing: border-box;
   /* flex-shrink: 0; */
+  cursor: url("../../images/logo/icon-logo.svg") 16 16, pointer;
 }
 
 .button:hover {
@@ -103,9 +101,11 @@
 @media only screen and (min-width: 768px) {
   .container {
     margin-bottom: 60px;
+    width: 100%;
+  }
+
+  .block {
     flex: 1;
-    width: 100%; /* Заповнює всю ширину */
-    /*height: 100%;*/ /* Заповнює всю висоту */
   }
 
   .heading {
@@ -147,6 +147,7 @@
 @media only screen and (min-width: 1440px) {
   .container {
     margin-bottom: 0;
+    align-self: flex-end;
   }
 
   .block {
@@ -170,8 +171,11 @@
     flex-direction: column;
   }
 
+  .text {
+    width: 200px; /* Фіксована ширина для тексту */
+  }
+
   .button {
     width: 384px;
-    /* flex-shrink: 0; */
   }
 }
