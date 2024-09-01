@@ -4,9 +4,15 @@ import Calendar from "./components/Calendar/Calendar";
 import { BrowserRouter as Router, Route, Routes, Link } from 'react-router-dom';
 import SigninPage from './pages/SigninPage/SigninPage';
 import SignupPage from './pages/SignupPage/SignupPage';
+import UserLogo from './components/UserLogo/UserLogo';
 
 
 function App() {
+  const user = {
+    name: '',
+    email: '',
+    avatar: ''
+  };
 
   return (
      <Router>
@@ -18,6 +24,7 @@ function App() {
             <ColorSchemeToggle />
             <h1>Water Tracker</h1>
             <div>
+            <UserLogo user={user} />
               <Link to="/signup">Sign Up</Link> 
             </div>
             <Calendar />

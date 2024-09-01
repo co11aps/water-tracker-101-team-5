@@ -1,12 +1,4 @@
-.userLogoBtn {
-    display: flex;
-    align-items: center;
-    background-color: transparent;
-    border: none;
-    cursor: pointer;
-  }
-  
-  .avatar {
+.avatar {
     width: 40px;
     height: 40px;
     border-radius: 50%;
