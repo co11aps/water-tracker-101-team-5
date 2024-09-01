@@ -4,6 +4,7 @@
   background-color: var(--primary-color-white);
   border-radius: 10px;
   box-shadow: var(--box-shadow);
+  margin-bottom: 232px;
 }
 
 .header {
@@ -38,4 +39,16 @@
   all: unset;
   color: #8baeff;
   text-decoration: underline;
+}
+
+@media screen and (min-width: 768px) {
+  .container {
+    margin-bottom: 326px;
+  }
+}
+
+@media screen and (min-width: 1440px) {
+  .container {
+    margin-bottom: 466px;
+  }
 }
