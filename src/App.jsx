@@ -1,9 +1,6 @@
 import "./App.css";
-import { Route, Routes } from "react-router-dom";
-import SigninPage from "./pages/SigninPage/SigninPage";
-import SignupPage from "./pages/SignupPage/SignupPage";
-import WelcomePage from "./pages/WelcomePage/WelcomePage";
-import HomePage from "./pages/HomePage/HomePage";
+import ColorSchemeToggle from "./components/ColorSchemeToggler/ColorSchemeToggler";
+import Calendar from "./components/Calendar/Calendar";
 
 
 
@@ -27,7 +24,11 @@ const App = () => {
   }, [dispatch]);
 
   return (
-          <Layout>
+    <>
+      <Layout>
+        {isRefreshing ? (
+          <b>Refreshing user...</b>
+        ) : (
           <Suspense fallback={<Loader />}>
             <Routes>
               <Route path="/" element={<WelcomePage />} />
@@ -63,7 +64,8 @@ const App = () => {
           </Suspense>
         )}
       </Layout>
-  
+    </>
+  );
 }
 
 
