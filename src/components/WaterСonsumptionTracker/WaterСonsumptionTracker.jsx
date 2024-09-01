@@ -10,7 +10,7 @@ export default function WaterСonsumptionTracker() {
     };
     
   return (
-    <div>
+    <div className={css.container}>
       <div className={css.block}>
         <div className={css.box}>
           <h1 className={css.heading}>Water consumption tracker</h1>
