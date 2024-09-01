@@ -6,8 +6,8 @@ import css from "./DailyNorma.module.css";
 
 const DailyNorma = () => {
   const [isModalOpen, setIsModalOpen] = useState(false);
-  const { waterRate } = useSelector(selectUser);
-  const waterNorma = waterRate / 1000;
+  const { dailyNorma } = useSelector(selectUser);
+  const waterNorma = dailyNorma / 1000;
   const closeModal = () => {
     setIsModalOpen(false);
   };
