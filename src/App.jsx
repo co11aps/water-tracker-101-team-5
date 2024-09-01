@@ -27,11 +27,10 @@ const App = () => {
   }, [dispatch]);
 
   return (
-    <>
-      <Layout>
         {isRefreshing ? (
           <b>Refreshing user...</b>
         ) : (
+          <Layout>
           <Suspense fallback={<Loader />}>
             <Routes>
               <Route path="/" element={<WelcomePage />} />
@@ -67,8 +66,6 @@ const App = () => {
           </Suspense>
         )}
       </Layout>
-    </>
-
   );
 }
 
