@@ -12,10 +12,15 @@ const AuthForm = ({ isSignup }) => {
   const dispatch = useDispatch();
   const navigate = useNavigate();
   const { isLoggedIn } = useSelector((state) => state.auth);
-  const [showPassword, setShowPassword] = useState(false);
+  const [showPassword, setShowPassword] = useState(false); 
+  const [showConfirmPassword, setShowConfirmPassword] = useState(false); 
 
   const togglePasswordVisibility = () => {
     setShowPassword((prevState) => !prevState);
+  };
+
+  const toggleConfirmPasswordVisibility = () => {
+    setShowConfirmPassword((prevState) => !prevState);
   };
 
   const validationSchema = Yup.object().shape({
@@ -108,16 +113,16 @@ const AuthForm = ({ isSignup }) => {
                 <label htmlFor="confirmPassword">Confirm Password</label>
                 <div className={css.passwordWrapper}>
                   <Field
-                    type={showPassword ? "text" : "password"}
+                    type={showConfirmPassword ? "text" : "password"}
                     name="confirmPassword"
                     id="confirmPassword"
                   />
                   <span
                     className={css.passwordToggleIcon}
-                    onClick={togglePasswordVisibility}
+                    onClick={toggleConfirmPasswordVisibility}
                   >
                     <Icon
-                      id={showPassword ? "eye" : "eye-slash"}
+                      id={showConfirmPassword ? "eye" : "eye-slash"}
                       width={24}
                       height={24}
                       className={css.icon}
