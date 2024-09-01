@@ -27,9 +27,6 @@ const App = () => {
   }, [dispatch]);
 
   return (
-        {isRefreshing ? (
-          <b>Refreshing user...</b>
-        ) : (
           <Layout>
           <Suspense fallback={<Loader />}>
             <Routes>
@@ -66,7 +63,7 @@ const App = () => {
           </Suspense>
         )}
       </Layout>
-  );
+  
 }
 
 
