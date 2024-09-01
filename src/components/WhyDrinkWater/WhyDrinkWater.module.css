@@ -1,0 +1,84 @@
+.block {
+  box-sizing: border-box;
+}
+
+.card {
+  display: inline-block; /* Додала цю властивість */
+  padding: 24px 16px;
+  border-radius: 10px;
+  background: var(--secondary-color-2);
+  box-shadow: 0px 4px 14px 0px rgba(64, 123, 255, 0.3);
+  max-width: 100%;
+}
+
+.title {
+  font-size: 18px;
+  font-weight: 500;
+  line-height: 1.11; /* 111.111% */
+  margin-bottom: 12px;
+}
+
+.list {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  width: 100%;
+}
+
+.item {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  width: 100%;
+}
+
+.svg {
+  width: 8px;
+  height: 8px;
+  fill: var(--primary-color-blue);
+  flex-shrink: 0;
+}
+
+.text {
+  font-size: 16px;
+  line-height: 1.25; /* 125% */
+  /*width: auto;*/ /* Змінила з 232px на auto */
+  max-width: 100%; /* Додала, щоб текст не виходив за межі */
+  width: 232px;
+  overflow-wrap: break-word; /* Додала для автоматичного переносу слів */
+  white-space: normal; /* Додала, якщо хочете, щоб текст міг переноситися */
+  flex-shrink: 0;
+}
+
+@media only screen and (max-width: 767px) {
+}
+
+@media only screen and (min-width: 768px) {
+  .block {
+    flex: 1;
+    width: 100%; /* Заповнює всю ширину */
+    /*height: 100%;*/ /* Заповнює всю висоту */
+  }
+
+  .card {
+    padding: 32px 24px;
+  }
+
+  .text {
+    width: 430px;
+    flex-shrink: 0;
+  }
+}
+
+@media only screen and (min-width: 1440px) {
+  .block {
+    padding-bottom: 0;
+    display: flex; /* Використовуємо Flexbox для .why */
+    flex-direction: column; /* Розміщуємо дочірні елементи в колонку */
+    justify-content: flex-end; /* Вирівнюємо дочірні елементи по нижньому краю */
+  }
+
+  .card {
+    width: auto; /* Або вкажіть фіксовану ширину, якщо потрібно */
+  }
+}

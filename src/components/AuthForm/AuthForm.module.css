@@ -1,0 +1,92 @@
+.authFormContainer {
+  max-width: 400px;
+  margin: 0 auto;
+  padding: 1rem;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  width: 384px;
+}
+
+.formGroup {
+  margin-bottom: 20px;
+}
+
+.formGroup label {
+  font-size: 18px;
+  line-height: 133%;
+  color: var(--primary-color-black);
+  display: block;
+  margin-bottom: 8px;
+}
+
+
+.formGroup input {
+  width: 100%;
+  border: 1px solid var(--secondary-color-5);
+  border-radius: 6px;
+  padding: 12px 10px;
+  height: 44px;
+  background-color: var(--primary-color-white);
+  font-size: 16px;
+  line-height: 133%;
+  color: var(--primary-color-black);
+}
+
+.error {
+  color: var(--secondary-color-3);
+  margin-bottom: 20px;
+}
+
+button {
+  width: 100%;
+  padding: 12px;
+  border-radius: 6px;
+  background-color: var(--primary-color-blue);
+  color: var(--primary-color-white);
+  font-size: 18px;
+  font-weight: 500;
+  border: none;
+  cursor: pointer;
+}
+
+button:hover {
+  background-color: #335fcc; 
+}
+
+.navigation {
+  margin-top: 20px;
+  text-align: center;
+}
+
+.navigation a {
+  color: var(--primary-color-blue);
+  text-decoration: none;
+}
+
+.navigation a:hover {
+  text-decoration: underline;
+}
+
+.formGroup input::placeholder {
+  color: var(--secondary-color-5);
+  font-size: 16px;
+  line-height: 133%;
+}
+.authPageTitle {
+  font-family: var(--font-family);
+  font-weight: 500;
+  font-size: 26px;
+  line-height: 123%;
+  color: var(--primary-color-black);
+}
+
+
+
+
+
+
+
+
+
+

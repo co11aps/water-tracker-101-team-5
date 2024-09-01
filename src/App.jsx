@@ -1,6 +1,9 @@
 import "./App.css";
-import ColorSchemeToggle from "./components/ColorSchemeToggler/ColorSchemeToggler";
-import Calendar from "./components/Calendar/Calendar";
+import { Route, Routes } from "react-router-dom";
+import SigninPage from "./pages/SigninPage/SigninPage";
+import SignupPage from "./pages/SignupPage/SignupPage";
+import WelcomePage from "./pages/WelcomePage/WelcomePage";
+import HomePage from "./pages/HomePage/HomePage";
 
 
 
@@ -65,6 +68,7 @@ const App = () => {
         )}
       </Layout>
     </>
+
   );
 }
 

@@ -1,0 +1,18 @@
+.container {
+  display: flex;
+  flex-direction: column;
+  gap: 40px;
+}
+
+@media screen and (min-width: 768px) {
+  .container {
+    gap: 60px;
+  }
+}
+
+@media screen and (min-width: 1440px) {
+  .container {
+    flex-direction: row;
+    gap: 32px;
+  }
+}

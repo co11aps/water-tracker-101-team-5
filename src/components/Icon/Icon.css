@@ -1,7 +1,17 @@
 .icon-black {
-    background: transparent;
+  /* background: transparent; */
+  fill: none;
+  stroke: var(--primary-color-black);
 }
 
 .icon-blue {
-    background: transparent;
+  background: transparent;
+  fill: none;
+  stroke: var(--primary-color-blue);
+}
+
+.icon-white {
+  background: transparent;
+  fill: none;
+  stroke: var(--primary-color-white);
 }

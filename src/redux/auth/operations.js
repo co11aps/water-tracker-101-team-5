@@ -1,11 +1,12 @@
 import axios from "axios";
 import { createAsyncThunk } from "@reduxjs/toolkit";
 
-axios.defaults.baseURL = "http://path-to-your-api-server";
+axios.defaults.baseURL =
+  "https://water-tracker-backend-101-team-5.onrender.com";
 
 // Utility to add JWT
-const setAuthHeader = (token) => {
-  axios.defaults.headers.common.Authorization = `Bearer ${token}`;
+const setAuthHeader = (accessToken) => {
+  axios.defaults.headers.common.Authorization = `Bearer ${accessToken}`;
 };
 
 // Utility to remove JWT
@@ -22,9 +23,9 @@ export const register = createAsyncThunk(
   async (credentials, thunkAPI) => {
     try {
       const res = await axios.post("/auth/register", credentials);
-      console.log("res");
       // After successful registration, add the token to the HTTP header
-      setAuthHeader(res.data.token);
+      setAuthHeader(res.data.accessToken);
+      console.log(res.data);
       return res.data;
     } catch (error) {
       return thunkAPI.rejectWithValue(error.message);
@@ -42,7 +43,7 @@ export const logIn = createAsyncThunk(
     try {
       const res = await axios.post("/auth/login", credentials);
       // After successful login, add the token to the HTTP header
-      setAuthHeader(res.data.token);
+      setAuthHeader(res.data.accessToken);
       return res.data;
     } catch (error) {
       return thunkAPI.rejectWithValue(error.message);
@@ -73,7 +74,7 @@ export const refreshUser = createAsyncThunk(
   async (_, thunkAPI) => {
     // Reading the token from the state via getState()
     const state = thunkAPI.getState();
-    const persistedToken = state.auth.token;
+    const persistedToken = state.auth.accessToken;
 
     try {
       // If there is a token, add it to the HTTP header and perform the request
@@ -87,7 +88,7 @@ export const refreshUser = createAsyncThunk(
   {
     condition(_, thunkAPI) {
       const state = thunkAPI.getState();
-      return state.auth.token !== null;
+      return state.auth.accessToken !== null;
     },
   }
 );
@@ -102,7 +103,7 @@ export const updateAvatar = createAsyncThunk(
   async (file, thunkAPI) => {
     // Reading the token from the state via getState()
     const state = thunkAPI.getState();
-    const persistedToken = state.auth.token;
+    const persistedToken = state.auth.accessToken;
     try {
       setAuthHeader(persistedToken);
       const formData = new FormData();
@@ -116,17 +117,17 @@ export const updateAvatar = createAsyncThunk(
 );
 
 /*
- * PATCH @ /auth/profile
+ * PATCH @ /auth/user
  * body: { name, email, gender, oldPassword, newPassword }
  */
 export const updateUserInfo = createAsyncThunk(
-  "auth/profile",
+  "auth/userUpdate",
   async (credentials, thunkAPI) => {
     const state = thunkAPI.getState();
-    const persistedToken = state.auth.token;
+    const persistedToken = state.auth.accessToken;
     try {
       setAuthHeader(persistedToken);
-      const res = await axios.post("/auth/profile", credentials);
+      const res = await axios.post("/auth/user", credentials);
       return res.data;
     } catch (error) {
       return thunkAPI.rejectWithValue(error.message);
@@ -135,17 +136,17 @@ export const updateUserInfo = createAsyncThunk(
 );
 
 /*
- * GET @ /auth/info
+ * GET @ /auth/user
  * headers: Authorization: Bearer token
  */
 export const getUserInfo = createAsyncThunk(
-  "auth/info",
+  "auth/userInfo",
   async (_, thunkAPI) => {
     const state = thunkAPI.getState();
-    const persistedToken = state.auth.token;
+    const persistedToken = state.auth.accessToken;
     try {
       setAuthHeader(persistedToken);
-      const res = await axios.get("/auth/info");
+      const res = await axios.get("/auth/user");
       return res.data;
     } catch (error) {
       return thunkAPI.rejectWithValue(error.message);
