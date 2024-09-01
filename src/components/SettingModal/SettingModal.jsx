@@ -227,6 +227,7 @@ const SettingModal = ({ isOpen, onClose, onUpdate }) => {
       </div>
     </div>
   );
+
 };
 
 export default SettingModal;
