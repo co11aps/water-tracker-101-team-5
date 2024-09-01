@@ -81,6 +81,22 @@ button:hover {
   color: var(--primary-color-black);
 }
 
+.passwordWrapper {
+  position: relative;
+}
+
+.passwordToggleIcon {
+  position: absolute;
+  top: 50%;
+  right: 10px;
+  transform: translateY(-50%);
+  cursor: pointer;
+}
+
+.icon {
+ stroke: var(--primary-color-blue);
+ fill: white;
+}
 
 
 
