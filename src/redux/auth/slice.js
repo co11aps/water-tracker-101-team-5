@@ -16,6 +16,7 @@ const authSlice = createSlice({
       name: null,
       email: null,
       gender: null,
+      dailyNorma: null,
       photo: null,
     },
     accessToken: null,

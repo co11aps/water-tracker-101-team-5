@@ -117,17 +117,17 @@ export const updateAvatar = createAsyncThunk(
 );
 
 /*
- * PATCH @ /auth/profile
+ * PATCH @ /auth/user
  * body: { name, email, gender, oldPassword, newPassword }
  */
 export const updateUserInfo = createAsyncThunk(
-  "auth/profile",
+  "auth/userUpdate",
   async (credentials, thunkAPI) => {
     const state = thunkAPI.getState();
     const persistedToken = state.auth.accessToken;
     try {
       setAuthHeader(persistedToken);
-      const res = await axios.post("/auth/profile", credentials);
+      const res = await axios.post("/auth/user", credentials);
       return res.data;
     } catch (error) {
       return thunkAPI.rejectWithValue(error.message);
@@ -136,17 +136,17 @@ export const updateUserInfo = createAsyncThunk(
 );
 
 /*
- * GET @ /auth/profile
+ * GET @ /auth/user
  * headers: Authorization: Bearer token
  */
 export const getUserInfo = createAsyncThunk(
-  "auth/profileInfo",
+  "auth/userInfo",
   async (_, thunkAPI) => {
     const state = thunkAPI.getState();
     const persistedToken = state.auth.accessToken;
     try {
       setAuthHeader(persistedToken);
-      const res = await axios.get("/auth/profile");
+      const res = await axios.get("/auth/user");
       return res.data;
     } catch (error) {
       return thunkAPI.rejectWithValue(error.message);
