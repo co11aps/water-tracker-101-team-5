@@ -1,0 +1,206 @@
+.BoxModal {
+  padding-left: 12px;
+  padding-right: 12px;
+  padding-bottom: 24px;
+}
+
+@media screen and (min-width: 768px) {
+  .BoxModal {
+    width: 704px;
+    padding-left: 24px;
+    padding-right: 24px;
+    padding-bottom: 32px;
+  }
+}
+
+@media screen and (min-width: 1440px) {
+  .BoxModal {
+    width: 592px;
+  }
+}
+
+.Formula {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  margin-bottom: 12px;
+}
+
+.Formula span {
+  color: var(--primary-color-blue);
+}
+
+@media screen and (min-width: 768px) {
+  .Formula {
+    flex-direction: row;
+    gap: 24px;
+  }
+}
+
+.Form {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.TitleModal {
+  margin-bottom: 16px;
+  color: var(--primary-color-black);
+  font-size: 18px;
+  font-weight: 500;
+  line-height: 1.1;
+}
+
+.Paragraph {
+  font-size: 16px;
+  font-weight: 400;
+  line-height: 1.25;
+  color: var(--primary-color-black);
+}
+
+.Comment {
+  display: flex;
+  padding: 10px;
+  margin-bottom: 24px;
+  font-size: 12px;
+  font-weight: 400;
+  line-height: 1.33;
+  border-radius: 10px;
+  border: 1px solid var(--secondary-color-5);
+  color: var(--primary-color-black);
+}
+
+.Comment span {
+  color: var(--primary-color-blue);
+}
+
+.FormRadio {
+  gap: 16px;
+}
+
+.FormRadio span {
+  margin-right: 24px;
+  font-size: 16px;
+}
+
+.InputRadio {
+  opacity: 0;
+  position: absolute;
+}
+
+.InputRadio + span {
+  display: inline-block;
+  padding-left: 25px;
+  position: relative;
+  cursor: pointer;
+}
+
+.InputRadio + span:before {
+  content: '';
+  position: absolute;
+  left: 0;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 14px;
+  height: 14px;
+  border-radius: 50%;
+  border: 1px solid var(--primary-color-blue);
+  background-color: var(--primary-color-white);
+}
+
+.InputRadio + span:after {
+  content: '';
+  position: absolute;
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: var(--primary-color-white);
+  top: 50%;
+  left: 4px;
+  transform: translate(0, -50%);
+  opacity: 0;
+}
+
+.InputRadio:checked + span:after {
+  opacity: 1;
+}
+
+.Input {
+  border: 1px solid var(--secondary-color-5);
+  border-radius: 6px;
+  display: flex;
+  padding: 12px 10px;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 10px;
+  font-size: 16px;
+  width: 100%;
+  margin-top: 8px;
+  color: var(--primary-color-blue);
+  background-color: var(--primary-color-white);
+}
+
+.Input::placeholder {
+  color: var(--primary-color-blue);
+}
+
+.Input:hover {
+  color: var(--primary-color-black);
+  border: 1px solid var(--secondary-color-5);
+}
+
+.Input:focus {
+  outline: none;
+  border: 1px solid var(--secondary-color-5);
+}
+
+.Input:not(:placeholder-shown) {
+  color: var(--primary-color-blue);
+}
+
+.Input[type='number']::-webkit-outer-spin-button,
+.Input[type='number']::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+.FormResult {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 20px;
+}
+
+.FormResult strong {
+  font-size: 18px;
+  font-weight: 700;
+  color: var(--primary-color-blue);
+}
+
+@media screen and (min-width: 768px) {
+  .FormResult {
+    display: block;
+  }
+}
+
+.ButtonSave {
+ 
+  justify-content: center;
+  align-items: center;
+  gap: 10px;
+  padding: 10px 30px;
+  font-size: 18px;
+  width: 100%;
+  height: 44px;
+  margin-left: auto;
+  
+}
+
+
+@media screen and (min-width: 768px) {
+  .ButtonSave {
+    width: 160px;
+  }
+}
+
+
