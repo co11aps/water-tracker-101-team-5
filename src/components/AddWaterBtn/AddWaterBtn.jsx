@@ -1,9 +1,9 @@
 import css from "./AddWaterBtn.module.css";
 import Icon from "../Icon/Icon";
 
-export default function AddWaterBtn() {
+export default function AddWaterBtn({ onClick }) {
   return (
-    <button className={css.btn}>
+    <button className={css.btn} onClick={onClick}>
       <Icon
         id="icon-plus-inside"
         width="24"

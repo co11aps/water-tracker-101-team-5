@@ -1,0 +1,80 @@
+.container {
+  width: 300px;
+  margin: 0 auto;
+  background-color: #f0f4ff;
+  padding: 10px;
+  border-radius: 8px;
+}
+
+.heading {
+  font-size: 24px;
+  margin-bottom: 10px;
+  text-align: center;
+}
+.waterList {
+  list-style-type: none;
+  padding: 0;
+}
+
+.waterListItem {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px 0;
+  border-bottom: 1px solid #ddd;
+}
+
+.editButton,
+.deleteButton {
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 5px;
+}
+
+.editButton:hover,
+.deleteButton:hover {
+  color: #007bff;
+}
+
+.waterItem {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 10px;
+}
+
+.waterVolume {
+  color: #007bff;
+  font-size: 16px;
+}
+
+.waterTime {
+  font-size: 12px;
+  color: #888;
+}
+
+.editBtn,
+.deleteBtn {
+  margin-right: 10px;
+  background: none;
+  border: none;
+  cursor: pointer;
+}
+
+.deleteBtn {
+  color: #ff5c5c;
+}
+
+.addWaterContainer {
+  display: flex;
+  align-items: center;
+}
+
+.input {
+  flex: 1;
+  margin-right: 10px;
+  padding: 5px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+}
