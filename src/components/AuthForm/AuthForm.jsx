@@ -66,6 +66,7 @@ const AuthForm = ({ isSignup }) => {
 
   return (
     <div className={css.authFormContainer}>
+      <h1 className={css.authPageTitle}>{isSignup ? "Sign Up" : "Sign In"}</h1>
       <Formik
         initialValues={{ email: "", password: "", confirmPassword: "" }}
         validationSchema={validationSchema}
