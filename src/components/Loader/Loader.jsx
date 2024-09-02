@@ -1,20 +1,18 @@
 
-import { RotatingLines } from "react-loader-spinner"
+import { Blocks } from "react-loader-spinner"
 
 
 const Loader = () => {
   return (
       <div>
-          <RotatingLines
-  visible={true}
-  height="96"
-  width="96"
-  color="grey"
-  strokeWidth="5"
-  animationDuration="0.75"
-  ariaLabel="rotating-lines-loading"
+          <Blocks
+  height="80"
+  width="80"
+  color="#4fa94d"
+  ariaLabel="blocks-loading"
   wrapperStyle={{}}
-  wrapperClass=""
+  wrapperClass="blocks-wrapper"
+  visible={true}
   />
     </div>
   )
