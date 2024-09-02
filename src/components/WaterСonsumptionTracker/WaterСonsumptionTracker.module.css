@@ -82,7 +82,7 @@
   max-width: 100%;
   box-sizing: border-box;
   /* flex-shrink: 0; */
-  cursor: url("../../images/logo/icon-logo.svg") 16 16, pointer;
+  /* cursor: url("../../images/logo/icon-logo.svg") 16 16, pointer; */
 }
 
 .button:hover {
