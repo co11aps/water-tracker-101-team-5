@@ -1,10 +1,12 @@
 
-import { Blocks } from "react-loader-spinner"
+import { Blocks } from "react-loader-spinner";
+import './Loader.css';
 
 
 const Loader = () => {
-  return (
-      <div>
+    return (
+      <div  className="loader-container">
+   
           <Blocks
   height="80"
   width="80"
@@ -15,6 +17,7 @@ const Loader = () => {
   visible={true}
   />
     </div>
+        
   )
 }
 

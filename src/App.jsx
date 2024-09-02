@@ -26,8 +26,9 @@ function App() {
   return isRefreshing ? (
     <b>Refreshing user...</b>
   ) : (
-    <Layout>
-     
+      <Layout>
+        
+  
         <Routes>
           <Route path="/" element={<WelcomePage />} />
           <Route
@@ -55,7 +56,8 @@ function App() {
               </PrivateRoute>
             }
           />
-        </Routes>
+          </Routes>
+          
      
     </Layout>
   );
