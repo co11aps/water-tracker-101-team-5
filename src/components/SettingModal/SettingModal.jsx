@@ -1,5 +1,5 @@
-import React, { useEffect, useState } from "react";
-import { useForm, Controller } from "react-hook-form";
+import { useEffect, useState } from "react";
+import { useForm,  } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
 import * as yup from "yup";
 import axios from "axios";
@@ -58,7 +58,6 @@ const SettingModal = ({ isOpen, onClose, onUpdate }) => {
   const {
     register,
     handleSubmit,
-    control,
     formState: { errors },
     reset,
   } = useForm({
@@ -93,11 +92,11 @@ const SettingModal = ({ isOpen, onClose, onUpdate }) => {
     const file = e.target.files[0];
     setPreview(URL.createObjectURL(file));
   };
-  const handleBackdropClick = (e) => {
-    if (e.target === e.currentTarget) {
-      onClose();
-    }
-  };
+  // const handleBackdropClick = (e) => {
+  //   if (e.target === e.currentTarget) {
+  //     onClose();
+  //   }
+  // };
 
   useEffect(() => {
     const handleEscape = (e) => {

@@ -1,6 +1,8 @@
 import { useState } from 'react';
 import Icon from '../Icon/Icon';
 import css from './UserLogoModal.module.css';
+import SettingModal from '../SettingModal/SettingModal'; 
+import UserLogoutModal from '../UserLogoutModal/UserLogoutModal'; 
 
 const UserLogoModal = ({ toggleModal }) => {
   const [isSettingModalOpen, setIsSettingModalOpen] = useState(false);
@@ -14,9 +16,14 @@ const UserLogoModal = ({ toggleModal }) => {
     setIsLogoutModalOpen(true);
   };
 
+  const closeAllModals = () => {
+    setIsSettingModalOpen(false);
+    setIsLogoutModalOpen(false);
+  };
+
   return (
     <div className={css.modal} onClick={toggleModal}>
-      <div className={css.modalContent} onClick={e => e.stopPropagation()}>
+      <div className={css.modalContent} onClick={(e) => e.stopPropagation()}>
         {!isSettingModalOpen && !isLogoutModalOpen && (
           <>
             <button onClick={openSettingModal} className={css.button}>
@@ -29,21 +36,11 @@ const UserLogoModal = ({ toggleModal }) => {
             </button>
           </>
         )}
+        {isSettingModalOpen && (
+          <SettingModal isOpen={isSettingModalOpen} onClose={closeAllModals} />
+        )}
         {isLogoutModalOpen && (
-          <div className={css.logoutModal}>
-            <h2 className={css.title}>Log out</h2>
-            <p className={css.title}>Do you really want to leave?</p>
-            <div className={css.block}>
-            <button onClick={() => setIsLogoutModalOpen(false)} className={css.cancelButton}>
-              Cancel
-            </button>
-            <button onClick={() => { 
-              setIsLogoutModalOpen(false); 
-              }} className={css.logoutButton}>
-              Logout
-            </button>
-            </div>
-          </div>
+          <UserLogoutModal toggleModal={closeAllModals} />
         )}
       </div>
     </div>
