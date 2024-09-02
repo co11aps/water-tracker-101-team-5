@@ -27,9 +27,9 @@ function App() {
     <b>Refreshing user...</b>
   ) : (
     <Layout>
-      <Suspense fallback={<Loader />}>
+     
         <Routes>
-          <Route path="/welcome" element={<WelcomePage />} />
+          <Route path="/" element={<WelcomePage />} />
           <Route
             path="/signin"
             element={
@@ -56,7 +56,7 @@ function App() {
             }
           />
         </Routes>
-      </Suspense>
+     
     </Layout>
   );
 }
