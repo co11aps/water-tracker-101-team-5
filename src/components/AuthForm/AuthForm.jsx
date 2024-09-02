@@ -6,14 +6,14 @@ import * as Yup from "yup";
 import css from "./AuthForm.module.css";
 import { logIn, register } from "../../redux/auth/operations";
 import { useEffect } from "react";
-import Icon from "../Icon/Icon"; 
+import Icon from "../Icon/Icon";
 
 const AuthForm = ({ isSignup }) => {
   const dispatch = useDispatch();
   const navigate = useNavigate();
   const { isLoggedIn } = useSelector((state) => state.auth);
-  const [showPassword, setShowPassword] = useState(false); 
-  const [showConfirmPassword, setShowConfirmPassword] = useState(false); 
+  const [showPassword, setShowPassword] = useState(false);
+  const [showConfirmPassword, setShowConfirmPassword] = useState(false);
 
   const togglePasswordVisibility = () => {
     setShowPassword((prevState) => !prevState);
@@ -26,7 +26,7 @@ const AuthForm = ({ isSignup }) => {
   const validationSchema = Yup.object().shape({
     email: Yup.string().email("Invalid email address").required("Required"),
     password: Yup.string()
-      .min(6, "Password must be at least 6 characters")
+      .min(8, "Password must be at least 8 characters")
       .required("Required"),
     ...(isSignup && {
       confirmPassword: Yup.string()

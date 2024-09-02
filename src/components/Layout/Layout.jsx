@@ -1,13 +1,14 @@
-import { Suspense } from 'react'
-import Loader from '../Loader/Loader'
+import { Suspense } from "react";
+import Loader from "../Loader/Loader";
+import Header from "../Header/Header";
 
-const Layout = ({children}) => {
+const Layout = ({ children }) => {
   return (
     <div>
-      
+      <Header />
       <Suspense fallback={<Loader />}>{children}</Suspense>
     </div>
-  )
-}
+  );
+};
 
-export default Layout
+export default Layout;
