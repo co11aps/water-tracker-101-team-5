@@ -1,9 +1,16 @@
-import React from "react";
 import css from "./header.module.css";
 import Icon from "../Icon/Icon";
 import logo from "../../images/logo/Logo.svg";
+import UserLogo from "../UserLogo/UserLogo";
 
 const Header = () => {
+  const user = {
+    name: "John Doe",
+    email: "john.doe@example.com",
+    avatar: "", 
+  };
+
+  
   return (
     <div className={css.headerContainer}>
       <header className={css.header}>
@@ -15,6 +22,7 @@ const Header = () => {
             Sign in
             <Icon id="user" className={css.buttonSvg} />
           </button>
+          <UserLogo user={user} />
         </nav>
       </header>
     </div>
