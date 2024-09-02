@@ -1,3 +1,4 @@
+import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { Formik, Form, Field, ErrorMessage } from "formik";
@@ -5,11 +6,22 @@ import * as Yup from "yup";
 import css from "./AuthForm.module.css";
 import { logIn, register } from "../../redux/auth/operations";
 import { useEffect } from "react";
+import Icon from "../Icon/Icon"; 
 
 const AuthForm = ({ isSignup }) => {
   const dispatch = useDispatch();
   const navigate = useNavigate();
   const { isLoggedIn } = useSelector((state) => state.auth);
+  const [showPassword, setShowPassword] = useState(false); 
+  const [showConfirmPassword, setShowConfirmPassword] = useState(false); 
+
+  const togglePasswordVisibility = () => {
+    setShowPassword((prevState) => !prevState);
+  };
+
+  const toggleConfirmPasswordVisibility = () => {
+    setShowConfirmPassword((prevState) => !prevState);
+  };
 
   const validationSchema = Yup.object().shape({
     email: Yup.string().email("Invalid email address").required("Required"),
@@ -72,7 +84,24 @@ const AuthForm = ({ isSignup }) => {
             </div>
             <div className={css.formGroup}>
               <label htmlFor="password">Password</label>
-              <Field type="password" name="password" id="password" />
+              <div className={css.passwordWrapper}>
+                <Field
+                  type={showPassword ? "text" : "password"}
+                  name="password"
+                  id="password"
+                />
+                <span
+                  className={css.passwordToggleIcon}
+                  onClick={togglePasswordVisibility}
+                >
+                  <Icon
+                    id={showPassword ? "eye" : "eye-slash"}
+                    width={24}
+                    height={24}
+                    className={css.icon}
+                  />
+                </span>
+              </div>
               <ErrorMessage
                 name="password"
                 component="div"
@@ -82,11 +111,24 @@ const AuthForm = ({ isSignup }) => {
             {isSignup && (
               <div className={css.formGroup}>
                 <label htmlFor="confirmPassword">Confirm Password</label>
-                <Field
-                  type="password"
-                  name="confirmPassword"
-                  id="confirmPassword"
-                />
+                <div className={css.passwordWrapper}>
+                  <Field
+                    type={showConfirmPassword ? "text" : "password"}
+                    name="confirmPassword"
+                    id="confirmPassword"
+                  />
+                  <span
+                    className={css.passwordToggleIcon}
+                    onClick={toggleConfirmPasswordVisibility}
+                  >
+                    <Icon
+                      id={showConfirmPassword ? "eye" : "eye-slash"}
+                      width={24}
+                      height={24}
+                      className={css.icon}
+                    />
+                  </span>
+                </div>
                 <ErrorMessage
                   name="confirmPassword"
                   component="div"

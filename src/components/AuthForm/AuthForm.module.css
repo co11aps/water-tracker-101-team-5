@@ -9,7 +9,8 @@
 }
 
 .formGroup {
-  margin-bottom: 20px;
+  position: relative; 
+  margin-bottom: 40px; 
 }
 
 .formGroup label {
@@ -36,6 +37,11 @@
 .error {
   color: var(--secondary-color-3);
   margin-bottom: 20px;
+  position: absolute;
+  top: 100%; 
+  left: 0;
+  width: 100%;
+  font-size: 14px; 
 }
 
 button {
@@ -81,6 +87,22 @@ button:hover {
   color: var(--primary-color-black);
 }
 
+.passwordWrapper {
+  position: relative;
+}
+
+.passwordToggleIcon {
+  position: absolute;
+  top: 50%;
+  right: 10px;
+  transform: translateY(-50%);
+  cursor: pointer;
+}
+
+.icon {
+ stroke: var(--primary-color-blue);
+ fill: white;
+}
 
 
 
