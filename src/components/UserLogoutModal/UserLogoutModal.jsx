@@ -1,6 +1,5 @@
 import { useEffect } from 'react';
 import { useDispatch } from 'react-redux';
-import Icon from '../Icon/Icon'; 
 import css from './UserLogoutModal.module.css';
 
 const UserLogoutModal = ({ toggleModal }) => {

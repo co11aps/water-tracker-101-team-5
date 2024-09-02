@@ -46,6 +46,12 @@ img {
   height: auto;
 }
 
+button {
+  font-family: inherit;
+  color: currentColor;
+  cursor: pointer;
+}
+
 /* colour variables */
 body {
   --primary-color-white: #FFFFFF;
@@ -101,9 +107,6 @@ body {
   min-height: 100vh;
 }
 
-button {
-  cursor: pointer;
-}
 
 
 @media (prefers-color-scheme: dark) {
