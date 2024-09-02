@@ -6,8 +6,8 @@ const SignupPage = () => {
     <div className={css.container}>
       <div className={css.containerBox}>
         <div>
-          <h1 className={css.containerTitle}>Sign Up</h1>
-          <AuthForm isSignup={false} />
+          <h1>Sign Up</h1>
+          <AuthForm isSignup={true} />
         </div>
         <div className={css.bottleBg}></div>
       </div>
