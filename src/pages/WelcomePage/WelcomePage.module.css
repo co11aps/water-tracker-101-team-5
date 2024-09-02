@@ -16,9 +16,6 @@
 }
 
 @media only screen and (max-width: 767px) {
-  /* .backgroundContainer {
-    width: 320px;
-  } */
 }
 
 @media only screen and (min-width: 768px) {
@@ -34,8 +31,9 @@
 
 @media only screen and (min-width: 1440px) {
   .backgroundContainer {
-    width: 1440px;
     /*marging-top: 49px;*/ /*Крістіна марджин під Header */
+    width: 1440px;
+
     padding-left: 18px;
     padding-right: 18px;
     padding-bottom: 109px;
@@ -43,8 +41,20 @@
       url("../../images/background/desktop/icon-light-background-elem-main-page.svg");
     /* background-image: url("../../images/background/desktop/icon-light-background-elem-main-page.svg"),
       url("../../images/background/desktop/icon-light-background-main-page.svg"); */
-    background-position: center, center;
-    background-size: cover, cover;
+
+    /*1 варіант*/
+    background-position: bottom center, center center;
+    background-size: auto auto, contain;
     background-repeat: no-repeat, no-repeat;
+
+    /*2 варіант*/
+    /* background-position: bottom center, bottom center;
+    background-size: auto auto, auto auto;
+    background-repeat: no-repeat, no-repeat; */
+
+    /*3 варіант*/
+    /* background-position: bottom center, top center;
+    background-size: auto auto, auto auto;
+    background-repeat: no-repeat, no-repeat; */
   }
 }
