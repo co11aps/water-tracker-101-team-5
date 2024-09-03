@@ -28,6 +28,7 @@ export const register = createAsyncThunk(
       console.log(res.data);
       return res.data;
     } catch (error) {
+      alert(error);
       return thunkAPI.rejectWithValue(error.message);
     }
   }
@@ -46,6 +47,7 @@ export const logIn = createAsyncThunk(
       setAuthHeader(res.data.accessToken);
       return res.data;
     } catch (error) {
+      alert(error);
       return thunkAPI.rejectWithValue(error.message);
     }
   }
@@ -61,6 +63,7 @@ export const logOut = createAsyncThunk("auth/logout", async (_, thunkAPI) => {
     // After a successful logout, remove the token from the HTTP header
     clearAuthHeader();
   } catch (error) {
+    alert(error);
     return thunkAPI.rejectWithValue(error.message);
   }
 });
@@ -82,6 +85,7 @@ export const refreshUser = createAsyncThunk(
       const res = await axios.post("/auth/refresh");
       return res.data;
     } catch (error) {
+      alert(error);
       return thunkAPI.rejectWithValue(error.message);
     }
   },
@@ -111,6 +115,7 @@ export const updateAvatar = createAsyncThunk(
       const res = await axios.patch("/auth/avatar", file);
       return res.data;
     } catch (error) {
+      alert(error);
       return thunkAPI.rejectWithValue(error.message);
     }
   }
@@ -154,6 +159,7 @@ export const getUserInfo = createAsyncThunk(
       const res = await axios.get("/auth/user");
       return res.data;
     } catch (error) {
+      alert(error);
       return thunkAPI.rejectWithValue(error.message);
     }
   }
