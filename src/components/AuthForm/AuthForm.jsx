@@ -146,11 +146,13 @@ const AuthForm = ({ isSignup }) => {
       <div className={css.navigation}>
         {isSignup ? (
           <p>
-            Already have an account? <a href="/signin">Sign in</a>
+            {/* Already have an account? <a href="/signin">Sign in</a> */}
+            <a href="/signin">Sign in</a>
           </p>
         ) : (
           <p>
-            Don&apos;t have an account? <a href="/signup">Sign up</a>
+              {/* Don&apos;t have an account? <a href="/signup">Sign up</a> */}
+              <a href="/signup">Sign up</a>
           </p>
         )}
       </div>

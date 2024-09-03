@@ -2,9 +2,9 @@
   max-width: 400px;
   margin: 0 auto;
   padding: 1rem;
-  border: 1px solid #ccc;
+  /* border: 1px solid #ccc; */
   border-radius: 8px;
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  /* box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); */
   width: 384px;
 }
 
@@ -23,7 +23,8 @@
 
 
 .formGroup input {
-  /* width: 100%; */
+  width: 100%;
+  min-width: 320px;
   border: 1px solid var(--secondary-color-5);
   border-radius: 6px;
   padding: 12px 10px;
@@ -62,7 +63,7 @@ button:hover {
 
 .navigation {
   margin-top: 20px;
-  text-align: center;
+  /* text-align: center; */
 }
 
 .navigation a {
@@ -104,7 +105,7 @@ button:hover {
   margin: 0 auto;
   padding: 1rem;
   border-radius: 8px;
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  /* box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); */
   width: 384px;
   background-color: var(--primary-color-white);
 }
@@ -117,6 +118,7 @@ button:hover {
   justify-content: center;
   background: url('/src/images/background/desktop/icon-light-background-elem-main-page.svg') no-repeat center center;
   background-size: cover;
+  flex-direction: column-reverse;
 }
 
 .authPageTitle {
@@ -134,4 +136,15 @@ button:hover {
   bottom: 0;
   width: 300px; */
   height: auto;
+}
+
+@media screen and (min-width: 768px) {
+  .authPageWrapper {
+  flex-direction: row-reverse;
+  }
+}
+@media screen and (min-width: 1280px) {
+  .authPageWrapper {
+  flex-direction: row;
+  }
 }
