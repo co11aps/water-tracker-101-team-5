@@ -135,6 +135,10 @@ button:hover {
     left: 40%;
     transform: translateY(-50%);
   }
+  .authFormContainer {
+    position: absolute;
+    top: 25%;
+  }
 }
 @media screen and (min-width: 1280px) {
   .authPageWrapper {
@@ -144,5 +148,8 @@ button:hover {
   .bottleIcon {
     position: static;
     transform: none;
+  }
+  .authFormContainer {
+    position: static;
   }
 }
