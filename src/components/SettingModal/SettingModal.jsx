@@ -1,56 +1,54 @@
 import { useEffect, useState } from "react";
-import { useForm,  } from "react-hook-form";
+import { useForm } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
 import * as yup from "yup";
-import axios from "axios";
 import Icon from "../Icon/Icon";
+import { selectUser } from "../../redux/auth/selectors";
+import { useDispatch, useSelector } from "react-redux";
+import { updateAvatar, updateUserInfo } from "../../redux/auth/operations";
 
 const MAX_CHAR_VALIDATION = 64;
 const MIN_CHAR_VALIDATION = 8;
 const MAX_CHAR_NAME_VALIDATION = 32;
 
 const userSchema = yup.object().shape({
-  avatar: yup.mixed().required("Avatar is required"),
-  gender: yup.string().required("Gender is required"),
+  avatar: yup.mixed(),
+  gender: yup.string(),
   name: yup
     .string()
     .max(
       MAX_CHAR_NAME_VALIDATION,
       `Your name must be less than ${MAX_CHAR_NAME_VALIDATION} characters!`
-    )
-    .required("Name is required"),
-  email: yup
-    .string()
-    .email("You must enter valid email address!")
-    .required("Email is required"),
-  outdatedPassword: yup
-    .string()
-    .min(
-      MIN_CHAR_VALIDATION,
-      `Your outdated password must be more than ${MIN_CHAR_VALIDATION} characters!`
-    )
-    .max(
-      MAX_CHAR_VALIDATION,
-      `Your outdated password must be less than ${MAX_CHAR_VALIDATION} characters!`
-    )
-    .required("outdated password is required"),
-  newPassword: yup
-    .string()
-    .min(
-      MIN_CHAR_VALIDATION,
-      `Your new password must be more than ${MIN_CHAR_VALIDATION} characters!`
-    )
-    .max(
-      MAX_CHAR_VALIDATION,
-      `Your new password must be less than ${MAX_CHAR_VALIDATION} characters!`
-    )
-    .required("new password is required"),
-  repeatNewPassword: yup
-    .string()
-    .oneOf([yup.ref("newPassword")], "Passwords must match"),
+    ),
+  email: yup.string().email("You must enter valid email address!"),
+  // outdatedPassword: yup
+  //   .string()
+  //   .min(
+  //     MIN_CHAR_VALIDATION,
+  //     `Your outdated password must be more than ${MIN_CHAR_VALIDATION} characters!`
+  //   )
+  //   .max(
+  //     MAX_CHAR_VALIDATION,
+  //     `Your outdated password must be less than ${MAX_CHAR_VALIDATION} characters!`
+  //   ),
+  // newPassword: yup
+  //   .string()
+  //   .min(
+  //     MIN_CHAR_VALIDATION,
+  //     `Your new password must be more than ${MIN_CHAR_VALIDATION} characters!`
+  //   )
+  //   .max(
+  //     MAX_CHAR_VALIDATION,
+  //     `Your new password must be less than ${MAX_CHAR_VALIDATION} characters!`
+  //   ),
+  // repeatNewPassword: yup
+  //   .string()
+  //   .oneOf([yup.ref("newPassword")], "Passwords must match"),
 });
 
 const SettingModal = ({ isOpen, onClose, onUpdate }) => {
+  const dispatch = useDispatch();
+  const userData = useSelector(selectUser);
   const [preview, setPreview] = useState(null);
   const [showOutdatedPassword, setshowOutdatedPassword] = useState(false);
   const [showNewPassword, setShowNewPassword] = useState(false);
@@ -63,24 +61,43 @@ const SettingModal = ({ isOpen, onClose, onUpdate }) => {
   } = useForm({
     resolver: yupResolver(userSchema),
     defaultValues: {
-      gender: "woman",
+      ...userData,
+      gender: userData.gender || "woman",
     },
   });
 
+  useEffect(() => {
+    reset(userData);
+  }, [userData, reset]);
+
   const onSubmit = async (data) => {
     try {
-      const formData = new FormData();
-      formData.append("avatar", data.avatar[0]);
-      formData.append("gender", data.gender);
-      formData.append("name", data.name);
-      formData.append("email", data.email);
+      // const formData = new FormData();
+      // // formData.append("avatar", data.avatar[0]);
+      // formData.set("gender", data.gender);
+      // formData.set("name", data.name);
+      // formData.set("email", data.email);
 
-      formData.append("outdatedPassword", data.outdatedPassword);
-      formData.append("newPassword", data.newPassword);
+      // formData.set("outdatedPassword", data.outdatedPassword);
+      // formData.set("newPassword", data.newPassword);
 
-      const response = await axios.post("/api/user/update", formData);
+      const jsonData = {
+        gender: data.gender,
+        userName: data.userName,
+        email: data.email,
+      };
 
-      onUpdate(response.data);
+      dispatch(updateUserInfo(jsonData))
+        .unwrap()
+        .then(() => {
+          console.log("User update success");
+          console.log(JSON.stringify(jsonData, null, 2));
+        })
+        .catch((err) => {
+          console.log("User updating error", err);
+        });
+
+      // onUpdate(response.data);
       onClose();
       reset();
     } catch (error) {
@@ -90,7 +107,18 @@ const SettingModal = ({ isOpen, onClose, onUpdate }) => {
 
   const handleAvatarChange = (e) => {
     const file = e.target.files[0];
-    setPreview(URL.createObjectURL(file));
+    // setPreview(URL.createObjectURL(file));
+    const formData = new FormData();
+    // formData.append("avatar", userData.avatar[0]);
+    formData.append("avatar", file);
+    dispatch(updateAvatar(formData))
+      .unwrap()
+      .then(() => {
+        console.log("Avatar update success");
+      })
+      .catch((err) => {
+        console.log("User updating error", err);
+      });
   };
   // const handleBackdropClick = (e) => {
   //   if (e.target === e.currentTarget) {
@@ -126,7 +154,7 @@ const SettingModal = ({ isOpen, onClose, onUpdate }) => {
           <div className="form-group">
             <input
               type="file"
-              {...register("avatar")}
+              {...register("photo")}
               onChange={handleAvatarChange}
             />
             {errors.avatar && <p>{errors.avatar.message}</p>}
@@ -137,10 +165,10 @@ const SettingModal = ({ isOpen, onClose, onUpdate }) => {
           <div className="form-group">
             <label>Your gender identity</label>
             <label>
-              <input type="radio" value="woman" {...register("gender")} /> Woman
+              <input type="radio" value="Woman" {...register("gender")} /> Woman
             </label>
             <label>
-              <input type="radio" value="man" {...register("gender")} /> Man
+              <input type="radio" value="Man" {...register("gender")} /> Man
             </label>
             {errors.gender && <p>{errors.gender.message}</p>}
           </div>
@@ -149,7 +177,7 @@ const SettingModal = ({ isOpen, onClose, onUpdate }) => {
             <label>Your name</label>
             <input
               type="text"
-              {...register("name")}
+              {...register("userName")}
               placeholder="Enter your name"
             />
             {errors.name && <p>{errors.name.message}</p>}
@@ -226,7 +254,6 @@ const SettingModal = ({ isOpen, onClose, onUpdate }) => {
       </div>
     </div>
   );
-
 };
 
 export default SettingModal;

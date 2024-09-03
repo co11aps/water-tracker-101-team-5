@@ -106,9 +106,9 @@ export const updateAvatar = createAsyncThunk(
     const persistedToken = state.auth.accessToken;
     try {
       setAuthHeader(persistedToken);
-      const formData = new FormData();
-      formData.append("avatar", file); // "avatar" — matches with "upload.single('avatar')" on server side
-      const res = await axios.patch("/auth/avatar", formData);
+      // const formData = new FormData();
+      // formData.append("avatar", file); // "avatar" — matches with "upload.single('avatar')" on server side
+      const res = await axios.patch("/auth/avatar", file);
       return res.data;
     } catch (error) {
       return thunkAPI.rejectWithValue(error.message);
@@ -134,6 +134,7 @@ export const updateUserInfo = createAsyncThunk(
       });
       return res.data;
     } catch (error) {
+      alert(error);
       return thunkAPI.rejectWithValue(error.message);
     }
   }
