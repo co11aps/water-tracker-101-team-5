@@ -7,11 +7,12 @@ import css from "./AuthForm.module.css";
 import { logIn, register } from "../../redux/auth/operations";
 import { useEffect } from "react";
 import Icon from "../Icon/Icon";
+import { selectIsLoggedIn } from "../../redux/auth/selectors";
 
 const AuthForm = ({ isSignup }) => {
   const dispatch = useDispatch();
   const navigate = useNavigate();
-  const { isLoggedIn } = useSelector((state) => state.auth);
+  const isLoggedIn = useSelector(selectIsLoggedIn);
   const [showPassword, setShowPassword] = useState(false);
   const [showConfirmPassword, setShowConfirmPassword] = useState(false);
 

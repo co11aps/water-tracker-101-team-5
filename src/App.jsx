@@ -28,7 +28,14 @@ function App() {
     <Layout>
       <Routes>
         <Route path="/" element={<Navigate to="/welcome" replace />} />
-        <Route path="/welcome" element={<WelcomePage />} />
+        <Route
+          path="/welcome"
+          element={
+            <RestrictedRoute>
+              <WelcomePage />
+            </RestrictedRoute>
+          }
+        />
         <Route
           path="/signin"
           element={
