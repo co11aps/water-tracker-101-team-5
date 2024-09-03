@@ -102,5 +102,5 @@ button:hover {
 
 .icon {
   stroke: var(--primary-color-blue);
-  fill: white;
+  fill: transparent;
 }
