@@ -1,29 +1,19 @@
+import React from "react";
+import { useSelector } from "react-redux";
+import { selectIsLoggedIn } from "../../redux/auth/selectors";
 import css from "./header.module.css";
-import Icon from "../Icon/Icon";
-import logo from "../../images/logo/Logo.svg";
+import UserAuth from "../UserAuth/UserAuth";
+import Logo from "../Logo/Logo";
 import UserLogo from "../UserLogo/UserLogo";
 
 const Header = () => {
-  const user = {
-    name: "John Doe",
-    email: "john.doe@example.com",
-    avatar: "", 
-  };
+  const isLoggedIn = useSelector(selectIsLoggedIn);
 
-  
   return (
     <div className={css.headerContainer}>
       <header className={css.header}>
-        <a href="./" lang="en" className={css.logo}>
-          <img src={logo} alt="logo" />
-        </a>
-        <nav className={css.headerNav}>
-          <button className={css.headerButton} type="button">
-            Sign in
-            <Icon id="user" className={css.buttonSvg} />
-          </button>
-          <UserLogo user={user} />
-        </nav>
+        <Logo isAuthenticated={selectIsLoggedIn} />
+        {isLoggedIn ? <UserLogo /> : <UserAuth />}
       </header>
     </div>
   );

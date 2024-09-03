@@ -2,8 +2,8 @@
 
 .headerContainer {
   height: 48px;
-
-  margin-bottom: 49px;
+  /* margin-bottom: 49px; */
+  margin-top: 16px;
 }
 .header {
   width: 100%;
