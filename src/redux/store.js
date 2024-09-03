@@ -18,7 +18,7 @@ import storage from "redux-persist/lib/storage"; // defaults to localStorage for
 const authPersistConfig = {
   key: "auth", // Ключ кореневого об'єкта, в якому будуть зберігатися дані
   storage: storage,
-  whitelist: ["accessToken"],
+  whitelist: ["accessToken", "isLoggedIn", "user"],
 };
 
 export const store = configureStore({

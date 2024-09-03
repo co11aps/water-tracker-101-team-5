@@ -1,25 +1,34 @@
-import { useState } from 'react';
-import css from './UserLogo.module.css';
-import UserLogoModal from '../UserLogoModal/UserLogoModal';
-import Icon from '../Icon/Icon';
+import { useState } from "react";
+import css from "./UserLogo.module.css";
+import UserLogoModal from "../UserLogoModal/UserLogoModal";
+import Icon from "../Icon/Icon";
+import { useSelector } from "react-redux";
 
-const UserLogo = ({ user }) => {
+const UserLogo = () => {
+  const { user } = useSelector((state) => state.auth);
   const [isModalOpen, setIsModalOpen] = useState(false);
 
   const toggleModal = () => {
-    setIsModalOpen(prevState => !prevState);
+    setIsModalOpen((prevState) => !prevState);
   };
 
   const getAvatarContent = () => {
-
     if (user.avatar) {
       return <img src={user.avatar} alt={user.name} className={css.avatar} />;
     }
     if (user.name) {
-      return <span className={css.avatarPlaceholder}>{user.name[0].toUpperCase()}</span>;
+      return (
+        <span className={css.avatarPlaceholder}>
+          {user.name[0].toUpperCase()}
+        </span>
+      );
     }
     if (user.email) {
-      return <span className={css.avatarPlaceholder}>{user.email[0].toUpperCase()}</span>;
+      return (
+        <span className={css.avatarPlaceholder}>
+          {user.email[0].toUpperCase()}
+        </span>
+      );
     }
     return <Icon id="checkmark" width={40} height={40} className="icon-blue" />;
   };
@@ -31,7 +40,7 @@ const UserLogo = ({ user }) => {
         {getAvatarContent()}
       </button>
       {isModalOpen && <UserLogoModal toggleModal={toggleModal} />}
-      </div>
+    </div>
   );
 };
 

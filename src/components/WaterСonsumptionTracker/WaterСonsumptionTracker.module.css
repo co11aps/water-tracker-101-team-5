@@ -1,6 +1,7 @@
 .container {
   display: flex;
-  margin-bottom: 40px;
+  box-sizing: border-box;
+  flex-shrink: 1;
 }
 
 .block {
@@ -77,12 +78,12 @@
   border-radius: 10px;
   background: var(--primary-color-blue);
   box-shadow: var(--box-shadow);
-  /* width: 280px;
-  height: 36px; */
+  width: 280px;
+  height: 36px;
   max-width: 100%;
   box-sizing: border-box;
   /* flex-shrink: 0; */
-  cursor: url("../../images/logo/icon-logo.svg") 16 16, pointer;
+  /* cursor: url("../../images/logo/icon-logo.svg") 16 16, pointer; */
 }
 
 .button:hover {
@@ -100,7 +101,7 @@
 
 @media only screen and (min-width: 768px) {
   .container {
-    margin-bottom: 60px;
+    /* margin-bottom: 60px; */
     width: 100%;
   }
 
