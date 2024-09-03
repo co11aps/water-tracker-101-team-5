@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import Icon from '../Icon/Icon';
 import css from './UserLogoModal.module.css';
 import SettingModal from '../SettingModal/SettingModal'; 
@@ -10,16 +10,33 @@ const UserLogoModal = ({ toggleModal }) => {
 
   const openSettingModal = () => {
     setIsSettingModalOpen(true);
+    toggleModal(); 
   };
 
   const openLogoutModal = () => {
     setIsLogoutModalOpen(true);
+    toggleModal(); 
   };
 
   const closeAllModals = () => {
     setIsSettingModalOpen(false);
     setIsLogoutModalOpen(false);
+    toggleModal(); 
   };
+
+  useEffect(() => {
+    const handleEscKey = (event) => {
+      if (event.key === 'Escape') {
+        closeAllModals(); 
+      }
+    };
+
+    document.addEventListener('keydown', handleEscKey);
+
+    return () => {
+      document.removeEventListener('keydown', handleEscKey);
+    };
+  }, []);
 
   return (
     <div className={css.modal} onClick={toggleModal}>
