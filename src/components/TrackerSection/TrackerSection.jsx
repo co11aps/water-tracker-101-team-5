@@ -4,9 +4,8 @@ import Calendar from "../Calendar/Calendar";
 export default function TrackerSection() {
   return (
     <div className={css.container}>
-      <>
-        <Calendar />
-      </>
+      {/* <TodayWaterList /> */}
+      <Calendar />
     </div>
   );
 }
