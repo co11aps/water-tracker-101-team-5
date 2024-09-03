@@ -1,11 +1,16 @@
-import AuthForm from '../../components/AuthForm/AuthForm';
-import css from '../../components/AuthForm/AuthForm.module.css'
+import AuthForm from "../../components/AuthForm/AuthForm";
+import css from "./SigninPage.module.css";
 
 const SigninPage = () => {
   return (
-    <div>
-      <h1 className={css.authPageTitle}>Sign In</h1>
-      <AuthForm isSignup={false} />
+    <div className={css.container}>
+      <div className={css.containerBox}>
+        <div>
+          <h1>Sign In</h1>
+          <AuthForm isSignup={false} />
+        </div>
+        <div className={css.bottleBg}></div>
+      </div>
     </div>
   );
 };
