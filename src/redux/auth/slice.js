@@ -13,7 +13,7 @@ const authSlice = createSlice({
   name: "auth",
   initialState: {
     user: {
-      name: null,
+      userName: null,
       email: null,
       gender: null,
       dailyNorma: null,
