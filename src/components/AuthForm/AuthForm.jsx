@@ -67,7 +67,6 @@ const AuthForm = ({ isSignup }) => {
 
   return (
     <div className={css.authFormContainer}>
-      <h1 className={css.authPageTitle}>{isSignup ? "Sign Up" : "Sign In"}</h1>
       <Formik
         initialValues={{ email: "", password: "", confirmPassword: "" }}
         validationSchema={validationSchema}
@@ -76,8 +75,8 @@ const AuthForm = ({ isSignup }) => {
         {({ isSubmitting }) => (
           <Form>
             <div className={css.formGroup}>
-              <label htmlFor="email">Enter your e-mail</label>
-              <Field type="email" name="email" id="email" placeholder="E-mail"/>
+              <label htmlFor="email">Email</label>
+              <Field type="email" name="email" id="email" />
               <ErrorMessage
                 name="email"
                 component="div"
@@ -85,13 +84,12 @@ const AuthForm = ({ isSignup }) => {
               />
             </div>
             <div className={css.formGroup}>
-              <label htmlFor="password">Enter your password</label>
+              <label htmlFor="password">Password</label>
               <div className={css.passwordWrapper}>
                 <Field
                   type={showPassword ? "text" : "password"}
                   name="password"
                   id="password"
-                  placeholder="Password"  
                 />
                 <span
                   className={css.passwordToggleIcon}
@@ -113,13 +111,12 @@ const AuthForm = ({ isSignup }) => {
             </div>
             {isSignup && (
               <div className={css.formGroup}>
-                <label htmlFor="confirmPassword">Repeat password</label>
+                <label htmlFor="confirmPassword">Confirm Password</label>
                 <div className={css.passwordWrapper}>
                   <Field
                     type={showConfirmPassword ? "text" : "password"}
                     name="confirmPassword"
                     id="confirmPassword"
-                    placeholder="Repeat password"  
                   />
                   <span
                     className={css.passwordToggleIcon}
@@ -149,13 +146,11 @@ const AuthForm = ({ isSignup }) => {
       <div className={css.navigation}>
         {isSignup ? (
           <p>
-            {/* Already have an account? <a href="/signin">Sign in</a> */}
-            <a href="/signin">Sign in</a>
+            Already have an account? <a href="/signin">Sign in</a>
           </p>
         ) : (
           <p>
-              {/* Don&apos;t have an account? <a href="/signup">Sign up</a> */}
-              <a href="/signup">Sign up</a>
+            Don&apos;t have an account? <a href="/signup">Sign up</a>
           </p>
         )}
       </div>

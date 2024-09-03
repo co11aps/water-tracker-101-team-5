@@ -3,13 +3,14 @@ import css from "./SigninPage.module.css";
 
 const SigninPage = () => {
   return (
-    <div className={css.authPageWrapper}>
-      <img
-        src="/src/images/background/desktop/icon-light-bottle-signin.svg"
-        alt="Bottle Icon"
-        className={css.bottleIcon}
-      />
-      <AuthForm isSignup={false} />
+    <div className={css.container}>
+      <div className={css.containerBox}>
+        <div>
+          <h1>Sign In</h1>
+          <AuthForm isSignup={false} />
+        </div>
+        <div className={css.bottleBg}></div>
+      </div>
     </div>
   );
 };
