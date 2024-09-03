@@ -4,6 +4,7 @@ import { yupResolver } from "@hookform/resolvers/yup";
 import * as yup from "yup";
 import axios from "axios";
 import Icon from "../Icon/Icon";
+import css from "./SettingModal.module.css";
 
 const MAX_CHAR_VALIDATION = 64;
 const MIN_CHAR_VALIDATION = 8;
@@ -113,7 +114,7 @@ const SettingModal = ({ isOpen, onClose, onUpdate }) => {
   if (!isOpen) return null;
 
   return (
-    <div className="modal">
+    <div className={css.modal}>
       <h2>Setting</h2>
 
       <button type="button" onClick={onClose}>
