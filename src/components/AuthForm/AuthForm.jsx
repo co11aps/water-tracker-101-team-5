@@ -75,8 +75,8 @@ const AuthForm = ({ isSignup }) => {
         {({ isSubmitting }) => (
           <Form>
             <div className={css.formGroup}>
-              <label htmlFor="email">Email</label>
-              <Field type="email" name="email" id="email" />
+              <label htmlFor="email">Enter your e-mail</label>
+              <Field type="email" name="email" id="email" placeholder="E-mail"/>
               <ErrorMessage
                 name="email"
                 component="div"
@@ -84,12 +84,13 @@ const AuthForm = ({ isSignup }) => {
               />
             </div>
             <div className={css.formGroup}>
-              <label htmlFor="password">Password</label>
+              <label htmlFor="password">Enter your password</label>
               <div className={css.passwordWrapper}>
                 <Field
                   type={showPassword ? "text" : "password"}
                   name="password"
                   id="password"
+                  placeholder="Password"  
                 />
                 <span
                   className={css.passwordToggleIcon}
@@ -111,12 +112,13 @@ const AuthForm = ({ isSignup }) => {
             </div>
             {isSignup && (
               <div className={css.formGroup}>
-                <label htmlFor="confirmPassword">Confirm Password</label>
+                <label htmlFor="confirmPassword">Repeat password</label>
                 <div className={css.passwordWrapper}>
                   <Field
                     type={showConfirmPassword ? "text" : "password"}
                     name="confirmPassword"
                     id="confirmPassword"
+                    placeholder="Repeat password"  
                   />
                   <span
                     className={css.passwordToggleIcon}

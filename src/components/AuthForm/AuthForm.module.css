@@ -21,7 +21,6 @@
   margin-bottom: 8px;
 }
 
-
 .formGroup input {
   width: 100%;
   min-width: 320px;
@@ -76,7 +75,7 @@ button:hover {
 }
 
 .formGroup input::placeholder {
-  color: var(--secondary-color-5);
+  color: var(--secondary-color-4);
   font-size: 16px;
   line-height: 133%;
 }
@@ -87,7 +86,7 @@ button:hover {
 
 .passwordToggleIcon {
   position: absolute;
-  top: 50%;
+  top: 55%;
   right: 10px;
   transform: translateY(-50%);
   cursor: pointer;
@@ -116,7 +115,8 @@ button:hover {
   display: flex;
   align-items: center;
   justify-content: center;
-  background: url('/src/images/background/desktop/icon-light-background-elem-main-page.svg') no-repeat center center;
+  background: url("/src/images/background/desktop/icon-light-background-elem-main-page.svg")
+    no-repeat center center;
   background-size: cover;
   flex-direction: column-reverse;
 }
@@ -127,7 +127,7 @@ button:hover {
   font-size: 26px;
   line-height: 123%;
   color: var(--primary-color-black);
-  text-align: center;
+  margin-bottom: 16px;
 }
 
 .bottleIcon {
@@ -140,11 +140,11 @@ button:hover {
 
 @media screen and (min-width: 768px) {
   .authPageWrapper {
-  flex-direction: row-reverse;
+    flex-direction: row-reverse;
   }
 }
 @media screen and (min-width: 1280px) {
   .authPageWrapper {
-  flex-direction: row;
+    flex-direction: row;
   }
 }

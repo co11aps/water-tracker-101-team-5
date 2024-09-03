@@ -3,8 +3,12 @@ import css from '../../components/AuthForm/AuthForm.module.css'
 
 const SigninPage = () => {
   return (
-    <div>
-      <h1 className={css.authPageTitle}>Sign In</h1>
+    <div className={css.authPageWrapper}>
+      <img
+        src="/src/images/background/desktop/icon-light-bottle-signin.svg"
+        alt="Bottle Icon"
+        className={css.bottleIcon}
+      />
       <AuthForm isSignup={false} />
     </div>
   );
