@@ -19,7 +19,7 @@ const Logo = () => {
   return (
     <div onClick={handleClick}>
       <a href="./" lang="en" className={css.logo}>
-        <img src={logo} alt="logo" />
+        <img src={logo} alt="logo" width="106" />
       </a>
     </div>
   );
