@@ -127,7 +127,11 @@ export const updateUserInfo = createAsyncThunk(
     const persistedToken = state.auth.accessToken;
     try {
       setAuthHeader(persistedToken);
-      const res = await axios.post("/auth/user", credentials);
+      const res = await axios.patch("/auth/user", credentials, {
+        headers: {
+          "Content-Type": "application/json",
+        },
+      });
       return res.data;
     } catch (error) {
       return thunkAPI.rejectWithValue(error.message);
