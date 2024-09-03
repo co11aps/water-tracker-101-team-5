@@ -4,6 +4,8 @@
   align-items: center;
   justify-content: center;
   background-color: var(--primary-color-blue);
+  box-shadow: var(--box-shadow);
+  border: none;
 
   width: 280px;
   padding-top: 6px;
@@ -14,6 +16,14 @@
   font-weight: 500;
   line-height: 1.25;
   color: var(--primary-color-white);
+}
+
+.btn:hover {
+  box-shadow: 0 4px 14px 0 rgba(64, 123, 255, 0.54);
+}
+
+.btn:active {
+  box-shadow: none;
 }
 
 .icon-white {
