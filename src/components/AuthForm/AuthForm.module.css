@@ -1,11 +1,11 @@
 .authFormContainer {
-  /* max-width: 400px; */
+  max-width: 400px;
   margin: 0 auto;
   padding: 1rem;
+  border: 1px solid #ccc;
   border-radius: 8px;
-  /* box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); */
-  /* width: 384px; */
-  background-color: var(--primary-color-white);
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  width: 384px;
 }
 
 .formGroup {
@@ -21,8 +21,9 @@
   margin-bottom: 8px;
 }
 
+
 .formGroup input {
-  min-width: 280px;
+  width: 100%;
   border: 1px solid var(--secondary-color-5);
   border-radius: 6px;
   padding: 12px 10px;
@@ -61,7 +62,7 @@ button:hover {
 
 .navigation {
   margin-top: 20px;
-  /* text-align: center; */
+  text-align: center;
 }
 
 .navigation a {
@@ -74,41 +75,9 @@ button:hover {
 }
 
 .formGroup input::placeholder {
-  color: var(--secondary-color-4);
+  color: var(--secondary-color-5);
   font-size: 16px;
   line-height: 133%;
-}
-
-.passwordWrapper {
-  position: relative;
-}
-
-.passwordToggleIcon {
-  position: absolute;
-  top: 55%;
-  right: 10px;
-  transform: translateY(-50%);
-  cursor: pointer;
-}
-
-.icon {
-  stroke: var(--primary-color-blue);
-  fill: white;
-}
-
-/* ================== */
-
-.authPageWrapper {
-  position: relative;
-  min-height: 100vh;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  background: url("/src/images/background/desktop/icon-light-background-elem-main-page.svg")
-    no-repeat center center;
-  background-size: cover;
-  flex-direction: column-reverse;
-  min-width: 280px;
 }
 
 .authPageTitle {
@@ -117,33 +86,21 @@ button:hover {
   font-size: 26px;
   line-height: 123%;
   color: var(--primary-color-black);
-  margin-bottom: 16px;
 }
 
-.bottleIcon {
-  height: auto;
+.passwordWrapper {
+  position: relative;
 }
 
-@media screen and (min-width: 768px) {
-  .authPageWrapper {
-    flex-direction: row-reverse;
-    width: 704px;
-  }
-  .bottleIcon {
-    position: absolute;
-    top: 55%;
-    left: 40%;
-    transform: translateY(-50%);
-  }
-}
-@media screen and (min-width: 1280px) {
-  .authPageWrapper {
-    flex-direction: row;
-    width: 1404px;
-  }
-  .bottleIcon {
-    position: static;
-    transform: none;
-  }
+.passwordToggleIcon {
+  position: absolute;
+  top: 50%;
+  right: 10px;
+  transform: translateY(-50%);
+  cursor: pointer;
 }
 
+.icon {
+  stroke: var(--primary-color-blue);
+  fill: transparent;
+}
