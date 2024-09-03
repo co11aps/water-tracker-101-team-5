@@ -119,6 +119,7 @@ button:hover {
     no-repeat center center;
   background-size: cover;
   flex-direction: column-reverse;
+  width: 280px;
 }
 
 .authPageTitle {
@@ -141,10 +142,12 @@ button:hover {
 @media screen and (min-width: 768px) {
   .authPageWrapper {
     flex-direction: row-reverse;
+    width: 768px;
   }
 }
 @media screen and (min-width: 1280px) {
   .authPageWrapper {
     flex-direction: row;
+    width: 1404px;
   }
 }
