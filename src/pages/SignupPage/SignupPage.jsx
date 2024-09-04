@@ -6,7 +6,6 @@ const SignupPage = () => {
     <div className={css.container}>
       <div className={css.containerBox}>
         <div>
-          <h1>Sign Up</h1>
           <AuthForm isSignup={true} />
         </div>
         <div className={css.bottleBg}></div>
