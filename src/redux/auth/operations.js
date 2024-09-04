@@ -1,13 +1,5 @@
-import axios from "axios";
 import { createAsyncThunk } from "@reduxjs/toolkit";
-
-const axiosInstance = axios.create({
-  baseURL: "https://water-tracker-backend-101-team-5.onrender.com",
-  withCredentials: true,
-});
-
-// axios.defaults.baseURL =
-//   "https://water-tracker-backend-101-team-5.onrender.com";
+import { axiosInstance } from "../../services/services";
 
 // Utility to add JWT
 const setAuthHeader = (accessToken) => {
@@ -71,19 +63,12 @@ export const logOut = createAsyncThunk("auth/logout", async (_, thunkAPI) => {
 });
 
 /*
- * GET @ /auth/refresh
- * headers: Authorization: Bearer token
+ * POST @ /auth/refresh
  */
 export const refreshUser = createAsyncThunk(
   "auth/refresh",
   async (_, thunkAPI) => {
-    // Reading the token from the state via getState()
-    // const state = thunkAPI.getState();
-    // const persistedToken = state.auth.accessToken;
-
     try {
-      // If there is a token, add it to the HTTP header and perform the request
-      // setAuthHeader(persistedToken);
       const res = await axiosInstance.post("/auth/refresh");
       return res.data;
     } catch (error) {

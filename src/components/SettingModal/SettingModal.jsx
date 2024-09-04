@@ -6,6 +6,7 @@ import Icon from "../Icon/Icon";
 import { selectUser } from "../../redux/auth/selectors";
 import { useDispatch, useSelector } from "react-redux";
 import { updateAvatar, updateUserInfo } from "../../redux/auth/operations";
+import css from "./SettingModal.module.css";
 import { BaseModal } from "../BaseModal/BaseModal";
 
 const MAX_CHAR_VALIDATION = 64;
@@ -157,95 +158,123 @@ const SettingModal = ({ isOpen, onClose, onUpdate }) => {
             <button type="button">Upload a photo</button>
           </div>
 
-          <div className="form-group">
-            <label>Your gender identity</label>
-            <label>
-              <input type="radio" value="Woman" {...register("gender")} /> Woman
-            </label>
-            <label>
-              <input type="radio" value="Man" {...register("gender")} /> Man
-            </label>
-            {errors.gender && <p>{errors.gender.message}</p>}
-          </div>
+            <div className={css.inputGroup}>
+              <div className={css.input1}>
+                <div className={css.formGroup}>
+                  <label className={css.label}>Your gender identity</label>
+                  <div className={css.gender}>
+                    <label>
+                      <input
+                        type="radio"
+                        value="Woman"
+                        {...register("gender")}
+                      />{" "}
+                      Woman
+                    </label>
+                    <label>
+                      <input type="radio" value="Man" {...register("gender")} />{" "}
+                      Man
+                    </label>
+                    {errors.gender && <p>{errors.gender.message}</p>}
+                  </div>
+                </div>
 
-          <div className="form-group">
-            <label>Your name</label>
-            <input
-              type="text"
-              {...register("userName")}
-              placeholder="Enter your name"
-            />
-            {errors.name && <p>{errors.name.message}</p>}
-          </div>
+                <div className={css.formGroup}>
+                  <label className={css.label}>Your name</label>
+                  <input
+                    className={css.input}
+                    type="text"
+                    {...register("userName")}
+                    placeholder="Enter your name"
+                  />
+                  {errors.name && <p>{errors.name.message}</p>}
+                </div>
 
-          <div className="form-group">
-            <label>E-mail</label>
-            <input
-              type="email"
-              {...register("email")}
-              placeholder="Enter your email"
-            />
-            {errors.email && <p>{errors.email.message}</p>}
-          </div>
+                <div className={css.formGroup}>
+                  <label className={css.label}>E-mail</label>
+                  <input
+                    className={css.input}
+                    type="email"
+                    {...register("email")}
+                    placeholder="Enter your email"
+                  />
+                  {errors.email && <p>{errors.email.message}</p>}
+                </div>
+              </div>
 
-          <div className="form-group">
-            <label>Password</label>
-            <p>Outdated password:</p>
-            <input
-              type={showOutdatedPassword ? "text" : "password"}
-              {...register("outdatedPassword")}
-              placeholder="Password"
-            />
-            <button
-              type="button"
-              onClick={() => setshowOutdatedPassword(!showOutdatedPassword)} // Перемикання виду пароля
-            >
-              <Icon id={showOutdatedPassword ? "eye" : "slash"} className="" />
-            </button>
-            {errors.outdatedPassword && (
-              <p>{errors.outdatedPassword.message}</p>
-            )}
-          </div>
-          <div className="form-group">
-            <label>New Password:</label>
-
-            <input
-              type={showNewPassword ? "text" : "password"} // Зміна типу інпуту
-              {...register("newPassword")}
-              placeholder="Password"
-            />
-            <button
-              type="button"
-              onClick={() => setShowNewPassword(!showNewPassword)} // Перемикання виду пароля
-            >
-              <Icon id={showNewPassword ? "eye" : "slash"} className="" />
-            </button>
-            {errors.newPassword && <p>{errors.newPassword.message}</p>}
-          </div>
-          <div className="form-group">
-            <label>Repeat new password:</label>
-
-            <input
-              type={showConfirmNewPassword ? "text" : "password"} // Зміна типу інпуту
-              {...register("confirmNewPassword")}
-              placeholder="Password"
-            />
-            <button
-              type="button"
-              onClick={() => setShowConfirmNewPassword(!showConfirmNewPassword)} // Перемикання виду пароля
-            >
-              <Icon
-                id={showConfirmNewPassword ? "eye" : "slash"}
-                className=""
-              />
-            </button>
-            {errors.confirmNewPassword && (
-              <p>{errors.confirmNewPassword.message}</p>
-            )}
-          </div>
-
-          <button type="submit">Save</button>
-        </form>
+              <div className={css.input2}>
+                <div className={css.formGroup}>
+                  <label className={css.label}>Password</label>
+                  <p>Outdated password:</p>
+                  <input
+                    className={css.input}
+                    type={showOutdatedPassword ? "text" : "password"}
+                    {...register("outdatedPassword")}
+                    placeholder="Password"
+                  />
+                  <button
+                    type="button"
+                    onClick={() =>
+                      setshowOutdatedPassword(!showOutdatedPassword)
+                    }
+                  >
+                    <Icon
+                      id={showOutdatedPassword ? "eye" : "slash"}
+                      className=""
+                    />
+                  </button>
+                  {errors.outdatedPassword && (
+                    <p>{errors.outdatedPassword.message}</p>
+                  )}
+                </div>
+                <div className={css.formGroup}>
+                  <label>New Password:</label>
+                  <input
+                    className={css.input}
+                    type={showNewPassword ? "text" : "password"}
+                    {...register("newPassword")}
+                    placeholder="Password"
+                  />
+                  <button
+                    type="button"
+                    onClick={() => setShowNewPassword(!showNewPassword)}
+                  >
+                    <Icon id={showNewPassword ? "eye" : "slash"} className="" />
+                  </button>
+                  {errors.newPassword && <p>{errors.newPassword.message}</p>}
+                </div>
+                <div className={css.formGroup}>
+                  <label>Repeat new password:</label>
+                  <input
+                    className={css.input}
+                    type={showConfirmNewPassword ? "text" : "password"}
+                    {...register("confirmNewPassword")}
+                    placeholder="Password"
+                  />
+                  <button
+                    type="button"
+                    onClick={() =>
+                      setShowConfirmNewPassword(!showConfirmNewPassword)
+                    }
+                  >
+                    <Icon
+                      id={showConfirmNewPassword ? "eye" : "slash"}
+                      className=""
+                    />
+                  </button>
+                  {errors.confirmNewPassword && (
+                    <p>{errors.confirmNewPassword.message}</p>
+                  )}
+                </div>
+              </div>
+            </div>
+            <div className={css.contBtn}>
+              <button className={css.saveBtn} type="submit">
+                Save
+              </button>
+            </div>
+          </form>
+        </div>
       </div>
     </BaseModal>
   );

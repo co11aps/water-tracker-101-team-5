@@ -34,14 +34,16 @@ const UserLogoutModal = ({ toggleModal }) => {
     <div className={css.backdrop} onClick={toggleModal}>
       <div className={css.modal} onClick={(e) => e.stopPropagation()}>
         <button className={css.closeButton} onClick={toggleModal}></button>
-        <h2>Log out</h2>
-        <p>Do you really want to leave?</p>
+        <h2 className={css.title}>Log out</h2>
+        <p className={css.text}>Do you really want to leave?</p>
+        <div className={css.buttonGroup}>
         <button onClick={toggleModal} className={css.cancelButton}>
           Cancel
         </button>
         <button onClick={handleLogout} className={css.logoutButton}>
           Logout
         </button>
+        </div>
       </div>
     </div>
   );

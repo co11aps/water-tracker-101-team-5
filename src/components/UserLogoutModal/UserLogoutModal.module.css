@@ -11,13 +11,47 @@
   }
   
   .modal {
+    padding-left: 24px;
     position: relative;
     background: white;
-    padding: 20px;
     border-radius: 8px;
-    width: 300px;
+    width: 592px;
+    height: 208px;
     max-width: 100%;
     z-index: 1010;
   }
   
+  .title {
+    font-size: 26px;
+    margin-bottom: 24px;
+  }
   
+  .text {
+    font-weight: 500;
+    font-size: 18px; 
+    margin-bottom: 24px;
+  }
+
+  .cancelButton {
+ width: 160px;
+ height: 44px;
+ border-radius: 10px;
+ background-color: #D7E3FF;
+ font-size: 18px;
+ font-weight: 400;
+  }
+
+  .logoutButton {
+    width: 160px;
+    height: 44px;
+    border-radius: 10px;
+    background-color: #EF5050;
+    color: #FFFFFF;
+    font-size: 18px;
+    font-weight: 400;
+  }
+
+  .buttonGroup {
+    gap: 24px;
+    display: flex;
+  }
