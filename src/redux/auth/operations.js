@@ -83,12 +83,12 @@ export const refreshUser = createAsyncThunk(
 );
 
 /*
- * PATCH @ /auth/avatar
+ * PATCH @ /users/avatar
  * headers: Authorization: Bearer token
  * body: { file }
  */
 export const updateAvatar = createAsyncThunk(
-  "auth/avatar",
+  "users/avatar",
   async (file, thunkAPI) => {
     // Reading the token from the state via getState()
     const state = thunkAPI.getState();
@@ -97,7 +97,7 @@ export const updateAvatar = createAsyncThunk(
       setAuthHeader(persistedToken);
       // const formData = new FormData();
       // formData.append("avatar", file); // "avatar" — matches with "upload.single('avatar')" on server side
-      const res = await axiosInstance.patch("/auth/avatar", file);
+      const res = await axiosInstance.patch("/users/avatar", file);
       return res.data;
     } catch (error) {
       return thunkAPI.rejectWithValue(error.message);
@@ -106,17 +106,17 @@ export const updateAvatar = createAsyncThunk(
 );
 
 /*
- * PATCH @ /auth/user
+ * PATCH @ /users/update
  * body: { name, email, gender, oldPassword, newPassword }
  */
 export const updateUserInfo = createAsyncThunk(
-  "auth/userUpdate",
+  "users/userUpdate",
   async (credentials, thunkAPI) => {
     const state = thunkAPI.getState();
     const persistedToken = state.auth.accessToken;
     try {
       setAuthHeader(persistedToken);
-      const res = await axiosInstance.patch("/auth/user", credentials, {
+      const res = await axiosInstance.patch("/users/update", credentials, {
         headers: {
           "Content-Type": "application/json",
         },
@@ -130,17 +130,17 @@ export const updateUserInfo = createAsyncThunk(
 );
 
 /*
- * GET @ /auth/user
+ * GET @ /users/profile
  * headers: Authorization: Bearer token
  */
 export const getUserInfo = createAsyncThunk(
-  "auth/userInfo",
+  "user/userInfo",
   async (_, thunkAPI) => {
     const state = thunkAPI.getState();
     const persistedToken = state.auth.accessToken;
     try {
       setAuthHeader(persistedToken);
-      const res = await axiosInstance.get("/auth/user");
+      const res = await axiosInstance.get("/users/profile");
       return res.data;
     } catch (error) {
       alert(error);
@@ -150,7 +150,7 @@ export const getUserInfo = createAsyncThunk(
 );
 
 /*
- * POST @ /user/daily-norma
+ * POST @ /users/daily-norma
  * body: {dailyNorma}
  */
 export const updateDailyNorma = createAsyncThunk(
@@ -160,7 +160,7 @@ export const updateDailyNorma = createAsyncThunk(
     const persistedToken = state.auth.accessToken;
     try {
       setAuthHeader(persistedToken);
-      const res = await axiosInstance.post("/user/daily-norma", credentials);
+      const res = await axiosInstance.post("/users/daily-norma", credentials);
       console.log(res.data);
       return res.data;
     } catch (error) {

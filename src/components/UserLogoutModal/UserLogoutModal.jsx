@@ -2,9 +2,11 @@ import { useEffect } from "react";
 import { useDispatch } from "react-redux";
 import css from "./UserLogoutModal.module.css";
 import { logOut } from "../../redux/auth/operations";
+import { useNavigate } from "react-router-dom";
 
 const UserLogoutModal = ({ toggleModal }) => {
   const dispatch = useDispatch();
+  const navigate = useNavigate();
 
   useEffect(() => {
     const handleEscape = (e) => {
@@ -20,10 +22,13 @@ const UserLogoutModal = ({ toggleModal }) => {
   const handleLogout = async () => {
     dispatch(logOut())
       .then(() => {
-        console.log("LogOut success");
+        toggleModal();
       })
       .then(() => {
-        toggleModal();
+        navigate("/signin");
+      })
+      .then(() => {
+        console.log("LogOut success");
       })
       .catch((err) => {
         console.log("Register error", err);
@@ -37,12 +42,12 @@ const UserLogoutModal = ({ toggleModal }) => {
         <h2 className={css.title}>Log out</h2>
         <p className={css.text}>Do you really want to leave?</p>
         <div className={css.buttonGroup}>
-        <button onClick={toggleModal} className={css.cancelButton}>
-          Cancel
-        </button>
-        <button onClick={handleLogout} className={css.logoutButton}>
-          Logout
-        </button>
+          <button onClick={toggleModal} className={css.cancelButton}>
+            Cancel
+          </button>
+          <button onClick={handleLogout} className={css.logoutButton}>
+            Logout
+          </button>
         </div>
       </div>
     </div>
