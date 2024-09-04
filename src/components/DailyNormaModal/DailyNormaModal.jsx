@@ -1,26 +1,25 @@
 import { useState, useEffect } from "react";
 import { BaseModal } from "../BaseModal/BaseModal.jsx";
-import PropTypes from 'prop-types';
-import css from './DailyNormaModal.module.css'; 
+import PropTypes from "prop-types";
+import css from "./DailyNormaModal.module.css";
 
 const DailyNormaModal = ({ onClose, isShow, onSave }) => {
-  const [gender, setGender] = useState('');
-  const [weight, setWeight] = useState('');
-  const [activityTime, setActivityTime] = useState('');
+  const [gender, setGender] = useState("");
+  const [weight, setWeight] = useState("");
+  const [activityTime, setActivityTime] = useState("");
   const [dailyNorm, setDailyNorm] = useState(0.0);
-  const [waterToDrink, setWaterToDrink] = useState('');
+  const [waterToDrink, setWaterToDrink] = useState("");
 
-  
   useEffect(() => {
     const m = parseFloat(weight);
     const t = parseFloat(activityTime);
 
     if (gender && !isNaN(m) && !isNaN(t)) {
       let v = 0;
-      if (gender === 'female') {
-        v = (m * 0.03) + (t * 0.4);
-      } else if (gender === 'male') {
-        v = (m * 0.04) + (t * 0.6);
+      if (gender === "female") {
+        v = m * 0.03 + t * 0.4;
+      } else if (gender === "male") {
+        v = m * 0.04 + t * 0.6;
       }
       setDailyNorm(v.toFixed(1));
     } else {
@@ -34,27 +33,26 @@ const DailyNormaModal = ({ onClose, isShow, onSave }) => {
 
   const handleWeightChange = (e) => {
     const value = e.target.value;
-    if (value === '' || (Number(value) >= 0 && Number(value) <= 250)) {
+    if (value === "" || (Number(value) >= 0 && Number(value) <= 250)) {
       setWeight(value);
     }
   };
 
   const handleActivityTimeChange = (e) => {
     const value = e.target.value;
-    if (value === '' || Number(value) >= 0) {
+    if (value === "" || Number(value) >= 0) {
       setActivityTime(value);
     }
   };
 
   const handleWaterToDrinkChange = (e) => {
     const value = e.target.value;
-    if (value === '' || Number(value) >= 0) {
+    if (value === "" || Number(value) >= 0) {
       setWaterToDrink(value);
     }
   };
 
   const handleSave = () => {
-    
     if (!gender) {
       alert("Please select your gender.");
       return;
@@ -72,20 +70,18 @@ const DailyNormaModal = ({ onClose, isShow, onSave }) => {
       return;
     }
 
-    
     const data = {
       gender,
       weight: parseFloat(weight),
       activityTime: parseFloat(activityTime),
       dailyNorm: parseFloat(dailyNorm),
       waterToDrink: parseFloat(waterToDrink),
-      date: new Date().toISOString(), 
+      date: new Date().toISOString(),
     };
 
     // Call the onSave prop function to handle saving (send to backend)
     onSave(data);
 
-    
     onClose();
   };
 
@@ -103,7 +99,10 @@ const DailyNormaModal = ({ onClose, isShow, onSave }) => {
           </div>
           <div className={css.Comment}>
             <p>
-              <span>*</span> V is the volume of the water norm in liters per day, M is your body weight in kilograms, T is the time of active sports or other high-physical-load activities in hours (set to 0 if none).
+              <span>*</span> V is the volume of the water norm in liters per
+              day, M is your body weight in kilograms, T is the time of active
+              sports or other high-physical-load activities in hours (set to 0
+              if none).
             </p>
           </div>
         </div>
@@ -117,7 +116,7 @@ const DailyNormaModal = ({ onClose, isShow, onSave }) => {
                   type="radio"
                   name="gender"
                   value="female"
-                  checked={gender === 'female'}
+                  checked={gender === "female"}
                   onChange={handleGenderChange}
                 />
                 <span>For woman</span>
@@ -128,7 +127,7 @@ const DailyNormaModal = ({ onClose, isShow, onSave }) => {
                   type="radio"
                   name="gender"
                   value="male"
-                  checked={gender === 'male'}
+                  checked={gender === "male"}
                   onChange={handleGenderChange}
                 />
                 <span>For man</span>
@@ -148,7 +147,8 @@ const DailyNormaModal = ({ onClose, isShow, onSave }) => {
             </div>
             <div>
               <p className={css.Paragraph}>
-                The time of active participation in sports or other activities with high physical load in hours:
+                The time of active participation in sports or other activities
+                with high physical load in hours:
               </p>
               <input
                 className={css.Input}
@@ -159,10 +159,10 @@ const DailyNormaModal = ({ onClose, isShow, onSave }) => {
                 onChange={handleActivityTimeChange}
               />
             </div>
-                        <div className={css.FormResult}>
- The required amount of water in liters per day:
-  <strong>{dailyNorm} L</strong>
-</div>
+            <div className={css.FormResult}>
+              The required amount of water in liters per day:
+              <strong>{dailyNorm} L</strong>
+            </div>
             <div>
               <p className={css.TitleModal}>
                 Write down how much water you will drink:
@@ -188,9 +188,7 @@ const DailyNormaModal = ({ onClose, isShow, onSave }) => {
 DailyNormaModal.propTypes = {
   onClose: PropTypes.func.isRequired,
   isShow: PropTypes.bool.isRequired,
-  onSave: PropTypes.func.isRequired, 
+  onSave: PropTypes.func.isRequired,
 };
 
 export default DailyNormaModal;
-
-
