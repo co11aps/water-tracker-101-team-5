@@ -1,6 +1,9 @@
 import { useSelector, useDispatch } from "react-redux";
-import { closeModal, openModal } from "../../reduxToday/modalSlice";
-import { addWaterEntry, removeWaterEntry } from "../../reduxToday/todaySlice";
+import { closeModal, openModal } from "../../redux/reduxToday/modalSlice";
+import {
+  addWaterEntry,
+  removeWaterEntry,
+} from "../../redux/reduxToday/todaySlice";
 import AddWaterBtn from "../AddWaterBtn/AddWaterBtn";
 import TodayListModal from "../TodayListModal/TodayListModal";
 import css from "./TodayWaterList.module.css";

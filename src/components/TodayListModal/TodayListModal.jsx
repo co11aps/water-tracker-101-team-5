@@ -1,7 +1,10 @@
 import { useState, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { closeModal } from "../../reduxToday/modalSlice";
-import { addWaterEntry, editWaterEntry } from "../../reduxToday/todaySlice";
+import { closeModal } from "../../redux/reduxToday/modalSlice";
+import {
+  addWaterEntry,
+  editWaterEntry,
+} from "../../redux/reduxToday/todaySlice";
 import css from "./TodayListModal.module.css";
 
 export default function TodayListModal() {
