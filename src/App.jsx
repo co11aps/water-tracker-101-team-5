@@ -1,6 +1,6 @@
 import "./App.css";
 import { Route, Routes } from "react-router-dom";
-import { useEffect, lazy } from "react";
+import { useEffect, lazy, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import Layout from "./components/Layout/Layout";
 import PrivateRoute from "./components/PrivateRoute/PrivateRoute";
@@ -18,14 +18,23 @@ function App() {
   const dispatch = useDispatch();
   const { isRefreshing } = useSelector(selectIsRefreshing);
 
+  const [isSettingModalOpen, setIsSettingModalOpen] = useState(false);
+
   useEffect(() => {
     dispatch(refreshUser());
   }, [dispatch]);
 
+  const openSettingModal = () => setIsSettingModalOpen(true);
+  const closeSettingModal = () => setIsSettingModalOpen(false);
+
   return isRefreshing ? (
     <b>Refreshing user...</b>
   ) : (
-    <Layout>
+    <Layout
+      openSettingModal={openSettingModal} // Передача функцій як пропсів
+      closeSettingModal={closeSettingModal}
+      isSettingModalOpen={isSettingModalOpen}
+    >
       <Routes>
         <Route path="/" element={<Navigate to="/welcome" replace />} />
         <Route

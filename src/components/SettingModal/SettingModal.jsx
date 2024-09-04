@@ -6,6 +6,7 @@ import Icon from "../Icon/Icon";
 import { selectUser } from "../../redux/auth/selectors";
 import { useDispatch, useSelector } from "react-redux";
 import { updateAvatar, updateUserInfo } from "../../redux/auth/operations";
+import { BaseModal } from "../BaseModal/BaseModal";
 
 const MAX_CHAR_VALIDATION = 64;
 const MIN_CHAR_VALIDATION = 8;
@@ -126,28 +127,22 @@ const SettingModal = ({ isOpen, onClose, onUpdate }) => {
   //   }
   // };
 
-  useEffect(() => {
-    const handleEscape = (e) => {
-      if (e.key === "Escape") {
-        onClose();
-      }
-    };
-    document.addEventListener("keydown", handleEscape);
-    return () => {
-      document.removeEventListener("keydown", handleEscape);
-    };
-  }, [onClose]);
+  //   useEffect(() => {
+  //     const handleEscape = (e) => {
+  //       if (e.key === "Escape") {
+  //         onClose();
+  //       }
+  //     };
+  //     document.addEventListener("keydown", handleEscape);
+  //     return () => {
+  //       document.removeEventListener("keydown", handleEscape);
+  //     };
+  //   }, [onClose]);
 
-  if (!isOpen) return null;
+  //   if (!isOpen) return null;
 
   return (
-    <div className="modal">
-      <h2>Setting</h2>
-
-      <button type="button" onClick={onClose}>
-        <Icon id="x-mark" className="" />
-      </button>
-
+    <BaseModal isShow={isOpen} onClose={onClose} title="Settings">
       <div className="modal-content">
         <form onSubmit={handleSubmit(onSubmit)}>
           <label>Your photo</label>
@@ -252,7 +247,7 @@ const SettingModal = ({ isOpen, onClose, onUpdate }) => {
           <button type="submit">Save</button>
         </form>
       </div>
-    </div>
+    </BaseModal>
   );
 };
 

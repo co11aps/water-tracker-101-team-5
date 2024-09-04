@@ -11,18 +11,16 @@ const UserAuth = () => {
   };
 
   return (
-    <>
-      <nav className={css.headerNav}>
-        <button
-          onClick={handleSignInClick}
-          className={css.headerButton}
-          type="button"
-        >
-          Sign in
-          <Icon id="user" className={css.buttonSvg} />
-        </button>
-      </nav>
-    </>
+    <nav className={css.headerNav}>
+      <button
+        onClick={handleSignInClick}
+        className={css.headerButton}
+        type="button"
+      >
+        Sign in
+        <Icon id="user" width={28} height={28} className={css.buttonSvg} />
+      </button>
+    </nav>
   );
 };
 

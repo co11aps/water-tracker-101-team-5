@@ -4,7 +4,11 @@ import UserLogoModal from "../UserLogoModal/UserLogoModal";
 import Icon from "../Icon/Icon";
 import { useSelector } from "react-redux";
 
-const UserLogo = () => {
+const UserLogo = ({
+  openSettingModal,
+  closeSettingModal,
+  isSettingModalOpen,
+}) => {
   const { user } = useSelector((state) => state.auth);
   const [isModalOpen, setIsModalOpen] = useState(false);
 
@@ -39,7 +43,14 @@ const UserLogo = () => {
         <span className={css.userName}>{user.name || user.email}</span>
         {getAvatarContent()}
       </button>
-      {isModalOpen && <UserLogoModal toggleModal={toggleModal} />}
+      {isModalOpen && (
+        <UserLogoModal
+          toggleModal={toggleModal}
+          openSettingModal={openSettingModal}
+          closeSettingModal={closeSettingModal}
+          isSettingModalOpen={isSettingModalOpen}
+        />
+      )}
     </div>
   );
 };
