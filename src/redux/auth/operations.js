@@ -62,7 +62,7 @@ export const logIn = createAsyncThunk(
  */
 export const logOut = createAsyncThunk("auth/logout", async (_, thunkAPI) => {
   try {
-    await axios.post("/auth/logout");
+    await instance.post("/auth/logout");
     // After a successful logout, remove the token from the HTTP header
     clearAuthHeader();
   } catch (error) {
