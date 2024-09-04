@@ -50,7 +50,6 @@ export const logIn = createAsyncThunk(
 
 /*
  * POST @ /auth/logout
- * headers: Authorization: Bearer token
  */
 export const logOut = createAsyncThunk("auth/logout", async (_, thunkAPI) => {
   try {
@@ -63,19 +62,12 @@ export const logOut = createAsyncThunk("auth/logout", async (_, thunkAPI) => {
 });
 
 /*
- * GET @ /auth/refresh
- * headers: Authorization: Bearer token
+ * POST @ /auth/refresh
  */
 export const refreshUser = createAsyncThunk(
   "auth/refresh",
   async (_, thunkAPI) => {
-    // Reading the token from the state via getState()
-    // const state = thunkAPI.getState();
-    // const persistedToken = state.auth.accessToken;
-
     try {
-      // If there is a token, add it to the HTTP header and perform the request
-      // setAuthHeader(persistedToken);
       const res = await axiosInstance.post("/auth/refresh");
       return res.data;
     } catch (error) {
@@ -152,6 +144,26 @@ export const getUserInfo = createAsyncThunk(
       return res.data;
     } catch (error) {
       alert(error);
+      return thunkAPI.rejectWithValue(error.message);
+    }
+  }
+);
+
+/*
+ * POST @ /user/daily-norma
+ * body: {dailyNorma}
+ */
+export const updateDailyNorma = createAsyncThunk(
+  "user/dailyNorma",
+  async (credentials, thunkAPI) => {
+    const state = thunkAPI.getState();
+    const persistedToken = state.auth.accessToken;
+    try {
+      setAuthHeader(persistedToken);
+      const res = await axiosInstance.post("/user/daily-norma", credentials);
+      console.log(res.data);
+      return res.data;
+    } catch (error) {
       return thunkAPI.rejectWithValue(error.message);
     }
   }
