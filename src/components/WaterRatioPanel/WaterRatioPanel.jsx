@@ -1,12 +1,12 @@
 import { useSelector } from "react-redux";
+import { useEffect, useState } from "react";
+import axios from "axios";
 
 import css from "./WaterRatioPanel.module.css";
 import AddWaterBtn from "../AddWaterBtn/AddWaterBtn";
 
 export default function WaterRatioPanel() {
-  // const { drankToday } = useSelector();
-  const drankTodayValue = 15;
-
+  const [drankTodayValue, setDrankTodayValue] = useState(100);
   return (
     <>
       <h2 className={css.header}>Today</h2>
@@ -25,13 +25,33 @@ export default function WaterRatioPanel() {
           </div>
           <div className={css.scale}>
             <div className={css.tick}>
-              <span className={css.tickText}>0%</span>
+              <span
+                className={`${
+                  drankTodayValue < 50 ? css.boldTickText : css.tickText
+                }`}
+              >
+                0%
+              </span>
             </div>
             <div className={css.tick}>
-              <span className={css.boldTickText}>50%</span>
+              <span
+                className={`${
+                  drankTodayValue >= 50 && drankTodayValue < 100
+                    ? css.boldTickText
+                    : css.tickText
+                }`}
+              >
+                50%
+              </span>
             </div>
             <div className={css.tick}>
-              <span className={css.tickText}>100%</span>
+              <span
+                className={`${
+                  drankTodayValue === 100 ? css.boldTickText : css.tickText
+                }`}
+              >
+                100%
+              </span>
             </div>
           </div>
         </div>
