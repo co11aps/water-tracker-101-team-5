@@ -1,12 +1,11 @@
-import { useSelector } from "react-redux";
 import { useEffect, useState } from "react";
-import axios from "axios";
 
 import css from "./WaterRatioPanel.module.css";
 import AddWaterBtn from "../AddWaterBtn/AddWaterBtn";
 
 export default function WaterRatioPanel() {
-  const [drankTodayValue, setDrankTodayValue] = useState(100);
+  const [drankTodayValue, setDrankTodayValue] = useState(0);
+
   return (
     <>
       <h2 className={css.header}>Today</h2>
