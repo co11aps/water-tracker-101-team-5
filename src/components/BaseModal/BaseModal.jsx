@@ -39,7 +39,7 @@ export const BaseModal = ({ isShow, children, title, onClose }) => {
     <div className={css.modalBox} onClick={onClose}>
       <div className={css.modalContent} onClick={(e) => e.stopPropagation()}>
         <div className={css.modalHeader}>
-          <h2>{title}</h2>
+          <h2 className={css.modalBoxTitle}>{title}</h2>
           <div className={css.closeBtn} onClick={onClose}>
             <Icon id="x-mark" width={24} height={24} className="icon-blue" />
           </div>
