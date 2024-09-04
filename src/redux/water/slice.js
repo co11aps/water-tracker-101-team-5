@@ -1,27 +1,98 @@
 import { createSlice } from "@reduxjs/toolkit";
-import { getDailyWater } from "./operations";
+import {
+  getDailyWater,
+  getMonthlyWater,
+  addWater,
+  updateWater,
+  deleteWater,
+  setDailyNorma,
+} from "./operations";
+
+const handlePending = (state) => {
+  state.isLoading = true;
+};
+
+const handleRejected = (state, action) => {
+  state.isLoading = false;
+  state.error = action.payload;
+};
+
+const handleFulfilled = (state) => {
+  state.isLoading = false;
+  state.error = null;
+};
+
+const handleUpdateWater = (state, action) => {
+  const index = state.dailyWater.findIndex(
+    (item) => item.id === action.payload.id
+  );
+
+  state.dailyWater[index] = action.payload;
+};
+
+const handleDeleteWater = (state, action) => {
+  const index = state.dailyWater.findIndex(
+    (item) => item.id === action.payload.id
+  );
+
+  state.splice(index, 1);
+};
 
 const waterSlice = createSlice({
   name: "water",
   initialState: {
-    items: [],
+    dailyWater: {
+      percentage: 0,
+      waterIntakes: [],
+    },
+    monthlyWater: [],
+    dailyNorma: 0,
     isLoading: false,
     error: null,
   },
   extraReducers: (builder) => {
     builder
-      .addCase(getDailyWater.pending, (state) => {
-        state.isLoading = true;
-      })
+      .addCase(getDailyWater.pending, handlePending)
       .addCase(getDailyWater.fulfilled, (state, action) => {
-        state.isLoading = false;
-        state.error = null;
-        state.items = action.payload;
+        handleFulfilled(state);
+        state.dailyWater = action.payload;
       })
-      .addCase(getDailyWater.rejected, (state, action) => {
-        state.isLoading = false;
-        state.error = action.payload;
-      });
+      .addCase(getDailyWater.rejected, handleRejected)
+
+      .addCase(getMonthlyWater.pending, handlePending)
+      .addCase(getMonthlyWater.fulfilled, (state, action) => {
+        handleFulfilled(state);
+        state.monthlyWater = action.payload;
+      })
+      .addCase(getMonthlyWater.rejected, handleRejected)
+
+      .addCase(addWater.pending, handlePending)
+      .addCase(addWater.fulfilled, (state, action) => {
+        handleFulfilled(state);
+        state.dailyWater.push(action.payload);
+      })
+      .addCase(addWater.rejected, handleRejected)
+
+      .addCase(updateWater.pending, handlePending)
+      .addCase(updateWater.fulfilled, (state, action) => {
+        handleFulfilled(state);
+        handleUpdateWater(state, action);
+      })
+      .addCase(updateWater.rejected, handleRejected)
+
+      .addCase(deleteWater.pending, handlePending)
+      .addCase(deleteWater.fulfilled, (state, action) => {
+        handleFulfilled(state);
+        handleDeleteWater(state, action);
+      })
+      .addCase(deleteWater.rejected, handleRejected)
+
+      .addCase(setDailyNorma.pending, handlePending)
+      .addCase(setDailyNorma.fulfilled, (state, action) => {
+        handleFulfilled(state);
+        state.dailyNorma = action.payload;
+      })
+      .addCase(setDailyNorma.rejected, handleRejected);
   },
 });
 
