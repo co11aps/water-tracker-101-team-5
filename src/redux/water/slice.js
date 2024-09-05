@@ -46,7 +46,7 @@ const waterSlice = createSlice({
       waterIntakes: [],
     },
     monthlyWater: [],
-    dailyNorma: 0,
+    // dailyNorma: 0,
     isLoading: false,
     error: null,
   },

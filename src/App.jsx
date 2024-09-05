@@ -23,7 +23,7 @@ function App() {
   }, [dispatch]);
 
   return isRefreshing ? (
-    <b>Refreshing...</b>
+    <b>Loading...</b>
   ) : (
     <Layout>
       <Routes>
