@@ -7,6 +7,7 @@ import {
   updateAvatar,
   updateUserInfo,
   getUserInfo,
+  updateDailyNorma,
 } from "./operations";
 
 const authSlice = createSlice({
@@ -25,15 +26,23 @@ const authSlice = createSlice({
   },
   extraReducers: (builder) => {
     builder
+      .addCase(register.pending, (state) => {
+        state.isRefreshing = true;
+      })
       .addCase(register.fulfilled, (state, action) => {
         state.user = action.payload.user;
         state.accessToken = action.payload.accessToken;
         state.isLoggedIn = true;
+        state.isRefreshing = false;
+      })
+      .addCase(logIn.pending, (state) => {
+        state.isRefreshing = true;
       })
       .addCase(logIn.fulfilled, (state, action) => {
         state.user = action.payload.user;
         state.accessToken = action.payload.accessToken;
         state.isLoggedIn = true;
+        state.isRefreshing = false;
       })
       .addCase(logOut.fulfilled, (state) => {
         state.user = {
@@ -50,7 +59,7 @@ const authSlice = createSlice({
         state.isRefreshing = true;
       })
       .addCase(refreshToken.fulfilled, (state, action) => {
-        state.accessToken = action.payload;
+        state.accessToken = action.payload.accessToken;
         state.isLoggedIn = true;
         state.isRefreshing = false;
       })
@@ -65,6 +74,9 @@ const authSlice = createSlice({
       })
       .addCase(getUserInfo.fulfilled, (state, action) => {
         state.user = action.payload;
+      })
+      .addCase(updateDailyNorma.fulfilled, (state, action) => {
+        state.user.dailyNorma = action.payload.dailyNorma;
       });
   },
 });
