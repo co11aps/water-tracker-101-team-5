@@ -2,7 +2,7 @@ import { createAsyncThunk } from "@reduxjs/toolkit";
 import { axiosInstance } from "../../services/services";
 
 export const getDailyWater = createAsyncThunk(
-  "user/dailyWater",
+  "water/oneDayWater",
   async (_, thunkAPI) => {
     try {
       const response = await axiosInstance.get("user/daily-water");
@@ -73,6 +73,7 @@ export const setDailyNorma = createAsyncThunk(
         dailyNormaValue
       );
       return response.data.data;
+
     } catch (e) {
       return thunkAPI.rejectWithValue(e.message);
     }

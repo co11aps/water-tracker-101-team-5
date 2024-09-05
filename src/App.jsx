@@ -5,7 +5,7 @@ import { useDispatch, useSelector } from "react-redux";
 import Layout from "./components/Layout/Layout";
 import PrivateRoute from "./components/PrivateRoute/PrivateRoute";
 import RestrictedRoute from "./components/RestrictedRoute/RestrictedRoute";
-import { refreshUser } from "./redux/auth/operations";
+import { refreshToken } from "./redux/auth/operations";
 import { selectIsRefreshing } from "./redux/auth/selectors";
 import { Navigate } from "react-router-dom";
 
@@ -19,11 +19,11 @@ function App() {
   const { isRefreshing } = useSelector(selectIsRefreshing);
 
   useEffect(() => {
-    dispatch(refreshUser());
+    dispatch(refreshToken());
   }, [dispatch]);
 
   return isRefreshing ? (
-    <b>Refreshing user...</b>
+    <b>Refreshing...</b>
   ) : (
     <Layout>
       <Routes>
