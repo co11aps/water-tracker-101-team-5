@@ -28,7 +28,7 @@ function App() {
   const closeSettingModal = () => setIsSettingModalOpen(false);
 
   return isRefreshing ? (
-    <b>Refreshing...</b>
+    <b>Loading...</b>
   ) : (
     <Layout
       openSettingModal={openSettingModal} // Передача функцій як пропсів

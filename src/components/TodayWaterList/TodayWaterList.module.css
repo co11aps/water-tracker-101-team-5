@@ -1,4 +1,75 @@
-.icon {
-  stroke: red;
-  fill: green;
+.iconEditButton {
+  background: transparent;
+  fill: none;
+  stroke: var(--secondary-color-4);
+  transition: 0.2s ease-in-out;
+}
+
+.iconEditButton:hover {
+  transform: scale(1.25);
+}
+
+.iconDeliteButton {
+  background: transparent;
+  fill: none;
+  stroke: var(--secondary-color-3);
+  transition: 0.2s ease-in-out;
+}
+
+.iconDeliteButton:hover {
+  transform: scale(1.25);
+}
+
+.editButton {
+  cursor: default;
+  text-align: center;
+  position: relative;
+  height: 16px;
+  width: 16px;
+  padding: 0;
+  margin: 4px;
+  background: transparent;
+  border: none;
+}
+
+.editButton::after {
+  content: "";
+  position: absolute;
+  bottom: -6px;
+  left: 0;
+  width: 0;
+  height: 1px;
+  background-color: var(--secondary-color-4);
+  transition: width 0.25s ease-in-out;
+}
+
+.editButton:hover::after {
+  width: 100%;
+}
+
+.deleteButton {
+  position: relative;
+  cursor: default;
+  text-align: center;
+  height: 16px;
+  width: 16px;
+  padding: 0;
+  margin: 4px;
+  background: transparent;
+  border: none;
+}
+
+.deleteButton::after {
+  content: "";
+  position: absolute;
+  bottom: -6px;
+  left: 0;
+  width: 0;
+  height: 1px;
+  background-color: var(--secondary-color-3);
+  transition: width 0.25s ease-in-out;
+}
+
+.deleteButton:hover::after {
+  width: 100%;
 }

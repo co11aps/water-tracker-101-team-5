@@ -1,6 +1,6 @@
 .container {
-  width: 100%;
-  height: 100vh;
+  width: 320px;
+  height: 680px;
   padding: 0 20px;
   background-size: contain;
   background-position: center;
@@ -16,8 +16,8 @@
 }
 
 .bottleBg {
+  margin-top: 66px;
   background-image: url(../../images/background/mobile/icon-light-bottle-signin.svg);
-  order: 2;
   background-size: contain;
   background-repeat: no-repeat;
   width: 280px;
@@ -27,35 +27,33 @@
 
 @media (min-width: 768px) {
   .container {
-    min-width: 768px;
+    width: 768px;
     padding: 0 32px;
     background-image: url(../../images/background/tablet/icon-light-bottle-signin.svg);
+    background-size: contain;
+    background-position: center top;
   }
 
   .containerBox {
     flex-direction: row;
-    justify-content: space-between;
-    align-items: center;
   }
 
   .bottleBg {
+    margin-top: 0;
     width: 0;
   }
 }
 
 @media (min-width: 1440px) {
   .container {
-    gap: 0;
-    flex-direction: row-reverse;
-    align-items: center;
     width: 1440px;
-    height: 582px;
+    height: 800px;
     padding-right: 210px;
     background-image: url(../../images/background/desktop/icon-light-background-elem-main-page.svg);
   }
   .containerBox {
-    display: flex;
     flex-direction: row-reverse;
+    align-items: center;
   }
   .bottleBg {
     width: 916px;
