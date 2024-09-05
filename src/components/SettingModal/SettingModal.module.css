@@ -17,8 +17,10 @@
   max-height: 80vh;
   background-color: white;
   border-radius: 10px;
-  padding: 32px 24px;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  padding-bottom: 32px;
+  padding-left: 24px;
+  padding-right: 24px;
+  /* box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); */
   z-index: 1000;
   overflow-y: auto;
   display: flex;
@@ -122,28 +124,58 @@
 }
 
 .uploadButton {
-  width: 123px;
+  width: 134px;
   height: 18px;
   color: #407bff;
+  font-size: 14px;
+  line-height: 1.3;
   font-weight: 500;
+  display: flex;
   align-items: center;
+  justify-content: space-between;
   margin: 7px;
+  padding: 0;
+  border: none;
+  background: none;
 }
 
 .uploadBtnGroup {
   display: flex;
   align-items: center;
 }
-.formGroup input {
+
+/* my styles */
+
+.inputWrap {
   position: relative;
+  width: 400px;
 }
-/* .buttonSvg {
+.formGroup input[type="text"],
+input[type="password"] {
+  padding: 8px 40px 8px 8px;
+}
+
+.buttonSvg {
   position: absolute;
+  top: 50%; /* Вирівнюємо вертикально по центру інпуту */
+  right: 10px; /* Вирівнюємо іконку праворуч від краю інпуту */
+  transform: translateY(-50%); /* Для точного вертикального вирівнювання */
   top: 12px;
-  right: 0;
-} */
-.passwordIcon {
-  position: absolute;
-  top: 0;
-  right: 0;
+  background: none; /* Прибираємо фон у кнопки */
+  border: none; /* Прибираємо обвід у кнопки */
+  padding: 0; /* Прибираємо додаткові відступи */
+}
+.avatarPreviewWrapper {
+  width: 100px; /* Вказуємо ширину аватара */
+  height: 100px; /* Вказуємо висоту аватара */
+  border-radius: 50%; /* Робимо зображення круглим */
+  overflow: hidden; /* Ховаємо зайве зображення */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.avatar {
+  width: 100%; /* Аватар буде займати всю ширину контейнера */
+  height: 100%; /* Аватар буде займати всю висоту контейнера */
+  object-fit: cover; /* Зображення буде обрізатися під круглу форму */
 }

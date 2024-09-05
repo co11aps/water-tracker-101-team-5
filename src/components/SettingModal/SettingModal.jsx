@@ -52,7 +52,7 @@ const SettingModal = ({ isOpen, onClose, onUpdate }) => {
   const dispatch = useDispatch();
   const userData = useSelector(selectUser);
   const [preview, setPreview] = useState(null);
-  const [showOutdatedPassword, setshowOutdatedPassword] = useState(false);
+  const [showOutdatedPassword, setShowOutdatedPassword] = useState(false);
   const [showNewPassword, setShowNewPassword] = useState(false);
   const [showConfirmNewPassword, setShowConfirmNewPassword] = useState(false);
   const {
@@ -70,6 +70,9 @@ const SettingModal = ({ isOpen, onClose, onUpdate }) => {
 
   useEffect(() => {
     reset(userData);
+    if (userData.avatar) {
+      setPreview(userData.avatar);
+    } // Якщо аватар уже є, показуємо його
   }, [userData, reset]);
 
   const onSubmit = async (data) => {
@@ -147,17 +150,33 @@ const SettingModal = ({ isOpen, onClose, onUpdate }) => {
       <div className={css.modal}>
         <div className={css.modal.content}>
           <form onSubmit={handleSubmit(onSubmit)}>
-            <label>Your photo</label>
             <div className={css.formGroup}>
+              <label>Your photo</label>
               <div className={css.photoUploadContainer}>
                 <input
                   type="file"
                   {...register("photo")}
                   onChange={handleAvatarChange}
+                  accept="image/*"
                 />
+
                 {errors.avatar && <p>{errors.avatar.message}</p>}
-                {preview && <img src={preview} alt="Avatar Preview" />}
+                {preview && (
+                  <div className={css.avatarPreviewWrapper}>
+                    <img
+                      src={preview}
+                      alt="Avatar Preview"
+                      className={css.avatar}
+                    />
+                  </div>
+                )}
                 <button type="button" className={css.uploadButton}>
+                  <Icon
+                    id="arrow-up"
+                    width={16}
+                    height={16}
+                    className="icon-blue"
+                  />
                   Upload a photo
                 </button>
               </div>
@@ -210,72 +229,81 @@ const SettingModal = ({ isOpen, onClose, onUpdate }) => {
                 <div className={css.formGroup}>
                   <label className={css.label}>Password</label>
                   <p>Outdated password:</p>
-                  <input
-                    className={css.input}
-                    type={showOutdatedPassword ? "text" : "password"}
-                    {...register("outdatedPassword")}
-                    placeholder="Password"
-                  />
-                  <button
-                    className={css.buttonSvg}
-                    type="button"
-                    onClick={() =>
-                      setshowOutdatedPassword(!showOutdatedPassword)
-                    }
-                  >
-                    <Icon
-                      id={showOutdatedPassword ? "eye" : "slash"}
-                      className={css.passwordIcon}
-                      width={16}
-                      height={16}
+                  <div className={css.inputWrap}>
+                    <input
+                      className={css.input}
+                      type={showOutdatedPassword ? "text" : "password"}
+                      {...register("outdatedPassword")}
+                      placeholder="Password"
                     />
-                  </button>
+
+                    <button
+                      className={css.buttonSvg}
+                      type="button"
+                      onClick={() =>
+                        setShowOutdatedPassword(!showOutdatedPassword)
+                      }
+                    >
+                      <Icon
+                        id={showOutdatedPassword ? "eye" : "eye-slash"}
+                        className="icon-blue"
+                        width={16}
+                        height={16}
+                      />
+                    </button>
+                  </div>
                   {errors.outdatedPassword && (
                     <p>{errors.outdatedPassword.message}</p>
                   )}
                 </div>
                 <div className={css.formGroup}>
                   <label>New Password:</label>
-                  <input
-                    className={css.input}
-                    type={showNewPassword ? "text" : "password"}
-                    {...register("newPassword")}
-                    placeholder="Password"
-                  />
-                  <button
-                    type="button"
-                    onClick={() => setShowNewPassword(!showNewPassword)}
-                  >
-                    <Icon
-                      id={showNewPassword ? "eye" : "slash"}
-                      className={css.passwordIcon}
-                      width={16}
-                      height={16}
+                  <div className={css.inputWrap}>
+                    <input
+                      className={css.input}
+                      type={showNewPassword ? "text" : "password"}
+                      {...register("newPassword")}
+                      placeholder="Password"
                     />
-                  </button>
+                    <button
+                      className={css.buttonSvg}
+                      type="button"
+                      onClick={() => setShowNewPassword(!showNewPassword)}
+                    >
+                      <Icon
+                        id={showNewPassword ? "eye" : "eye-slash"}
+                        className="icon-blue"
+                        width={16}
+                        height={16}
+                      />
+                    </button>
+                  </div>
                   {errors.newPassword && <p>{errors.newPassword.message}</p>}
                 </div>
                 <div className={css.formGroup}>
                   <label>Repeat new password:</label>
-                  <input
-                    className={css.input}
-                    type={showConfirmNewPassword ? "text" : "password"}
-                    {...register("confirmNewPassword")}
-                    placeholder="Password"
-                  />
-                  <button
-                    type="button"
-                    onClick={() =>
-                      setShowConfirmNewPassword(!showConfirmNewPassword)
-                    }
-                  >
-                    <Icon
-                      id={showConfirmNewPassword ? "eye" : "slash"}
-                      className={css.passwordIcon}
-                      width={16}
-                      height={16}
+                  <div className={css.inputWrap}>
+                    <input
+                      className={css.input}
+                      type={showConfirmNewPassword ? "text" : "password"}
+                      {...register("confirmNewPassword")}
+                      placeholder="Password"
                     />
-                  </button>
+                    <button
+                      className={css.buttonSvg}
+                      type="button"
+                      onClick={() =>
+                        setShowConfirmNewPassword(!showConfirmNewPassword)
+                      }
+                    >
+                      <Icon
+                        id={showConfirmNewPassword ? "eye" : "eye-slash"}
+                        className="icon-blue"
+                        width={16}
+                        height={16}
+                      />
+                    </button>
+                  </div>
                   {errors.confirmNewPassword && (
                     <p>{errors.confirmNewPassword.message}</p>
                   )}

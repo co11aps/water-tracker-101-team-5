@@ -18,7 +18,7 @@ const UserAuth = () => {
         type="button"
       >
         Sign in
-        <Icon id="user" width={28} height={28} className={css.buttonSvg} />
+        <Icon id="user" width={28} height={28} className="icon-blue" />
       </button>
     </nav>
   );
