@@ -1,11 +1,7 @@
 .authFormContainer {
-  /* max-width: 400px; */
+  width: 280px;
   margin: 0 auto;
   padding: 1rem;
-  border-radius: 8px;
-  /* box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); */
-  /* width: 384px; */
-  background-color: var(--primary-color-white);
 }
 
 .formGroup {
@@ -22,7 +18,7 @@
 }
 
 .formGroup input {
-  min-width: 280px;
+  width: 100%;
   border: 1px solid var(--secondary-color-5);
   border-radius: 6px;
   padding: 12px 10px;
@@ -61,7 +57,6 @@ button:hover {
 
 .navigation {
   margin-top: 20px;
-  /* text-align: center; */
 }
 
 .navigation a {
@@ -96,21 +91,6 @@ button:hover {
   fill: white;
 }
 
-/* ================== */
-
-.authPageWrapper {
-  position: relative;
-  min-height: 100vh;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  background: url("/src/images/background/desktop/icon-light-background-elem-main-page.svg")
-    no-repeat center center;
-  background-size: cover;
-  flex-direction: column-reverse;
-  min-width: 280px;
-}
-
 .authPageTitle {
   font-family: var(--font-family);
   font-weight: 500;
@@ -120,34 +100,14 @@ button:hover {
   margin-bottom: 16px;
 }
 
-.bottleIcon {
-  height: auto;
-}
-
 @media screen and (min-width: 768px) {
-  .authPageWrapper {
-    flex-direction: row-reverse;
-    width: 704px;
-  }
-  .bottleIcon {
-    position: absolute;
-    top: 55%;
-    left: 40%;
-    transform: translateY(-50%);
-  }
   .authFormContainer {
-    position: absolute;
-    top: 25%;
+    width: 336px;
   }
 }
-@media screen and (min-width: 1280px) {
-  .authPageWrapper {
-    flex-direction: row;
-    width: 1404px;
-  }
-  .bottleIcon {
-    position: static;
-    transform: none;
+@media screen and (min-width: 1440px) {
+  .authFormContainer {
+    width: 384px;
   }
   .authFormContainer {
     position: static;
