@@ -2,21 +2,32 @@
   background: transparent;
   fill: none;
   stroke: var(--secondary-color-4);
+  transition: 0.2s ease-in-out;
+}
+
+.iconEditButton:hover {
+  transform: scale(1.25);
 }
 
 .iconDeliteButton {
   background: transparent;
   fill: none;
   stroke: var(--secondary-color-3);
+  transition: 0.2s ease-in-out;
 }
+
+.iconDeliteButton:hover {
+  transform: scale(1.25);
+}
+
 .editButton {
   cursor: default;
   text-align: center;
   position: relative;
-  height: 20px;
-  width: 20px;
-  padding: 2px;
-  margin: 2px;
+  height: 16px;
+  width: 16px;
+  padding: 0;
+  margin: 4px;
   background: transparent;
   border: none;
 }
@@ -24,7 +35,7 @@
 .editButton::after {
   content: "";
   position: absolute;
-  bottom: -2px;
+  bottom: -6px;
   left: 0;
   width: 0;
   height: 1px;
@@ -40,10 +51,10 @@
   position: relative;
   cursor: default;
   text-align: center;
-  height: 20px;
-  width: 20px;
-  padding: 2px;
-  margin: 2px;
+  height: 16px;
+  width: 16px;
+  padding: 0;
+  margin: 4px;
   background: transparent;
   border: none;
 }
@@ -51,7 +62,7 @@
 .deleteButton::after {
   content: "";
   position: absolute;
-  bottom: -2px;
+  bottom: -6px;
   left: 0;
   width: 0;
   height: 1px;
