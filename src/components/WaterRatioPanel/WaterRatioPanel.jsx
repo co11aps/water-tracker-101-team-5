@@ -4,14 +4,18 @@ import AddWaterBtn from "../AddWaterBtn/AddWaterBtn";
 import { useEffect } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { selectDailyWater } from "../../redux/water/selectors";
+import { selectIsAuthHeaderSet } from "../../redux/auth/selectors";
 import { getDailyWater } from "../../redux/water/operations";
 
 export default function WaterRatioPanel() {
   const dispatch = useDispatch();
+  const isAuthHeaderSet = useSelector(selectIsAuthHeaderSet);
 
   useEffect(() => {
-    dispatch(getDailyWater()); // Викликаємо операцію для отримання даних при завантаженні компонента
-  }, [dispatch]);
+    if (isAuthHeaderSet) {
+      dispatch(getDailyWater());
+    } // Викликаємо операцію для отримання даних при завантаженні компонента
+  }, [dispatch, isAuthHeaderSet]);
 
   const { percentage } = useSelector(selectDailyWater);
 
