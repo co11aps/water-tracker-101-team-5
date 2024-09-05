@@ -23,6 +23,7 @@ const authSlice = createSlice({
     accessToken: null,
     isLoggedIn: false,
     isRefreshing: false,
+    isAuthHeaderSet: false,
   },
   extraReducers: (builder) => {
     builder
@@ -34,6 +35,7 @@ const authSlice = createSlice({
         state.accessToken = action.payload.accessToken;
         state.isLoggedIn = true;
         state.isRefreshing = false;
+        state.isAuthHeaderSet = true;
       })
       .addCase(logIn.pending, (state) => {
         state.isRefreshing = true;
@@ -43,6 +45,7 @@ const authSlice = createSlice({
         state.accessToken = action.payload.accessToken;
         state.isLoggedIn = true;
         state.isRefreshing = false;
+        state.isAuthHeaderSet = true;
       })
       .addCase(logOut.fulfilled, (state) => {
         state.user = {
@@ -57,11 +60,13 @@ const authSlice = createSlice({
       })
       .addCase(refreshToken.pending, (state) => {
         state.isRefreshing = true;
+        state.isAuthHeaderSet = false;
       })
       .addCase(refreshToken.fulfilled, (state, action) => {
         state.accessToken = action.payload.accessToken;
         state.isLoggedIn = true;
         state.isRefreshing = false;
+        state.isAuthHeaderSet = true;
       })
       .addCase(refreshToken.rejected, (state) => {
         state.isRefreshing = false;

@@ -22,7 +22,6 @@ export const register = createAsyncThunk(
       const res = await axiosInstance.post("/auth/register", credentials);
       // After successful registration, add the token to the HTTP header
       setAuthHeader(res.data.accessToken);
-      console.log(res.data);
       return res.data;
     } catch (error) {
       return thunkAPI.rejectWithValue(error.message);
@@ -70,7 +69,6 @@ export const refreshToken = createAsyncThunk(
     try {
       const res = await axiosInstance.post("/auth/refresh");
       setAuthHeader(res.data.accessToken);
-      console.log("refresh");
       return res.data;
     } catch (error) {
       return thunkAPI.rejectWithValue(error.message);
@@ -163,7 +161,6 @@ export const updateDailyNorma = createAsyncThunk(
     try {
       setAuthHeader(persistedToken);
       const res = await axiosInstance.post("/users/daily-norma", credentials);
-      console.log(res.data);
       return res.data;
     } catch (error) {
       return thunkAPI.rejectWithValue(error.message);
