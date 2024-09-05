@@ -1,12 +1,9 @@
 .modal {
-  position: fixed;
-  display: flex;
-  align-items: flex-start;
-  justify-content: flex-end;
-  z-index: 1000; 
+  position: absolute;
+  left: 0;
+  z-index: 1000;
   padding: 10px;
   right: 50px;
-  
 }
 
 .modalContent {
@@ -14,16 +11,15 @@
   border-radius: 12px;
   width: 140px;
   height: 120px;
-align-items: center;
-justify-content: center;
+  align-items: center;
+  justify-content: center;
   box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
   position: relative;
   display: flex;
   flex-direction: column;
-  z-index: 1010; 
+  z-index: 1010;
   gap: 10px;
 }
-
 
 .button {
   color: #407bff;
@@ -33,7 +29,7 @@ justify-content: center;
   margin: 0;
   font: inherit;
   display: flex;
- justify-content: center;
+  justify-content: center;
   line-height: normal;
   border-radius: 0;
   box-shadow: none;
@@ -65,7 +61,5 @@ justify-content: center;
 }
 
 .buttonText {
-margin-left: 5px;
+  margin-left: 5px;
 }
-
- 
