@@ -2,7 +2,7 @@ import HomePageContainer from "../../components/HomePageContainer/HomePageContai
 import HeroSection from "../../components/HeroSection/HeroSection";
 import TrackerSection from "../../components/TrackerSection/TrackerSection";
 import { useEffect } from "react";
-import { getDailyWater } from "../../redux/water/operations";
+import { getDailyWater, getMonthlyWater } from "../../redux/water/operations";
 import { useDispatch, useSelector } from "react-redux";
 import { selectIsAuthHeaderSet } from "../../redux/auth/selectors";
 
@@ -13,6 +13,7 @@ export default function HomePage() {
   useEffect(() => {
     if (isAuthHeaderSet) {
       dispatch(getDailyWater());
+      dispatch(getMonthlyWater());
     }
   }, [dispatch, isAuthHeaderSet]);
 
