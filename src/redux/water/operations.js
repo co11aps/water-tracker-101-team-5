@@ -6,7 +6,6 @@ export const getDailyWater = createAsyncThunk(
   async (_, thunkAPI) => {
     try {
       const response = await axiosInstance.get("water/day");
-      console.log("water");
       return response.data.data;
     } catch (e) {
       return thunkAPI.rejectWithValue(e.message);
