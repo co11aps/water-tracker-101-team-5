@@ -5,7 +5,7 @@ import {
   addWater,
   updateWater,
   deleteWater,
-  setDailyNorma,
+  // setDailyNorma,
 } from "./operations";
 
 const handlePending = (state) => {
@@ -85,14 +85,14 @@ const waterSlice = createSlice({
         handleFulfilled(state);
         handleDeleteWater(state, action);
       })
-      .addCase(deleteWater.rejected, handleRejected)
+      .addCase(deleteWater.rejected, handleRejected);
 
-      .addCase(setDailyNorma.pending, handlePending)
-      .addCase(setDailyNorma.fulfilled, (state, action) => {
-        handleFulfilled(state);
-        state.dailyNorma = action.payload;
-      })
-      .addCase(setDailyNorma.rejected, handleRejected);
+    // .addCase(setDailyNorma.pending, handlePending)
+    // .addCase(setDailyNorma.fulfilled, (state, action) => {
+    //   handleFulfilled(state);
+    //   state.dailyNorma = action.payload;
+    // })
+    // .addCase(setDailyNorma.rejected, handleRejected);
   },
 });
 
