@@ -13,7 +13,7 @@ export default function HomePage() {
   useEffect(() => {
     if (isAuthHeaderSet) {
       dispatch(getDailyWater());
-    } // Викликаємо операцію для отримання даних при завантаженні компонента
+    }
   }, [dispatch, isAuthHeaderSet]);
 
   return (
