@@ -5,7 +5,7 @@ export const getDailyWater = createAsyncThunk(
   "water/oneDayWater",
   async (_, thunkAPI) => {
     try {
-      const response = await axiosInstance.get("user/daily-water");
+      const response = await axiosInstance.get("water/day");
       return response.data.data;
     } catch (e) {
       return thunkAPI.rejectWithValue(e.message);
@@ -14,10 +14,10 @@ export const getDailyWater = createAsyncThunk(
 );
 
 export const getMonthlyWater = createAsyncThunk(
-  "user/monthlyWater",
+  "water/monthlyWater",
   async (_, thunkAPI) => {
     try {
-      const response = await axiosInstance.get("user/monthly-water");
+      const response = await axiosInstance.get("water/month");
       return response.data.data;
     } catch (e) {
       return thunkAPI.rejectWithValue(e.message);
@@ -26,10 +26,10 @@ export const getMonthlyWater = createAsyncThunk(
 );
 
 export const addWater = createAsyncThunk(
-  "user/addWater",
+  "water/addWater",
   async (waterData, thunkAPI) => {
     try {
-      const response = await axiosInstance.post("user/add-water", waterData);
+      const response = await axiosInstance.post("water/add", waterData);
       return response.data.data;
     } catch (e) {
       return thunkAPI.rejectWithValue(e.message);
@@ -38,11 +38,11 @@ export const addWater = createAsyncThunk(
 );
 
 export const updateWater = createAsyncThunk(
-  "user/updateWater",
+  "water/updateWater",
   async ({ id, waterData }, thunkAPI) => {
     try {
       const response = await axiosInstance.patch(
-        `user/update-water/${id}`,
+        `water/update/${id}`,
         waterData
       );
       return response.data.data;
@@ -53,10 +53,10 @@ export const updateWater = createAsyncThunk(
 );
 
 export const deleteWater = createAsyncThunk(
-  "user/deleteWater",
+  "water/deleteWater",
   async (id, thunkAPI) => {
     try {
-      const response = await axiosInstance.delete(`user/delete-water/${id}`);
+      const response = await axiosInstance.delete(`water/delete${id}`);
       return response.data.data;
     } catch (e) {
       return thunkAPI.rejectWithValue(e.message);
@@ -69,11 +69,10 @@ export const setDailyNorma = createAsyncThunk(
   async (dailyNormaValue, thunkAPI) => {
     try {
       const response = await axiosInstance.post(
-        "user/daily-norma",
+        "users/daily-norma",
         dailyNormaValue
       );
       return response.data.data;
-
     } catch (e) {
       return thunkAPI.rejectWithValue(e.message);
     }
