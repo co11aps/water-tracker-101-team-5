@@ -1,140 +1,149 @@
 .modalBackdrop {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100vw;
-    height: 100vh;
-    background-color: rgba(0, 0, 0, 0.5); 
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    z-index: 999; 
-  }
-  
-  
-  .modal {
-    position: relative;
-    width: 1008px;
-    max-height: 80vh; 
-    background-color: white;
-    border-radius: 10px;
-    padding: 32px 24px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-    z-index: 1000; 
-    overflow-y: auto; 
-    display: flex;
-    flex-direction: column;
-  }
-  
-  
-  .modalHeader {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    margin-bottom: 16px;
-  }
-  
-  .modalHeader h2 {
-    margin: 0;
-    font-size: 24px;
-    font-weight: bold;
-  }
-  
-  
-  .formGroup {
-    margin-bottom: 16px;
-  }
-  
-  .formGroup label {
-    display: block;
-    margin-bottom: 8px; 
-  }
-  
-  .input {
-background-color: #ffffff;
-color: black;
-    width: 30%;
-    padding: 8px;
-    border-radius: 4px;
-    border: 1px solid #ccc;
-  }
-  
-  .formGroup input[type="radio"] {
-    margin-right: 8px;
-  }
-  
-  .formGroup button {
-    margin-top: 8px;
-  }
-  
-  .formGroupOther {
-   display: flex;
-   flex-direction: column;
-  }
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background-color: rgba(0, 0, 0, 0.5);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 999;
+}
 
-  .photoUploadContainer {
-    display: flex;
-    align-items: center;
-    gap: 10px; 
-  }
+.modal {
+  position: relative;
+  width: 1008px;
+  max-height: 80vh;
+  background-color: white;
+  border-radius: 10px;
+  padding: 32px 24px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  z-index: 1000;
+  overflow-y: auto;
+  display: flex;
+  flex-direction: column;
+}
 
-  .gender {
-    display: flex;
-    gap: 30px; 
-    padding-bottom: 52px;
-  }
+.modalHeader {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 16px;
+}
 
-  .inputGroup {
-    display: grid;
-    grid-template-columns: 1fr 1fr; 
- 
-  }
-  
-  .input1,
-  .input2 {
-    display: flex;
-    flex-direction: column;
-  }
+.modalHeader h2 {
+  margin: 0;
+  font-size: 24px;
+  font-weight: bold;
+}
 
-  .input {
-    border: 1px solid #9EBBFF; 
-    border-radius: 4px;
-    background-color: #ffffff; 
-    width: 400px; 
-    padding: 10px;
-    border: 1px solid #9EBBFF;
-    border-radius: 4px;
-  }
+.formGroup {
+  margin-bottom: 16px;
+}
 
-  .label {
-    font-size: 20px;
-    font-weight: 500;
-  }
+.formGroup label {
+  display: block;
+  margin-bottom: 8px;
+}
 
-  .saveBtn {
-    border: none;
-    background-color: #407BFF;
-    border-radius: 10px;
-    width: 160px;
-    height: 44px;
-    color: #ffffff;
-  }
+.input {
+  background-color: #ffffff;
+  color: black;
+  width: 30%;
+  padding: 8px;
+  border-radius: 4px;
+  border: 1px solid #ccc;
+}
 
-  .contBtn{
-    justify-content: end;
-    display: flex;
-  }
+.formGroup input[type="radio"] {
+  margin-right: 8px;
+}
 
-  .uploadButton {
-width: 123px;
-height: 18px;
-color: #407BFF;
-font-weight: 500;
-align-items: center;
-margin: 7px;
-  }
+.formGroup button {
+  margin-top: 8px;
+}
 
-  .uploadBtnGroup {
-display: flex;
-align-items: center;
-  }
+.formGroupOther {
+  display: flex;
+  flex-direction: column;
+}
+
+.photoUploadContainer {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.gender {
+  display: flex;
+  gap: 30px;
+  padding-bottom: 52px;
+}
+
+.inputGroup {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+}
+
+.input1,
+.input2 {
+  display: flex;
+  flex-direction: column;
+}
+
+.input {
+  border: 1px solid #9ebbff;
+  border-radius: 4px;
+  background-color: #ffffff;
+  width: 400px;
+  padding: 10px;
+  border: 1px solid #9ebbff;
+  border-radius: 4px;
+}
+
+.label {
+  font-size: 20px;
+  font-weight: 500;
+}
+
+.saveBtn {
+  border: none;
+  background-color: #407bff;
+  border-radius: 10px;
+  width: 160px;
+  height: 44px;
+  color: #ffffff;
+}
+
+.contBtn {
+  justify-content: end;
+  display: flex;
+}
+
+.uploadButton {
+  width: 123px;
+  height: 18px;
+  color: #407bff;
+  font-weight: 500;
+  align-items: center;
+  margin: 7px;
+}
+
+.uploadBtnGroup {
+  display: flex;
+  align-items: center;
+}
+.formGroup input {
+  position: relative;
+}
+/* .buttonSvg {
+  position: absolute;
+  top: 12px;
+  right: 0;
+} */
+.passwordIcon {
+  position: absolute;
+  top: 0;
+  right: 0;
+}

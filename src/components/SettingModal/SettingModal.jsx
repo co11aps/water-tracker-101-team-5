@@ -144,20 +144,24 @@ const SettingModal = ({ isOpen, onClose, onUpdate }) => {
 
   return (
     <BaseModal isShow={isOpen} onClose={onClose} title="Settings">
-      <div className="modal-content">
-        <form onSubmit={handleSubmit(onSubmit)}>
-          <label>Your photo</label>
-          <div className="form-group">
-            <input
-              type="file"
-              {...register("photo")}
-              onChange={handleAvatarChange}
-            />
-            {errors.avatar && <p>{errors.avatar.message}</p>}
-            {preview && <img src={preview} alt="Avatar Preview" />}
-            <button type="button">Upload a photo</button>
-          </div>
-
+      <div className={css.modal}>
+        <div className={css.modal.content}>
+          <form onSubmit={handleSubmit(onSubmit)}>
+            <label>Your photo</label>
+            <div className={css.formGroup}>
+              <div className={css.photoUploadContainer}>
+                <input
+                  type="file"
+                  {...register("photo")}
+                  onChange={handleAvatarChange}
+                />
+                {errors.avatar && <p>{errors.avatar.message}</p>}
+                {preview && <img src={preview} alt="Avatar Preview" />}
+                <button type="button" className={css.uploadButton}>
+                  Upload a photo
+                </button>
+              </div>
+            </div>
             <div className={css.inputGroup}>
               <div className={css.input1}>
                 <div className={css.formGroup}>
@@ -213,6 +217,7 @@ const SettingModal = ({ isOpen, onClose, onUpdate }) => {
                     placeholder="Password"
                   />
                   <button
+                    className={css.buttonSvg}
                     type="button"
                     onClick={() =>
                       setshowOutdatedPassword(!showOutdatedPassword)
@@ -220,7 +225,9 @@ const SettingModal = ({ isOpen, onClose, onUpdate }) => {
                   >
                     <Icon
                       id={showOutdatedPassword ? "eye" : "slash"}
-                      className=""
+                      className={css.passwordIcon}
+                      width={16}
+                      height={16}
                     />
                   </button>
                   {errors.outdatedPassword && (
@@ -239,7 +246,12 @@ const SettingModal = ({ isOpen, onClose, onUpdate }) => {
                     type="button"
                     onClick={() => setShowNewPassword(!showNewPassword)}
                   >
-                    <Icon id={showNewPassword ? "eye" : "slash"} className="" />
+                    <Icon
+                      id={showNewPassword ? "eye" : "slash"}
+                      className={css.passwordIcon}
+                      width={16}
+                      height={16}
+                    />
                   </button>
                   {errors.newPassword && <p>{errors.newPassword.message}</p>}
                 </div>
@@ -259,7 +271,9 @@ const SettingModal = ({ isOpen, onClose, onUpdate }) => {
                   >
                     <Icon
                       id={showConfirmNewPassword ? "eye" : "slash"}
-                      className=""
+                      className={css.passwordIcon}
+                      width={16}
+                      height={16}
                     />
                   </button>
                   {errors.confirmNewPassword && (
