@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { deleteWater } from "../../redux/water/operations";
-import { selectDailyWaterIntakes } from "../../redux/water/selectors";
+import { selectDailyWater } from "../../redux/water/selectors";
 import css from "./TodayWaterList.module.css";
 import AddWaterBtn from "../AddWaterBtn/AddWaterBtn";
 import TodayListModal from "../TodayListModal/TodayListModal";
@@ -9,10 +9,11 @@ import Icon from "../Icon/Icon";
 
 export default function TodayWaterList() {
   const dispatch = useDispatch();
-  // const { waterIntakes } = useSelector(selectDailyWater);
-  const waterList = useSelector(selectDailyWaterIntakes);
+  const { waterIntakes } = useSelector(selectDailyWater); //waterIntakes - вкладений масив
+  const flatWaterIntakes = waterIntakes.flat(); //тому робимо розгортання масиву
+
   const [editItem, setEditItem] = useState(null); // Стан для редагування
-  console.log(waterList);
+
   const handleDelete = (id) => {
     dispatch(deleteWater(id)); // Видаляємо запис по id
   };
@@ -24,16 +25,16 @@ export default function TodayWaterList() {
   const closeModal = () => {
     setEditItem(null); // Закриваємо модальне вікно
   };
-  // передивитись операції
+
   return (
     <div className={css.waterList}>
       <h2>Today</h2>
-      {waterList.length === 0 ? (
+      {flatWaterIntakes.length === 0 ? (
         <p>No notes yet!</p>
       ) : (
         <ul>
-          {waterList.map((item) => (
-            <li key={item.id} className={css.listItem}>
+          {flatWaterIntakes.map((item) => (
+            <li key={item._id} className={css.listItem}>
               <span>{item.amount} ml</span>
               <span>{item.time}</span>
               <button
@@ -53,7 +54,7 @@ export default function TodayWaterList() {
               </button> */}
               <button
                 className={css.deleteButton}
-                onClick={() => handleDelete(item.id)}
+                onClick={() => handleDelete(item._id)}
               >
                 <Icon
                   id="trash"
@@ -63,7 +64,7 @@ export default function TodayWaterList() {
                   className={css.iconDeliteButton}
                 />
               </button>
-              {/* <button onClick={() => handleDelete(item.id)}>🗑️</button> */}
+              {/* <button onClick={() => handleDelete(item._id)}>🗑️</button> */}
             </li>
           ))}
         </ul>
