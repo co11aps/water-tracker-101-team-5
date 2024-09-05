@@ -16,7 +16,7 @@
 }
 
 .bottleBg {
-  background-image: url(../../images/background/tablet/icon-light-bottle-signin.svg);
+  background-image: url(../../images/background/mobile/icon-light-bottle-signin.svg);
   order: 2;
   background-size: contain;
   background-repeat: no-repeat;
