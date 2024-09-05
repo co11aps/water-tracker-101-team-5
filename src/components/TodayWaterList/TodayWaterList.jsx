@@ -1,3 +1,85 @@
+import { useState } from "react";
+import { useDispatch, useSelector } from "react-redux";
+import { deleteWater } from "../../redux/water/operations";
+import { selectDailyWaterIntakes } from "../../redux/water/selectors";
+import css from "./TodayWaterList.module.css";
+import AddWaterBtn from "../AddWaterBtn/AddWaterBtn";
+import TodayListModal from "../TodayListModal/TodayListModal";
+import Icon from "../Icon/Icon";
+
+export default function TodayWaterList() {
+  const dispatch = useDispatch();
+  // const { waterIntakes } = useSelector(selectDailyWater);
+  const waterList = useSelector(selectDailyWaterIntakes);
+  const [editItem, setEditItem] = useState(null); // Стан для редагування
+  console.log(waterList);
+  const handleDelete = (id) => {
+    dispatch(deleteWater(id)); // Видаляємо запис по id
+  };
+
+  const handleEdit = (item) => {
+    setEditItem(item); // Встановлюємо елемент для редагування
+  };
+
+  const closeModal = () => {
+    setEditItem(null); // Закриваємо модальне вікно
+  };
+  // передивитись операції
+  return (
+    <div className={css.waterList}>
+      <h2>Today</h2>
+      {waterList.length === 0 ? (
+        <p>No notes yet!</p>
+      ) : (
+        <ul>
+          {waterList.map((item) => (
+            <li key={item.id} className={css.listItem}>
+              <span>{item.amount} ml</span>
+              <span>{item.time}</span>
+              <button
+                className={css.editButton}
+                onClick={() => handleEdit(item)}
+              >
+                <Icon
+                  id="pensil"
+                  width={16}
+                  height={16}
+                  aria-hidden="false"
+                  className={css.iconEditButton}
+                />
+              </button>
+              {/* <button className={css.editBtn} onClick={() => handleEdit(item)}>
+                ✏️
+              </button> */}
+              <button
+                className={css.deleteButton}
+                onClick={() => handleDelete(item.id)}
+              >
+                <Icon
+                  id="trash"
+                  width={16}
+                  height={16}
+                  aria-hidden="false"
+                  className={css.iconDeliteButton}
+                />
+              </button>
+              {/* <button onClick={() => handleDelete(item.id)}>🗑️</button> */}
+            </li>
+          ))}
+        </ul>
+      )}
+      <AddWaterBtn />
+      {editItem && (
+        <TodayListModal
+          isShow={!!editItem}
+          onClose={closeModal}
+          item={editItem} // Передаємо запис для редагування
+        />
+      )}
+    </div>
+  );
+}
+
 // import { useSelector, useDispatch } from "react-redux";
 // import { closeModal, openModal } from "../../redux/reduxToday/modalSlice";
 // import {
