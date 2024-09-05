@@ -1,0 +1,90 @@
+.modalOverlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.5);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.modal {
+  background-color: white;
+  padding: 20px;
+  border-radius: 8px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  width: 300px;
+  max-width: 90%;
+  position: relative;
+}
+
+.closeButton {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  background: none;
+  border: none;
+  font-size: 20px;
+  cursor: pointer;
+}
+
+.title {
+  margin-bottom: 20px;
+  font-size: 18px;
+  text-align: center;
+}
+
+.inputGroup {
+  margin-bottom: 15px;
+}
+
+.volumeControl {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-top: 10px;
+}
+
+.adjustButton {
+  background-color: #007bff;
+  color: white;
+  border: none;
+  border-radius: 50%;
+  width: 32px;
+  height: 32px;
+  font-size: 18px;
+  line-height: 30px;
+  text-align: center;
+  cursor: pointer;
+  margin: 0 10px;
+}
+
+.volumeDisplay {
+  font-size: 18px;
+}
+
+.timeInput,
+.numberInput {
+  width: 100%;
+  padding: 8px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  font-size: 16px;
+}
+
+.saveButton {
+  background-color: #007bff;
+  color: white;
+  border: none;
+  border-radius: 4px;
+  padding: 10px;
+  width: 100%;
+  font-size: 16px;
+  cursor: pointer;
+}
+
+.saveButton:hover {
+  background-color: #0056b3;
+}

@@ -1,4 +1,5 @@
 import "./Icon.css";
+import icons from "../../images/icons/icons.svg";
 
 const Icon = ({ id, width, height, className = "" }) => {
   return (
@@ -8,7 +9,7 @@ const Icon = ({ id, width, height, className = "" }) => {
       height={height}
       aria-hidden="true"
     >
-      <use href={`/src/images/icons/icons.svg#icon-${id}`}></use>
+      <use href={`${icons}#icon-${id}`}></use>
     </svg>
   );
 };

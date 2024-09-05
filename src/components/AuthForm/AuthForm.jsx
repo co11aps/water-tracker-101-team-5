@@ -77,7 +77,12 @@ const AuthForm = ({ isSignup }) => {
           <Form>
             <div className={css.formGroup}>
               <label htmlFor="email">Enter your email</label>
-              <Field type="email" name="email" id="email" placeholder="E-mail" />
+              <Field
+                type="email"
+                name="email"
+                id="email"
+                placeholder="E-mail"
+              />
               <ErrorMessage
                 name="email"
                 component="div"
@@ -129,7 +134,7 @@ const AuthForm = ({ isSignup }) => {
                       id={showConfirmPassword ? "eye" : "eye-slash"}
                       width={24}
                       height={24}
-                      className={css.icon}
+                      className="icon-blue"
                     />
                   </span>
                 </div>

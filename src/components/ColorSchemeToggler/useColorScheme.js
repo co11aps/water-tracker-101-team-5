@@ -9,7 +9,10 @@ export function useColorScheme() {
     undefined
   );
 
-  const [isDark, setIsDark] = useState();
+  const [isDark, setIsDark] = useState(() => {
+    const savedPreference = localStorage.getItem("color-scheme");
+    return savedPreference !== null ? JSON.parse(savedPreference) : undefined;
+  });
 
   const value = useMemo(
     () => (isDark === undefined ? !!systemPrefersDark : isDark),
@@ -22,6 +25,7 @@ export function useColorScheme() {
     } else {
       document.body.classList.remove("dark");
     }
+    localStorage.setItem("color-scheme", JSON.stringify(value));
   }, [value]);
 
   return {
