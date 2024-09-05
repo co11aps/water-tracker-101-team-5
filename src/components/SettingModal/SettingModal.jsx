@@ -125,25 +125,6 @@ const SettingModal = ({ isOpen, onClose, onUpdate }) => {
         console.log("User updating error", err);
       });
   };
-  // const handleBackdropClick = (e) => {
-  //   if (e.target === e.currentTarget) {
-  //     onClose();
-  //   }
-  // };
-
-  //   useEffect(() => {
-  //     const handleEscape = (e) => {
-  //       if (e.key === "Escape") {
-  //         onClose();
-  //       }
-  //     };
-  //     document.addEventListener("keydown", handleEscape);
-  //     return () => {
-  //       document.removeEventListener("keydown", handleEscape);
-  //     };
-  //   }, [onClose]);
-
-  //   if (!isOpen) return null;
 
   return (
     <BaseModal isShow={isOpen} onClose={onClose} title="Settings">
@@ -151,7 +132,7 @@ const SettingModal = ({ isOpen, onClose, onUpdate }) => {
         <div className={css.modal.content}>
           <form onSubmit={handleSubmit(onSubmit)}>
             <div className={css.formGroup}>
-              <label>Your photo</label>
+              <label className={css.label}>Your photo</label>
               <div className={css.photoUploadContainer}>
                 <input
                   type="file"
