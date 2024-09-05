@@ -28,6 +28,7 @@
 }
 
 .progressBarCompleted {
+  min-width: 14px; /*marker width*/
   height: 8px;
   border-radius: 10px;
   background: var(--secondary-color-4);
