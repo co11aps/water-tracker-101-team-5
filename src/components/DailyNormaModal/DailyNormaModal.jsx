@@ -1,13 +1,16 @@
 import { useState, useEffect } from "react";
+import { useDispatch } from "react-redux";
 import { BaseModal } from "../BaseModal/BaseModal.jsx";
 import css from "./DailyNormaModal.module.css";
+import { updateDailyNorma } from "../../redux/auth/operations.js";
 
-const DailyNormaModal = ({ onClose, isShow, onSave }) => {
-  const [gender, setGender] = useState("");
+const DailyNormaModal = ({ onClose, isShow }) => {
+  const [gender, setGender] = useState("female");
   const [weight, setWeight] = useState("");
   const [activityTime, setActivityTime] = useState("");
   const [dailyNorm, setDailyNorm] = useState(0.0);
   const [waterToDrink, setWaterToDrink] = useState("");
+  const dispatch = useDispatch();
 
   useEffect(() => {
     const m = parseFloat(weight);
@@ -51,7 +54,8 @@ const DailyNormaModal = ({ onClose, isShow, onSave }) => {
     }
   };
 
-  const handleSave = () => {
+  const handleSave = async (e) => {
+    e.preventDefault();
     if (!gender) {
       alert("Please select your gender.");
       return;
@@ -78,10 +82,13 @@ const DailyNormaModal = ({ onClose, isShow, onSave }) => {
       date: new Date().toISOString(),
     };
 
-    // Call the onSave prop function to handle saving (send to backend)
-    onSave(data);
-
-    onClose();
+    try {
+      await dispatch(updateDailyNorma(data));
+      onClose();
+    } catch (error) {
+      console.error("Error saving daily norma:", error);
+      alert("Failed to save daily norma. Please try again.");
+    }
   };
 
   return (
@@ -106,7 +113,7 @@ const DailyNormaModal = ({ onClose, isShow, onSave }) => {
           </div>
         </div>
         <div>
-          <div className={css.Form}>
+          <form className={css.Form} onSubmit={handleSave}>
             <div className={css.FormRadio}>
               <p className={css.TitleModal}>Calculate your rate:</p>
               <label>
@@ -174,10 +181,10 @@ const DailyNormaModal = ({ onClose, isShow, onSave }) => {
                 onChange={handleWaterToDrinkChange}
               />
             </div>
-            <button className={css.ButtonSave} onClick={handleSave}>
+            <button type="submit" className={css.Button} onClick={handleSave}>
               Save
             </button>
-          </div>
+          </form>
         </div>
       </div>
     </BaseModal>
