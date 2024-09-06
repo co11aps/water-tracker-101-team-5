@@ -1,21 +1,8 @@
-/* .modalBackdrop {
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100vw;
-  height: 100vh;
-  background-color: rgba(0, 0, 0, 0.5);
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  z-index: 999;
-} */
-
 .modal {
   position: relative;
   width: 280px;
   max-height: 80vh;
-  background-color: white;
+  background-color: var(--primary-color-white);
   border-radius: 10px;
   padding-bottom: 32px;
   padding-left: 12px;
@@ -23,8 +10,6 @@
 
   z-index: 1000;
   overflow-y: auto;
-  /* display: flex;
-  flex-direction: column; */
 }
 
 @media screen and (min-width: 768px) {
@@ -154,7 +139,7 @@
 
 .saveBtn {
   border: none;
-  background-color: #407bff;
+  background-color: var(--primary-color-blue);
   border-radius: 10px;
   width: 256px;
   height: 44px;
@@ -182,7 +167,7 @@
 .uploadButton {
   width: 134px;
   height: 18px;
-  color: #407bff;
+  color: var(--primary-color-blue);
   font-size: 14px;
   line-height: 1.3;
   font-weight: 500;
