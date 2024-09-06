@@ -38,17 +38,32 @@ const UserLogoModal = ({ toggleModal }) => {
   }, [closeAllModals]);
 
   return (
-    <div className={css.modal} onClick={closeAllModals}>
+    <>
       {!isSettingModalOpen && !isLogoutModalOpen && (
-        <div className={css.modalContent} onClick={(e) => e.stopPropagation()}>
-          <button onClick={openSettingModal} className={css.button}>
-            <Icon id="cogwheel" width={24} height={24} className="icon-blue" />
-            <span className={css.buttonText}>Settings</span>
-          </button>
-          <button onClick={openLogoutModal} className={css.button}>
-            <Icon id="arrow-up" width={24} height={24} className="icon-blue" />
-            <span className={css.buttonText}>Log out</span>
-          </button>
+        <div className={css.modal} onClick={closeAllModals}>
+          <div
+            className={css.modalContent}
+            onClick={(e) => e.stopPropagation()}
+          >
+            <button onClick={openSettingModal} className={css.button}>
+              <Icon
+                id="cogwheel"
+                width={24}
+                height={24}
+                className="icon-blue"
+              />
+              <span className={css.buttonText}>Settings</span>
+            </button>
+            <button onClick={openLogoutModal} className={css.button}>
+              <Icon
+                id="arrow-up"
+                width={24}
+                height={24}
+                className="icon-blue"
+              />
+              <span className={css.buttonText}>Log out</span>
+            </button>
+          </div>
         </div>
       )}
       {isSettingModalOpen && (
@@ -70,7 +85,7 @@ const UserLogoModal = ({ toggleModal }) => {
           toggleModal={closeAllModals}
         />
       )}
-    </div>
+    </>
   );
 };
 
