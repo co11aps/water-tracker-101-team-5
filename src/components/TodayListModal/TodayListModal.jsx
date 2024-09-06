@@ -11,7 +11,7 @@ export default function TodayListModal({ isShow, onClose, item }) {
 
   const handleSave = () => {
     if (item) {
-      dispatch(updateWater({ id: item.id, waterData: { amount, time } }));
+      dispatch(updateWater({ id: item._id, waterData: { amount, time } }));
     } else {
       dispatch(addWater({ amount, time }));
     }
