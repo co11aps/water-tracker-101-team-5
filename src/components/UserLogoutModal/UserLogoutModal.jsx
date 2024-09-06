@@ -1,23 +1,13 @@
-import { useEffect } from "react";
+// import { useEffect } from "react";
 import { useDispatch } from "react-redux";
 import css from "./UserLogoutModal.module.css";
 import { logOut } from "../../redux/auth/operations";
 import { useNavigate } from "react-router-dom";
+import { BaseModal } from "../BaseModal/BaseModal.jsx";
 
-const UserLogoutModal = ({ toggleModal }) => {
+const UserLogoutModal = ({ toggleModal, onClose, isShow }) => {
   const dispatch = useDispatch();
   const navigate = useNavigate();
-
-  useEffect(() => {
-    const handleEscape = (e) => {
-      if (e.key === "Escape") {
-        toggleModal();
-      }
-    };
-
-    document.addEventListener("keydown", handleEscape);
-    return () => document.removeEventListener("keydown", handleEscape);
-  }, [toggleModal]);
 
   const handleLogout = async () => {
     dispatch(logOut())
@@ -36,12 +26,10 @@ const UserLogoutModal = ({ toggleModal }) => {
   };
 
   return (
-    <div className={css.backdrop} onClick={toggleModal}>
-      <div className={css.modal} onClick={(e) => e.stopPropagation()}>
-        <button className={css.closeButton} onClick={toggleModal}></button>
-        <h2 className={css.title}>Log out</h2>
-        <p className={css.text}>Do you really want to leave?</p>
-        <div className={css.buttonGroup}>
+    <BaseModal onClose={onClose} isShow={isShow} title="Log out">
+      <div className={css.modalContent} onClick={(e) => e.stopPropagation()}>
+        <p className={css.textModalContent}>Do you really want to leave?</p>
+        <div className={css.btnGroup}>
           <button onClick={toggleModal} className={css.cancelButton}>
             Cancel
           </button>
@@ -50,7 +38,7 @@ const UserLogoutModal = ({ toggleModal }) => {
           </button>
         </div>
       </div>
-    </div>
+    </BaseModal>
   );
 };
 

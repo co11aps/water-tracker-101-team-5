@@ -28,7 +28,15 @@ function App() {
   return (
     <Layout>
       {isRefreshing ? (
-        <Loader />
+        <>
+          <p className="loader-message">
+            Due to the fact that we use free versions of the services, the page
+            may take some time to be loaded.
+            <br />
+            Thank you for your patience...
+          </p>
+          <Loader />
+        </>
       ) : (
         <Suspense fallback={<Loader />}>
           <Routes>
@@ -41,6 +49,7 @@ function App() {
                 </RestrictedRoute>
               }
             />
+
             <Route
               path="/signin"
               element={
@@ -49,6 +58,7 @@ function App() {
                 </RestrictedRoute>
               }
             />
+
             <Route
               path="/signup"
               element={
@@ -66,6 +76,7 @@ function App() {
                 </PrivateRoute>
               }
             />
+            <Route path="*" element={<SigninPage />} />
           </Routes>
         </Suspense>
       )}

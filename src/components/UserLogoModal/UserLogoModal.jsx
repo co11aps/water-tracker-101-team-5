@@ -77,7 +77,6 @@ const UserLogoModal = ({ toggleModal }) => {
       )}
       {isSettingModalOpen && (
         <SettingModal
-          isOpen={isSettingModalOpen}
           onClose={() => {
             setIsSettingModalOpen(false);
             closeAllModals();
@@ -92,6 +91,8 @@ const UserLogoModal = ({ toggleModal }) => {
             setIsLogoutModalOpen(false);
             closeAllModals();
           }}
+          isShow={isLogoutModalOpen}
+          toggleModal={closeAllModals}
         />
       )}
     </>

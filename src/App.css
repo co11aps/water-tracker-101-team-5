@@ -1,0 +1,5 @@
+.loader-message {
+    color: var(--primary-color-blue);
+    text-align: center;
+    z-index: 1002;
+}
