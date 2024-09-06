@@ -1,4 +1,4 @@
-import { useEffect } from "react";
+// import { useEffect } from "react";
 import { useDispatch } from "react-redux";
 import css from "./UserLogoutModal.module.css";
 import { logOut } from "../../redux/auth/operations";
@@ -8,17 +8,6 @@ import { BaseModal } from "../BaseModal/BaseModal.jsx";
 const UserLogoutModal = ({ toggleModal, onClose, isShow }) => {
   const dispatch = useDispatch();
   const navigate = useNavigate();
-
-  useEffect(() => {
-    const handleEscape = (e) => {
-      if (e.key === "Escape") {
-        toggleModal();
-      }
-    };
-
-    document.addEventListener("keydown", handleEscape);
-    return () => document.removeEventListener("keydown", handleEscape);
-  }, [toggleModal]);
 
   const handleLogout = async () => {
     dispatch(logOut())

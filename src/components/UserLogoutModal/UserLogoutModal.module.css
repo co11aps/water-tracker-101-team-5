@@ -25,6 +25,7 @@
   height: 36px;
   border-radius: 10px;
   background-color: var(--secondary-color-5);
+  color: var(--primary-color-blue);
   font-size: 18px;
   font-weight: 400;
   border: none;
