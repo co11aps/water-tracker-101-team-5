@@ -36,9 +36,10 @@
 
 .editButton:hover,
 .editButton:focus {
-  all: unset;
-  color: #8baeff;
-  text-decoration: underline;
+
+  color: var(--secondary-color-5-orange);
+   cursor: pointer;
+  
 }
 
 @media screen and (min-width: 768px) {
