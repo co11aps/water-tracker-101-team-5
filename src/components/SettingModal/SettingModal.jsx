@@ -143,7 +143,7 @@ const SettingModal = ({ isOpen, onClose, onUpdate }) => {
 
   return (
     <div className={css.modalBackdrop} onClick={onClose}>
-      <div className={css.modal}>
+      <div className={css.modal} onClick={(e) => e.stopPropagation()}>
         <h2>Setting</h2>
 
         <button type="button" onClick={onClose}>
@@ -163,10 +163,15 @@ const SettingModal = ({ isOpen, onClose, onUpdate }) => {
                 {errors.avatar && <p>{errors.avatar.message}</p>}
                 {preview && <img src={preview} alt="Avatar Preview" />}
                 <div className={css.uploadBtnGroup}>
-                <Icon id="arrow-up" width={16} height={16} className="icon-blue" />
-                <button type="button" className={css.uploadButton}>
-                  Upload a photo
-                </button>
+                  <Icon
+                    id="arrow-up"
+                    width={16}
+                    height={16}
+                    className="icon-blue"
+                  />
+                  <button type="button" className={css.uploadButton}>
+                    Upload a photo
+                  </button>
                 </div>
               </div>
             </div>
