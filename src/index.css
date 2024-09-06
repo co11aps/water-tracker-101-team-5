@@ -1,4 +1,4 @@
-@import url('./fonts/fonts.css');
+@import url("./fonts/fonts.css");
 
 :root {
   font-family: "Roboto", sans-serif;
@@ -11,7 +11,6 @@
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
-
 
 /* Reset styles */
 h1,
@@ -53,38 +52,40 @@ button {
 
 /* colour variables */
 body {
-  --primary-color-white: #FFFFFF;
-  --primary-color-black: #2F2F2F;
-  --primary-color-blue: #407BFF;
+  --primary-color-white: #ffffff;
+  --primary-color-black: #2f2f2f;
+  --primary-color-blue: #407bff;
 
-  --secondary-color-2: #ECF2FF;
-  --secondary-color-3: #EF5050;
-  --secondary-color-4: #9EBBFF;
-  --secondary-color-5-orange: #FF9D43;
-  --secondary-color-5: #D7E3FF;
+  --secondary-color-2: #ecf2ff;
+  --secondary-color-3: #ef5050;
+  --secondary-color-4: #9ebbff;
+  --secondary-color-5-orange: #ff9d43;
+  --secondary-color-5: #d7e3ff;
 
-  --fill-color-blue: #C6D7FF;
-  --fill-color-white: #F5F5F5;
+  --fill-color-blue: #c6d7ff;
+  --fill-color-white: #f5f5f5;
 
   --box-shadow: 0 4px 8px 0 rgba(64, 123, 255, 0.2);
+  --box-shadow-2: 0px 4px 14px 0px rgba(64, 123, 255, 0.3);
+  --box-shadow-3: 0px 4px 14px 0px rgba(64, 123, 255, 0.54);
 
-  transition: color .25s ease-in-out;
-  transition: background-color .25s ease-in-out;
+  transition: color 0.25s ease-in-out;
+  transition: background-color 0.25s ease-in-out;
 }
 
 body.dark {
-  --primary-color-white: #1C1D26;
-  --primary-color-black: #D5DFF5;
-  --primary-color-blue: #5082F2;
+  --primary-color-white: #1c1d26;
+  --primary-color-black: #d5dff5;
+  --primary-color-blue: #5082f2;
 
-  --secondary-color-2: #1F2438;
-  --secondary-color-3: #F16161;
-  --secondary-color-4: #2F3875;
-  --secondary-color-5-orange: #FFA756;
-  --secondary-color-5: #2A3052;
+  --secondary-color-2: #1f2438;
+  --secondary-color-3: #f16161;
+  --secondary-color-4: #2f3875;
+  --secondary-color-5-orange: #ffa756;
+  --secondary-color-5: #2a3052;
 
-  --fill-color-blue: #272E59;
-  --fill-color-white: #1B1B21;
+  --fill-color-blue: #272e59;
+  --fill-color-white: #1b1b21;
 }
 
 /* common styles */
@@ -105,10 +106,7 @@ body {
   width: 320px;
 }
 
-
-
 @media (prefers-color-scheme: dark) {
-
   /* body {
     --primary-color-white: #1C1D26;
     --primary-color-black: #D5DFF5;
@@ -125,12 +123,10 @@ body {
   } */
 }
 
-
 @media screen and (min-width: 768px) {
   body {
     width: 768px;
   }
-
 }
 
 @media screen and (min-width: 1440px) {
