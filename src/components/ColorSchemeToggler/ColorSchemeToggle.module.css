@@ -1,0 +1,33 @@
+.toggleButton {
+  display: block;
+  padding: 4px 4px;
+  border: none;
+  border-radius: 10px;
+  background: var(--primary-color-blue);
+  box-shadow: var(--box-shadow);
+  width: 100px;
+  height: 36px;
+  max-width: 100%;
+  box-sizing: border-box;
+  /* flex-shrink: 0; */
+}
+
+.toggleButton:hover {
+  background: var(--primary-color-blue);
+  box-shadow: 0px 4px 14px 0px rgba(64, 123, 255, 0.54);
+}
+
+.toggleButton:focus {
+  background: var(--primary-color-blue);
+  box-shadow: none;
+}
+
+.iconMoon {
+  color: #ffa500;
+  flex-shrink: 0;
+}
+
+.iconSun {
+  color: #ffff00;
+  flex-shrink: 0;
+}
