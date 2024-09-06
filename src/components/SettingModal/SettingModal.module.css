@@ -1,140 +1,228 @@
-.modalBackdrop {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100vw;
-    height: 100vh;
-    background-color: rgba(0, 0, 0, 0.5); 
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    z-index: 999; 
-  }
-  
-  
+.modal {
+  position: relative;
+  width: 280px;
+  max-height: 80vh;
+  background-color: var(--primary-color-white);
+  border-radius: 10px;
+  padding-bottom: 32px;
+  padding-left: 12px;
+  padding-right: 12px;
+
+  z-index: 1000;
+  overflow-y: auto;
+}
+
+@media screen and (min-width: 768px) {
   .modal {
-    position: relative;
-    width: 1008px;
-    max-height: 80vh; 
-    background-color: white;
-    border-radius: 10px;
-    padding: 32px 24px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-    z-index: 1000; 
-    overflow-y: auto; 
+    padding-left: 24px;
+    padding-right: 24px;
     display: flex;
     flex-direction: column;
+    width: 704px;
+    max-height: 80vh;
   }
-  
-  
-  .modalHeader {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    margin-bottom: 16px;
-  }
-  
-  .modalHeader h2 {
-    margin: 0;
-    font-size: 24px;
-    font-weight: bold;
-  }
-  
-  
-  .formGroup {
-    margin-bottom: 16px;
-  }
-  
-  .formGroup label {
-    display: block;
-    margin-bottom: 8px; 
-  }
-  
-  .input {
-background-color: #ffffff;
-color: black;
-    width: 30%;
-    padding: 8px;
-    border-radius: 4px;
-    border: 1px solid #ccc;
-  }
-  
-  .formGroup input[type="radio"] {
-    margin-right: 8px;
-  }
-  
-  .formGroup button {
-    margin-top: 8px;
-  }
-  
-  .formGroupOther {
-   display: flex;
-   flex-direction: column;
-  }
+}
 
-  .photoUploadContainer {
-    display: flex;
-    align-items: center;
-    gap: 10px; 
+@media screen and (min-width: 1440px) {
+  .modal {
+    width: 1008px;
   }
-
-  .gender {
-    display: flex;
-    gap: 30px; 
-    padding-bottom: 52px;
-  }
-
   .inputGroup {
     display: grid;
-    grid-template-columns: 1fr 1fr; 
- 
+    grid-template-columns: 1fr 1fr;
   }
-  
-  .input1,
-  .input2 {
-    display: flex;
-    flex-direction: column;
-  }
+}
 
+.modalHeader {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 16px;
+}
+
+.modalHeader h2 {
+  margin: 0;
+  font-size: 24px;
+  font-weight: bold;
+}
+
+.formGroup input[type="text"] {
+  margin-bottom: 24px;
+}
+.formGroup input[type="password"] {
+  margin-bottom: 12px;
+}
+.formGroup input[type="password"]:last-child {
+  margin-bottom: 0;
+}
+
+.formGroup label {
+  display: block;
+  margin-bottom: 8px;
+}
+
+.formGroup .formGroup input[type="radio"] {
+  margin-right: 8px;
+}
+
+.formGroup button {
+  margin-top: 8px;
+}
+
+.formGroupOther {
+  display: flex;
+  flex-direction: column;
+}
+
+.photoUploadContainer {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.photoUploadContainer input {
+  width: 80px;
+  height: 80px;
+}
+
+.gender {
+  display: flex;
+  gap: 30px;
+  padding-bottom: 52px;
+  margin-top: 4px;
+}
+
+.input1,
+.input2 {
+  display: flex;
+  flex-direction: column;
+}
+.inputWrap {
+  position: relative;
+  width: 256px;
+}
+.input {
+  border-radius: 4px;
+  background-color: var(--primary-color-white);
+  width: 256px;
+  padding: 10px;
+  border: 1px solid var(--secondary-color-5);
+  border-radius: 4px;
+  color: var(--secondary-color-4);
+}
+@media screen and (min-width: 768px) {
   .input {
-    border: 1px solid #9EBBFF; 
-    border-radius: 4px;
-    background-color: #ffffff; 
-    width: 400px; 
-    padding: 10px;
-    border: 1px solid #9EBBFF;
-    border-radius: 4px;
+    width: 392px;
   }
-
-  .label {
-    font-size: 20px;
-    font-weight: 500;
+  .inputWrap {
+    width: 392px;
   }
+}
+.input:focus {
+  color: var(--primary-color-blue);
+}
 
+.label {
+  font-weight: 500;
+  line-height: 1.1;
+  font-size: 18px;
+}
+
+.gender label {
+  margin-bottom: 0;
+}
+
+.formGroup p {
+  margin-top: 4px;
+  margin-bottom: 8px;
+}
+
+.saveBtn {
+  border: none;
+  background-color: var(--primary-color-blue);
+  border-radius: 10px;
+  width: 256px;
+  height: 44px;
+  color: var(--primary-color-white);
+  box-shadow: 0 4px 8px 0 rgba(64, 123, 255, 0.2);
+  margin-top: 24px;
+}
+.saveBtn:hover {
+  box-shadow: 0 4px 14px 0 rgba(64, 123, 255, 0.2);
+}
+
+@media screen and (min-width: 768px) {
   .saveBtn {
-    border: none;
-    background-color: #407BFF;
-    border-radius: 10px;
     width: 160px;
     height: 44px;
-    color: #ffffff;
+    margin-top: 0;
   }
+}
 
-  .contBtn{
-    justify-content: end;
-    display: flex;
-  }
+.contBtn {
+  justify-content: end;
+  display: flex;
+}
 
-  .uploadButton {
-width: 123px;
-height: 18px;
-color: #407BFF;
-font-weight: 500;
-align-items: center;
-margin: 7px;
-  }
+.uploadButton {
+  width: 134px;
+  height: 18px;
+  color: var(--primary-color-blue);
+  font-size: 14px;
+  line-height: 1.3;
+  font-weight: 500;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  /* margin: 7px; */
+  padding: 0;
+  border: none;
+  background: none;
+}
 
-  .uploadBtnGroup {
-display: flex;
-align-items: center;
-  }
+.uploadBtnGroup {
+  display: flex;
+  align-items: center;
+}
+
+/* my styles */
+
+.formGroup input::placeholder {
+  color: var(--secondary-color-4);
+  font-size: 16px;
+  line-height: 1.25;
+}
+
+.formGroup input:focus::placeholder {
+  color: var(--primary-color-blue);
+}
+
+.formGroup input[type="text"],
+input[type="password"] {
+  padding: 8px 40px 8px 8px;
+}
+
+.buttonSvg {
+  position: absolute;
+  top: 50%;
+  right: 10px;
+  transform: translateY(-50%);
+  top: 12px;
+  background: none;
+  border: none;
+  padding: 0;
+}
+.avatarPreviewWrapper {
+  width: 100px; /* Вказуємо ширину аватара */
+  height: 100px; /* Вказуємо висоту аватара */
+  border-radius: 50%; /* Робимо зображення круглим */
+  overflow: hidden; /* Ховаємо зайве зображення */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.avatar {
+  width: 100%; /* Аватар буде займати всю ширину контейнера */
+  height: 100%; /* Аватар буде займати всю висоту контейнера */
+  object-fit: cover; /* Зображення буде обрізатися під круглу форму */
+}
