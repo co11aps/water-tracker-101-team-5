@@ -27,16 +27,27 @@ export default function TodayWaterList() {
   };
 
   return (
-    <div className={css.waterList}>
-      <h2>Today</h2>
+    <div className={css.wrapper}>
+      <h2 className={css.title}>Today</h2>
+       <div className={css.waterList}>
       {flatWaterIntakes.length === 0 ? (
-        <p>No notes yet!</p>
+        <p className={css.blank}>No notes yet!</p>
       ) : (
-        <ul>
+          <ul> 
           {flatWaterIntakes.map((item) => (
-            <li key={item._id} className={css.listItem}>
-              <span>{item.amount} ml</span>
-              <span>{item.time}</span>
+            <li className={css.listItem} key={item._id} >
+                <li className={css.info}>
+              <Icon
+                id="glass"
+                width={26}
+                height={26}
+                aria-hidden="false"
+                className={css.iconGlass}
+              />
+              <li className={css.todayVolume}>{item.amount} ml</li>
+                <li className={css.todayTime}>{item.time}</li>
+              </li>
+              <li className={css.tools}>
               <button
                 className={css.editButton}
                 onClick={() => handleEdit(item)}
@@ -65,10 +76,12 @@ export default function TodayWaterList() {
                 />
               </button>
               {/* <button onClick={() => handleDelete(item._id)}>🗑️</button> */}
+                </li>
             </li>
           ))}
         </ul>
-      )}
+        )}
+        </div>
       <AddWaterBtn />
       {editItem && (
         <TodayListModal
@@ -158,3 +171,6 @@ export default function TodayWaterList() {
 //     </div>
 //   );
 // }
+
+
+
