@@ -49,6 +49,7 @@ function App() {
                 </RestrictedRoute>
               }
             />
+
             <Route
               path="/signin"
               element={
@@ -57,6 +58,7 @@ function App() {
                 </RestrictedRoute>
               }
             />
+
             <Route
               path="/signup"
               element={
@@ -74,6 +76,7 @@ function App() {
                 </PrivateRoute>
               }
             />
+            <Route path="*" element={<SigninPage />} />
           </Routes>
         </Suspense>
       )}

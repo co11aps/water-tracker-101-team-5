@@ -37,6 +37,9 @@ const authSlice = createSlice({
         state.isRefreshing = false;
         state.isAuthHeaderSet = true;
       })
+      .addCase(register.rejected, (state) => {
+        state.isRefreshing = false;
+      })
       .addCase(logIn.pending, (state) => {
         state.isRefreshing = true;
       })
