@@ -6,13 +6,12 @@ const ColorSchemeToggle = () => {
   const { isDark, setIsDark } = useColorScheme();
 
   const handleToggle = () => {
-    setIsDark(!isDark); // перевертання значення теми
+    setIsDark(!isDark); 
   };
 
   return (
     <button className={css.toggleButton} onClick={handleToggle} aria-label="Toggle dark mode">
-      {isDark ? <FaMoon className={css.iconMoon} size="12" /> : <FaSun className={css.iconSun} size="12" />}
-      {isDark ? " Dark Mode" : " Light Mode"} {/* можна закоментувати, якщо кнопка завелика */}
+      {isDark ? <FaMoon className={css.iconMoon} size="20" /> : <FaSun className={css.iconSun} size="20" />}
     </button>
   );
 };
