@@ -1,33 +1,35 @@
 .toggleButton {
-  display: block;
-  padding: 4px 4px;
+  position: relative;
+  width: 48px;
+  height: 48px;
+  background: transparent;
   border: none;
-  border-radius: 10px;
-  background: var(--primary-color-blue);
-  box-shadow: var(--box-shadow);
-  width: 100px;
-  height: 36px;
-  max-width: 100%;
-  box-sizing: border-box;
-  /* flex-shrink: 0; */
+  cursor: pointer;
+  outline: none;
 }
 
-.toggleButton:hover {
-  background: var(--primary-color-blue);
-  box-shadow: 0px 4px 14px 0px rgba(64, 123, 255, 0.54);
-}
-
-.toggleButton:focus {
-  background: var(--primary-color-blue);
-  box-shadow: none;
+.iconMoon,
+.iconSun {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  font-size: 24px;
+  transition: all 0.3s ease-in-out;
 }
 
 .iconMoon {
-  color: #ffa500;
-  flex-shrink: 0;
+  color: var(--secondary-color-5-orange);
 }
 
 .iconSun {
-  color: #ffff00;
-  flex-shrink: 0;
+  color: var(--secondary-color-5-orange);
+}
+
+.toggleButton:hover .iconMoon {
+  color: var(--secondary-color-5-orange);
+}
+
+.toggleButton:hover .iconSun {
+  color: var(--secondary-color-5-orange);
 }
