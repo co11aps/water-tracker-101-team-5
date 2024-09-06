@@ -1,6 +1,5 @@
 import { useState, useEffect } from "react";
 import { BaseModal } from "../BaseModal/BaseModal.jsx";
-import PropTypes from "prop-types";
 import css from "./DailyNormaModal.module.css";
 
 const DailyNormaModal = ({ onClose, isShow, onSave }) => {
@@ -183,12 +182,6 @@ const DailyNormaModal = ({ onClose, isShow, onSave }) => {
       </div>
     </BaseModal>
   );
-};
-
-DailyNormaModal.propTypes = {
-  onClose: PropTypes.func.isRequired,
-  isShow: PropTypes.bool.isRequired,
-  onSave: PropTypes.func.isRequired,
 };
 
 export default DailyNormaModal;
