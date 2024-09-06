@@ -38,7 +38,13 @@ export const BaseModal = ({ isShow, children, title, onClose }) => {
   const baseModalContent = (
     <div className={css.modalBox} onClick={onClose}>
       <div className={css.modalContent} onClick={(e) => e.stopPropagation()}>
-        <div className={css.modalHeader}>
+        <div
+          className={`${css.modalHeader} ${
+            title === "Log out" ? css.modalHeaderLogOut : ""
+          }
+          &&
+          ${title === "Delete entry" ? css.modalHeaderDelete : ""}`}
+        >
           <h2 className={css.modalBoxTitle}>{title}</h2>
           <div className={css.closeBtn} onClick={onClose}>
             <Icon id="x-mark" width={24} height={24} className="icon-blue" />
