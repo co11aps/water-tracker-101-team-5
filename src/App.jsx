@@ -10,7 +10,8 @@ import { selectIsRefreshing } from "./redux/auth/selectors";
 import { Navigate } from "react-router-dom";
 import { Toaster } from "react-hot-toast";
 
-import { axiosInstance } from "./services/axiosConfig";
+// import { axiosInstance } from "./services/axiosConfig";
+import { setupInterceptors } from "./services/setupInterceptors";
 
 import { Suspense } from "react";
 import Loader from "./components/Loader/Loader";
@@ -22,36 +23,37 @@ const HomePage = lazy(() => import("./pages/HomePage/HomePage"));
 
 function App() {
   const dispatch = useDispatch();
-  const navigate = useNavigate();
+  // const navigate = useNavigate();
   const isRefreshing = useSelector(selectIsRefreshing);
 
   useEffect(() => {
     dispatch(refreshToken());
+    setupInterceptors();
   }, [dispatch]);
 
-  axiosInstance.interceptors.response.use(
-    (response) => response,
-    async (error) => {
-      const originalRequest = error.config;
-      if (error.response.status === 401 && !originalRequest._retry) {
-        originalRequest._retry = true;
-        try {
-          const result = dispatch(refreshToken());
-          const newAccessToken = result.payload.accessToken;
-          axiosInstance.defaults.headers.common[
-            "Authorization"
-          ] = `Bearer ${newAccessToken}`;
-          originalRequest.headers["Authorization"] = `Bearer ${newAccessToken}`;
-          return axiosInstance(originalRequest);
-        } catch (refreshError) {
-          dispatch(logOut);
-          navigate("/signin");
-          return Promise.reject(refreshError);
-        }
-      }
-      return Promise.reject(error);
-    }
-  );
+  // axiosInstance.interceptors.response.use(
+  //   (response) => response,
+  //   async (error) => {
+  //     const originalRequest = error.config;
+  //     if (error.response.status === 401 && !originalRequest._retry) {
+  //       originalRequest._retry = true;
+  //       try {
+  //         const result = dispatch(refreshToken());
+  //         const newAccessToken = result.payload.accessToken;
+  //         axiosInstance.defaults.headers.common[
+  //           "Authorization"
+  //         ] = `Bearer ${newAccessToken}`;
+  //         originalRequest.headers["Authorization"] = `Bearer ${newAccessToken}`;
+  //         return axiosInstance(originalRequest);
+  //       } catch (refreshError) {
+  //         dispatch(logOut);
+  //         navigate("/signin");
+  //         return Promise.reject(refreshError);
+  //       }
+  //     }
+  //     return Promise.reject(error);
+  //   }
+  // );
 
   return (
     <Layout>
