@@ -1,0 +1,8 @@
+.headerButton {
+    border: none;
+    box-shadow: none;
+}
+
+.headerButton:hover {
+    box-shadow: none;
+}

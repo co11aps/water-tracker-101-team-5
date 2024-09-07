@@ -1,7 +1,6 @@
-import React from "react";
 import { useNavigate } from "react-router-dom";
 import Icon from "../Icon/Icon";
-import css from "../Header/header.module.css";
+import css from "./UserAuth.module.css";
 
 const UserAuth = () => {
   const navigate = useNavigate();
