@@ -226,3 +226,7 @@ input[type="password"] {
   height: 100%; /* Аватар буде займати всю висоту контейнера */
   object-fit: cover; /* Зображення буде обрізатися під круглу форму */
 }
+.error {
+  color: var(--secondary-color-3);
+  border-color: var(--secondary-color-3);
+}

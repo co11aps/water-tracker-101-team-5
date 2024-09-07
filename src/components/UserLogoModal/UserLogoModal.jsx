@@ -91,7 +91,7 @@ const UserLogoModal = ({ toggleModal }) => {
             setIsLogoutModalOpen(false);
             closeAllModals();
           }}
-          isShow={isLogoutModalOpen}
+          // isShow={isLogoutModalOpen}
           toggleModal={closeAllModals}
         />
       )}
