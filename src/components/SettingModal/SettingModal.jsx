@@ -111,7 +111,6 @@ const SettingModal = ({ onClose, onUpdate, isShow }) => {
     const file = e.target.files[0];
     // setPreview(URL.createObjectURL(file));
     const formData = new FormData();
-    // formData.append("avatar", userData.avatar[0]);
     formData.append("avatar", file);
     dispatch(updateAvatar(formData))
       .unwrap()

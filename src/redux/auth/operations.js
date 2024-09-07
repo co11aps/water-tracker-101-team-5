@@ -95,9 +95,7 @@ export const updateAvatar = createAsyncThunk(
     const persistedToken = state.auth.accessToken;
     try {
       setAuthHeader(persistedToken);
-      // const formData = new FormData();
-      // formData.append("avatar", file); // "avatar" — matches with "upload.single('avatar')" on server side
-      const res = await axiosInstance.patch("/auth/avatar", file, {
+      const res = await axiosInstance.patch("/users/avatar", file, {
         headers: {
           "Content-Type": "multipart/form-data",
         },
