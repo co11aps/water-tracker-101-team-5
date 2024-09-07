@@ -2,7 +2,7 @@ import { useState, useEffect } from "react";
 import { useDispatch } from "react-redux";
 import { BaseModal } from "../BaseModal/BaseModal.jsx";
 import css from "./DailyNormaModal.module.css";
-import { updateDailyNorma } from "../../redux/auth/operations.js";
+import { updateDailyNorma, getUserInfo } from "../../redux/auth/operations.js";
 
 const DailyNormaModal = ({ onClose, isShow }) => {
   const [gender, setGender] = useState("female");
@@ -70,13 +70,14 @@ const DailyNormaModal = ({ onClose, isShow }) => {
 
     try {
       await dispatch(updateDailyNorma(data));
+      await dispatch(getUserInfo());
       onClose(); 
     } catch (error) {
       console.error("Error saving daily norma:", error);
       alert("Failed to save daily norma. Please try again.");
-      
     }
   };
+
 
   return (
     <BaseModal onClose={onClose} isShow={isShow} title="My daily norma">
