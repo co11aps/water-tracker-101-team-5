@@ -6,6 +6,7 @@ import css from "./TodayWaterList.module.css";
 import AddWaterBtn from "../AddWaterBtn/AddWaterBtn";
 import TodayListModal from "../TodayListModal/TodayListModal";
 import Icon from "../Icon/Icon";
+import ConfirmationModal from "../ConfirmationModal/ConfirmationModal"; // Додаємо модальне вікно для підтвердження
 
 export default function TodayWaterList() {
   const dispatch = useDispatch();
@@ -13,17 +14,27 @@ export default function TodayWaterList() {
   const flatWaterIntakes = waterIntakes.flat(); //тому робимо розгортання масиву
 
   const [editItem, setEditItem] = useState(null); // Стан для редагування
+  const [deleteItem, setDeleteItem] = useState(null); // Стан для видалення
+  console.log(flatWaterIntakes);
+  // const handleDelete = (id) => {
+  //   dispatch(deleteWater(id)); // Видаляємо запис по id
+  // };
 
   const handleDelete = (id) => {
-    dispatch(deleteWater(id)); // Видаляємо запис по id
+    setDeleteItem(id); // Відкриваємо модальне вікно для підтвердження видалення
+  };
+  const confirmDelete = () => {
+    dispatch(deleteWater(deleteItem)); // Видаляємо запис після підтвердження
+    setDeleteItem(null); // Закриваємо модальне вікно
   };
 
   const handleEdit = (item) => {
-    setEditItem(item); // Встановлюємо елемент для редагування
+    setEditItem(item); // Відкриваємо модальне вікно для редагування
   };
 
   const closeModal = () => {
     setEditItem(null); // Закриваємо модальне вікно
+    setDeleteItem(null); // Закриваємо модальне вікно підтвердження
   };
 
   return (
@@ -77,10 +88,25 @@ export default function TodayWaterList() {
           item={editItem} // Передаємо запис для редагування
         />
       )}
+      {deleteItem && (
+        <ConfirmationModal
+          isShow={!!deleteItem}
+          onClose={closeModal}
+          onConfirm={confirmDelete} // Підтвердження видалення
+          message="Are you sure you want to delete the entry?" // Повідомлення для підтвердження
+        />
+      )}
     </div>
   );
 }
 
+// <Icon
+//   id={"icon-glass"}
+//   width={26}
+//   height={26}
+//   aria-hidden="false"
+//   className={css.icon}
+// />;
 // import { useSelector, useDispatch } from "react-redux";
 // import { closeModal, openModal } from "../../redux/reduxToday/modalSlice";
 // import {
