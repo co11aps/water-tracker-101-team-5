@@ -8,6 +8,7 @@ import { logIn, register } from "../../redux/auth/operations";
 import { useEffect } from "react";
 import Icon from "../Icon/Icon";
 import { selectIsLoggedIn } from "../../redux/auth/selectors";
+import toast, { Toaster } from "react-hot-toast";
 
 const AuthForm = ({ isSignup }) => {
   const dispatch = useDispatch();
@@ -50,6 +51,8 @@ const AuthForm = ({ isSignup }) => {
           console.log("Register success");
         })
         .catch((err) => {
+          const errorMessage = err.data.message;
+          toast(errorMessage);
           console.log("Register error", err);
         });
     } else {

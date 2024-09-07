@@ -8,6 +8,7 @@ import RestrictedRoute from "./components/RestrictedRoute/RestrictedRoute";
 import { refreshToken } from "./redux/auth/operations";
 import { selectIsRefreshing } from "./redux/auth/selectors";
 import { Navigate } from "react-router-dom";
+import toast, { Toaster } from "react-hot-toast";
 
 import { Suspense } from "react";
 import Loader from "./components/Loader/Loader";
@@ -39,6 +40,9 @@ function App() {
         </>
       ) : (
         <Suspense fallback={<Loader />}>
+          <div>
+            <Toaster />
+          </div>
           <Routes>
             <Route path="/" element={<Navigate to="/welcome" replace />} />
             <Route
