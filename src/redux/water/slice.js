@@ -76,19 +76,25 @@ const waterSlice = createSlice({
   },
   extraReducers: (builder) => {
     builder
+      .addCase(getMonthlyWater.pending, (state) => {
+        state.isLoading = true;
+      })
+      .addCase(getMonthlyWater.fulfilled, (state, action) => {
+        state.isLoading = false;
+        state.monthlyWater = action.payload; // Ensure the data is being stored correctly
+        console.log("Monthly water data stored in Redux:", action.payload); // Log the data
+      })
+      .addCase(getMonthlyWater.rejected, (state, action) => {
+        state.isLoading = false;
+        state.error = action.payload;
+      });
+    builder
       .addCase(getDailyWater.pending, handlePending)
       .addCase(getDailyWater.fulfilled, (state, action) => {
         handleFulfilled(state);
         state.dailyWater = action.payload;
       })
       .addCase(getDailyWater.rejected, handleRejected)
-
-      .addCase(getMonthlyWater.pending, handlePending)
-      .addCase(getMonthlyWater.fulfilled, (state, action) => {
-        handleFulfilled(state);
-        state.monthlyWater = action.payload;
-      })
-      .addCase(getMonthlyWater.rejected, handleRejected)
 
       .addCase(addWater.pending, handlePending)
       .addCase(addWater.fulfilled, (state, action) => {

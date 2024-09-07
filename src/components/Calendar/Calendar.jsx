@@ -30,10 +30,10 @@ const Calendar = () => {
     const [hoveredDay, setHoveredDay] = useState(null);
     const modalRef = useRef(null);
 
-useEffect(() => {
-  console.log("Fetching data for year:", year, "month:", month + 1);
-  dispatch(getMonthlyWater({ year, month: month + 1 }));
-}, [dispatch, year, month]);
+    useEffect(() => {
+        // Dispatch the action with the current year and month
+        dispatch(getMonthlyWater({ year, month: month + 1 })); // month + 1 because JavaScript months are 0-indexed
+    }, [dispatch, year, month]);
 
     const handlePrevMonth = () => {
         if (month === 0) {
@@ -90,14 +90,14 @@ useEffect(() => {
     };
 
     const getDayData = (day) => {
-  if (!Array.isArray(monthlyWater)) {
-    return null;
-  }
-  return monthlyWater.find((data) => {
-    const dayNumber = parseInt(data.date.split(',')[0], 10);
-    return dayNumber === day;
-  });
-};
+        if (!Array.isArray(monthlyWater)) {
+            return null;
+        }
+        return monthlyWater.find((data) => {
+            const dayNumber = parseInt(data.date.split(',')[0], 10);
+            return dayNumber === day;
+        });
+    };
 
     const daysInMonth = months[month].monthDays;
 
@@ -137,7 +137,7 @@ useEffect(() => {
                                 <div className={css.modal} ref={modalRef}>
                                     <div className={css.modalDate}>{day}, {months[month].monthName}</div>
                                     <div className={css.modalText}>Daily norma: <span className={css.modalTextBlue}>{(dayData.dailyNorma / 1000).toFixed(1)} L</span></div>
-                                    <div className={css.modalText}>Fulfillment of the daily norm: <span className={css.modalTextBlue}>{fullfilment}%</span></div>
+                                                                       <div className={css.modalText}>Fulfillment of the daily norm: <span className={css.modalTextBlue}>{fullfilment}%</span></div>
                                     <div className={css.modalText}>Total amount: <span className={css.modalTextBlue}>{(dayData.totalAmount / 1000).toFixed(1)} L</span></div>
                                     <div className={css.modalText}>Servings: <span className={css.modalTextBlue}>{dayData.servings}</span></div>
                                 </div>

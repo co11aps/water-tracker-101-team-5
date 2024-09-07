@@ -12,16 +12,12 @@ export const getDailyWater = createAsyncThunk(
     }
   }
 );
-
+// Thunk to fetch monthly water data
 export const getMonthlyWater = createAsyncThunk(
   "water/monthlyWater",
   async ({ year, month }, thunkAPI) => {
     try {
       const formattedMonth = month.toString().padStart(2, "0"); // Ensure month is two digits
-      console.log("Request body:", {
-        year: year.toString(),
-        month: formattedMonth,
-      });
       const response = await axiosInstance.get("water/month", {
         data: {
           year: year.toString(), // Ensure year is a string
@@ -39,6 +35,7 @@ export const getMonthlyWater = createAsyncThunk(
     }
   }
 );
+
 export const addWater = createAsyncThunk(
   "water/addWater",
   async (waterData, thunkAPI) => {
