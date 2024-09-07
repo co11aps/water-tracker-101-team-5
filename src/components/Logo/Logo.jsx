@@ -1,28 +1,15 @@
 import { useNavigate } from "react-router-dom";
-import logo from "../../images/logo/Logo.svg";
-import css from "../Header/header.module.css";
-import { useSelector } from "react-redux";
-import { selectIsLoggedIn } from "../../redux/auth/selectors";
+// import logo from "../../images/logo/Logo.svg";
+import css from "./logo.module.css";
 
 const Logo = () => {
   const navigate = useNavigate();
-  const { isLoggedIn } = useSelector(selectIsLoggedIn);
 
   const handleClick = () => {
-    if (isLoggedIn) {
-      navigate("/home"); // Зареєстрований користувач
-    } else {
-      navigate("/welcome"); // Незареєстрований користувач
-    }
+    navigate("/");
   };
 
-  return (
-    <div onClick={handleClick}>
-      <a href="./" lang="en" className={css.logo}>
-        <img src={logo} alt="logo" width="106" />
-      </a>
-    </div>
-  );
+  return <div className={css.logo} onClick={handleClick}></div>;
 };
 
 export default Logo;
