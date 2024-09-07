@@ -3,6 +3,7 @@
 }
 
 .userLogoBtn {
+  width: auto;
   display: flex;
   align-items: center;
   background-color: transparent;
@@ -28,17 +29,17 @@
   background-color: #ccc;
   border-radius: 50%;
   font-size: 20px;
-  color: white;
+  color: var(--primary-color-white);
 }
 
-.icon {
+/* .icon {
   width: 40px;
   height: 40px;
-}
+} */
 
 .userName {
   font-size: 22px;
-  color: #333;
+  color: var(--primary-color-black);
 }
 
 .userLogoModal {

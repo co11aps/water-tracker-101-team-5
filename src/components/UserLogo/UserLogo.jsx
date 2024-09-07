@@ -3,9 +3,10 @@ import css from "./UserLogo.module.css";
 import UserLogoModal from "../UserLogoModal/UserLogoModal";
 import Icon from "../Icon/Icon";
 import { useSelector } from "react-redux";
+import { selectUser } from "../../redux/auth/selectors";
 
 const UserLogo = () => {
-  const { user } = useSelector((state) => state.auth);
+  const user = useSelector(selectUser);
   const [isModalOpen, setIsModalOpen] = useState(false);
 
   const toggleModal = () => {
@@ -13,13 +14,15 @@ const UserLogo = () => {
   };
 
   const getAvatarContent = () => {
-    if (user.avatar) {
-      return <img src={user.avatar} alt={user.name} className={css.avatar} />;
+    if (user.photo) {
+      return (
+        <img src={user.photo} alt={user.userName} className={css.avatar} />
+      );
     }
-    if (user.name) {
+    if (user.userName) {
       return (
         <span className={css.avatarPlaceholder}>
-          {user.name[0].toUpperCase()}
+          {user.userName[0].toUpperCase()}
         </span>
       );
     }
@@ -30,14 +33,14 @@ const UserLogo = () => {
         </span>
       );
     }
-    return <Icon id="checkmark" width={40} height={40} className="icon-blue" />;
   };
 
   return (
     <div className={css.userLogoWrapper}>
       <button onClick={toggleModal} className={css.userLogoBtn}>
-        <span className={css.userName}>{user.name || user.email}</span>
+        <span className={css.userName}>{user.userName || user.email}</span>
         {getAvatarContent()}
+        <Icon id="checkmark" width={16} height={16} className="icon-blue" />
       </button>
       {isModalOpen && <UserLogoModal toggleModal={toggleModal} />}
     </div>

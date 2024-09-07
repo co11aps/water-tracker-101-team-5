@@ -1,6 +1,6 @@
 import { useSelector } from "react-redux";
 import { selectIsLoggedIn } from "../../redux/auth/selectors";
-import css from "./header.module.css";
+import css from "./Header.module.css";
 import UserAuth from "../UserAuth/UserAuth";
 import Logo from "../Logo/Logo";
 import UserLogo from "../UserLogo/UserLogo";
