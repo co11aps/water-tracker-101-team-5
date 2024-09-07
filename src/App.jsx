@@ -1,16 +1,15 @@
 import "./App.css";
-import { Route, Routes } from "react-router-dom";
+import { Route, Routes, useNavigate } from "react-router-dom";
 import { useEffect, lazy } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import Layout from "./components/Layout/Layout";
 import PrivateRoute from "./components/PrivateRoute/PrivateRoute";
 import RestrictedRoute from "./components/RestrictedRoute/RestrictedRoute";
-import { refreshToken } from "./redux/auth/operations";
+import { logOut, refreshToken } from "./redux/auth/operations";
 import { selectIsRefreshing } from "./redux/auth/selectors";
 import { Navigate } from "react-router-dom";
 import { Toaster } from "react-hot-toast";
 
-import { store } from "./redux/store";
 import { axiosInstance } from "./services/axiosConfig";
 
 import { Suspense } from "react";
@@ -23,6 +22,7 @@ const HomePage = lazy(() => import("./pages/HomePage/HomePage"));
 
 function App() {
   const dispatch = useDispatch();
+  const navigate = useNavigate();
   const isRefreshing = useSelector(selectIsRefreshing);
 
   useEffect(() => {
@@ -36,7 +36,7 @@ function App() {
       if (error.response.status === 401 && !originalRequest._retry) {
         originalRequest._retry = true;
         try {
-          const result = await store.dispatch(refreshToken());
+          const result = dispatch(refreshToken());
           const newAccessToken = result.payload.accessToken;
           axiosInstance.defaults.headers.common[
             "Authorization"
@@ -44,6 +44,8 @@ function App() {
           originalRequest.headers["Authorization"] = `Bearer ${newAccessToken}`;
           return axiosInstance(originalRequest);
         } catch (refreshError) {
+          dispatch(logOut);
+          navigate("/signin");
           return Promise.reject(refreshError);
         }
       }

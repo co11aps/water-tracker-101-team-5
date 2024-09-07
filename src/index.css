@@ -48,7 +48,7 @@ img {
 
 button {
   font-family: inherit;
-  color: currentColor;
+  /* color: currentColor; */
   cursor: pointer;
 }
 
