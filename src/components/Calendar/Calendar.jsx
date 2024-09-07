@@ -90,14 +90,20 @@ const Calendar = () => {
     };
 
     const getDayData = (day) => {
-        if (!Array.isArray(monthlyWater)) {
-            return null;
-        }
+  if (!Array.isArray(monthlyWater)) {
+    return null;
+  }
+
+  // Extract the day number from the date string (e.g., "1, September")
         return monthlyWater.find((data) => {
-            const dayNumber = parseInt(data.date.split(',')[0], 10);
-            return dayNumber === day;
-        });
-    };
+            
+            const dayNumber = parseInt(data.date.split(',')[0], 10); // Extract the day number from "1, September"
+            console.log(data);
+            console.log(data.date);
+            console.log(dayNumber);
+    return dayNumber === day;
+  });
+};
 
     const daysInMonth = months[month].monthDays;
 
@@ -137,7 +143,7 @@ const Calendar = () => {
                                 <div className={css.modal} ref={modalRef}>
                                     <div className={css.modalDate}>{day}, {months[month].monthName}</div>
                                     <div className={css.modalText}>Daily norma: <span className={css.modalTextBlue}>{(dayData.dailyNorma / 1000).toFixed(1)} L</span></div>
-                                                                       <div className={css.modalText}>Fulfillment of the daily norm: <span className={css.modalTextBlue}>{fullfilment}%</span></div>
+                                    <div className={css.modalText}>Fulfillment of the daily norm: <span className={css.modalTextBlue}>{fullfilment}%</span></div>
                                     <div className={css.modalText}>Total amount: <span className={css.modalTextBlue}>{(dayData.totalAmount / 1000).toFixed(1)} L</span></div>
                                     <div className={css.modalText}>Servings: <span className={css.modalTextBlue}>{dayData.servings}</span></div>
                                 </div>
