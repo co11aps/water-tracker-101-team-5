@@ -1,5 +1,5 @@
 import { createAsyncThunk } from "@reduxjs/toolkit";
-import { axiosInstance } from "../../services/services";
+import { axiosInstance } from "../../services/axiosConfig";
 
 // Utility to add JWT
 const setAuthHeader = (accessToken) => {
