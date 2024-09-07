@@ -52,6 +52,11 @@ button {
   cursor: pointer;
 }
 
+button:hover {
+  box-shadow: none;
+}
+
+
 /* colour variables */
 body {
   --primary-color-white: #ffffff;
