@@ -1,9 +1,13 @@
 import { useState, useEffect, useRef } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
+import { getMonthlyWater } from '../../redux/water/operations';
+import { selectMonthlyWater, selectIsLoading, selectError } from '../../redux/water/selectors';
 import css from './Calendar.module.css';
+import Loader from '../Loader/Loader';
 
 const months = [
     { monthName: 'January', monthDays: 31 },
-    { monthName: 'February', monthDays: 28 }, // Високосный год не учитывается для простоты
+    { monthName: 'February', monthDays: 28 },
     { monthName: 'March', monthDays: 31 },
     { monthName: 'April', monthDays: 30 },
     { monthName: 'May', monthDays: 31 },
@@ -17,29 +21,19 @@ const months = [
 ];
 
 const Calendar = () => {
-    const [month, setMonth] = useState(3);
-    const [year, setYear] = useState(2023);
+    const dispatch = useDispatch();
+    const monthlyWater = useSelector(selectMonthlyWater); // Accessing monthly water data from Redux store
+    const isLoading = useSelector(selectIsLoading);
+    const error = useSelector(selectError);
+    const [month, setMonth] = useState(new Date().getMonth());
+    const [year, setYear] = useState(new Date().getFullYear());
     const [hoveredDay, setHoveredDay] = useState(null);
-    const [days, setDays] = useState([]);
     const modalRef = useRef(null);
 
-    const generateRandomPercentage = () => {
-        return `${Math.floor(Math.random() * 101)}%`;
-    };
-
-    useEffect(() => {
-        const currentMonth = months[month];
-        const initialDays = Array.from({ length: currentMonth.monthDays }, (_, index) => ({
-            date: index + 1,
-            percentage: generateRandomPercentage(),
-        }));
-
-        for (let i = 0; i < 30; i += 3) {
-            initialDays[i].percentage = '100%';
-        }
-
-        setDays(initialDays);
-    }, [month]);
+useEffect(() => {
+  console.log("Fetching data for year:", year, "month:", month + 1);
+  dispatch(getMonthlyWater({ year, month: month + 1 }));
+}, [dispatch, year, month]);
 
     const handlePrevMonth = () => {
         if (month === 0) {
@@ -71,7 +65,6 @@ const Calendar = () => {
     const adjustModalPosition = () => {
         if (modalRef.current) {
             const modalRect = modalRef.current.getBoundingClientRect();
-            // const viewportHeight = window.innerHeight;
             const viewportWidth = window.innerWidth;
 
             if (modalRect.top < 0) {
@@ -96,9 +89,25 @@ const Calendar = () => {
         }
     };
 
-    const getRandomServings = () => {
-        return Math.floor(Math.random() * 10) + 1;
-    };
+    const getDayData = (day) => {
+  if (!Array.isArray(monthlyWater)) {
+    return null;
+  }
+  return monthlyWater.find((data) => {
+    const dayNumber = parseInt(data.date.split(',')[0], 10);
+    return dayNumber === day;
+  });
+};
+
+    const daysInMonth = months[month].monthDays;
+
+    if (isLoading) {
+        return <Loader />;
+    }
+
+    if (error) {
+        return <div className={css.error}>Error: {error}</div>;
+    }
 
     return (
         <div className={css.calendarContainer}>
@@ -111,25 +120,31 @@ const Calendar = () => {
                 </div>
             </div>
             <ul className={css.calendar}>
-                {days.map((day) => (
-                    <li
-                        className={css.day}
-                        key={day.date}
-                        onMouseEnter={() => handleMouseEnter(day)}
-                        onMouseLeave={handleMouseLeave}
-                    >
-                        <div className={`${css.date} ${parseInt(day.percentage) < 100 ? css.unfilled : ''}`}>{day.date}</div>
-                        <div className={css.percentage}>{day.percentage}</div>
-                        {hoveredDay && hoveredDay.date === day.date && (
-                            <div className={css.modal} ref={modalRef}>
-                                <div className={css.modalDate}>{day.date}, {months[month].monthName}</div>
-                                <div className={css.modalText}>Daily norma: <span className={css.modalTextBlue}>1.5 L</span></div>
-                                <div className={css.modalText}>Fulfillment of the daily norm: <span className={css.modalTextBlue}>{day.percentage}</span></div>
-                                <div className={css.modalText}>How many servings of water: <span className={css.modalTextBlue}>{getRandomServings()}</span></div>
-                            </div>
-                        )}
-                    </li>
-                ))}
+                {Array.from({ length: daysInMonth }, (_, i) => i + 1).map((day) => {
+                    const dayData = getDayData(day);
+                    const fullfilment = dayData ? Math.min(dayData.fullfilment, 100) : 0;
+
+                    return (
+                        <li
+                            className={css.day}
+                            key={day}
+                            onMouseEnter={() => handleMouseEnter(dayData)}
+                            onMouseLeave={handleMouseLeave}
+                        >
+                            <div className={`${css.date} ${fullfilment < 100 ? css.unfilled : ''}`}>{day}</div>
+                            <div className={css.percentage}>{dayData ? `${fullfilment}%` : '0%'}</div>
+                            {hoveredDay && hoveredDay.date === dayData?.date && (
+                                <div className={css.modal} ref={modalRef}>
+                                    <div className={css.modalDate}>{day}, {months[month].monthName}</div>
+                                    <div className={css.modalText}>Daily norma: <span className={css.modalTextBlue}>{(dayData.dailyNorma / 1000).toFixed(1)} L</span></div>
+                                    <div className={css.modalText}>Fulfillment of the daily norm: <span className={css.modalTextBlue}>{fullfilment}%</span></div>
+                                    <div className={css.modalText}>Total amount: <span className={css.modalTextBlue}>{(dayData.totalAmount / 1000).toFixed(1)} L</span></div>
+                                    <div className={css.modalText}>Servings: <span className={css.modalTextBlue}>{dayData.servings}</span></div>
+                                </div>
+                            )}
+                        </li>
+                    );
+                })}
             </ul>
         </div>
     );

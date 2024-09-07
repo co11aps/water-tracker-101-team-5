@@ -15,16 +15,30 @@ export const getDailyWater = createAsyncThunk(
 
 export const getMonthlyWater = createAsyncThunk(
   "water/monthlyWater",
-  async (_, thunkAPI) => {
+  async ({ year, month }, thunkAPI) => {
     try {
-      const response = await axiosInstance.get("water/month");
+      const formattedMonth = month.toString().padStart(2, "0"); // Ensure month is two digits
+      console.log("Request body:", {
+        year: year.toString(),
+        month: formattedMonth,
+      });
+      const response = await axiosInstance.get("water/month", {
+        data: {
+          year: year.toString(), // Ensure year is a string
+          month: formattedMonth, // Send the formatted month
+        },
+      });
+      console.log("Request body:", {
+        year: year.toString(),
+        month: formattedMonth,
+      });
+      console.log("Backend response:", response.data);
       return response.data.data;
     } catch (e) {
       return thunkAPI.rejectWithValue(e.message);
     }
   }
 );
-
 export const addWater = createAsyncThunk(
   "water/addWater",
   async (waterData, thunkAPI) => {
@@ -56,7 +70,7 @@ export const deleteWater = createAsyncThunk(
   "water/deleteWater",
   async (id, thunkAPI) => {
     try {
-      const response = await axiosInstance.delete(`water/delete/${id}`);
+      // const response = await axiosInstance.delete(`water/delete/${id}`);
       return { _id: id };
     } catch (e) {
       return thunkAPI.rejectWithValue(e.message);
