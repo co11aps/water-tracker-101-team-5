@@ -24,7 +24,7 @@ export const register = createAsyncThunk(
       setAuthHeader(res.data.accessToken);
       return res.data;
     } catch (error) {
-      return thunkAPI.rejectWithValue(error.response);
+      return thunkAPI.rejectWithValue(error.response.data);
     }
   }
 );
@@ -42,7 +42,7 @@ export const logIn = createAsyncThunk(
       setAuthHeader(res.data.accessToken);
       return res.data;
     } catch (error) {
-      return thunkAPI.rejectWithValue(error.message);
+      return thunkAPI.rejectWithValue(error.response.data);
     }
   }
 );
@@ -56,7 +56,7 @@ export const logOut = createAsyncThunk("auth/logout", async (_, thunkAPI) => {
     // After a successful logout, remove the token from the HTTP header
     clearAuthHeader();
   } catch (error) {
-    return thunkAPI.rejectWithValue(error.message);
+    return thunkAPI.rejectWithValue(error.response.data);
   }
 });
 
@@ -71,7 +71,7 @@ export const refreshToken = createAsyncThunk(
       setAuthHeader(res.data.accessToken);
       return res.data;
     } catch (error) {
-      return thunkAPI.rejectWithValue(error.message);
+      return thunkAPI.rejectWithValue(error.response.data);
     }
   },
   {
@@ -100,7 +100,7 @@ export const updateAvatar = createAsyncThunk(
       const res = await axiosInstance.patch("/users/avatar", file);
       return res.data;
     } catch (error) {
-      return thunkAPI.rejectWithValue(error.message);
+      return thunkAPI.rejectWithValue(error.response.data);
     }
   }
 );
@@ -124,7 +124,7 @@ export const updateUserInfo = createAsyncThunk(
       return res.data;
     } catch (error) {
       alert(error);
-      return thunkAPI.rejectWithValue(error.message);
+      return thunkAPI.rejectWithValue(error.response.data);
     }
   }
 );
@@ -144,7 +144,7 @@ export const getUserInfo = createAsyncThunk(
       return res.data;
     } catch (error) {
       alert(error);
-      return thunkAPI.rejectWithValue(error.message);
+      return thunkAPI.rejectWithValue(error.response.data);
     }
   }
 );
@@ -163,7 +163,7 @@ export const updateDailyNorma = createAsyncThunk(
       const res = await axiosInstance.post("/users/daily-norma", credentials);
       return res.data;
     } catch (error) {
-      return thunkAPI.rejectWithValue(error.message);
+      return thunkAPI.rejectWithValue(error.response.data);
     }
   }
 );

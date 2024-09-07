@@ -50,6 +50,9 @@ const authSlice = createSlice({
         state.isRefreshing = false;
         state.isAuthHeaderSet = true;
       })
+      .addCase(logIn.rejected, (state) => {
+        state.isRefreshing = false;
+      })
       .addCase(logOut.fulfilled, (state) => {
         state.user = {
           name: null,
