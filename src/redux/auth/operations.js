@@ -1,5 +1,5 @@
 import { createAsyncThunk } from "@reduxjs/toolkit";
-import { axiosInstance } from "../../services/services";
+import { axiosInstance } from "../../services/axiosConfig";
 
 // Utility to add JWT
 const setAuthHeader = (accessToken) => {
@@ -68,7 +68,7 @@ export const refreshToken = createAsyncThunk(
   async (_, thunkAPI) => {
     try {
       const res = await axiosInstance.post("/auth/refresh");
-      setAuthHeader(res.data.accessToken);
+      // setAuthHeader(res.data.accessToken);
       return res.data;
     } catch (error) {
       return thunkAPI.rejectWithValue(error.response.data);

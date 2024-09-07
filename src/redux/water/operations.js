@@ -1,5 +1,5 @@
 import { createAsyncThunk } from "@reduxjs/toolkit";
-import { axiosInstance } from "../../services/services";
+import { axiosInstance } from "../../services/axiosConfig";
 
 export const getDailyWater = createAsyncThunk(
   "water/oneDayWater",

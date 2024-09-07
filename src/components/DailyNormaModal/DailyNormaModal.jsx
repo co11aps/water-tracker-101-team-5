@@ -2,7 +2,7 @@ import { useState, useEffect } from "react";
 import { useDispatch } from "react-redux";
 import { BaseModal } from "../BaseModal/BaseModal.jsx";
 import css from "./DailyNormaModal.module.css";
-import { updateDailyNorma } from "../../redux/auth/operations.js";
+import { updateDailyNorma, getUserInfo } from "../../redux/auth/operations.js";
 
 const DailyNormaModal = ({ onClose, isShow }) => {
   const [gender, setGender] = useState("female");
@@ -56,40 +56,28 @@ const DailyNormaModal = ({ onClose, isShow }) => {
 
   const handleSave = async (e) => {
     e.preventDefault();
-    if (!gender) {
-      alert("Please select your gender.");
-      return;
-    }
-    if (!weight || isNaN(weight) || weight <= 0) {
-      alert("Please enter a valid weight.");
-      return;
-    }
-    if (isNaN(activityTime) || activityTime < 0) {
-      alert("Please enter a valid activity time.");
-      return;
-    }
-    if (isNaN(waterToDrink) || waterToDrink < 0) {
+
+    if (isNaN(waterToDrink) || waterToDrink <= 0) {
       alert("Please enter a valid amount of water to drink.");
       return;
     }
 
+    const waterToDrinkInMl = parseFloat(waterToDrink) * 1000; 
+
     const data = {
-      gender,
-      weight: parseFloat(weight),
-      activityTime: parseFloat(activityTime),
-      dailyNorm: parseFloat(dailyNorm),
-      waterToDrink: parseFloat(waterToDrink),
-      date: new Date().toISOString(),
+      dailyNorma: waterToDrinkInMl,
     };
 
     try {
       await dispatch(updateDailyNorma(data));
-      onClose();
+      await dispatch(getUserInfo());
+      onClose(); 
     } catch (error) {
       console.error("Error saving daily norma:", error);
       alert("Failed to save daily norma. Please try again.");
     }
   };
+
 
   return (
     <BaseModal onClose={onClose} isShow={isShow} title="My daily norma">
@@ -181,7 +169,7 @@ const DailyNormaModal = ({ onClose, isShow }) => {
                 onChange={handleWaterToDrinkChange}
               />
             </div>
-            <button type="submit" className={css.Button} onClick={handleSave}>
+            <button type="submit" className={css.Button}>
               Save
             </button>
           </form>
@@ -192,3 +180,5 @@ const DailyNormaModal = ({ onClose, isShow }) => {
 };
 
 export default DailyNormaModal;
+
+

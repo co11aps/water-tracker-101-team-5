@@ -1,3 +1,5 @@
+// src/components/Calendar/Calendar.jsx
+
 import { useState, useEffect, useRef } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { getMonthlyWater } from '../../redux/water/operations';
@@ -22,7 +24,9 @@ const months = [
 
 const Calendar = () => {
     const dispatch = useDispatch();
+
     const monthlyWater = useSelector(selectMonthlyWater); // Accessing monthly water data from Redux store
+
     const isLoading = useSelector(selectIsLoading);
     const error = useSelector(selectError);
     const [month, setMonth] = useState(new Date().getMonth());
@@ -31,9 +35,11 @@ const Calendar = () => {
     const modalRef = useRef(null);
 
     useEffect(() => {
+
         // Dispatch the action with the current year and month
         dispatch(getMonthlyWater({ year, month: month + 1 })); // month + 1 because JavaScript months are 0-indexed
     }, [dispatch, year, month]);
+
 
     const handlePrevMonth = () => {
         if (month === 0) {
@@ -90,6 +96,7 @@ const Calendar = () => {
     };
 
     const getDayData = (day) => {
+
   if (!Array.isArray(monthlyWater)) {
     return null;
   }
@@ -104,6 +111,18 @@ const Calendar = () => {
     return dayNumber === day;
   });
 };
+
+    const daysInMonth = months[month].monthDays;
+
+    if (isLoading) {
+        return <Loader />;
+    }
+
+    if (error) {
+        return <div className={css.error}>Error: {error}</div>;
+    }
+
+
 
     const daysInMonth = months[month].monthDays;
 

@@ -48,9 +48,14 @@ img {
 
 button {
   font-family: inherit;
-  color: currentColor;
+  /* color: currentColor; */
   cursor: pointer;
 }
+
+button:hover {
+  box-shadow: none;
+}
+
 
 /* colour variables */
 body {
