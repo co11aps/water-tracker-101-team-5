@@ -1,5 +1,4 @@
 import { useNavigate } from "react-router-dom";
-// import logo from "../../images/logo/Logo.svg";
 import css from "./logo.module.css";
 
 const Logo = () => {
