@@ -1,4 +1,4 @@
-import { useState, useCallback } from "react";
+import { useState, useCallback, useEffect } from "react";
 import Icon from "../Icon/Icon";
 import css from "./UserLogoModal.module.css";
 import SettingModal from "../SettingModal/SettingModal";
@@ -23,6 +23,21 @@ const UserLogoModal = ({ toggleModal }) => {
     toggleModal();
   }, [toggleModal]);
 
+  useEffect(() => {
+    const handleEsc = (e) => {
+      if (e.code === "Escape") {
+        closeAllModals();
+      }
+    };
+
+    document.body.style.overflow = "hidden";
+    window.addEventListener("keydown", handleEsc);
+
+    return () => {
+      document.body.style.overflow = "auto";
+      window.removeEventListener("keydown", handleEsc);
+    };
+  }, [closeAllModals]);
   return (
     <>
       {!isSettingModalOpen && !isLogoutModalOpen && (
