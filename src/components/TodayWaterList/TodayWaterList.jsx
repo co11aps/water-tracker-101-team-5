@@ -61,7 +61,7 @@ export default function TodayWaterList() {
                 <span className={css.todayTime}>{item.time}</span>
               
               </div>
-
+<li className={css.tools}>
               <button
                 className={css.editButton}
                 onClick={() => handleEdit(item)}
@@ -91,7 +91,7 @@ export default function TodayWaterList() {
               </button>
               {/* <button onClick={() => handleDelete(item._id)}>🗑️</button> */}
             </li>
-            
+            </li>
           ))}
         </ul>
         )}
