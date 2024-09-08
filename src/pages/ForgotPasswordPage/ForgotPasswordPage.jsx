@@ -4,7 +4,13 @@ import css from "./ForgotPasswordPage.module.css";
 export default function ForgotPasswordPage() {
   return (
     <div className={css.container}>
-      <ForgotPasswordForm />
+      <div className={css.containerBox}>
+        <div>
+          <ForgotPasswordForm />
+        </div>
+        <div className={css.bottleBg}></div>
+      </div>
+      
     </div>
   );
 }
