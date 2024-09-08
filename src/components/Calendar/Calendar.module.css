@@ -35,22 +35,26 @@
 
 .day {
   text-align: center;
-  padding: 10px;
-  position: relative;
-  display: flex;
-  flex-direction: column;
-  gap: 5px;
+    /* padding: 10px; */
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+    align-items: center;
 }
 
 .day .date {
   font-size: 18px;
   font-weight: bold;
-  border-radius: 20px;
-  padding: 6px;
-  width: 32px;
   background-color: var(--primary-color-white);
   border-radius: 50%;
   text-align: center;
+  padding: 7px 6px;
+  width: 32px;
+  height: 32px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
 .day .percentage {
@@ -67,9 +71,9 @@
 
 .modal {
   position: absolute;
-  bottom: 100%;
-  left: 50%;
-  transform: translateX(-50%);
+    bottom: 100%;
+    left: 50%;
+    transform: translateX(-30%);
   background-color: var(--primary-color-white);
   z-index: 10;
   text-align: left;
@@ -86,7 +90,9 @@
   justify-content: space-around;
   visibility: hidden;
 }
-
+.modal:first-of-type {
+transform: translateX(-10%);
+}
 .day:hover .modal {
   visibility: visible;
 }
@@ -115,3 +121,9 @@
     grid-template-columns: repeat(10, 1fr);
   }
 }
+@media (min-width: 1280px) {
+  .calendar {
+  gap: 22px;
+  }
+}
+
