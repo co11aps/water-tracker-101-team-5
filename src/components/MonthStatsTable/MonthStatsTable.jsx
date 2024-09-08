@@ -48,9 +48,9 @@ const MonthStatsTable = () => {
     };
 
     const handleNextMonth = () => {
-        // Забороняємо вибір майбутнього місяця
+       
         if (year === currentYear && month === currentMonth) {
-            return; // Якщо це поточний місяць і рік, не дозволяємо йти вперед
+            return; 
         }
 
         if (month < months.length - 1) {
@@ -70,7 +70,7 @@ const MonthStatsTable = () => {
     // };
 
     const handleDayClick = (dayData) => {
-        setSelectedDay(dayData); // Встановлюємо вибраний день
+        setSelectedDay(dayData); 
     };
 
    const getDayData = (day) => {
