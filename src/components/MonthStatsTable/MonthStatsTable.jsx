@@ -27,14 +27,18 @@ const MonthStatsTable = () => {
     const error = useSelector(selectError);
     const [month, setMonth] = useState(new Date().getMonth());
     const [year, setYear] = useState(new Date().getFullYear());
-    const [hoveredDay, setHoveredDay] = useState(null);
+    const [selectedDay, setSelectedDay] = useState(null);
     const modalRef = useRef(null);
+
+
+    const currentMonth = new Date().getMonth();
+    const currentYear = new Date().getFullYear();
 
     useEffect(() => {
         dispatch(getMonthlyWater({ year, month: month + 1 })); 
     }, [dispatch, year, month]);
 
-    const handlePrevMonth = () => {
+     const handlePrevMonth = () => {
         if (month === 0) {
             setMonth(months.length - 1);
             setYear(year - 1);
@@ -44,6 +48,11 @@ const MonthStatsTable = () => {
     };
 
     const handleNextMonth = () => {
+        // Забороняємо вибір майбутнього місяця
+        if (year === currentYear && month === currentMonth) {
+            return; // Якщо це поточний місяць і рік, не дозволяємо йти вперед
+        }
+
         if (month < months.length - 1) {
             setMonth(month + 1);
         } else {
@@ -53,24 +62,27 @@ const MonthStatsTable = () => {
     };
 
     const handleMouseEnter = (day) => {
-        setHoveredDay(day);
+        setSelectedDay(day);
     };
 
     const handleMouseLeave = () => {
-        setHoveredDay(null);
+        setSelectedDay(null);
     };
 
+    const handleDayClick = (dayData) => {
+        setSelectedDay(dayData); // Встановлюємо вибраний день
+    };
 
-    const getDayData = (day) => {
-  if (!Array.isArray(monthlyWater)) {
-    return null;
-  }
+   const getDayData = (day) => {
+        if (!Array.isArray(monthlyWater)) {
+            return null;
+        }
 
         return monthlyWater.find((data) => {
-        const dayNumber = parseInt(data.date.split(',')[0], 10); 
-    return dayNumber === day;
-  });
-};
+            const dayNumber = parseInt(data.date.split(',')[0], 10); 
+            return dayNumber === day;
+        });
+    };
 
     const daysInMonth = months[month].monthDays;
 
@@ -89,7 +101,10 @@ const MonthStatsTable = () => {
                 <div className={css.navigation}>
                     <span className={css.prev} onClick={handlePrevMonth}>&lt;</span>
                     <span>{months[month].monthName}, {year}</span>
-                    <span className={css.next} onClick={handleNextMonth}>&gt;</span>
+                    {/* Приховуємо кнопку "вперед", якщо це поточний місяць і рік */}
+                    {!(year === currentYear && month === currentMonth) && (
+                        <span className={css.next} onClick={handleNextMonth}>&gt;</span>
+                    )}
                 </div>
             </div>
             <ul className={css.calendar}>
@@ -103,10 +118,11 @@ const MonthStatsTable = () => {
                             key={day}
                             onMouseEnter={() => handleMouseEnter(dayData)}
                             onMouseLeave={handleMouseLeave}
+                            onClick={() => handleDayClick(dayData)}
                         >
                             <div className={`${css.date} ${fullfilment < 100 ? css.unfilled : ''}`}>{day}</div>
                             <div className={css.percentage}>{dayData ? `${fullfilment}%` : '0%'}</div>
-                            {hoveredDay && hoveredDay.date === dayData?.date && (
+                            {selectedDay && selectedDay.date === dayData?.date && (
                                 <div className={css.modal} ref={modalRef}>
                                     <div className={css.modalDate}>{day}, {months[month].monthName}</div>
                                     <div className={css.modalText}>Daily norma: <span className={css.modalTextBlue}>{(dayData.dailyNorma / 1000).toFixed(1)} L</span></div>
