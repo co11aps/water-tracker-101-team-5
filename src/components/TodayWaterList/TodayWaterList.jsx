@@ -93,7 +93,6 @@ export default function TodayWaterList() {
           isShow={!!deleteItem}
           onClose={closeModal}
           onConfirm={confirmDelete} // Підтвердження видалення
-          message="Are you sure you want to delete the entry?" // Повідомлення для підтвердження
         />
       )}
     </div>
