@@ -40,7 +40,7 @@ export default function ForgotPasswordForm() {
       >
         <Form>
           <div className={css.form}>
-            <label htmlFor="email" className={css.text}>Enter your email</label>
+            <label htmlFor="email" className={css.label}>Enter your email</label>
             <Field
               type="email"
               name="email"
@@ -60,7 +60,12 @@ export default function ForgotPasswordForm() {
         </Form>
       </Formik>
       {forgotPasswordError && <div className={css.error}>{forgotPasswordError}</div>}
-      <div onClick={() => navigate("/signin")}>Sign in</div>
+      {/* <div onClick={() => navigate("/signin")} className={css.navigation}>Sign in</div> */}
+      <div className={css.navigation}>
+          <p>
+            <a href="/signin">Sign in</a>
+          </p>
+      </div>
     </div>
   );
 }
