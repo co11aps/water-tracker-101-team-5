@@ -38,16 +38,30 @@ export default function TodayWaterList() {
   };
 
   return (
-    <div className={css.waterList}>
-      <h2>Today</h2>
-      {waterIntakes.length === 0 ? (
-        <p>No notes yet!</p>
+    <div className={css.wrapper}>
+      <h2 className={css.title}>Today</h2>
+      <div className={css.waterList}>
+
+        {waterIntakes.length === 0 ? (
+        <p className={css.blank}>No notes yet!</p>
       ) : (
         <ul>
           {waterIntakes.map((item) => (
             <li key={item._id} className={css.listItem}>
-              <span>{item.amount} ml</span>
-              <span>{item.time}</span>
+              <div className={css.info}>
+              <Icon
+                id="glass"
+                width={26}
+                height={26}
+                aria-hidden="true"
+                className={css.iconGlass}
+              />
+
+              <span className={css.todayVolume}>{item.amount} ml</span>
+                <span className={css.todayTime}>{item.time}</span>
+              
+              </div>
+
               <button
                 className={css.editButton}
                 onClick={() => handleEdit(item)}
@@ -77,9 +91,11 @@ export default function TodayWaterList() {
               </button>
               {/* <button onClick={() => handleDelete(item._id)}>🗑️</button> */}
             </li>
+            
           ))}
         </ul>
-      )}
+        )}
+        </div>
       <AddWaterBtn />
       {editItem && (
         <TodayListModal

@@ -90,6 +90,7 @@
 
 .wrapper {
   margin-bottom: 24px;
+  height: 260px;
 }
 .title {
  
@@ -108,7 +109,7 @@
 }
 
 .waterList {
-   height: 212px;
+  max-height: 212px;
   overflow: auto;
 }
 
@@ -130,6 +131,12 @@ color: var(--primary-color-blue);
 .info {
   display: flex;
   align-items: center;
+  gap: 12px;
+   width: 206px; 
+  height: 36px; 
+  box-sizing: border-box;
+  
+  
 }
 .tools {
   display: flex;
@@ -141,13 +148,15 @@ color: var(--primary-color-blue);
   line-height: 1.33;
   color: var(--primary-color-blue);
   margin-right: 16px;
+  
 }
 
 .todayTime {
   font-size: 12px;
   font-weight: 400;
-  line-height: 2;
+  line-height: 1.33;
   color: var(--primary-color-black);
+  white-space: nowrap
 }
 
 .waterList::-webkit-scrollbar {
@@ -164,5 +173,6 @@ color: var(--primary-color-blue);
   background: rgba(158, 187, 255, 1);
   border-radius: 12px;
 }
+
 
 
