@@ -61,13 +61,13 @@ const MonthStatsTable = () => {
         }
     };
 
-    const handleMouseEnter = (day) => {
-        setSelectedDay(day);
-    };
+    // const handleMouseEnter = (day) => {
+    //     setSelectedDay(day);
+    // };
 
-    const handleMouseLeave = () => {
-        setSelectedDay(null);
-    };
+    // const handleMouseLeave = () => {
+    //     setSelectedDay(null);
+    // };
 
     const handleDayClick = (dayData) => {
         setSelectedDay(dayData); // Встановлюємо вибраний день
@@ -116,8 +116,8 @@ const MonthStatsTable = () => {
                         <li
                             className={css.day}
                             key={day}
-                            onMouseEnter={() => handleMouseEnter(dayData)}
-                            onMouseLeave={handleMouseLeave}
+                            // onMouseEnter={() => handleMouseEnter(dayData)}
+                            // onMouseLeave={handleMouseLeave}
                             onClick={() => handleDayClick(dayData)}
                         >
                             <div className={`${css.date} ${fullfilment < 100 ? css.unfilled : ''}`}>{day}</div>
