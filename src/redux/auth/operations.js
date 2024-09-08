@@ -170,19 +170,48 @@ export const updateDailyNorma = createAsyncThunk(
   }
 );
 
-//===========ДОДАЛА=================
-/*
- * POST @ /auth/forgot-password
+//===========ДОДАЛА forgotPassword=================
+/**
+ * POST @ /auth/send-reset-email
  * body: { email }
  */
 export const forgotPassword = createAsyncThunk(
   "auth/forgotPassword",
   async (email, thunkAPI) => {
     try {
-      const res = await axiosInstance.post("/auth/forgot-password", { email });
+      const response = await axiosInstance.post("/auth/send-reset-email", {
+        email,
+      });
+      return response.data;
+    } catch (error) {
+      console.error("Error details:", error); // Додаткове логування
+      const errorMessage =
+        error.response?.data?.message || "Failed to send reset email.";
+      return thunkAPI.rejectWithValue(errorMessage);
+    }
+  }
+);
+
+//===========ДОДАЛА =================
+export const updatePassword = createAsyncThunk(
+  "auth/updatePassword",
+  async ({ password, token }, thunkAPI) => {
+    try {
+      // Запит на оновлення паролю
+      const res = await axiosInstance.post(
+        `/auth/reset-password`,
+        { password },
+        {
+          headers: {
+            Authorization: `Bearer ${token}`, // Передаємо токен для аутентифікації
+          },
+        }
+      );
       return res.data;
     } catch (error) {
-      return thunkAPI.rejectWithValue(error.response.data);
+      const errorMessage =
+        error.response?.data?.message || "Failed to update password";
+      return thunkAPI.rejectWithValue(errorMessage);
     }
   }
 );
