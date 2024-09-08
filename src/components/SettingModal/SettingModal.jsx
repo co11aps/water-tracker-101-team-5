@@ -22,15 +22,15 @@ const userSchema = yup.object().shape({
       `Your name must be less than ${MAX_CHAR_NAME_VALIDATION} characters!`
     ),
   email: yup.string().email("You must enter a valid email address!"),
-  outdatedPassword: yup
+  currentPassword: yup
     .string()
     .min(
       MIN_CHAR_VALIDATION,
-      `Your outdated password must be more than ${MIN_CHAR_VALIDATION} characters!`
+      `Yourcurrent password must be more than ${MIN_CHAR_VALIDATION} characters!`
     )
     .max(
       MAX_CHAR_VALIDATION,
-      `Your outdated password must be less than ${MAX_CHAR_VALIDATION} characters!`
+      `Yourcurrent password must be less than ${MAX_CHAR_VALIDATION} characters!`
     ),
   newPassword: yup
     .string()
@@ -51,7 +51,7 @@ const SettingModal = ({ onClose, onUpdate, isShow }) => {
   const dispatch = useDispatch();
   const userData = useSelector(selectUser);
   const [preview, setPreview] = useState(null);
-  const [showOutdatedPassword, setShowOutdatedPassword] = useState(false);
+  const [ShowCurrentPassword, setShowCurrentPassword] = useState(false);
   const [showNewPassword, setShowNewPassword] = useState(false);
   const [showConfirmNewPassword, setShowConfirmNewPassword] = useState(false);
 
@@ -83,7 +83,7 @@ const SettingModal = ({ onClose, onUpdate, isShow }) => {
         gender: formData.gender,
         userName: formData.userName,
         email: formData.email,
-        outdatedPassword: formData.outdatedPassword,
+        currentPassword: formData.currentPassword,
         newPassword: formData.newPassword,
       };
 
@@ -99,7 +99,7 @@ const SettingModal = ({ onClose, onUpdate, isShow }) => {
       onClose();
       resetForm();
     } catch (error) {
-       console.log("Failed to update user data: ", error.message);
+      console.log("Failed to update user data: ", error.message);
     }
   };
 
@@ -112,7 +112,7 @@ const SettingModal = ({ onClose, onUpdate, isShow }) => {
               gender: userData.gender || "woman",
               userName: userData.userName || "",
               email: userData.email || "",
-              outdatedPassword: "",
+              currentPassword: "",
               newPassword: "",
               confirmNewPassword: "",
             }}
@@ -214,19 +214,19 @@ const SettingModal = ({ onClose, onUpdate, isShow }) => {
                       <div className={css.inputWrap}>
                         <Field
                           className={css.input}
-                          type={showOutdatedPassword ? "text" : "password"}
-                          name="outdatedPassword"
+                          type={ShowCurrentPassword ? "text" : "password"}
+                          name="currentPassword"
                           placeholder="Password"
                         />
                         <button
                           className={css.buttonSvg}
                           type="button"
                           onClick={() =>
-                            setShowOutdatedPassword(!showOutdatedPassword)
+                            setShowCurrentPassword(!ShowCurrentPassword)
                           }
                         >
                           <Icon
-                            id={showOutdatedPassword ? "eye" : "eye-slash"}
+                            id={ShowCurrentPassword ? "eye" : "eye-slash"}
                             className="icon-blue"
                             width={16}
                             height={16}
@@ -234,7 +234,7 @@ const SettingModal = ({ onClose, onUpdate, isShow }) => {
                         </button>
                       </div>
                       <ErrorMessage
-                        name="outdatedPassword"
+                        name="currentPassword"
                         component="p"
                         className={css.error}
                       />
