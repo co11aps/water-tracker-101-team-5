@@ -125,7 +125,6 @@ export const updateUserInfo = createAsyncThunk(
       });
       return res.data;
     } catch (error) {
-      alert(error);
       return thunkAPI.rejectWithValue(error.response.data);
     }
   }
@@ -145,7 +144,6 @@ export const getUserInfo = createAsyncThunk(
       const res = await axiosInstance.get("/users/profile");
       return res.data;
     } catch (error) {
-      alert(error);
       return thunkAPI.rejectWithValue(error.response.data);
     }
   }
