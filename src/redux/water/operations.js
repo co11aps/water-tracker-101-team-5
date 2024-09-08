@@ -23,10 +23,6 @@ export const getMonthlyWater = createAsyncThunk(
         year: year.toString(), // Ensure year is a string
         month: formattedMonth, // Send the formatted month
       });
-      console.log("Request body:", {
-        year: year.toString(),
-        month: formattedMonth,
-      });
       return response.data.data;
     } catch (e) {
       return thunkAPI.rejectWithValue(e.message);
