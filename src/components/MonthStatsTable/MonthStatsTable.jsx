@@ -1,10 +1,8 @@
-// src/components/Calendar/Calendar.jsx
-
 import { useState, useEffect, useRef } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { getMonthlyWater } from '../../redux/water/operations';
 import { selectMonthlyWater, selectIsLoading, selectError } from '../../redux/water/selectors';
-import css from './Calendar.module.css';
+import css from './MonthStatsTable.module.css';
 import Loader from '../Loader/Loader';
 
 const months = [
@@ -22,21 +20,25 @@ const months = [
     { monthName: 'December', monthDays: 31 },
 ];
 
-const Calendar = () => {
+const MonthStatsTable = () => {
     const dispatch = useDispatch();
-    const monthlyWater = useSelector(selectMonthlyWater);
+    const monthlyWater = useSelector(selectMonthlyWater); 
     const isLoading = useSelector(selectIsLoading);
     const error = useSelector(selectError);
     const [month, setMonth] = useState(new Date().getMonth());
     const [year, setYear] = useState(new Date().getFullYear());
-    const [hoveredDay, setHoveredDay] = useState(null);
+    const [selectedDay, setSelectedDay] = useState(null);
     const modalRef = useRef(null);
 
-    useEffect(() => {
-        dispatch(getMonthlyWater());
-    }, [dispatch]);
 
-    const handlePrevMonth = () => {
+    const currentMonth = new Date().getMonth();
+    const currentYear = new Date().getFullYear();
+
+    useEffect(() => {
+        dispatch(getMonthlyWater({ year, month: month + 1 })); 
+    }, [dispatch, year, month]);
+
+     const handlePrevMonth = () => {
         if (month === 0) {
             setMonth(months.length - 1);
             setYear(year - 1);
@@ -46,6 +48,11 @@ const Calendar = () => {
     };
 
     const handleNextMonth = () => {
+        // Забороняємо вибір майбутнього місяця
+        if (year === currentYear && month === currentMonth) {
+            return; // Якщо це поточний місяць і рік, не дозволяємо йти вперед
+        }
+
         if (month < months.length - 1) {
             setMonth(month + 1);
         } else {
@@ -54,45 +61,25 @@ const Calendar = () => {
         }
     };
 
-    const handleMouseEnter = (day) => {
-        setHoveredDay(day);
-        adjustModalPosition();
+    // const handleMouseEnter = (day) => {
+    //     setSelectedDay(day);
+    // };
+
+    // const handleMouseLeave = () => {
+    //     setSelectedDay(null);
+    // };
+
+    const handleDayClick = (dayData) => {
+        setSelectedDay(dayData); // Встановлюємо вибраний день
     };
 
-    const handleMouseLeave = () => {
-        setHoveredDay(null);
-    };
-
-    const adjustModalPosition = () => {
-        if (modalRef.current) {
-            const modalRect = modalRef.current.getBoundingClientRect();
-            const viewportWidth = window.innerWidth;
-
-            if (modalRect.top < 0) {
-                modalRef.current.style.bottom = 'auto';
-                modalRef.current.style.top = '100%';
-            } else {
-                modalRef.current.style.top = 'auto';
-                modalRef.current.style.bottom = '100%';
-            }
-
-            if (modalRect.left < 0) {
-                modalRef.current.style.left = '0';
-                modalRef.current.style.transform = 'translateX(0)';
-            } else if (modalRect.right > viewportWidth) {
-                modalRef.current.style.left = 'auto';
-                modalRef.current.style.right = '0';
-                modalRef.current.style.transform = 'translateX(0)';
-            } else {
-                modalRef.current.style.left = '50%';
-                modalRef.current.style.transform = 'translateX(-50%)';
-            }
+   const getDayData = (day) => {
+        if (!Array.isArray(monthlyWater)) {
+            return null;
         }
-    };
 
-    const getDayData = (day) => {
         return monthlyWater.find((data) => {
-            const dayNumber = parseInt(data.date.split(',')[0], 10);
+            const dayNumber = parseInt(data.date.split(',')[0], 10); 
             return dayNumber === day;
         });
     };
@@ -114,7 +101,10 @@ const Calendar = () => {
                 <div className={css.navigation}>
                     <span className={css.prev} onClick={handlePrevMonth}>&lt;</span>
                     <span>{months[month].monthName}, {year}</span>
-                    <span className={css.next} onClick={handleNextMonth}>&gt;</span>
+                    {/* Приховуємо кнопку "вперед", якщо це поточний місяць і рік */}
+                    {!(year === currentYear && month === currentMonth) && (
+                        <span className={css.next} onClick={handleNextMonth}>&gt;</span>
+                    )}
                 </div>
             </div>
             <ul className={css.calendar}>
@@ -126,12 +116,13 @@ const Calendar = () => {
                         <li
                             className={css.day}
                             key={day}
-                            onMouseEnter={() => handleMouseEnter(dayData)}
-                            onMouseLeave={handleMouseLeave}
+                            // onMouseEnter={() => handleMouseEnter(dayData)}
+                            // onMouseLeave={handleMouseLeave}
+                            onClick={() => handleDayClick(dayData)}
                         >
                             <div className={`${css.date} ${fullfilment < 100 ? css.unfilled : ''}`}>{day}</div>
                             <div className={css.percentage}>{dayData ? `${fullfilment}%` : '0%'}</div>
-                            {hoveredDay && hoveredDay.date === dayData?.date && (
+                            {selectedDay && selectedDay.date === dayData?.date && (
                                 <div className={css.modal} ref={modalRef}>
                                     <div className={css.modalDate}>{day}, {months[month].monthName}</div>
                                     <div className={css.modalText}>Daily norma: <span className={css.modalTextBlue}>{(dayData.dailyNorma / 1000).toFixed(1)} L</span></div>
@@ -148,4 +139,4 @@ const Calendar = () => {
     );
 };
 
-export default Calendar;
+export default MonthStatsTable;

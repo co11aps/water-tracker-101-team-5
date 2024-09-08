@@ -10,8 +10,7 @@ import { selectIsRefreshing } from "./redux/auth/selectors";
 import { Navigate } from "react-router-dom";
 import { Toaster } from "react-hot-toast";
 
-import { store } from "./redux/store";
-import { axiosInstance } from "./services/axiosConfig";
+import { setupInterceptors } from "./services/setupInterceptors";
 
 import { Suspense } from "react";
 import Loader from "./components/Loader/Loader";
@@ -20,6 +19,9 @@ const SigninPage = lazy(() => import("./pages/SigninPage/SigninPage"));
 const SignupPage = lazy(() => import("./pages/SignupPage/SignupPage"));
 const WelcomePage = lazy(() => import("./pages/WelcomePage/WelcomePage"));
 const HomePage = lazy(() => import("./pages/HomePage/HomePage"));
+const ForgotPasswordPage = lazy(() =>
+  import("./pages/ForgotPasswordPage/ForgotPasswordPage")
+);
 
 function App() {
   const dispatch = useDispatch();
@@ -27,29 +29,8 @@ function App() {
 
   useEffect(() => {
     dispatch(refreshToken());
+    setupInterceptors();
   }, [dispatch]);
-
-  axiosInstance.interceptors.response.use(
-    (response) => response,
-    async (error) => {
-      const originalRequest = error.config;
-      if (error.response.status === 401 && !originalRequest._retry) {
-        originalRequest._retry = true;
-        try {
-          const result = await store.dispatch(refreshToken());
-          const newAccessToken = result.payload.accessToken;
-          axiosInstance.defaults.headers.common[
-            "Authorization"
-          ] = `Bearer ${newAccessToken}`;
-          originalRequest.headers["Authorization"] = `Bearer ${newAccessToken}`;
-          return axiosInstance(originalRequest);
-        } catch (refreshError) {
-          return Promise.reject(refreshError);
-        }
-      }
-      return Promise.reject(error);
-    }
-  );
 
   return (
     <Layout>
@@ -84,6 +65,15 @@ function App() {
               element={
                 <RestrictedRoute>
                   <SigninPage />
+                </RestrictedRoute>
+              }
+            />
+
+            <Route
+              path="/forgot-password"
+              element={
+                <RestrictedRoute>
+                  <ForgotPasswordPage />
                 </RestrictedRoute>
               }
             />

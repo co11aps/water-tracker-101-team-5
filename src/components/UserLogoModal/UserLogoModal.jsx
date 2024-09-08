@@ -1,4 +1,4 @@
-import { useRef, useState, useEffect, useCallback } from "react";
+import { useState, useCallback, useEffect } from "react";
 import Icon from "../Icon/Icon";
 import css from "./UserLogoModal.module.css";
 import SettingModal from "../SettingModal/SettingModal";
@@ -7,7 +7,6 @@ import UserLogoutModal from "../UserLogoutModal/UserLogoutModal";
 const UserLogoModal = ({ toggleModal }) => {
   const [isSettingModalOpen, setIsSettingModalOpen] = useState(false);
   const [isLogoutModalOpen, setIsLogoutModalOpen] = useState(false);
-  const modalRef = useRef(null);
 
   const openSettingModal = () => {
     setIsLogoutModalOpen(false);
@@ -25,32 +24,25 @@ const UserLogoModal = ({ toggleModal }) => {
   }, [toggleModal]);
 
   useEffect(() => {
-    const handleClickOutside = (event) => {
-      if (modalRef.current && !modalRef.current.contains(event.target)) {
-        closeAllModals();
-      }
-    };
-    const handleEscKey = (event) => {
-      if (event.key === "Escape") {
+    const handleEsc = (e) => {
+      if (e.code === "Escape") {
         closeAllModals();
       }
     };
 
-    document.addEventListener("mousedown", handleClickOutside);
-    document.addEventListener("keydown", handleEscKey);
+    document.body.style.overflow = "hidden";
+    window.addEventListener("keydown", handleEsc);
 
     return () => {
-      document.removeEventListener("mousedown", handleClickOutside);
-      document.removeEventListener("keydown", handleEscKey);
+      document.body.style.overflow = "auto";
+      window.removeEventListener("keydown", handleEsc);
     };
   }, [closeAllModals]);
-
   return (
     <>
       {!isSettingModalOpen && !isLogoutModalOpen && (
-        <div className={css.modal} onClick={closeAllModals}>
+        <div className={css.modal}>
           <div
-            ref={modalRef}
             className={css.modalContent}
             onClick={(e) => e.stopPropagation()}
           >
@@ -91,7 +83,9 @@ const UserLogoModal = ({ toggleModal }) => {
             setIsLogoutModalOpen(false);
             closeAllModals();
           }}
+
           // isShow={isLogoutModalOpen}
+
           toggleModal={closeAllModals}
         />
       )}

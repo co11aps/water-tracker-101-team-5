@@ -162,9 +162,14 @@ const AuthForm = ({ isSignup }) => {
             <a href="/signin">Sign in</a>
           </p>
         ) : (
-          <p>
-            <a href="/signup">Sign up</a>
-          </p>
+          <>
+            <p>
+              <a href="/forgot-password">Forgot password?</a>
+            </p>
+            <p>
+              <a href="/signup">Sign up</a>
+            </p>
+          </>
         )}
       </div>
     </div>

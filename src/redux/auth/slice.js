@@ -8,6 +8,7 @@ import {
   updateUserInfo,
   getUserInfo,
   updateDailyNorma,
+  forgotPassword, //додала
 } from "./operations";
 
 const authSlice = createSlice({
@@ -24,6 +25,8 @@ const authSlice = createSlice({
     isLoggedIn: false,
     isRefreshing: false,
     isAuthHeaderSet: false,
+    forgotPasswordError: null, // додала новий стан для обробки помилок
+    isSubmitting: false, //додала поле для відслідковування стану відправки форми
   },
   extraReducers: (builder) => {
     builder
@@ -88,6 +91,18 @@ const authSlice = createSlice({
       })
       .addCase(updateDailyNorma.fulfilled, (state, action) => {
         state.user.dailyNorma = action.payload.dailyNorma;
+      })
+      .addCase(forgotPassword.pending, (state) => {
+        state.isSubmitting = true;
+        state.forgotPasswordError = null;
+      })
+      .addCase(forgotPassword.fulfilled, (state) => {
+        state.isSubmitting = false;
+        state.forgotPasswordError = null;
+      })
+      .addCase(forgotPassword.rejected, (state, action) => {
+        state.isSubmitting = false;
+        state.forgotPasswordError = action.error.message;
       });
   },
 });
