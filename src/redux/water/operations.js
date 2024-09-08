@@ -19,10 +19,8 @@ export const getMonthlyWater = createAsyncThunk(
     try {
       const formattedMonth = month.toString().padStart(2, "0"); // Ensure month is two digits
       const response = await axiosInstance.post("water/month", {
-        data: {
-          year: year.toString(), // Ensure year is a string
-          month: formattedMonth, // Send the formatted month
-        },
+        year: year.toString(), // Ensure year is a string
+        month: formattedMonth, // Send the formatted month
       });
       console.log("Request body:", {
         year: year.toString(),
