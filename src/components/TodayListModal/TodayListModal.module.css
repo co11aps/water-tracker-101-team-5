@@ -1,4 +1,82 @@
-.modalOverlay {
+.modal {
+  background-color: white;
+  padding: 20px;
+  border-radius: 10px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  width: 300px;
+}
+
+h3 {
+  margin-bottom: 10px;
+  font-size: 18px;
+  text-align: center;
+}
+
+.amountInput {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.amountInput button {
+  width: 40px;
+  height: 40px;
+  background-color: var(--primary-color-blue);
+  color: var(--primary-color-white);
+  border: none;
+  border-radius: 5px;
+  font-size: 20px;
+  cursor: pointer;
+}
+
+.amountInput span {
+  font-size: 18px;
+  font-weight: bold;
+}
+
+.timeInput {
+  display: flex;
+  flex-direction: column;
+}
+
+.timeInput select {
+  padding: 5px;
+  border-radius: 5px;
+  border: 1px solid #ccc;
+  margin-top: 5px;
+}
+
+.manualInput {
+  display: flex;
+  flex-direction: column;
+}
+
+.manualInput input {
+  padding: 5px;
+  border-radius: 5px;
+  border: 1px solid #ccc;
+  margin-top: 5px;
+}
+
+.buttons {
+  display: flex;
+  justify-content: center;
+}
+
+.saveButton {
+  padding: 10px 20px;
+  background-color: var(--primary-color-blue);
+  color: var(--primary-color-white);
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 16px;
+}
+
+/* .modalOverlay {
   position: fixed;
   top: 0;
   left: 0;
@@ -87,4 +165,4 @@
 
 .saveButton:hover {
   background-color: #0056b3;
-}
+} */
