@@ -47,11 +47,10 @@
   font-weight: bold;
 }
 
-
 .formGroup input[type="text"] {
   margin-bottom: 24px;
 }
-.formGroup input[name="outdatedPassword"],
+.formGroup input[name="currentPassword"],
 .formGroup input[name="newPassword"]
 /* .formGroup input[name="confirmNewPassword"] { */ {
   margin-bottom: 12px;
@@ -236,5 +235,4 @@ input[type="password"] {
 .error {
   color: var(--secondary-color-3);
   border-color: var(--secondary-color-3);
-
 }
