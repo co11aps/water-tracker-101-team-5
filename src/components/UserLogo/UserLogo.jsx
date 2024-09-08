@@ -55,7 +55,12 @@ const UserLogo = () => {
       <button onClick={toggleModal} className={css.userLogoBtn}>
         <span className={css.userName}>{user.userName || user.email}</span>
         {getAvatarContent()}
-        <Icon id="checkmark" width={16} height={16} className="icon-blue" />
+        <Icon
+          id="checkmark"
+          width={16}
+          height={16}
+          className={`${isModalOpen ? css.iconRotate : ""} icon-blue`}
+        />
       </button>
       {isModalOpen && <UserLogoModal toggleModal={toggleModal} />}
     </div>
