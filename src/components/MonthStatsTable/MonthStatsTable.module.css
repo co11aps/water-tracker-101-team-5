@@ -41,6 +41,7 @@
     flex-direction: column;
     gap: 5px;
     align-items: center;
+    cursor: pointer;
 }
 
 .day .date {
