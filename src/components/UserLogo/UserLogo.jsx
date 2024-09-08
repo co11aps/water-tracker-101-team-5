@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useRef, useEffect } from "react";
 import css from "./UserLogo.module.css";
 import UserLogoModal from "../UserLogoModal/UserLogoModal";
 import Icon from "../Icon/Icon";
@@ -8,6 +8,21 @@ import { selectUser } from "../../redux/auth/selectors";
 const UserLogo = () => {
   const user = useSelector(selectUser);
   const [isModalOpen, setIsModalOpen] = useState(false);
+  const modalRef = useRef(null);
+
+  const handleClickOutside = (event) => {
+    if (modalRef.current && !modalRef.current.contains(event.target)) {
+      setIsModalOpen(false);
+    }
+  };
+
+  useEffect(() => {
+    document.addEventListener("click", handleClickOutside);
+
+    return () => {
+      document.removeEventListener("click", handleClickOutside);
+    };
+  }, [setIsModalOpen]);
 
   const toggleModal = () => {
     setIsModalOpen((prevState) => !prevState);
@@ -36,7 +51,7 @@ const UserLogo = () => {
   };
 
   return (
-    <div className={css.userLogoWrapper}>
+    <div ref={modalRef} className={css.userLogoWrapper}>
       <button onClick={toggleModal} className={css.userLogoBtn}>
         <span className={css.userName}>{user.userName || user.email}</span>
         {getAvatarContent()}
