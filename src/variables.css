@@ -1,0 +1,52 @@
+/* colour variables */
+body {
+    --primary-color-white: #ffffff;
+    --primary-color-black: #2f2f2f;
+    --primary-color-blue: #407bff;
+
+    --secondary-color-2: #ecf2ff;
+    --secondary-color-3: #ef5050;
+    --secondary-color-4: #9ebbff;
+    --secondary-color-5-orange: #ff9d43;
+    --secondary-color-5: #d7e3ff;
+
+    --fill-color-blue: #c6d7ff;
+    --fill-color-white: #f5f5f5;
+
+    transition: color 0.25s ease-in-out;
+    transition: background-color 0.25s ease-in-out;
+}
+
+/* Shadow variables */
+body {
+    --box-shadow: 0 4px 8px 0 rgba(64, 123, 255, 0.2);
+    --box-shadow-2: 0px 4px 14px 0px rgba(64, 123, 255, 0.3);
+    --box-shadow-3: 0px 4px 14px 0px rgba(64, 123, 255, 0.54);
+}
+
+/* Background variables */
+body {
+    --bkg-img-mobile-back-auth: url(../../images/background/mobile/icon-light-background-elem-signin.svg);
+
+    --bkg-img-mobile-bottle-auth: url(../../images/background/mobile/icon-light-bottle-signin.svg);
+
+    --bkg-img-tablet-bottle-auth: url(../../images/background/tablet/icon-light-bottle-signin.svg);
+
+    --bkg-img-desk-back-auth: url(../../images/background/desktop/icon-light-background-elem-main-page.svg);
+
+    --bkg-img-tdesk-bottle-auth: url(../../images/background/desktop/icon-light-bottle-home-screen.svg);
+}
+
+
+
+/* Світла тема 
+Кнопка нормал box-shadow: 0px 4px 8px 0px rgba(64, 123, 255, 0.34);
+Кнопка ховер (--box-shadow-3) box-shadow: 0px 4px 14px 0px rgba(64, 123, 255, 0.54);
+Картка (--box-shadow-2) box-shadow: 0px 4px 14px 0px rgba(64, 123, 255, 0.30);
+Картка Дейлі норма box-shadow: 0px 4px 4px 0px rgba(64, 123, 255, 0.30);
+
+Темна тема 
+Кнопка нормал --box-shadow: 0px 4px 8px 0px rgba(0, 0, 0, 0.34);
+Кнопка ховер (--box-shadow-3) --box-shadow: 0px 4px 14px 0px rgba(0, 0, 0, 0.54);
+Картка (--box-shadow-2) --box-shadow: 0px 4px 14px 0px rgba(0, 0, 0, 0.20);
+Картка Дейлі норма box-shadow: 0px 4px 14px 0px rgba(0, 0, 0, 0.20); */
