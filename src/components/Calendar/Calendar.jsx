@@ -22,7 +22,7 @@ const months = [
 
 const Calendar = () => {
     const dispatch = useDispatch();
-    const monthlyWater = useSelector(selectMonthlyWater); // Accessing monthly water data from Redux store
+    const monthlyWater = useSelector(selectMonthlyWater); 
     const isLoading = useSelector(selectIsLoading);
     const error = useSelector(selectError);
     const [month, setMonth] = useState(new Date().getMonth());
@@ -31,8 +31,7 @@ const Calendar = () => {
     const modalRef = useRef(null);
 
     useEffect(() => {
-        // Dispatch the action with the current year and month
-        dispatch(getMonthlyWater({ year, month: month + 1 })); // month + 1 because JavaScript months are 0-indexed
+        dispatch(getMonthlyWater({ year, month: month + 1 })); 
     }, [dispatch, year, month]);
 
     const handlePrevMonth = () => {
@@ -62,45 +61,40 @@ const Calendar = () => {
         setHoveredDay(null);
     };
 
-    const adjustModalPosition = () => {
-        if (modalRef.current) {
-            const modalRect = modalRef.current.getBoundingClientRect();
-            const viewportWidth = window.innerWidth;
+    // const adjustModalPosition = () => {
+    //     if (modalRef.current) {
+    //         const modalRect = modalRef.current.getBoundingClientRect();
+    //         const viewportWidth = window.innerWidth;
 
-            if (modalRect.top < 0) {
-                modalRef.current.style.bottom = 'auto';
-                modalRef.current.style.top = '100%';
-            } else {
-                modalRef.current.style.top = 'auto';
-                modalRef.current.style.bottom = '100%';
-            }
+    //         if (modalRect.top < 0) {
+    //             modalRef.current.style.bottom = 'auto';
+    //             modalRef.current.style.top = '100%';
+    //         } else {
+    //             modalRef.current.style.top = 'auto';
+    //             modalRef.current.style.bottom = '100%';
+    //         }
 
-            if (modalRect.left < 0) {
-                modalRef.current.style.left = '0';
-                modalRef.current.style.transform = 'translateX(0)';
-            } else if (modalRect.right > viewportWidth) {
-                modalRef.current.style.left = 'auto';
-                modalRef.current.style.right = '0';
-                modalRef.current.style.transform = 'translateX(0)';
-            } else {
-                modalRef.current.style.left = '50%';
-                modalRef.current.style.transform = 'translateX(-50%)';
-            }
-        }
-    };
+    //         if (modalRect.left < 0) {
+    //             modalRef.current.style.left = '0';
+    //             modalRef.current.style.transform = 'translateX(0)';
+    //         } else if (modalRect.right > viewportWidth) {
+    //             modalRef.current.style.left = 'auto';
+    //             modalRef.current.style.right = '0';
+    //             modalRef.current.style.transform = 'translateX(0)';
+    //         } else {
+    //             modalRef.current.style.left = '50%';
+    //             modalRef.current.style.transform = 'translateX(-50%)';
+    //         }
+    //     }
+    // };
 
     const getDayData = (day) => {
   if (!Array.isArray(monthlyWater)) {
     return null;
   }
 
-  // Extract the day number from the date string (e.g., "1, September")
         return monthlyWater.find((data) => {
-            
-            const dayNumber = parseInt(data.date.split(',')[0], 10); // Extract the day number from "1, September"
-            console.log(data);
-            console.log(data.date);
-            console.log(dayNumber);
+        const dayNumber = parseInt(data.date.split(',')[0], 10); 
     return dayNumber === day;
   });
 };
