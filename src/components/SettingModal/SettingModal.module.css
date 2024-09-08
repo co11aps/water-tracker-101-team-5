@@ -67,6 +67,7 @@
 
 .formGroup .formGroup input[type="radio"] {
   margin-right: 8px;
+  color: var(--primary-color-blue);
 }
 
 .formGroup button {
