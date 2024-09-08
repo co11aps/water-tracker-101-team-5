@@ -61,32 +61,32 @@ const Calendar = () => {
         setHoveredDay(null);
     };
 
-    const adjustModalPosition = () => {
-        if (modalRef.current) {
-            const modalRect = modalRef.current.getBoundingClientRect();
-            const viewportWidth = window.innerWidth;
+    // const adjustModalPosition = () => {
+    //     if (modalRef.current) {
+    //         const modalRect = modalRef.current.getBoundingClientRect();
+    //         const viewportWidth = window.innerWidth;
 
-            if (modalRect.top < 0) {
-                modalRef.current.style.bottom = 'auto';
-                modalRef.current.style.top = '100%';
-            } else {
-                modalRef.current.style.top = 'auto';
-                modalRef.current.style.bottom = '100%';
-            }
+    //         if (modalRect.top < 0) {
+    //             modalRef.current.style.bottom = 'auto';
+    //             modalRef.current.style.top = '100%';
+    //         } else {
+    //             modalRef.current.style.top = 'auto';
+    //             modalRef.current.style.bottom = '100%';
+    //         }
 
-            if (modalRect.left < 0) {
-                modalRef.current.style.left = '0';
-                modalRef.current.style.transform = 'translateX(0)';
-            } else if (modalRect.right > viewportWidth) {
-                modalRef.current.style.left = 'auto';
-                modalRef.current.style.right = '0';
-                modalRef.current.style.transform = 'translateX(0)';
-            } else {
-                modalRef.current.style.left = '50%';
-                modalRef.current.style.transform = 'translateX(-50%)';
-            }
-        }
-    };
+    //         if (modalRect.left < 0) {
+    //             modalRef.current.style.left = '0';
+    //             modalRef.current.style.transform = 'translateX(0)';
+    //         } else if (modalRect.right > viewportWidth) {
+    //             modalRef.current.style.left = 'auto';
+    //             modalRef.current.style.right = '0';
+    //             modalRef.current.style.transform = 'translateX(0)';
+    //         } else {
+    //             modalRef.current.style.left = '50%';
+    //             modalRef.current.style.transform = 'translateX(-50%)';
+    //         }
+    //     }
+    // };
 
     const getDayData = (day) => {
   if (!Array.isArray(monthlyWater)) {

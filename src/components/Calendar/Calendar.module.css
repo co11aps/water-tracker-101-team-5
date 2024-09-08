@@ -69,32 +69,64 @@
   border: 1px solid var(--secondary-color-5-orange);
 }
 
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes fadeOut {
+  from {
+    opacity: 1;
+  }
+  to {
+    opacity: 0;
+  }
+}
+
 .modal {
   position: absolute;
     bottom: 100%;
-    left: 50%;
-    transform: translateX(-30%);
+       left: 0;
+    transform: translateX(-5%);
   background-color: var(--primary-color-white);
   z-index: 10;
   text-align: left;
-
   border-radius: 10px;
   padding: 24px 16px;
   width: 292px;
   height: 188px;
-
   box-shadow: var(--box-shadow);
-
   display: flex;
   flex-direction: column;
   justify-content: space-around;
+  
   visibility: hidden;
+  opacity: 0;
+  animation: fadeOut 0.3s ease forwards;
 }
-.modal:first-of-type {
-transform: translateX(-10%);
-}
+
 .day:hover .modal {
   visibility: visible;
+  animation: fadeIn 0.3s ease forwards;
+}
+.day:nth-of-type(5n) .modal {
+  transform:translateX(-0%);
+}
+.day:nth-of-type(5n+2) .modal {
+  transform:translateX(-20%);
+}    
+.day:nth-of-type(5n+3) .modal {
+  transform:translateX(-40%);
+}
+.day:nth-of-type(5n+4) .modal {
+  transform:translateX(-60%);
+}
+.day:nth-of-type(5n+5) .modal {
+  transform:translateX(-80%);
 }
 
 .modalDate {
@@ -120,6 +152,26 @@ transform: translateX(-10%);
   .calendar {
     grid-template-columns: repeat(10, 1fr);
   }
+  .day .modal {
+    bottom: 100%;
+    left: 50%;
+    transform: translateX(0);
+  }
+  .day:nth-of-type(n) .modal {
+ transform: translateX(0);
+}
+.day:nth-of-type(10n+7) .modal {
+  transform:translateX(-20%);
+}
+.day:nth-of-type(10n+8) .modal {
+  transform:translateX(-40%);
+}
+.day:nth-of-type(10n+9) .modal {
+  transform:translateX(-60%);
+}
+.day:nth-of-type(10n+10) .modal {
+  transform:translateX(-80%);
+}
 }
 @media (min-width: 1280px) {
   .calendar {
