@@ -19,7 +19,7 @@
 }
 
 .btn:hover {
-  box-shadow: 0 4px 14px 0 rgba(64, 123, 255, 0.54);
+  box-shadow: var(--box-shadow-2);
 }
 
 .btn:active {
