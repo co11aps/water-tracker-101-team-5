@@ -169,3 +169,20 @@ export const updateDailyNorma = createAsyncThunk(
     }
   }
 );
+
+//===========ДОДАЛА=================
+/*
+ * POST @ /auth/forgot-password
+ * body: { email }
+ */
+export const forgotPassword = createAsyncThunk(
+  "auth/forgotPassword",
+  async (email, thunkAPI) => {
+    try {
+      const res = await axiosInstance.post("/auth/forgot-password", { email });
+      return res.data;
+    } catch (error) {
+      return thunkAPI.rejectWithValue(error.response.data);
+    }
+  }
+);
