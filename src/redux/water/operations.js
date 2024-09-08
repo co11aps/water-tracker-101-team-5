@@ -42,6 +42,8 @@ export const addWater = createAsyncThunk(
       return response.data.data;
     } catch (e) {
       return thunkAPI.rejectWithValue(e.message);
+    } finally {
+      await thunkAPI.dispatch(getDailyWater());
     }
   }
 );
@@ -57,6 +59,8 @@ export const updateWater = createAsyncThunk(
       return response.data.data;
     } catch (e) {
       return thunkAPI.rejectWithValue(e.message);
+    } finally {
+      await thunkAPI.dispatch(getDailyWater());
     }
   }
 );
@@ -69,6 +73,8 @@ export const deleteWater = createAsyncThunk(
       return { _id: id };
     } catch (e) {
       return thunkAPI.rejectWithValue(e.message);
+    } finally {
+      await thunkAPI.dispatch(getDailyWater());
     }
   }
 );
