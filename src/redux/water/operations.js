@@ -39,11 +39,10 @@ export const addWater = createAsyncThunk(
   async (waterData, thunkAPI) => {
     try {
       const response = await axiosInstance.post("water/add", waterData);
+      await thunkAPI.dispatch(getDailyWater());
       return response.data.data;
     } catch (e) {
       return thunkAPI.rejectWithValue(e.message);
-    } finally {
-      await thunkAPI.dispatch(getDailyWater());
     }
   }
 );
@@ -56,11 +55,10 @@ export const updateWater = createAsyncThunk(
         `water/update/${id}`,
         waterData
       );
+      await thunkAPI.dispatch(getDailyWater());
       return response.data.data;
     } catch (e) {
       return thunkAPI.rejectWithValue(e.message);
-    } finally {
-      await thunkAPI.dispatch(getDailyWater());
     }
   }
 );
@@ -70,11 +68,10 @@ export const deleteWater = createAsyncThunk(
   async (id, thunkAPI) => {
     try {
       await axiosInstance.delete(`water/delete/${id}`);
+      await thunkAPI.dispatch(getDailyWater());
       return { _id: id };
     } catch (e) {
       return thunkAPI.rejectWithValue(e.message);
-    } finally {
-      await thunkAPI.dispatch(getDailyWater());
     }
   }
 );
