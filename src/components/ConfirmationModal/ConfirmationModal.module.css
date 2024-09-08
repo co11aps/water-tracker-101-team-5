@@ -1,22 +1,21 @@
 .modalContent {
   background: var(--primary-color-white);
   width: 280px;
-  padding: 24px;
+  padding: 24px 24px 32px 24px;
   border-radius: 10px;
 }
 
-/* .textModalContent {
-  font-size: 18px;
+.message {
   font-weight: 500;
-  line-height: 20px;
+  font-size: 18px;
+  line-height: 1.1;
   margin-bottom: 24px;
-} */
+}
 
 .btnGroup {
   display: flex;
-  flex-direction: column-reverse;
+  flex-direction: column;
   gap: 24px;
-  padding: 0;
 }
 
 .cancelButton,
@@ -25,9 +24,15 @@
   height: 36px;
   border-radius: 10px;
   background-color: var(--secondary-color-5);
-  font-size: 18px;
-  font-weight: 400;
+  color: var(--primary-color-blue);
+  font-size: 16px;
+  font-weight: 500;
   border: none;
+}
+
+.confirmButton {
+  background-color: var(--secondary-color-3);
+  color: var(--primary-color-white);
   box-shadow: var(--box-shadow);
   transition: box-shadow 0.25s ease-in-out;
   &:hover {
@@ -35,69 +40,19 @@
   }
 }
 
-.confirmButton {
-  background-color: var(--secondary-color-3);
-  color: var(--primary-color-white);
-}
-
 @media (min-width: 768px) {
   .modalContent {
     width: 592px;
   }
+
   .btnGroup {
-    flex-direction: row;
-    justify-content: flex-end;
+    flex-direction: row-reverse;
+    justify-content: flex-start;
   }
+
   .cancelButton,
   .confirmButton {
     width: 160px;
     height: 44px;
   }
 }
-@media (min-width: 1440px) {
-  .btnGroup {
-    justify-content: flex-start;
-  }
-}
-
-/* .overlay {
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100vw;
-  height: 100vh;
-  background-color: rgba(0, 0, 0, 0.5);
-  display: flex;
-  justify-content: center;
-  align-items: center;
-}
-
-.modal {
-  background-color: #fff;
-  padding: 20px;
-  border-radius: 8px;
-  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
-}
-
-.actions {
-  display: flex;
-  justify-content: space-between;
-}
-
-.confirmButton {
-  background-color: red;
-  color: white;
-  padding: 10px 20px;
-  border: none;
-  border-radius: 5px;
-  cursor: pointer;
-}
-
-.cancelButton {
-  background-color: gray;
-  color: white;
-  padding: 10px 20px;
-  border: none;
-  border-radius: 5px;
-  cursor: pointer;
-} */
