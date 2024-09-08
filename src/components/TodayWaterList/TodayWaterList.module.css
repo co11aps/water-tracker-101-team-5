@@ -75,16 +75,16 @@
 }
 
 .iconGlass {
- width: 26px;
+  width: 26px;
   height: 26px;
   background: transparent;
-  stroke: var(--primary-color-blue);
+  fill: var(--primary-color-blue);
 }
+
 @media screen and (min-width: 1440px) {
   .iconGlass {
     width: 36px;
     height: 36px;
-
   }
 }
 
@@ -93,15 +93,14 @@
   height: 260px;
 }
 .title {
- 
   font-weight: 500;
   font-size: 24px;
   line-height: 30px;
-  color: var(--primary-black-color); 
-  margin-bottom: 16px; 
+  color: var(--primary-black-color);
+  margin-bottom: 16px;
 }
 
- @media screen and (min-width: 768px) {
+@media screen and (min-width: 768px) {
   .title {
     font-size: 26px;
     line-height: 1.23;
@@ -114,41 +113,38 @@
 }
 
 .blank {
-color: var(--primary-color-blue);     
+  color: var(--primary-color-blue);
   font-size: 18px;
   font-weight: 400;
   line-height: 24px;
   margin-bottom: 152px;
 }
 .listItem {
- display: flex;
- justify-content: space-between;
+  display: flex;
+  justify-content: space-between;
   padding: 12px 0;
   align-items: center;
-    border-bottom: 1px solid var(--secondary-color-5);
+  border-bottom: 1px solid var(--secondary-color-5);
 }
 
 .info {
   display: flex;
   align-items: center;
   gap: 12px;
-   width: 206px; 
-  height: 36px; 
+  width: 206px;
+  height: 36px;
   box-sizing: border-box;
-  
-  
 }
 .tools {
   display: flex;
   gap: 18px;
 }
 .todayVolume {
-   font-size: 18px;
-  font-weight: 400; 
+  font-size: 18px;
+  font-weight: 400;
   line-height: 1.33;
   color: var(--primary-color-blue);
   margin-right: 16px;
-  
 }
 
 .todayTime {
@@ -156,7 +152,7 @@ color: var(--primary-color-blue);
   font-weight: 400;
   line-height: 1.33;
   color: var(--primary-color-black);
-  white-space: nowrap
+  white-space: nowrap;
 }
 
 .waterList::-webkit-scrollbar {
@@ -165,7 +161,7 @@ color: var(--primary-color-blue);
 }
 
 .waterList::-webkit-scrollbar-track {
-  background-color:var(--secondary-color-5);
+  background-color: var(--secondary-color-5);
   border-radius: 8px;
 }
 
@@ -173,6 +169,3 @@ color: var(--primary-color-blue);
   background: rgba(158, 187, 255, 1);
   border-radius: 12px;
 }
-
-
-

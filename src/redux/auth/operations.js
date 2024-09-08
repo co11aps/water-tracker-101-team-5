@@ -1,8 +1,6 @@
 import { createAsyncThunk } from "@reduxjs/toolkit";
 import { axiosInstance } from "../../services/axiosConfig";
 
-import { getDailyWater } from "../water/operations";
-
 // Utility to add JWT
 const setAuthHeader = (accessToken) => {
   axiosInstance.defaults.headers.common.Authorization = `Bearer ${accessToken}`;
@@ -165,7 +163,6 @@ export const updateDailyNorma = createAsyncThunk(
     try {
       setAuthHeader(persistedToken);
       const res = await axiosInstance.post("/users/daily-norma", credentials);
-      await thunkAPI.dispatch(getDailyWater());
       return res.data;
     } catch (error) {
       return thunkAPI.rejectWithValue(error.response.data);
