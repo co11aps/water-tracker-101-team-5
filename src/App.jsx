@@ -19,6 +19,9 @@ const SigninPage = lazy(() => import("./pages/SigninPage/SigninPage"));
 const SignupPage = lazy(() => import("./pages/SignupPage/SignupPage"));
 const WelcomePage = lazy(() => import("./pages/WelcomePage/WelcomePage"));
 const HomePage = lazy(() => import("./pages/HomePage/HomePage"));
+const ForgotPasswordPage = lazy(() =>
+  import("./pages/ForgotPasswordPage/ForgotPasswordPage")
+);
 
 function App() {
   const dispatch = useDispatch();
@@ -62,6 +65,15 @@ function App() {
               element={
                 <RestrictedRoute>
                   <SigninPage />
+                </RestrictedRoute>
+              }
+            />
+
+            <Route
+              path="/forgot-password"
+              element={
+                <RestrictedRoute>
+                  <ForgotPasswordPage />
                 </RestrictedRoute>
               }
             />
