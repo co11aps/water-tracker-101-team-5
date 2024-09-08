@@ -1,11 +1,20 @@
 import css from "./WaterRatioPanel.module.css";
 import AddWaterBtn from "../AddWaterBtn/AddWaterBtn";
 
-import { useSelector } from "react-redux";
+import { useEffect } from "react";
+import { useDispatch, useSelector } from "react-redux";
 import { selectDailyWater } from "../../redux/water/selectors";
+import { selectDailyNorma } from "../../redux/auth/selectors";
+import { getDailyWater } from "../../redux/water/operations";
 
 export default function WaterRatioPanel() {
+  const dispatch = useDispatch();
   const { percentage } = useSelector(selectDailyWater);
+  const dailyNorma = useSelector(selectDailyNorma);
+
+  useEffect(() => {
+    dispatch(getDailyWater());
+  }, [dispatch, dailyNorma]);
 
   return (
     <>
