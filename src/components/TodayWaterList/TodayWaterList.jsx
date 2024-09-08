@@ -10,12 +10,11 @@ import ConfirmationModal from "../ConfirmationModal/ConfirmationModal"; // До�
 
 export default function TodayWaterList() {
   const dispatch = useDispatch();
-  const { waterIntakes } = useSelector(selectDailyWater); //waterIntakes - вкладений масив
-  const flatWaterIntakes = waterIntakes.flat(); //тому робимо розгортання масиву
+  const { waterIntakes } = useSelector(selectDailyWater);
 
   const [editItem, setEditItem] = useState(null); // Стан для редагування
   const [deleteItem, setDeleteItem] = useState(null); // Стан для видалення
-  console.log(flatWaterIntakes);
+
   // const handleDelete = (id) => {
   //   dispatch(deleteWater(id)); // Видаляємо запис по id
   // };
@@ -23,6 +22,7 @@ export default function TodayWaterList() {
   const handleDelete = (id) => {
     setDeleteItem(id); // Відкриваємо модальне вікно для підтвердження видалення
   };
+
   const confirmDelete = () => {
     dispatch(deleteWater(deleteItem)); // Видаляємо запис після підтвердження
     setDeleteItem(null); // Закриваємо модальне вікно
@@ -40,11 +40,11 @@ export default function TodayWaterList() {
   return (
     <div className={css.waterList}>
       <h2>Today</h2>
-      {flatWaterIntakes.length === 0 ? (
+      {waterIntakes.length === 0 ? (
         <p>No notes yet!</p>
       ) : (
         <ul>
-          {flatWaterIntakes.map((item) => (
+          {waterIntakes.map((item) => (
             <li key={item._id} className={css.listItem}>
               <span>{item.amount} ml</span>
               <span>{item.time}</span>
