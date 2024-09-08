@@ -49,13 +49,17 @@
 .formGroup input[type="text"] {
   margin-bottom: 24px;
 }
-.formGroup input[type="password"] {
+.formGroup input[name="outdatedPassword"],
+.formGroup input[name="newPassword"]
+/* .formGroup input[name="confirmNewPassword"] { */ {
   margin-bottom: 12px;
 }
-.formGroup input[type="password"]:last-child {
+/* .formGroup input[type="password"]:last-child {
   margin-bottom: 0;
+} */
+.formGroup input::placeholder:active {
+  color: var(--primary-color-blue);
 }
-
 .formGroup label {
   display: block;
   margin-bottom: 8px;
