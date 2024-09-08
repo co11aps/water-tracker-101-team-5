@@ -19,6 +19,9 @@ const SigninPage = lazy(() => import("./pages/SigninPage/SigninPage"));
 const SignupPage = lazy(() => import("./pages/SignupPage/SignupPage"));
 const WelcomePage = lazy(() => import("./pages/WelcomePage/WelcomePage"));
 const HomePage = lazy(() => import("./pages/HomePage/HomePage"));
+const UpdatePasswordPage = lazy(() =>
+  import("./pages/UpdatePasswordPage/UpdatePasswordPage")
+);
 const ForgotPasswordPage = lazy(() =>
   import("./pages/ForgotPasswordPage/ForgotPasswordPage")
 );
@@ -74,6 +77,15 @@ function App() {
               element={
                 <RestrictedRoute>
                   <ForgotPasswordPage />
+                </RestrictedRoute>
+              }
+            />
+
+            <Route
+              path="/reset-password"
+              element={
+                <RestrictedRoute>
+                  <UpdatePasswordPage />
                 </RestrictedRoute>
               }
             />
