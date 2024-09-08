@@ -77,10 +77,14 @@ const SettingModal = ({ onClose, onUpdate, isShow }) => {
 
   const handleSubmit = async (values, { resetForm }) => {
     try {
+      const { confirmNewPassword, ...formData } = values;
+
       const jsonData = {
-        gender: values.gender,
-        userName: values.userName,
-        email: values.email,
+        gender: formData.gender,
+        userName: formData.userName,
+        email: formData.email,
+        outdatedPassword: formData.outdatedPassword,
+        newPassword: formData.newPassword,
       };
 
       dispatch(updateUserInfo(jsonData))
@@ -105,7 +109,6 @@ const SettingModal = ({ onClose, onUpdate, isShow }) => {
         <div className={css.modalContent}>
           <Formik
             initialValues={{
-              avatar: null,
               gender: userData.gender || "woman",
               userName: userData.userName || "",
               email: userData.email || "",
