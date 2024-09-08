@@ -12,6 +12,7 @@ export const getDailyWater = createAsyncThunk(
     }
   }
 );
+
 // Thunk to fetch monthly water data
 export const getMonthlyWater = createAsyncThunk(
   "water/monthlyWater",
@@ -64,7 +65,7 @@ export const deleteWater = createAsyncThunk(
   "water/deleteWater",
   async (id, thunkAPI) => {
     try {
-      // const response = await axiosInstance.delete(`water/delete/${id}`);
+      await axiosInstance.delete(`water/delete/${id}`);
       return { _id: id };
     } catch (e) {
       return thunkAPI.rejectWithValue(e.message);

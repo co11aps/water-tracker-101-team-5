@@ -21,46 +21,20 @@ const handleFulfilled = (state) => {
   state.error = null;
 };
 
-// const handleUpdateWater = (state, action) => {
-//   const index = state.dailyWater.waterIntakes.findIndex(
-//     (item) => item._id === action.payload._id
-//   );
-
-//   state.dailyWater.waterIntakes[index] = action.payload;
-// };
-
-// const handleDeleteWater = (state, action) => {
-//   const index = state.dailyWater.waterIntakes.findIndex(
-//     (item) => item._id === action.payload._id
-//   );
-
-//   state.dailyWater.waterIntakes.splice(index, 1);
-// };
-
 const handleUpdateWater = (state, action) => {
-  // Розгортаємо масив waterIntakes на один рівень
-  const flatWaterIntakes = state.dailyWater.waterIntakes.flat();
-
-  // Знаходимо індекс об'єкта для оновлення
-  const index = flatWaterIntakes.findIndex(
+  const index = state.dailyWater.waterIntakes.findIndex(
     (item) => item._id === action.payload._id
   );
 
-  flatWaterIntakes[index] = action.payload;
-
-  // Оновлюємо стан з новим масивом
-  state.dailyWater.waterIntakes = [flatWaterIntakes];
+  state.dailyWater.waterIntakes[index] = action.payload;
 };
 
 const handleDeleteWater = (state, action) => {
-  const flatWaterIntakes = state.dailyWater.waterIntakes.flat();
-
-  const index = flatWaterIntakes.findIndex(
+  const index = state.dailyWater.waterIntakes.findIndex(
     (item) => item._id === action.payload._id
   );
 
-  flatWaterIntakes.splice(index, 1);
-  state.dailyWater.waterIntakes = [flatWaterIntakes];
+  state.dailyWater.waterIntakes.splice(index, 1);
 };
 
 const waterSlice = createSlice({
