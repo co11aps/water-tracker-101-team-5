@@ -2,7 +2,7 @@ import { useState, useEffect, useRef } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { getMonthlyWater } from '../../redux/water/operations';
 import { selectMonthlyWater, selectIsLoading, selectError } from '../../redux/water/selectors';
-import css from './Calendar.module.css';
+import css from './MonthStatsTable.module.css';
 import Loader from '../Loader/Loader';
 
 const months = [
@@ -20,7 +20,7 @@ const months = [
     { monthName: 'December', monthDays: 31 },
 ];
 
-const Calendar = () => {
+const MonthStatsTable = () => {
     const dispatch = useDispatch();
     const monthlyWater = useSelector(selectMonthlyWater); 
     const isLoading = useSelector(selectIsLoading);
@@ -123,4 +123,4 @@ const Calendar = () => {
     );
 };
 
-export default Calendar;
+export default MonthStatsTable;
