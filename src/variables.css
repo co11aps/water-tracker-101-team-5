@@ -19,10 +19,19 @@ body {
 
 /* Shadow variables */
 body {
-    --box-shadow: 0 4px 8px 0 rgba(64, 123, 255, 0.2);
+    /* Кнопка нормал box-shadow: */
+    --box-shadow: 0 4px 8px 0 rgba(64, 123, 255, 0.34);
+
+    /* Картка (--box-shadow-2) box-shadow: */
     --box-shadow-2: 0px 4px 14px 0px rgba(64, 123, 255, 0.3);
+
+    /* Кнопка ховер (--box-shadow-3) box-shadow:*/
     --box-shadow-3: 0px 4px 14px 0px rgba(64, 123, 255, 0.54);
+
+    /* Картка Дейлі норма box-shadow: 0px 4px 4px 0px rgba(64, 123, 255, 0.30); */
+    --box-shadow-card: 0px 4px 4px 0px rgba(64, 123, 255, 0.30);
 }
+
 
 /* Background variables */
 body {
@@ -39,14 +48,9 @@ body {
 
 
 
-/* Світла тема 
-Кнопка нормал box-shadow: 0px 4px 8px 0px rgba(64, 123, 255, 0.34);
-Кнопка ховер (--box-shadow-3) box-shadow: 0px 4px 14px 0px rgba(64, 123, 255, 0.54);
-Картка (--box-shadow-2) box-shadow: 0px 4px 14px 0px rgba(64, 123, 255, 0.30);
-Картка Дейлі норма box-shadow: 0px 4px 4px 0px rgba(64, 123, 255, 0.30);
 
-Темна тема 
+/* Темна тема 
 Кнопка нормал --box-shadow: 0px 4px 8px 0px rgba(0, 0, 0, 0.34);
 Кнопка ховер (--box-shadow-3) --box-shadow: 0px 4px 14px 0px rgba(0, 0, 0, 0.54);
 Картка (--box-shadow-2) --box-shadow: 0px 4px 14px 0px rgba(0, 0, 0, 0.20);
-Картка Дейлі норма box-shadow: 0px 4px 14px 0px rgba(0, 0, 0, 0.20); */
+Картка Дейлі норма box-shadow: 0px 4px 14px 0px rgba(0, 0, 0, 0.20);  */

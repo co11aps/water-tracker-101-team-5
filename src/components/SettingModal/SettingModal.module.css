@@ -49,13 +49,17 @@
 .formGroup input[type="text"] {
   margin-bottom: 24px;
 }
-.formGroup input[type="password"] {
+.formGroup input[name="outdatedPassword"],
+.formGroup input[name="newPassword"]
+/* .formGroup input[name="confirmNewPassword"] { */ {
   margin-bottom: 12px;
 }
-.formGroup input[type="password"]:last-child {
+/* .formGroup input[type="password"]:last-child {
   margin-bottom: 0;
+} */
+.formGroup input::placeholder:active {
+  color: var(--primary-color-blue);
 }
-
 .formGroup label {
   display: block;
   margin-bottom: 8px;
@@ -63,6 +67,7 @@
 
 .formGroup .formGroup input[type="radio"] {
   margin-right: 8px;
+  color: var(--primary-color-blue);
 }
 
 .formGroup button {
@@ -225,4 +230,8 @@ input[type="password"] {
   width: 100%; /* Аватар буде займати всю ширину контейнера */
   height: 100%; /* Аватар буде займати всю висоту контейнера */
   object-fit: cover; /* Зображення буде обрізатися під круглу форму */
+}
+.error {
+  color: var(--secondary-color-3);
+  border-color: var(--secondary-color-3);
 }
