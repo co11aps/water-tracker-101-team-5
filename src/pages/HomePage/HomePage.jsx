@@ -12,12 +12,12 @@ export default function HomePage() {
   const isAuthHeaderSet = useSelector(selectIsAuthHeaderSet);
   const { waterIntakes } = useSelector(selectDailyWater);
 
-  useEffect(() => {
-    if (isAuthHeaderSet) {
-      dispatch(getDailyWater());
-      dispatch(getMonthlyWater());
-    }
-  }, [dispatch, isAuthHeaderSet, waterIntakes]);
+  // useEffect(() => {
+  //   if (isAuthHeaderSet) {
+  //     dispatch(getDailyWater());
+  //     dispatch(getMonthlyWater());
+  //   }
+  // }, [dispatch, isAuthHeaderSet, waterIntakes]);
 
   return (
     <HomePageContainer>
