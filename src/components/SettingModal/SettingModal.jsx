@@ -99,7 +99,7 @@ const SettingModal = ({ onClose, onUpdate, isShow }) => {
       onClose();
       resetForm();
     } catch (error) {
-      alert("Failed to update user data: " + error.message);
+       console.log("Failed to update user data: ", error.message);
     }
   };
 
