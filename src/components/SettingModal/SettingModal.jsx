@@ -83,8 +83,8 @@ const SettingModal = ({ onClose, onUpdate, isShow }) => {
         gender: formData.gender,
         userName: formData.userName,
         email: formData.email,
-        currentPassword: formData.currentPassword,
-        newPassword: formData.newPassword,
+        // currentPassword: formData.currentPassword,
+        // newPassword: formData.newPassword,
       };
 
       dispatch(updateUserInfo(jsonData))
