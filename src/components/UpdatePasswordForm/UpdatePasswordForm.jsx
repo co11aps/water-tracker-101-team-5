@@ -47,8 +47,8 @@ export default function UpdatePasswordForm() {
   };
 
   return (
-    <div className={css.formContainer}>
-      <h1 className={css.title}>Reset Password</h1>
+    <div className={css.box}>
+      <h1 className={css.title}>Update Password</h1>
       <Formik
         initialValues={{ password: '', confirmPassword: '' }}
         validationSchema={validationSchema}
@@ -106,7 +106,7 @@ export default function UpdatePasswordForm() {
             />
           </div>
           <button type="submit" className={css.button}>
-            Update Password
+            Update
           </button>
         </Form>
       </Formik>
