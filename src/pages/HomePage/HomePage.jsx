@@ -10,14 +10,14 @@ import { selectDailyWater } from "../../redux/water/selectors";
 export default function HomePage() {
   const dispatch = useDispatch();
   const isAuthHeaderSet = useSelector(selectIsAuthHeaderSet);
-  const { waterIntakes } = useSelector(selectDailyWater);
+  // const { waterIntakes } = useSelector(selectDailyWater);
 
   useEffect(() => {
     if (isAuthHeaderSet) {
       dispatch(getDailyWater());
       dispatch(getMonthlyWater());
     }
-  }, [dispatch, isAuthHeaderSet, waterIntakes]);
+  }, [dispatch, isAuthHeaderSet]);
 
   return (
     <HomePageContainer>
