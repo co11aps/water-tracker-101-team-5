@@ -193,20 +193,52 @@ export const forgotPassword = createAsyncThunk(
 //===========ДОДАЛА =================
 export const updatePassword = createAsyncThunk(
   "auth/updatePassword",
-  async ({ password, token }, thunkAPI) => {
+  async ({ token, password }, thunkAPI) => {
     try {
       // Запит на оновлення паролю
-      const res = await axiosInstance.post(
-        `/auth/reset-password`,
-        { password },
-        {
-          headers: {
-            Authorization: `Bearer ${token}`, // Передаємо токен для аутентифікації
-          },
-        }
-      );
-      return res.data;
+      //1 варіант
+      // const response = await axiosInstance.post(
+      //   `/auth/reset-password`,
+      //   {
+      //     headers: {
+      //       Authorization: `Bearer ${token}`, // токен тільки в заголовку
+      //     },
+      //   },
+      //   { password }
+      // );
+
+      //2 варіант
+      console.log("Token: ", token);
+      const response = await axiosInstance.post(`/auth/reset-password`, {
+        token, // токен тільки в тілі
+        password,
+      });
+      console.log("Server response:", response.data); // лог для відповіді сервера
+
+      // 3 варіант
+      // const response = await axiosInstance.post(
+      //   `/auth/reset-password`,
+      //   { token, password }, // передаємо токен у тілі
+      //   {
+      //     headers: {
+      //       Authorization: `Bearer ${token}`, // передаємо токен у заголовку
+      //     },
+      //   }
+      // );
+
+      // 4 варіант
+      // const response = await axiosInstance({
+      //   method: "post",
+      //   url: "/auth/reset-password",
+      //   data: { token, password },
+      //   headers: {
+      //     "Content-Type": "application/json", // Вказуємо тип контенту
+      //   },
+      // });
+
+      return response.data;
     } catch (error) {
+      console.log("Error response:", error.response?.data); // додала лог для помилки
       const errorMessage =
         error.response?.data?.message || "Failed to update password";
       return thunkAPI.rejectWithValue(errorMessage);
