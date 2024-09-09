@@ -47,7 +47,7 @@ const userSchema = yup.object().shape({
     .oneOf([yup.ref("newPassword"), null], "Passwords must match"),
 });
 
-const SettingModal = ({ onClose, onUpdate, isShow }) => {
+const SettingModal = ({ onClose, isShow }) => {
   const dispatch = useDispatch();
   const userData = useSelector(selectUser);
   const [preview, setPreview] = useState(null);
@@ -56,18 +56,22 @@ const SettingModal = ({ onClose, onUpdate, isShow }) => {
   const [showConfirmNewPassword, setShowConfirmNewPassword] = useState(false);
 
   useEffect(() => {
-    setPreview(userData.avatar); // показ аватара при завантаженні
+    setPreview(userData.avatar);
   }, [userData]);
 
   const handleAvatarChange = (e, setFieldValue) => {
     const file = e.target.files[0];
     setFieldValue("avatar", file);
-    setPreview(URL.createObjectURL(file));
+
+    const previewUrl = URL.createObjectURL(file);
+    setPreview(previewUrl);
+
     const formData = new FormData();
     formData.append("avatar", file);
     dispatch(updateAvatar(formData))
       .unwrap()
       .then(() => {
+        setPreview(previewUrl);
         console.log("Avatar update success");
       })
       .catch((err) => {
@@ -120,6 +124,42 @@ const SettingModal = ({ onClose, onUpdate, isShow }) => {
     }
   };
 
+  const getAvatarContent = () => {
+    if (userData.photo) {
+      return (
+        <img
+          src={userData.photo}
+          alt={userData.userName}
+          className={css.avatar}
+        />
+      );
+    }
+    if (userData.userName) {
+      return (
+        <span className={css.avatarPlaceholder}>
+          {userData.userName[0].toUpperCase()}
+        </span>
+      );
+    }
+    if (userData.email) {
+      return (
+        <span className={css.avatarPlaceholder}>
+          {userData.email[0].toUpperCase()}
+        </span>
+      );
+    }
+  };
+
+  const handleButtonClick = () => {
+    const fileInput = document.getElementById("fileInput");
+
+    if (fileInput) {
+      fileInput.click();
+    } else {
+      console.error("");
+    }
+  };
+
   return (
     <BaseModal onClose={onClose} isShow={isShow} title="Setting">
       <div className={css.modal} onClick={(e) => e.stopPropagation()}>
@@ -138,21 +178,10 @@ const SettingModal = ({ onClose, onUpdate, isShow }) => {
           >
             {({ setFieldValue }) => (
               <Form>
-                <div className={css.formGroup}>
-                  <label className={css.label}>Your photo</label>
+                <label className={css.label}>Your photo</label>
+                <div className={css.photoUploadBox}>
                   <div className={css.photoUploadContainer}>
-                    <input
-                      type="file"
-                      name="avatar"
-                      accept="image/*"
-                      onChange={(e) => handleAvatarChange(e, setFieldValue)}
-                    />
-                    <ErrorMessage
-                      name="avatar"
-                      component="p"
-                      className={css.error}
-                    />
-                    {preview && (
+                    {preview ? (
                       <div className={css.avatarPreviewWrapper}>
                         <img
                           src={preview}
@@ -160,17 +189,37 @@ const SettingModal = ({ onClose, onUpdate, isShow }) => {
                           className={css.avatar}
                         />
                       </div>
+                    ) : (
+                      getAvatarContent()
                     )}
-                    <button type="button" className={css.uploadButton}>
-                      <Icon
-                        id="arrow-up"
-                        width={16}
-                        height={16}
-                        className="icon-blue"
-                      />
-                      Upload a photo
-                    </button>
                   </div>
+
+                  <button
+                    type="button"
+                    className={css.uploadButton}
+                    onClick={handleButtonClick}
+                  >
+                    <input
+                      type="file"
+                      name="avatar"
+                      id="fileInput"
+                      accept="image/png, image/jpeg"
+                      hidden
+                      onChange={(e) => handleAvatarChange(e, setFieldValue)}
+                    />
+                    <ErrorMessage
+                      name="avatar"
+                      component="p"
+                      className={css.error}
+                    />
+                    <Icon
+                      id="arrow-up"
+                      width={16}
+                      height={16}
+                      className="icon-blue"
+                    />
+                    Upload a photo
+                  </button>
                 </div>
 
                 <div className={css.inputGroup}>
