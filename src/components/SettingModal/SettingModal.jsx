@@ -77,16 +77,33 @@ const SettingModal = ({ onClose, onUpdate, isShow }) => {
 
   const handleSubmit = async (values, { resetForm }) => {
     try {
-      const { confirmNewPassword, ...formData } = values;
+      const { currentPassword, newPassword, ...formData } = values;
+
+      const trimmedCurrentPassword = currentPassword?.trim();
+      const trimmedNewPassword = newPassword?.trim();
+
+      if (
+        (trimmedCurrentPassword && !trimmedNewPassword) ||
+        (!trimmedCurrentPassword && trimmedNewPassword)
+      ) {
+        console.log(
+          "Both currentPassword and newPassword must be filled or left empty."
+        );
+        return;
+      }
 
       const jsonData = {
-        gender: formData.gender,
-        userName: formData.userName,
-        email: formData.email,
-        // currentPassword: formData.currentPassword,
-        // newPassword: formData.newPassword,
+        ...Object.fromEntries(
+          Object.entries({
+            gender: formData.gender?.trim(),
+            userName: formData.userName?.trim(),
+            email: formData.email?.trim(),
+            currentPassword: trimmedCurrentPassword || undefined,
+            newPassword: trimmedNewPassword || undefined,
+          }).filter(([_, value]) => value !== undefined && value !== "")
+        ),
       };
-
+      console.log(jsonData);
       dispatch(updateUserInfo(jsonData))
         .unwrap()
         .then(() => {
