@@ -8,7 +8,6 @@ import { logIn, register } from "../../redux/auth/operations";
 import { useEffect } from "react";
 import Icon from "../Icon/Icon";
 import { selectIsLoggedIn } from "../../redux/auth/selectors";
-import toast from "react-hot-toast";
 import { showNotification } from "../../redux/notification/slice";
 
 const AuthForm = ({ isSignup }) => {
@@ -54,7 +53,6 @@ const AuthForm = ({ isSignup }) => {
         .catch((err) => {
           const errorMessage = err.message;
           dispatch(showNotification(`Registration error: ${errorMessage}`));
-          toast(`Registration error: ${errorMessage}`);
           console.log("Registration error:", err.message);
         });
     } else {
@@ -64,9 +62,7 @@ const AuthForm = ({ isSignup }) => {
           console.log("Login success");
         })
         .catch((err) => {
-          const errorMessage = err.message;
-          dispatch(showNotification(`Login error: ${errorMessage}`));
-          toast(`Login error: ${errorMessage}`);
+          dispatch(showNotification("Incorrect email or password"));
           console.log("Login error:", err.message);
         });
     }

@@ -51,12 +51,16 @@ button {
   font-family: inherit;
   /* color: currentColor; */
   cursor: pointer;
+  outline: none;
 }
 
 button:hover {
   box-shadow: none;
 }
 
+input {
+  outline: none;
+}
 
 /* colour variables */
 body {

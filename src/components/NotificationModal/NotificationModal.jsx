@@ -12,7 +12,7 @@ const NotificationModal = () => {
     if (isVisible) {
       const timer = setTimeout(() => {
         dispatch(hideNotification());
-      }, 3000);
+      }, 5000);
 
       return () => clearTimeout(timer);
     }
@@ -25,12 +25,21 @@ const NotificationModal = () => {
   };
 
   return (
-    <div style={css.backDrop}>
+    <div className={css.backDrop}>
       <div className={css.messageWindow}>
-        <button type="button" onClick={onClose} className={css.closeBtn}>
-          <Icon id="x-mark" width={18} height={18} className="icon-blue" />
-        </button>
+        <div onClick={onClose} className={css.closeBtn}>
+          <Icon id="x-mark" width={24} height={24} className="icon-blue" />
+        </div>
+        <h2 className={css.header}>Message</h2>
         <p className={css.messageText}>{message}</p>
+        <button
+          type="button"
+          className={css.okBtn}
+          aria-label="close"
+          onClick={onClose}
+        >
+          OK
+        </button>
       </div>
     </div>
   );
