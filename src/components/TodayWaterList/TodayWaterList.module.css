@@ -89,8 +89,10 @@
 }
 
 .wrapper {
-  margin-bottom: 24px;
-  height: 260px;
+   position: relative;
+  display: flex;
+  flex-direction: column;
+  height: 258px;
 }
 .title {
   font-weight: 500;
@@ -105,10 +107,12 @@
     font-size: 26px;
     line-height: 1.23;
   }
+  
 }
 
 .waterList {
-  max-height: 212px;
+  max-height: 176px;
+  margin-bottom: 50px;
   overflow: auto;
 }
 
@@ -125,26 +129,31 @@
   padding: 12px 0;
   align-items: center;
   border-bottom: 1px solid var(--secondary-color-5);
+  
 }
 
 .info {
   display: flex;
   align-items: center;
-  gap: 12px;
-  width: 206px;
-  height: 36px;
+  justify-content: space-between;
+  gap: 8px;
+  width: 146px;
   box-sizing: border-box;
 }
-.tools {
-  display: flex;
-  gap: 18px;
+@media screen and (min-width: 768px) {
+  .info {
+  
+  width: 206px;
 }
+ 
+  }
+
 .todayVolume {
   font-size: 18px;
   font-weight: 400;
   line-height: 1.33;
   color: var(--primary-color-blue);
-  margin-right: 16px;
+  
 }
 
 .todayTime {
@@ -153,6 +162,11 @@
   line-height: 1.33;
   color: var(--primary-color-black);
   white-space: nowrap;
+}
+
+.tools {
+  display: flex;
+  gap: 18px;
 }
 
 .waterList::-webkit-scrollbar {
@@ -169,3 +183,48 @@
   background: rgba(158, 187, 255, 1);
   border-radius: 12px;
 }
+
+.addWaterButton {
+  position: absolute;
+  bottom: 10px;
+  background-color: transparent;
+  border: none;
+  color: var(--primary-color-blue);
+  font-size: 16px;
+  font-weight: 500;
+  line-height: 20px;
+  display: flex;
+  align-items: center;
+  padding: 0;
+  gap: 8px;
+  transition: color 0.3s ease;
+  box-shadow: none;
+  width: fit-content;
+}
+.addWaterButton:hover,
+.addWaterButton:focus {
+  color: var(--secondary-color-5-orange);
+  box-shadow: none;
+}
+
+.customIconClass {
+  fill: none;
+  stroke: var(--primary-color-blue); 
+   width: 16px;
+height: 16px;
+}
+
+.addWaterButton:hover .customIconClass,
+.addWaterButton:focus .customIconClass {
+  stroke: var(--secondary-color-5-orange); 
+}
+
+@media screen and (min-width: 768px) {
+  .customIconClass {
+    width: 24px;
+    height: 24px;
+    fill: transparent;
+}
+  
+}
+
