@@ -2,6 +2,18 @@
   padding-left: 12px;
   padding-right: 12px;
   padding-bottom: 24px;
+  min-width: 256px;
+  /* width: 256px; */
+}
+@media screen and (min-width: 768px) {
+  .modal {
+    width: 656px;
+  }
+}
+@media screen and (min-width: 1440px) {
+  .modal {
+    width: 544px;
+  }
 }
 /* ========================== */
 .previousRecord {
@@ -10,8 +22,9 @@
   display: flex;
   align-items: center;
   gap: 12px;
-  width: 206px;
-  height: 36px;
+  width: 100%;
+  /* height: 36px; */
+  padding: 10px 10px 10px 24px;
   box-sizing: border-box;
 }
 .iconGlass {
@@ -20,6 +33,7 @@
   background: transparent;
   fill: var(--primary-color-blue);
 }
+
 .todayVolume {
   font-size: 18px;
   font-weight: 400;
@@ -54,11 +68,12 @@ h3 {
 .amountInputButton {
   width: 44px;
   height: 44px;
-
+  border-radius: 50%;
   border: 1px solid var(--secondary-color-4);
   background-color: var(--primary-color-white);
-
-  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
   font-size: 24px;
   cursor: pointer;
   box-shadow: var(--box-shadow);
@@ -98,11 +113,11 @@ h3 {
   border-radius: 10px;
 }
 .timeInput select {
-  padding: 8px;
+  padding: 10px;
   border-radius: 10px;
   border: 1px solid var(--secondary-color-4);
   margin-top: 5px;
-  width: 50%;
+  width: 100%;
   font-size: 16px;
   color: var(--primary-color-blue);
 }
@@ -119,11 +134,11 @@ h3 {
   font-weight: 500;
 }
 .manualInput input {
-  padding: 8px;
+  padding: 10px;
   border-radius: 10px;
   border: 1px solid var(--secondary-color-4);
   margin-top: 5px;
-  width: 50%;
+  width: 100%;
   font-size: 16px;
   color: var(--primary-color-blue);
 }
@@ -164,6 +179,17 @@ h3 {
 .saveButton:hover {
   outline: none;
   box-shadow: var(--box-shadow-3);
+}
+@media screen and (min-width: 768px) {
+  .buttons {
+    /* width: 256px; */
+    flex-direction: row;
+    justify-content: flex-end;
+    gap: 10px;
+  }
+  .saveButton {
+    width: 160px;
+  }
 }
 
 /* .modal {
