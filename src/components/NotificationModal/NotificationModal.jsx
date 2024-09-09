@@ -1,4 +1,4 @@
-import { useEffect } from "react";
+// import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { hideNotification } from "../../redux/notification/slice";
 import css from "./NotificationModal.module.css";
@@ -8,15 +8,15 @@ const NotificationModal = () => {
   const dispatch = useDispatch();
   const { message, isVisible } = useSelector((state) => state.notification);
 
-  useEffect(() => {
-    if (isVisible) {
-      const timer = setTimeout(() => {
-        dispatch(hideNotification());
-      }, 5000);
+  //   useEffect(() => {
+  //     if (isVisible) {
+  //       const timer = setTimeout(() => {
+  //         dispatch(hideNotification());
+  //       }, 5000);
 
-      return () => clearTimeout(timer);
-    }
-  }, [isVisible, dispatch]);
+  //       return () => clearTimeout(timer);
+  //     }
+  //   }, [isVisible, dispatch]);
 
   if (!isVisible) return null;
 

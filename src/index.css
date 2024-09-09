@@ -81,6 +81,9 @@ body {
   --box-shadow-2: 0px 4px 14px 0px rgba(64, 123, 255, 0.3);
   --box-shadow-3: 0px 4px 14px 0px rgba(64, 123, 255, 0.54);
 
+  --base-backdrop-color: rgba(0, 0, 0, 0.8);
+  --backdrop-color: rgba(64, 123, 255, 0.1);
+
   transition: color 0.25s ease-in-out;
   transition: background-color 0.25s ease-in-out;
 }
