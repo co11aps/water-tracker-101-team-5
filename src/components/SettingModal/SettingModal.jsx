@@ -26,7 +26,7 @@ const userSchema = yup.object().shape({
     .string()
     .min(
       MIN_CHAR_VALIDATION,
-      `Yourcurrent password must be more than ${MIN_CHAR_VALIDATION} characters!`
+      `Your current password must be more than ${MIN_CHAR_VALIDATION} characters!`
     )
     .max(
       MAX_CHAR_VALIDATION,
@@ -176,7 +176,7 @@ const SettingModal = ({ onClose, isShow }) => {
             validationSchema={userSchema}
             onSubmit={handleSubmit}
           >
-            {({ setFieldValue }) => (
+            {({ errors, touched, setFieldValue }) => (
               <Form>
                 <label className={css.label}>Your photo</label>
                 <div className={css.photoUploadBox}>
@@ -196,6 +196,7 @@ const SettingModal = ({ onClose, isShow }) => {
 
                   <button
                     type="button"
+                    aria-label="Upload"
                     className={css.uploadButton}
                     onClick={handleButtonClick}
                   >
@@ -252,7 +253,7 @@ const SettingModal = ({ onClose, isShow }) => {
                       />
                       <ErrorMessage
                         name="userName"
-                        component="p"
+                        component="div"
                         className={css.error}
                       />
                     </div>
@@ -260,15 +261,17 @@ const SettingModal = ({ onClose, isShow }) => {
                     <div className={css.formGroup}>
                       <label className={css.label}>E-mail</label>
                       <Field
-                        className={css.input}
+                        className={`${css.input} ${
+                          errors.email && touched.email ? css.inputError : ""
+                        }`}
                         type="email"
                         name="email"
                         placeholder="Enter your email"
                       />
                       <ErrorMessage
                         name="email"
-                        component="p"
-                        className={css.error}
+                        component="div"
+                        className={`${css.error} ${css.errorMessageEmail}`}
                       />
                     </div>
                   </div>
@@ -279,13 +282,18 @@ const SettingModal = ({ onClose, isShow }) => {
                       <p>Outdated password:</p>
                       <div className={css.inputWrap}>
                         <Field
-                          className={css.input}
+                          className={`${css.input} ${
+                            errors.currentPassword && touched.currentPassword
+                              ? css.inputError
+                              : ""
+                          }`}
                           type={ShowCurrentPassword ? "text" : "password"}
                           name="currentPassword"
                           placeholder="Password"
                         />
                         <button
                           className={css.buttonSvg}
+                          aria-label="Show password"
                           type="button"
                           onClick={() =>
                             setShowCurrentPassword(!ShowCurrentPassword)
@@ -301,7 +309,7 @@ const SettingModal = ({ onClose, isShow }) => {
                       </div>
                       <ErrorMessage
                         name="currentPassword"
-                        component="p"
+                        component="div"
                         className={css.error}
                       />
                     </div>
@@ -310,13 +318,18 @@ const SettingModal = ({ onClose, isShow }) => {
                       <label>New Password:</label>
                       <div className={css.inputWrap}>
                         <Field
-                          className={css.input}
+                          className={`${css.input} ${
+                            errors.newPassword && touched.newPassword
+                              ? css.inputError
+                              : ""
+                          }`}
                           type={showNewPassword ? "text" : "password"}
                           name="newPassword"
                           placeholder="Password"
                         />
                         <button
                           className={css.buttonSvg}
+                          aria-label="Show password"
                           type="button"
                           onClick={() => setShowNewPassword(!showNewPassword)}
                         >
@@ -330,7 +343,7 @@ const SettingModal = ({ onClose, isShow }) => {
                       </div>
                       <ErrorMessage
                         name="newPassword"
-                        component="p"
+                        component="div"
                         className={css.error}
                       />
                     </div>
@@ -339,13 +352,19 @@ const SettingModal = ({ onClose, isShow }) => {
                       <label>Repeat new password:</label>
                       <div className={css.inputWrap}>
                         <Field
-                          className={css.input}
+                          className={`${css.input} ${
+                            errors.confirmNewPassword &&
+                            touched.confirmNewPassword
+                              ? css.inputError
+                              : ""
+                          }`}
                           type={showConfirmNewPassword ? "text" : "password"}
                           name="confirmNewPassword"
                           placeholder="Password"
                         />
                         <button
                           className={css.buttonSvg}
+                          aria-label="Show password"
                           type="button"
                           onClick={() =>
                             setShowConfirmNewPassword(!showConfirmNewPassword)
@@ -361,15 +380,19 @@ const SettingModal = ({ onClose, isShow }) => {
                       </div>
                       <ErrorMessage
                         name="confirmNewPassword"
-                        component="p"
-                        className={css.error}
+                        component="div"
+                        className={`${css.error} ${css.errorMessage}`}
                       />
                     </div>
                   </div>
                 </div>
 
                 <div className={css.contBtn}>
-                  <button className={css.saveBtn} type="submit">
+                  <button
+                    className={css.saveBtn}
+                    type="submit"
+                    aria-label="Submit"
+                  >
                     Save
                   </button>
                 </div>
