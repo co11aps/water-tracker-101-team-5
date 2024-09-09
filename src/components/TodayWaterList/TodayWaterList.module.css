@@ -89,7 +89,9 @@
 }
 
 .wrapper {
-  
+   position: relative;
+  display: flex;
+  flex-direction: column;
   height: 258px;
 }
 .title {
@@ -110,7 +112,7 @@
 
 .waterList {
   max-height: 176px;
-  margin-bottom: 12px;
+  margin-bottom: 50px;
   overflow: auto;
 }
 
@@ -183,6 +185,8 @@
 }
 
 .addWaterButton {
+  position: absolute;
+  bottom: 10px;
   background-color: transparent;
   border: none;
   color: var(--primary-color-blue);
@@ -191,9 +195,8 @@
   line-height: 20px;
   display: flex;
   align-items: center;
-  margin: 12px 0 0 0;
   padding: 0;
-   gap: 8px;
+  gap: 8px;
   transition: color 0.3s ease;
   box-shadow: none;
   width: fit-content;

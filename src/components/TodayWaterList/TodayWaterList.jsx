@@ -14,10 +14,16 @@ export default function TodayWaterList() {
 
   const [editItem, setEditItem] = useState(null); // Стан для редагування
   const [deleteItem, setDeleteItem] = useState(null); // Стан для видалення
-const [isModalOpen, setIsModalOpen] = useState(false);
-  // const handleDelete = (id) => {
-  //   dispatch(deleteWater(id)); // Видаляємо запис по id
-  // };
+  const [isModalOpen, setIsModalOpen] = useState(false);
+
+  
+  const parseTime = (time) => {
+    const [hours, minutes] = time.split(':').map(Number);
+    return new Date().setHours(hours, minutes, 0, 0);
+  };
+
+  
+  const sortedWaterIntakes = [...waterIntakes].sort((a, b) => parseTime(a.time) - parseTime(b.time));
 
   const handleDelete = (id) => {
     setDeleteItem(id); // Відкриваємо модальне вікно для підтвердження видалення
@@ -31,76 +37,47 @@ const [isModalOpen, setIsModalOpen] = useState(false);
   const handleEdit = (item) => {
     setEditItem(item); // Відкриваємо модальне вікно для редагування
   };
- const openAddModal = () => {
-    setEditItem(null); 
+
+  const openAddModal = () => {
+    setEditItem(null);
     setIsModalOpen(true);
   };
+
   const closeModal = () => {
     setEditItem(null); // Закриваємо модальне вікно
     setDeleteItem(null); // Закриваємо модальне вікно підтвердження
+    setIsModalOpen(false); // Закриваємо модальне вікно для додавання
   };
 
   return (
     <div className={css.wrapper}>
       <h2 className={css.title}>Today</h2>
       <div className={css.waterList}>
-
-        {waterIntakes.length === 0 ? (
-        <p className={css.blank}>No notes yet!</p>
-      ) : (
-        <ul>
-          {waterIntakes.map((item) => (
-            <li key={item._id} className={css.listItem}>
-              <div className={css.info}>
-              <Icon
-                id="glass"
-                width={26}
-                height={26}
-                aria-hidden="true"
-                className={css.iconGlass}
-              />
-
-              <span className={css.todayVolume}>{item.amount} ml</span>
-                <span className={css.todayTime}>{item.time}</span>
-              
-              </div>
-<li className={css.tools}>
-              <button
-                className={css.editButton}
-                onClick={() => handleEdit(item)}
-              >
-                <Icon
-                  id="pensil"
-                  width={16}
-                  height={16}
-                  aria-hidden="false"
-                  className={css.iconEditButton}
-                />
-              </button>
-              {/* <button className={css.editBtn} onClick={() => handleEdit(item)}>
-                ✏️
-              </button> */}
-              <button
-                className={css.deleteButton}
-                onClick={() => handleDelete(item._id)}
-              >
-                <Icon
-                  id="trash"
-                  width={16}
-                  height={16}
-                  aria-hidden="false"
-                  className={css.iconDeliteButton}
-                />
-              </button>
-              {/* <button onClick={() => handleDelete(item._id)}>🗑️</button> */}
-            </li>
-            </li>
-          ))}
-        </ul>
+        {sortedWaterIntakes.length === 0 ? (
+          <p className={css.blank}>No notes yet!</p>
+        ) : (
+          <ul>
+            {sortedWaterIntakes.map((item) => (
+              <li key={item._id} className={css.listItem}>
+                <div className={css.info}>
+                  <Icon id="glass" width={26} height={26} aria-hidden="true" className={css.iconGlass} />
+                  <span className={css.todayVolume}>{item.amount} ml</span>
+                  <span className={css.todayTime}>{item.time}</span>
+                </div>
+                <div className={css.tools}>
+                  <button className={css.editButton} onClick={() => handleEdit(item)}>
+                    <Icon id="pensil" width={16} height={16} aria-hidden="false" className={css.iconEditButton} />
+                  </button>
+                  <button className={css.deleteButton} onClick={() => handleDelete(item._id)}>
+                    <Icon id="trash" width={16} height={16} aria-hidden="false" className={css.iconDeliteButton} />
+                  </button>
+                </div>
+              </li>
+            ))}
+          </ul>
         )}
       </div>
-       <AddWaterBtn onClick={openAddModal} className={css.addWaterButton} iconId="plus" iconClass={css.customIconClass} />
-      {/* <AddWaterBtn /> */}
+      <AddWaterBtn onClick={openAddModal} className={css.addWaterButton} iconId="plus" iconClass={css.customIconClass} />
       {isModalOpen && (
         <TodayListModal
           isShow={!!isModalOpen}
