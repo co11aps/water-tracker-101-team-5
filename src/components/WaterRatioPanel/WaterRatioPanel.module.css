@@ -102,6 +102,15 @@
   color: var(--primary-color-blue);
 }
 
+.customIconClass{
+  width: 24px;
+  height: 24px;
+  background: transparent;
+  fill: none;
+  stroke: var(--primary-color-white);
+
+}
+
 @media screen and (min-width: 768px) {
   .container {
     flex-direction: row;

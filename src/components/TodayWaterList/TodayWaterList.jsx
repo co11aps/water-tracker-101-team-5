@@ -14,7 +14,7 @@ export default function TodayWaterList() {
 
   const [editItem, setEditItem] = useState(null); // Стан для редагування
   const [deleteItem, setDeleteItem] = useState(null); // Стан для видалення
-
+const [isModalOpen, setIsModalOpen] = useState(false);
   // const handleDelete = (id) => {
   //   dispatch(deleteWater(id)); // Видаляємо запис по id
   // };
@@ -31,7 +31,10 @@ export default function TodayWaterList() {
   const handleEdit = (item) => {
     setEditItem(item); // Відкриваємо модальне вікно для редагування
   };
-
+ const openAddModal = () => {
+    setEditItem(null); 
+    setIsModalOpen(true);
+  };
   const closeModal = () => {
     setEditItem(null); // Закриваємо модальне вікно
     setDeleteItem(null); // Закриваємо модальне вікно підтвердження
@@ -95,11 +98,12 @@ export default function TodayWaterList() {
           ))}
         </ul>
         )}
-        </div>
-      <AddWaterBtn />
-      {editItem && (
+      </div>
+       <AddWaterBtn onClick={openAddModal} className={css.addWaterButton} iconId="plus" iconClass={css.customIconClass} />
+      {/* <AddWaterBtn /> */}
+      {isModalOpen && (
         <TodayListModal
-          isShow={!!editItem}
+          isShow={!!isModalOpen}
           onClose={closeModal}
           item={editItem} // Передаємо запис для редагування
         />
@@ -199,3 +203,5 @@ export default function TodayWaterList() {
 //     </div>
 //   );
 // }
+
+
