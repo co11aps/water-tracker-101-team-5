@@ -9,6 +9,7 @@ import { useEffect } from "react";
 import Icon from "../Icon/Icon";
 import { selectIsLoggedIn } from "../../redux/auth/selectors";
 import toast from "react-hot-toast";
+import { showNotification } from "../../redux/notification/slice";
 
 const AuthForm = ({ isSignup }) => {
   const dispatch = useDispatch();
@@ -52,6 +53,7 @@ const AuthForm = ({ isSignup }) => {
         })
         .catch((err) => {
           const errorMessage = err.message;
+          dispatch(showNotification(`Registration error: ${errorMessage}`));
           toast(`Registration error: ${errorMessage}`);
           console.log("Registration error:", err.message);
         });
@@ -63,6 +65,7 @@ const AuthForm = ({ isSignup }) => {
         })
         .catch((err) => {
           const errorMessage = err.message;
+          dispatch(showNotification(`Login error: ${errorMessage}`));
           toast(`Login error: ${errorMessage}`);
           console.log("Login error:", err.message);
         });

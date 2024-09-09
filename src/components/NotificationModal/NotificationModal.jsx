@@ -1,6 +1,8 @@
 import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { hideNotification } from "../../redux/notification/slice";
+import css from "./NotificationModal.module.css";
+import Icon from "../Icon/Icon";
 
 const NotificationModal = () => {
   const dispatch = useDispatch();
@@ -18,22 +20,20 @@ const NotificationModal = () => {
 
   if (!isVisible) return null;
 
+  const onClose = () => {
+    dispatch(hideNotification());
+  };
+
   return (
-    <div style={modalStyle}>
-      <p>{message}</p>
+    <div style={css.backDrop}>
+      <div className={css.messageWindow}>
+        <button type="button" onClick={onClose} className={css.closeBtn}>
+          <Icon id="x-mark" width={18} height={18} className="icon-blue" />
+        </button>
+        <p className={css.messageText}>{message}</p>
+      </div>
     </div>
   );
-};
-
-const modalStyle = {
-  position: "fixed",
-  bottom: "20px",
-  right: "20px",
-  padding: "10px 20px",
-  backgroundColor: "rgba(0, 0, 0, 0.7)",
-  color: "#fff",
-  borderRadius: "5px",
-  zIndex: 1000,
 };
 
 export default NotificationModal;
