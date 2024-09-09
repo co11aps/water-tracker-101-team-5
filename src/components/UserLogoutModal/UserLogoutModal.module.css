@@ -29,8 +29,9 @@
   font-size: 18px;
   font-weight: 400;
   border: none;
-  box-shadow: var(--box-shadow);
+  /* box-shadow: var(--box-shadow); */
   transition: box-shadow 0.25s ease-in-out;
+
   &:hover {
     box-shadow: 0 4px 14px rgba(64, 123, 255, 0.54);
   }
@@ -45,16 +46,19 @@
   .modalContent {
     width: 592px;
   }
+
   .btnGroup {
     flex-direction: row;
     justify-content: flex-end;
   }
+
   .cancelButton,
   .logoutButton {
     width: 160px;
     height: 44px;
   }
 }
+
 @media (min-width: 1440px) {
   .btnGroup {
     justify-content: flex-start;
