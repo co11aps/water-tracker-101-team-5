@@ -5,3 +5,6 @@ export const selectMonthlyWater = (state) => state.water.monthlyWater;
 export const selectIsLoading = (state) => state.water.isLoading;
 
 export const selectError = (state) => state.water.error;
+
+
+export const selectIsWaterLoading = (state) => state.water.isLoading;

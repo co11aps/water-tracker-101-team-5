@@ -7,6 +7,7 @@ import PrivateRoute from "./components/PrivateRoute/PrivateRoute";
 import RestrictedRoute from "./components/RestrictedRoute/RestrictedRoute";
 import { refreshToken } from "./redux/auth/operations";
 import { selectIsRefreshing } from "./redux/auth/selectors";
+import { selectIsWaterLoading } from "./redux/water/selectors"; // Імпортуємо селектор
 import { Navigate } from "react-router-dom";
 import { Toaster } from "react-hot-toast";
 
@@ -29,6 +30,7 @@ const ForgotPasswordPage = lazy(() =>
 function App() {
   const dispatch = useDispatch();
   const isRefreshing = useSelector(selectIsRefreshing);
+  const isWaterLoading = useSelector(selectIsWaterLoading); // Отримуємо статус завантаження води
 
   useEffect(() => {
     dispatch(refreshToken());
@@ -48,68 +50,71 @@ function App() {
           <Loader />
         </>
       ) : (
-        <Suspense fallback={<Loader />}>
-          <div>
-            <Toaster />
-          </div>
-          <Routes>
-            <Route path="/" element={<Navigate to="/welcome" replace />} />
-            <Route
-              path="/welcome"
-              element={
-                <RestrictedRoute>
-                  <WelcomePage />
-                </RestrictedRoute>
-              }
-            />
+        <>
+          {isWaterLoading && <Loader />} {/* Показуємо лоадер, якщо йде завантаження води */}
+          <Suspense fallback={<Loader />}>
+            <div>
+              <Toaster />
+            </div>
+            <Routes>
+              <Route path="/" element={<Navigate to="/welcome" replace />} />
+              <Route
+                path="/welcome"
+                element={
+                  <RestrictedRoute>
+                    <WelcomePage />
+                  </RestrictedRoute>
+                }
+              />
 
-            <Route
-              path="/signin"
-              element={
-                <RestrictedRoute>
-                  <SigninPage />
-                </RestrictedRoute>
-              }
-            />
+              <Route
+                path="/signin"
+                element={
+                  <RestrictedRoute>
+                    <SigninPage />
+                  </RestrictedRoute>
+                }
+              />
 
-            <Route
-              path="/forgot-password"
-              element={
-                <RestrictedRoute>
-                  <ForgotPasswordPage />
-                </RestrictedRoute>
-              }
-            />
+              <Route
+                path="/forgot-password"
+                element={
+                  <RestrictedRoute>
+                    <ForgotPasswordPage />
+                  </RestrictedRoute>
+                }
+              />
 
-            <Route
-              path="/reset-password"
-              element={
-                <RestrictedRoute>
-                  <UpdatePasswordPage />
-                </RestrictedRoute>
-              }
-            />
+              <Route
+                path="/reset-password"
+                element={
+                  <RestrictedRoute>
+                    <UpdatePasswordPage />
+                  </RestrictedRoute>
+                }
+              />
 
-            <Route
-              path="/signup"
-              element={
-                <RestrictedRoute>
-                  <SignupPage />
-                </RestrictedRoute>
-              }
-            />
+              <Route
+                path="/signup"
+                element={
+                  <RestrictedRoute>
+                    <SignupPage />
+                  </RestrictedRoute>
+                }
+              />
 
-            <Route
-              path="/home"
-              element={
-                <PrivateRoute>
-                  <HomePage />
-                </PrivateRoute>
-              }
-            />
-            <Route path="*" element={<SigninPage />} />
-          </Routes>
-        </Suspense>
+              <Route
+                path="/home"
+                element={
+                  <PrivateRoute>
+                    <HomePage />
+                  </PrivateRoute>
+                }
+              />
+              <Route path="*" element={<SigninPage />} />
+            </Routes>
+          </Suspense>
+        </>
       )}
     </Layout>
   );
