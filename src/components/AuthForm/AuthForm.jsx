@@ -150,7 +150,7 @@ const AuthForm = ({ isSignup }) => {
                 />
               </div>
             )}
-            <button type="submit" disabled={isSubmitting}>
+            <button type="submit" aria-label="Submit" disabled={isSubmitting}>
               {isSignup ? "Sign Up" : "Sign In"}
             </button>
           </Form>

@@ -12,6 +12,7 @@
   -moz-osx-font-smoothing: grayscale;
 
   scrollbar-width: thin;
+  scrollbar-gutter: stable;
 }
 
 /* Reset styles */
