@@ -88,7 +88,7 @@ button:hover {
 
 .icon {
   stroke: var(--primary-color-blue);
-  fill: white;
+  fill: transparent;
 }
 
 .authPageTitle {
@@ -105,10 +105,12 @@ button:hover {
     width: 336px;
   }
 }
+
 @media screen and (min-width: 1440px) {
   .authFormContainer {
     width: 384px;
   }
+
   .authFormContainer {
     position: static;
   }
