@@ -119,7 +119,7 @@ const SettingModal = ({ onClose, isShow }) => {
             validationSchema={userSchema}
             onSubmit={handleSubmit}
           >
-            {({ setFieldValue }) => (
+            {({ errors, touched, setFieldValue }) => (
               <Form>
                 <div className={css.formGroup}>
                   <label className={css.label}>Your photo</label>
@@ -200,7 +200,9 @@ const SettingModal = ({ onClose, isShow }) => {
                       <label className={css.label}>E-mail</label>
 
                       <Field
-                        className={css.input}
+                        className={`${css.input} ${
+                          errors.email && touched.email ? css.inputError : ""
+                        }`}
                         type="email"
                         name="email"
                         placeholder="Enter your email"
@@ -219,7 +221,11 @@ const SettingModal = ({ onClose, isShow }) => {
                       <p>Outdated password:</p>
                       <div className={css.inputWrap}>
                         <Field
-                          className={css.input}
+                          className={`${css.input} ${
+                            errors.currentPassword && touched.currentPassword
+                              ? css.inputError
+                              : ""
+                          }`}
                           type={ShowCurrentPassword ? "text" : "password"}
                           name="currentPassword"
                           placeholder="Password"
@@ -251,7 +257,11 @@ const SettingModal = ({ onClose, isShow }) => {
                       <label>New Password:</label>
                       <div className={css.inputWrap}>
                         <Field
-                          className={css.input}
+                          className={`${css.input} ${
+                            errors.newPassword && touched.newPassword
+                              ? css.inputError
+                              : ""
+                          }`}
                           type={showNewPassword ? "text" : "password"}
                           name="newPassword"
                           placeholder="Password"
@@ -281,7 +291,12 @@ const SettingModal = ({ onClose, isShow }) => {
                       <label>Repeat new password:</label>
                       <div className={css.inputWrap}>
                         <Field
-                          className={css.input}
+                          className={`${css.input} ${
+                            errors.confirmNewPassword &&
+                            touched.confirmNewPassword
+                              ? css.inputError
+                              : ""
+                          }`}
                           type={showConfirmNewPassword ? "text" : "password"}
                           name="confirmNewPassword"
                           placeholder="Password"

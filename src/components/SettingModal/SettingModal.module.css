@@ -46,19 +46,18 @@
   font-size: 24px;
   font-weight: bold;
 }
-
+.formGroup .errorPassword {
+  border-color: var(--secondary-color-3);
+}
 .formGroup input[name="userName"] {
   margin-bottom: 24px;
 }
 
 .formGroup input[name="currentPassword"],
-.formGroup input[name="newPassword"]
-/* .formGroup input[name="confirmNewPassword"] { */ {
+.formGroup input[name="newPassword"] {
   margin-bottom: 12px;
 }
-/* .formGroup input[type="password"]:last-child {
-  margin-bottom: 0;
-} */
+
 .formGroup input::placeholder:active {
   color: var(--primary-color-blue);
 }
@@ -244,7 +243,6 @@ input[type="password"] {
 
 .errorPassword {
   color: var(--secondary-color-3);
-  border-color: var(--secondary-color-3);
   font-size: 14px;
   position: absolute;
   bottom: -10px;
@@ -254,4 +252,8 @@ input[type="password"] {
 }
 .errorMessage {
   bottom: -22px;
+}
+.inputError {
+  border: 2px solid var(--secondary-color-3);
+  color: var(--secondary-color-3);
 }
