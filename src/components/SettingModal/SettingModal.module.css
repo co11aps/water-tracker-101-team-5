@@ -12,6 +12,14 @@
   overflow-y: auto;
 }
 
+.formGroup input[name="email"] {
+  margin-bottom: 24px;
+}
+
+/* .errorMessage {
+  bottom: -22px;
+} */
+
 @media screen and (min-width: 768px) {
   .modal {
     padding-left: 24px;
@@ -20,17 +28,6 @@
     flex-direction: column;
     width: 704px;
     max-height: 80vh;
-  }
-}
-
-@media screen and (min-width: 1440px) {
-  .modal {
-    width: 1008px;
-  }
-  .inputGroup {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    margin-bottom: 24px;
   }
 }
 
@@ -47,17 +44,18 @@
   font-weight: bold;
 }
 
-.formGroup input[type="text"] {
+.formGroup .error {
+  border-color: var(--secondary-color-3);
+}
+.formGroup input[name="userName"] {
   margin-bottom: 24px;
 }
+
 .formGroup input[name="currentPassword"],
-.formGroup input[name="newPassword"]
-/* .formGroup input[name="confirmNewPassword"] { */ {
+.formGroup input[name="newPassword"] {
   margin-bottom: 12px;
 }
-/* .formGroup input[type="password"]:last-child {
-  margin-bottom: 0;
-} */
+
 .formGroup input::placeholder:active {
   color: var(--primary-color-blue);
 }
@@ -74,7 +72,6 @@
 .formGroup button {
   margin-top: 8px;
 }
-
 .formGroupOther {
   display: flex;
   flex-direction: column;
@@ -144,6 +141,9 @@
   margin-top: 4px;
   margin-bottom: 8px;
 }
+.formGroup {
+  position: relative;
+}
 
 .saveBtn {
   border: none;
@@ -194,8 +194,6 @@
   align-items: center;
 }
 
-/* my styles */
-
 .formGroup input::placeholder {
   color: var(--secondary-color-4);
   font-size: 16px;
@@ -220,6 +218,7 @@ input[type="password"] {
   background: none;
   border: none;
   padding: 0;
+  width: 16px;
 }
 .avatarPreviewWrapper {
   width: 100px;
@@ -238,5 +237,37 @@ input[type="password"] {
 }
 .error {
   color: var(--secondary-color-3);
-  border-color: var(--secondary-color-3);
+  font-size: 14px;
+  position: absolute;
+  bottom: -10px;
+  white-space: nowrap;
+}
+
+.inputError {
+  border: 2px solid var(--secondary-color-3);
+  color: var(--secondary-color-3);
+}
+.errorMessageEmail {
+  bottom: 2px;
+}
+.errorMessage {
+  bottom: -22px;
+}
+
+@media screen and (min-width: 1440px) {
+  .modal {
+    width: 1008px;
+  }
+  .inputGroup {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    margin-bottom: 24px;
+  }
+
+  .formGroup input[name="email"] {
+    margin-bottom: 0;
+  }
+  .errorMessageEmail {
+    bottom: -22px;
+  }
 }

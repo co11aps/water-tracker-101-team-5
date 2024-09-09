@@ -15,6 +15,7 @@ const UserAuth = () => {
         onClick={handleSignInClick}
         className={css.headerButton}
         type="button"
+        aria-label="Open modal"
       >
         Sign in
         <Icon id="user" width={28} height={28} className="icon-blue" />
