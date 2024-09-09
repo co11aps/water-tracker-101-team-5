@@ -1,18 +1,15 @@
-import {
-  useState,
-  // , useEffect
-} from "react";
+import { useState } from "react";
 import { useDispatch } from "react-redux";
 import { addWater, updateWater } from "../../redux/water/operations";
 import css from "./TodayListModal.module.css";
 import { BaseModal } from "../BaseModal/BaseModal";
+import Icon from "../Icon/Icon";
 
 export default function TodayListModal({ isShow, onClose, item }) {
   const dispatch = useDispatch();
   const [amount, setAmount] = useState(item ? item.amount : 50);
   const [time, setTime] = useState(item ? item.time : getCurrentTime());
 
-  // Повертає поточний час у форматі HH:MM з кроком 5 хвилин
   function getCurrentTime() {
     const now = new Date();
     const minutes = Math.round(now.getMinutes() / 5) * 5;
@@ -21,9 +18,8 @@ export default function TodayListModal({ isShow, onClose, item }) {
     ).padStart(2, "0")}`;
   }
 
-  // Оновлення обох полів для кількості води
   const handleAmountChange = (value) => {
-    setAmount(Math.max(0, value)); //кількість не негативна
+    setAmount(Math.max(0, value)); //кількість не негативна- додаткову перевірку+
   };
 
   const handleSave = () => {
@@ -39,18 +35,54 @@ export default function TodayListModal({ isShow, onClose, item }) {
     <BaseModal
       onClose={onClose}
       isShow={isShow}
-      title={item ? "Edit water" : "Add water"}
+      title={item ? "Edit the entered amount of water" : "Add water"}
     >
       <div className={css.modal}>
-        <h3>Choose a value:</h3>
+        {item && (
+          <div className={css.previousRecord}>
+            <Icon
+              id="glass"
+              width={26}
+              height={26}
+              aria-hidden="true"
+              className={css.iconGlass}
+            />
+            <span className={css.todayVolume}>{item.amount} ml</span>
+            <span className={css.todayTime}>{item.time}</span>
+          </div>
+        )}
+        <h3>{item ? "Correct entered data:" : "Choose a value:"}</h3>
         <p>Amount of water:</p>
+
         <div className={css.amountInput}>
-          <button onClick={() => handleAmountChange(amount - 50)}>-</button>
+          <button
+            className={css.amountInputButton}
+            onClick={() => handleAmountChange(amount - 50)}
+          >
+            <Icon
+              id="minus"
+              width={32}
+              height={32}
+              aria-hidden="true"
+              className={css.iconMinus}
+            />
+          </button>
           <span>{amount} ml</span>
-          <button onClick={() => handleAmountChange(amount + 50)}>+</button>
+          <button
+            className={css.amountInputButton}
+            onClick={() => handleAmountChange(amount + 50)}
+          >
+            <Icon
+              id="plus"
+              width={32}
+              height={32}
+              aria-hidden="true"
+              className={css.iconPlus}
+            />
+          </button>
         </div>
         <div className={css.timeInput}>
-          <label>Recording time:</label>
+          <label className={css.timeLabel}>Recording time:</label>
           <select value={time} onChange={(e) => setTime(e.target.value)}>
             {Array.from({ length: 24 * 12 }, (_, i) => {
               const hours = Math.floor(i / 12);
@@ -71,7 +103,9 @@ export default function TodayListModal({ isShow, onClose, item }) {
           </select>
         </div>
         <div className={css.manualInput}>
-          <label>Enter the value of the water used:</label>
+          <label className={css.manualInputLabel}>
+            Enter the value of the water used:
+          </label>
           <input
             type="number"
             value={amount}
@@ -80,6 +114,7 @@ export default function TodayListModal({ isShow, onClose, item }) {
           />
         </div>
         <div className={css.buttons}>
+          <span className={css.savedAmount}>{amount} ml</span>
           <button className={css.saveButton} onClick={handleSave}>
             Save
           </button>
@@ -87,32 +122,4 @@ export default function TodayListModal({ isShow, onClose, item }) {
       </div>
     </BaseModal>
   );
-  // return (
-  //   <BaseModal onClose={onClose} isShow={isShow} title="Add water">
-  //     <div className={css.modal}>
-  //       <h3>Choose a value:</h3>
-  //       <p>Amount of water:</p>
-  //       <div className={css.amountInput}>
-  //         <button onClick={() => setAmount(Math.max(50, amount - 50))}>
-  //           -
-  //         </button>
-  //         <span>{amount} ml</span>
-  //         <button onClick={() => setAmount(amount + 50)}>+</button>
-  //       </div>
-  //       <div className={css.timeInput}>
-  //         <label>Recording time:</label>
-  //         <input
-  //           type="time"
-  //           value={time}
-  //           onChange={(e) => setTime(e.target.value)}
-  //         />
-  //       </div>
-  //       <div className={css.buttons}>
-  //         <button className={css.saveButton} onClick={handleSave}>
-  //           Save
-  //         </button>
-  //       </div>
-  //     </div>
-  //   </BaseModal>
-  // );
 }
