@@ -9,6 +9,7 @@ import { refreshToken } from "./redux/auth/operations";
 import { selectIsRefreshing } from "./redux/auth/selectors";
 import { Navigate } from "react-router-dom";
 import { Toaster } from "react-hot-toast";
+import NotificationModal from "./components/NotificationModal/NotificationModal";
 
 import { setupInterceptors } from "./services/setupInterceptors";
 
@@ -50,6 +51,7 @@ function App() {
       ) : (
         <Suspense fallback={<Loader />}>
           <div>
+            <NotificationModal />
             <Toaster />
           </div>
           <Routes>

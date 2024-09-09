@@ -2,6 +2,7 @@ import { configureStore } from "@reduxjs/toolkit";
 
 import { authReducer } from "./auth/slice";
 import { waterReducer } from "./water/slice";
+import { notificationReducer } from "./notification/slice";
 
 import {
   persistStore,
@@ -26,6 +27,7 @@ export const store = configureStore({
   reducer: {
     auth: persistReducer(authPersistConfig, authReducer),
     water: waterReducer,
+    notification: notificationReducer,
   },
   middleware: (getDefaultMiddleware) =>
     getDefaultMiddleware({
