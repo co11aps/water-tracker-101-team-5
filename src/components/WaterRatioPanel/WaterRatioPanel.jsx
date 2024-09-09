@@ -64,7 +64,7 @@ export default function WaterRatioPanel() {
             </div>
           </div>
         </div>
-        <AddWaterBtn />
+        <AddWaterBtn iconId="plus-inside" iconClass={css.customIconClass} />
       </div>
     </>
   );

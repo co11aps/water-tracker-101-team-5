@@ -1,9 +1,9 @@
 import { useState } from "react";
-import css from "./AddWaterBtn.module.css";
+import css from "./AddWaterBtn.module.css"; 
 import Icon from "../Icon/Icon";
 import TodayListModal from "../TodayListModal/TodayListModal";
 
-export default function AddWaterBtn() {
+export default function AddWaterBtn({className, iconId = "", iconClass = "" }) {
   const [isModalOpen, setIsModalOpen] = useState(false);
 
   const closeModal = () => {
@@ -16,8 +16,17 @@ export default function AddWaterBtn() {
 
   return (
     <>
-      <button className={css.btn} type="button" onClick={openModal}>
-        <Icon id="plus-inside" width="24" height="24" className="icon-white" />
+      <button
+        className={`${css.btn} ${className}`}
+        type="button"
+        onClick={openModal}
+      >
+        <Icon
+          id={iconId} 
+          width="24"
+          height="24"
+          className={`${iconClass} ${css.customIconClass}`}
+        />
         Add Water
       </button>
       {isModalOpen && (
@@ -26,3 +35,6 @@ export default function AddWaterBtn() {
     </>
   );
 }
+
+
+
