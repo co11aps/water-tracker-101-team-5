@@ -6,36 +6,36 @@ import css from "./TodayWaterList.module.css";
 import AddWaterBtn from "../AddWaterBtn/AddWaterBtn";
 import TodayListModal from "../TodayListModal/TodayListModal";
 import Icon from "../Icon/Icon";
-import ConfirmationModal from "../ConfirmationModal/ConfirmationModal"; // Додаємо модальне вікно для підтвердження
+import ConfirmationModal from "../ConfirmationModal/ConfirmationModal";
 
 export default function TodayWaterList() {
   const dispatch = useDispatch();
   const { waterIntakes } = useSelector(selectDailyWater);
 
-  const [editItem, setEditItem] = useState(null); // Стан для редагування
-  const [deleteItem, setDeleteItem] = useState(null); // Стан для видалення
+  const [editItem, setEditItem] = useState(null);
+  const [deleteItem, setDeleteItem] = useState(null);
   const [isModalOpen, setIsModalOpen] = useState(false);
 
-  
   const parseTime = (time) => {
-    const [hours, minutes] = time.split(':').map(Number);
+    const [hours, minutes] = time.split(":").map(Number);
     return new Date().setHours(hours, minutes, 0, 0);
   };
 
-  
-  const sortedWaterIntakes = [...waterIntakes].sort((a, b) => parseTime(a.time) - parseTime(b.time));
+  const sortedWaterIntakes = [...waterIntakes].sort(
+    (a, b) => parseTime(a.time) - parseTime(b.time)
+  );
 
   const handleDelete = (id) => {
-    setDeleteItem(id); // Відкриваємо модальне вікно для підтвердження видалення
+    setDeleteItem(id);
   };
 
   const confirmDelete = () => {
-    dispatch(deleteWater(deleteItem)); // Видаляємо запис після підтвердження
-    setDeleteItem(null); // Закриваємо модальне вікно
+    dispatch(deleteWater(deleteItem));
+    setDeleteItem(null);
   };
 
   const handleEdit = (item) => {
-    setEditItem(item); // Відкриваємо модальне вікно для редагування
+    setEditItem(item);
   };
 
   const openAddModal = () => {
@@ -44,9 +44,9 @@ export default function TodayWaterList() {
   };
 
   const closeModal = () => {
-    setEditItem(null); // Закриваємо модальне вікно
-    setDeleteItem(null); // Закриваємо модальне вікно підтвердження
-    setIsModalOpen(false); // Закриваємо модальне вікно для додавання
+    setEditItem(null);
+    setDeleteItem(null);
+    setIsModalOpen(false);
   };
 
   return (
@@ -60,16 +60,40 @@ export default function TodayWaterList() {
             {sortedWaterIntakes.map((item) => (
               <li key={item._id} className={css.listItem}>
                 <div className={css.info}>
-                  <Icon id="glass" width={26} height={26} aria-hidden="true" className={css.iconGlass} />
+                  <Icon
+                    id="glass"
+                    width={26}
+                    height={26}
+                    aria-hidden="true"
+                    className={css.iconGlass}
+                  />
                   <span className={css.todayVolume}>{item.amount} ml</span>
                   <span className={css.todayTime}>{item.time}</span>
                 </div>
                 <div className={css.tools}>
-                  <button className={css.editButton} onClick={() => handleEdit(item)}>
-                    <Icon id="pensil" width={16} height={16} aria-hidden="false" className={css.iconEditButton} />
+                  <button
+                    className={css.editButton}
+                    onClick={() => handleEdit(item)}
+                  >
+                    <Icon
+                      id="pensil"
+                      width={16}
+                      height={16}
+                      aria-hidden="false"
+                      className={css.iconEditButton}
+                    />
                   </button>
-                  <button className={css.deleteButton} onClick={() => handleDelete(item._id)}>
-                    <Icon id="trash" width={16} height={16} aria-hidden="false" className={css.iconDeliteButton} />
+                  <button
+                    className={css.deleteButton}
+                    onClick={() => handleDelete(item._id)}
+                  >
+                    <Icon
+                      id="trash"
+                      width={16}
+                      height={16}
+                      aria-hidden="false"
+                      className={css.iconDeliteButton}
+                    />
                   </button>
                 </div>
               </li>
@@ -77,10 +101,15 @@ export default function TodayWaterList() {
           </ul>
         )}
       </div>
-      <AddWaterBtn onClick={openAddModal} className={css.addWaterButton} iconId="plus" iconClass={css.customIconClass} />
-      {isModalOpen && (
+      <AddWaterBtn
+        onClick={openAddModal}
+        className={css.addWaterButton}
+        iconId="plus"
+        iconClass={css.customIconClass}
+      />
+      {editItem && (
         <TodayListModal
-          isShow={!!isModalOpen}
+          isShow={!!editItem}
           onClose={closeModal}
           item={editItem} // Передаємо запис для редагування
         />
@@ -95,90 +124,3 @@ export default function TodayWaterList() {
     </div>
   );
 }
-
-// <Icon
-//   id={"icon-glass"}
-//   width={26}
-//   height={26}
-//   aria-hidden="false"
-//   className={css.icon}
-// />;
-// import { useSelector, useDispatch } from "react-redux";
-// import { closeModal, openModal } from "../../redux/reduxToday/modalSlice";
-// import {
-//   addWaterEntry,
-//   removeWaterEntry,
-// } from "../../redux/reduxToday/todaySlice";
-// import AddWaterBtn from "../AddWaterBtn/AddWaterBtn";
-// import TodayListModal from "../TodayListModal/TodayListModal";
-// import css from "./TodayWaterList.module.css";
-// import Icon from "../Icon/Icon";
-
-// export default function TodayWaterList() {
-//   const dispatch = useDispatch();
-//   const waterList = useSelector((state) => state.today.items);
-//   const isModalOpen = useSelector((state) => state.modal.isOpen);
-
-//   const handleAddWater = (entry) => {
-//     dispatch(addWaterEntry(entry));
-//     dispatch(closeModal());
-//   };
-
-//   const handleDelete = (id) => {
-//     dispatch(removeWaterEntry(id));
-//   };
-
-//   return (
-//     <div className={css.container}>
-//       <h2 className={css.title}>Today</h2>
-//       {waterList.length > 0 ? (
-//         <ul className={css.waterList}>
-//           {waterList.map((entry) => (
-//             <li key={entry.id} className={css.waterListItem}>
-//               <Icon
-//                 id={"icon-glass"}
-//                 width={24}
-//                 height={24}
-//                 // aria-hidden="false"
-//                 className={css.icon}
-//               />
-
-//               <span>{entry.volume} ml</span>
-//               <span>{entry.time}</span>
-//               <button
-//                 className={css.editButton}
-//                 onClick={() => dispatch(openModal(entry.id))}
-//               >
-//                 <Icon
-//                   id={"icon-pensil"}
-//                   width={24}
-//                   height={24}
-//                   // aria-hidden="false"
-//                   className={css.icon}
-//                 />
-//                 ✏️
-//               </button>
-//               <button
-//                 className={css.deleteButton}
-//                 onClick={() => handleDelete(entry.id)}
-//               >
-//                 🗑️
-//               </button>
-//             </li>
-//           ))}
-//         </ul>
-//       ) : (
-//         <p>No notes yet!</p>
-//       )}
-//       <AddWaterBtn onClick={() => dispatch(openModal())} />
-//       {isModalOpen && (
-//         <TodayListModal
-//           onClose={() => dispatch(closeModal())}
-//           onSave={handleAddWater}
-//         />
-//       )}
-//     </div>
-//   );
-// }
-
-
