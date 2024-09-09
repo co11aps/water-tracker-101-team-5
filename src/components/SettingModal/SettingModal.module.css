@@ -47,9 +47,10 @@
   font-weight: bold;
 }
 
-.formGroup input[type="text"] {
+.formGroup input[name="userName"] {
   margin-bottom: 24px;
 }
+
 .formGroup input[name="currentPassword"],
 .formGroup input[name="newPassword"]
 /* .formGroup input[name="confirmNewPassword"] { */ {
@@ -134,6 +135,11 @@
   font-size: 18px;
 }
 
+.uploadLabel {
+  margin-top: 10px;
+  cursor: pointer;
+}
+
 .gender label {
   margin-bottom: 0;
 }
@@ -141,6 +147,9 @@
 .formGroup p {
   margin-top: 4px;
   margin-bottom: 8px;
+}
+.formGroup {
+  position: relative;
 }
 
 .saveBtn {
@@ -217,22 +226,32 @@ input[type="password"] {
   background: none;
   border: none;
   padding: 0;
+  width: 16px;
 }
-.avatarPreviewWrapper {
-  width: 100px; /* Вказуємо ширину аватара */
-  height: 100px; /* Вказуємо висоту аватара */
-  border-radius: 50%; /* Робимо зображення круглим */
-  overflow: hidden; /* Ховаємо зайве зображення */
+.avatarContainer {
+  margin-bottom: 24px;
   display: flex;
-  justify-content: center;
+  justify-content: baseline;
   align-items: center;
+  gap: 8px;
 }
 .avatar {
-  width: 100%; /* Аватар буде займати всю ширину контейнера */
-  height: 100%; /* Аватар буде займати всю висоту контейнера */
-  object-fit: cover; /* Зображення буде обрізатися під круглу форму */
+  width: 80px;
+  height: 80px;
+  object-fit: cover;
+  border-radius: 50%;
 }
-.error {
+
+.errorPassword {
   color: var(--secondary-color-3);
   border-color: var(--secondary-color-3);
+  font-size: 14px;
+  position: absolute;
+  bottom: -10px;
+}
+.uploadInput {
+  display: none;
+}
+.errorMessage {
+  bottom: -22px;
 }

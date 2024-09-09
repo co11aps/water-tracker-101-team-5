@@ -26,11 +26,11 @@ const userSchema = yup.object().shape({
     .string()
     .min(
       MIN_CHAR_VALIDATION,
-      `Yourcurrent password must be more than ${MIN_CHAR_VALIDATION} characters!`
+      `Your outdated password must be more than ${MIN_CHAR_VALIDATION} characters!`
     )
     .max(
       MAX_CHAR_VALIDATION,
-      `Yourcurrent password must be less than ${MAX_CHAR_VALIDATION} characters!`
+      `Your outdated password must be less than ${MAX_CHAR_VALIDATION} characters!`
     ),
   newPassword: yup
     .string()
@@ -47,7 +47,7 @@ const userSchema = yup.object().shape({
     .oneOf([yup.ref("newPassword"), null], "Passwords must match"),
 });
 
-const SettingModal = ({ onClose, onUpdate, isShow }) => {
+const SettingModal = ({ onClose, isShow }) => {
   const dispatch = useDispatch();
   const userData = useSelector(selectUser);
   const [preview, setPreview] = useState(null);
@@ -132,8 +132,8 @@ const SettingModal = ({ onClose, onUpdate, isShow }) => {
                     />
                     <ErrorMessage
                       name="avatar"
-                      component="p"
-                      className={css.error}
+                      component="div"
+                      className={css.errorPassword}
                     />
                     {preview && (
                       <div className={css.avatarPreviewWrapper}>
@@ -144,7 +144,11 @@ const SettingModal = ({ onClose, onUpdate, isShow }) => {
                         />
                       </div>
                     )}
-                    <button type="button" className={css.uploadButton}>
+                    <button
+                      type="button"
+                      aria-label="Upload"
+                      className={css.uploadButton}
+                    >
                       <Icon
                         id="arrow-up"
                         width={16}
@@ -155,7 +159,6 @@ const SettingModal = ({ onClose, onUpdate, isShow }) => {
                     </button>
                   </div>
                 </div>
-
                 <div className={css.inputGroup}>
                   <div className={css.input1}>
                     <div className={css.formGroup}>
@@ -170,29 +173,32 @@ const SettingModal = ({ onClose, onUpdate, isShow }) => {
                         </label>
                         <ErrorMessage
                           name="gender"
-                          component="p"
-                          className={css.error}
+                          component="div"
+                          className={css.errorPassword}
                         />
                       </div>
                     </div>
 
                     <div className={css.formGroup}>
                       <label className={css.label}>Your name</label>
+
                       <Field
                         className={css.input}
                         type="text"
                         name="userName"
                         placeholder="Enter your name"
                       />
+
                       <ErrorMessage
                         name="userName"
-                        component="p"
-                        className={css.error}
+                        component="div"
+                        className={css.errorPassword}
                       />
                     </div>
 
                     <div className={css.formGroup}>
                       <label className={css.label}>E-mail</label>
+
                       <Field
                         className={css.input}
                         type="email"
@@ -201,8 +207,8 @@ const SettingModal = ({ onClose, onUpdate, isShow }) => {
                       />
                       <ErrorMessage
                         name="email"
-                        component="p"
-                        className={css.error}
+                        component="div"
+                        className={`${css.errorPassword} ${css.errorMessage}`}
                       />
                     </div>
                   </div>
@@ -221,6 +227,7 @@ const SettingModal = ({ onClose, onUpdate, isShow }) => {
                         <button
                           className={css.buttonSvg}
                           type="button"
+                          aria-label="Show password"
                           onClick={() =>
                             setShowCurrentPassword(!ShowCurrentPassword)
                           }
@@ -235,8 +242,8 @@ const SettingModal = ({ onClose, onUpdate, isShow }) => {
                       </div>
                       <ErrorMessage
                         name="currentPassword"
-                        component="p"
-                        className={css.error}
+                        component="div"
+                        className={css.errorPassword}
                       />
                     </div>
 
@@ -252,6 +259,7 @@ const SettingModal = ({ onClose, onUpdate, isShow }) => {
                         <button
                           className={css.buttonSvg}
                           type="button"
+                          aria-label="Show password"
                           onClick={() => setShowNewPassword(!showNewPassword)}
                         >
                           <Icon
@@ -264,8 +272,8 @@ const SettingModal = ({ onClose, onUpdate, isShow }) => {
                       </div>
                       <ErrorMessage
                         name="newPassword"
-                        component="p"
-                        className={css.error}
+                        component="div"
+                        className={css.errorPassword}
                       />
                     </div>
 
@@ -281,6 +289,7 @@ const SettingModal = ({ onClose, onUpdate, isShow }) => {
                         <button
                           className={css.buttonSvg}
                           type="button"
+                          aria-label="Show password"
                           onClick={() =>
                             setShowConfirmNewPassword(!showConfirmNewPassword)
                           }
@@ -295,15 +304,19 @@ const SettingModal = ({ onClose, onUpdate, isShow }) => {
                       </div>
                       <ErrorMessage
                         name="confirmNewPassword"
-                        component="p"
-                        className={css.error}
+                        component="div"
+                        className={`${css.errorPassword} ${css.errorMessage}`}
                       />
                     </div>
                   </div>
                 </div>
 
                 <div className={css.contBtn}>
-                  <button className={css.saveBtn} type="submit">
+                  <button
+                    className={css.saveBtn}
+                    type="submit"
+                    aria-label="Submit"
+                  >
                     Save
                   </button>
                 </div>
