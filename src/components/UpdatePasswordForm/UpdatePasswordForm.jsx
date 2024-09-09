@@ -1,8 +1,8 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { Formik, Form, Field, ErrorMessage } from 'formik';
 import * as Yup from 'yup';
 import { useDispatch } from 'react-redux';
-import { useNavigate, useParams } from 'react-router-dom';
+import { useNavigate, useLocation } from 'react-router-dom';
 import { updatePassword } from '../../redux/auth/operations';
 import toast from 'react-hot-toast';
 import Icon from "../Icon/Icon";
@@ -11,11 +11,42 @@ import css from './UpdatePasswordForm.module.css';
 export default function UpdatePasswordForm() {
   const dispatch = useDispatch();
   const navigate = useNavigate();
-    const { token } = useParams(); // Отримую токен з URL
-    const [showPassword, setShowPassword] = useState(false);
-    const [showConfirmPassword, setShowConfirmPassword] = useState(false);
-    
-    const togglePasswordVisibility = () => {
+  const location = useLocation();
+
+  const [token, setToken] = useState('');
+  const [showPassword, setShowPassword] = useState(false);
+  const [showConfirmPassword, setShowConfirmPassword] = useState(false);
+
+  // Використовую useEffect для отримання токена при завантаженні компонента
+  useEffect(() => {
+    const getTokenFromQuery = () => {
+      const params = new URLSearchParams(location.search);
+      return params.get('token');
+    };
+
+    const tokenFromQuery = getTokenFromQuery();
+    if (tokenFromQuery) {
+      setToken(tokenFromQuery);
+      console.log("Token set:", tokenFromQuery); // Додане логування
+    } else {
+      toast.error('Token not found in the URL.');
+    }
+  }, [location.search]);
+
+  // const tokenFromQuery = getTokenFromQuery();
+  //   if (tokenFromQuery) {
+  //     setToken(tokenFromQuery);
+  //     console.log("Token set:", tokenFromQuery); // логування
+  //   } else {
+  //     // Якщо токен не знайдено в URL, використовую фіксоване значення
+  //     const fixedToken = "шопопало"; // фіксоване значення токена
+  //     setToken(fixedToken);
+  //     console.log("Using fixed token:", fixedToken); // логування
+  //   }
+  // }, [location.search]);
+
+
+  const togglePasswordVisibility = () => {
     setShowPassword((prevState) => !prevState);
   };
 
@@ -32,18 +63,25 @@ export default function UpdatePasswordForm() {
       .required('Please confirm your password'),
   });
 
-  const handleSubmit = (values, { resetForm }) => {
+  const handleSubmit = async (values, { resetForm }) => {
     const { password } = values;
-    dispatch(updatePassword({ password, token }))
-      .unwrap()
-      .then(() => {
-        toast.success('Password updated successfully!');
-        navigate('/signin');
-        resetForm();
-      })
-      .catch(error => {
-        toast.error(error || 'Failed to update password');
-      });
+
+    // Перевірка токена перед відправкою запиту
+    console.log("Current token:", token);
+    if (!token) {
+      toast.error('Token is required.');
+      return;
+    }
+
+    try {
+      console.log("Dispatching updatePassword with token:", token);
+      await dispatch(updatePassword({ token, password })).unwrap();
+      toast.success('Password updated successfully!');
+      navigate('/signin');
+      resetForm();
+    } catch (error) {
+      toast.error(error.message || 'Failed to update password');
+    }
   };
 
   return (
@@ -56,7 +94,7 @@ export default function UpdatePasswordForm() {
       >
         <Form>
           <div className={css.form}>
-            <label htmlFor="password" className={css.label} >New Password</label>
+            <label htmlFor="password" className={css.label}>New Password</label>
             <div className={css.passwordWrapper}>
               <Field
                 type={showPassword ? "text" : "password"}
@@ -79,7 +117,7 @@ export default function UpdatePasswordForm() {
             <ErrorMessage name="password" component="div" className={css.error} />
           </div>
           <div className={css.form}>
-            <label htmlFor="confirmPassword" className={css.label} >Confirm Password</label>
+            <label htmlFor="confirmPassword" className={css.label}>Confirm Password</label>
             <div className={css.passwordWrapper}>
               <Field
                 type={showConfirmPassword ? "text" : "password"}
