@@ -26,7 +26,6 @@ export default function UpdatePasswordForm() {
     const tokenFromQuery = getTokenFromQuery();
     if (tokenFromQuery) {
       setToken(tokenFromQuery);
-      console.log("Token set:", tokenFromQuery); // Додане логування
     } else {
       toast.error('Token not found in the URL.');
     }
@@ -52,15 +51,12 @@ export default function UpdatePasswordForm() {
   const handleSubmit = async (values, { resetForm }) => {
     const { password } = values;
 
-    // Перевірка токена перед відправкою запиту
-    console.log("Current token:", token);
     if (!token) {
       toast.error('Token is required.');
       return;
     }
 
     try {
-      console.log("Dispatching updatePassword with token:", token);
       await dispatch(updatePassword({ token, password })).unwrap();
       toast.success('Password updated successfully!');
       navigate('/signin');
