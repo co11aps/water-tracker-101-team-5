@@ -16,10 +16,6 @@
   margin-bottom: 24px;
 }
 
-/* .errorMessage {
-  bottom: -22px;
-} */
-
 @media screen and (min-width: 768px) {
   .modal {
     padding-left: 24px;
@@ -43,7 +39,53 @@
   font-size: 24px;
   font-weight: bold;
 }
+/* Ховаємо оригінальні радіо-кнопки */
+.radioInput {
+  position: absolute;
+  opacity: 0;
+  cursor: pointer;
+}
 
+/* Стилізація контейнера радіо-кнопки */
+.radioLabel {
+  display: flex;
+  align-items: center;
+  cursor: pointer;
+  position: relative;
+  padding-left: 20px;
+  margin-bottom: 12px;
+  user-select: none;
+}
+
+.customRadio {
+  position: absolute;
+  top: 4px;
+  left: 0;
+  height: 14px;
+  width: 14px;
+
+  border-radius: 50%;
+  border: 1px solid var(--primary-color-blue);
+}
+
+.customRadio:after {
+  content: "";
+  position: absolute;
+  display: none;
+}
+
+.radioInput:checked ~ .customRadio:after {
+  display: block;
+}
+
+.customRadio:after {
+  top: 3px;
+  left: 3px;
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background-color: var(--primary-color-blue);
+}
 .formGroup .error {
   border-color: var(--secondary-color-3);
 }
@@ -62,11 +104,6 @@
 .formGroup label {
   display: block;
   margin-bottom: 8px;
-}
-
-.formGroup .formGroup input[type="radio"] {
-  margin-right: 8px;
-  color: var(--primary-color-blue);
 }
 
 .formGroup button {
@@ -232,6 +269,7 @@ input[type="password"] {
   border: none;
   padding: 0;
   width: 16px;
+  box-shadow: none;
 }
 .avatarPreviewWrapper {
   width: 100px;
@@ -257,7 +295,7 @@ input[type="password"] {
 }
 
 .inputError {
-  border: 2px solid var(--secondary-color-3);
+  border: 1px solid var(--secondary-color-3);
   color: var(--secondary-color-3);
 }
 .errorMessageEmail {
