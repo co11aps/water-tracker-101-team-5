@@ -17,7 +17,6 @@ export default function UpdatePasswordForm() {
   const [showPassword, setShowPassword] = useState(false);
   const [showConfirmPassword, setShowConfirmPassword] = useState(false);
 
-  // Використовую useEffect для отримання токена при завантаженні компонента
   useEffect(() => {
     const getTokenFromQuery = () => {
       const params = new URLSearchParams(location.search);
@@ -32,19 +31,6 @@ export default function UpdatePasswordForm() {
       toast.error('Token not found in the URL.');
     }
   }, [location.search]);
-
-  // const tokenFromQuery = getTokenFromQuery();
-  //   if (tokenFromQuery) {
-  //     setToken(tokenFromQuery);
-  //     console.log("Token set:", tokenFromQuery); // логування
-  //   } else {
-  //     // Якщо токен не знайдено в URL, використовую фіксоване значення
-  //     const fixedToken = "шопопало"; // фіксоване значення токена
-  //     setToken(fixedToken);
-  //     console.log("Using fixed token:", fixedToken); // логування
-  //   }
-  // }, [location.search]);
-
 
   const togglePasswordVisibility = () => {
     setShowPassword((prevState) => !prevState);
@@ -100,6 +86,7 @@ export default function UpdatePasswordForm() {
                 type={showPassword ? "text" : "password"}
                 name="password"
                 id="password"
+                placeholder="Password"
                 className={css.input}
               />
               <span
@@ -108,8 +95,8 @@ export default function UpdatePasswordForm() {
               >
                 <Icon
                   id={showPassword ? "eye" : "eye-slash"}
-                  width={24}
-                  height={24}
+                  width={16}
+                  height={16}
                   className={css.icon}
                 />
               </span>
@@ -123,6 +110,7 @@ export default function UpdatePasswordForm() {
                 type={showConfirmPassword ? "text" : "password"}
                 name="confirmPassword"
                 id="confirmPassword"
+                placeholder="Confirm Password"
                 className={css.input}
               />
               <span
@@ -131,8 +119,8 @@ export default function UpdatePasswordForm() {
               >
                 <Icon
                   id={showConfirmPassword ? "eye" : "eye-slash"}
-                  width={24}
-                  height={24}
+                  width={16}
+                  height={16}
                   className={css.icon}
                 />
               </span>
