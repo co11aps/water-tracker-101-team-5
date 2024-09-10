@@ -77,11 +77,12 @@ const AuthForm = ({ isSignup }) => {
         validationSchema={validationSchema}
         onSubmit={handleSubmit}
       >
-        {({ isSubmitting }) => (
+        {({ errors, touched, isSubmitting }) => (
           <Form>
             <div className={css.formGroup}>
               <label htmlFor="email">Enter your email</label>
               <Field
+                className={`${css.input} ${errors.email && touched.email ? css.inputError : ""}`}
                 type="email"
                 name="email"
                 id="email"
@@ -96,7 +97,9 @@ const AuthForm = ({ isSignup }) => {
             <div className={css.formGroup}>
               <label htmlFor="password">Enter your password</label>
               <div className={css.passwordWrapper}>
+                
                 <Field
+                  className={`${css.input} ${errors.password && touched.password ? css.inputError : ""}`}
                   type={showPassword ? "text" : "password"}
                   name="password"
                   id="password"
@@ -125,6 +128,7 @@ const AuthForm = ({ isSignup }) => {
                 <label htmlFor="confirmPassword">Repeat Password</label>
                 <div className={css.passwordWrapper}>
                   <Field
+                    className={`${css.input} ${errors.confirmPassword && touched.confirmPassword ? css.inputError : ""}`}
                     type={showConfirmPassword ? "text" : "password"}
                     name="confirmPassword"
                     id="confirmPassword"
