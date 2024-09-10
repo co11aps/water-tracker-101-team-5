@@ -63,7 +63,7 @@ const DailyNormaModal = ({ onClose, isShow }) => {
       return;
     }
 
-    const waterToDrinkInMl = parseFloat(waterToDrink) * 1000; 
+    const waterToDrinkInMl = parseFloat(waterToDrink) * 1000;
 
     const data = {
       dailyNorma: waterToDrinkInMl,
@@ -73,7 +73,7 @@ const DailyNormaModal = ({ onClose, isShow }) => {
       await dispatch(updateDailyNorma(data));
       await dispatch(getUserInfo());
       toast.success("Daily norm saved successfully!");
-      onClose(); 
+      onClose();
     } catch (error) {
       console.error("Error saving daily norma:", error);
       toast.error("Failed to save daily norma. Please try again.");
@@ -157,7 +157,7 @@ const DailyNormaModal = ({ onClose, isShow }) => {
               </div>
               <div className={css.FormResult}>
                 The required amount of water in liters per day:
-                <strong>{dailyNorm} L</strong>
+                <strong> {dailyNorm} L</strong>
               </div>
               <div>
                 <p className={css.TitleModal}>
@@ -178,8 +178,6 @@ const DailyNormaModal = ({ onClose, isShow }) => {
           </div>
         </div>
       </BaseModal>
-      
-      
     </>
   );
 };
