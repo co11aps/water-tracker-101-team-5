@@ -228,12 +228,25 @@ const SettingModal = ({ onClose, isShow }) => {
                     <div className={css.formGroup}>
                       <label className={css.label}>Your gender identity</label>
                       <div className={css.gender}>
-                        <label>
-                          <Field type="radio" name="gender" value="Woman" />{" "}
+                        <label className={css.radioLabel}>
+                          <Field
+                            type="radio"
+                            name="gender"
+                            value="Woman"
+                            className={`${css.radioButton} ${css.radioInput}`}
+                          />{" "}
+                          <span className={css.customRadio}></span>
                           Woman
                         </label>
-                        <label>
-                          <Field type="radio" name="gender" value="Man" /> Man
+                        <label className={css.radioLabel}>
+                          <Field
+                            type="radio"
+                            name="gender"
+                            value="Man"
+                            className={`${css.radioButton} ${css.radioInput}`}
+                          />{" "}
+                          <span className={css.customRadio}></span>
+                          Man
                         </label>
                         <ErrorMessage
                           name="gender"
