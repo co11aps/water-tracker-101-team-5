@@ -84,6 +84,19 @@
   gap: 8px;
 }
 
+.avatarPlaceholder {
+  width: 80px;
+  height: 80px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: #ccc;
+  border-radius: 50%;
+  font-size: 30px;
+  font-weight: 500;
+  color: var(--primary-color-white);
+}
+
 .photoUploadContainer {
   width: 80px;
   height: 80px;
