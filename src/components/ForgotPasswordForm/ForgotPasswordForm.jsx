@@ -54,7 +54,7 @@ export default function ForgotPasswordForm() {
               className={css.error}
             />
           </div>
-                  <button type="submit" disabled={isSubmitting} className={css.button}>
+                  <button type="submit" aria-label="Submit" disabled={isSubmitting} className={css.button}>
                       {isSubmitting ? "Submitting..." : "Send"}
                   </button>
         </Form>
