@@ -17,6 +17,11 @@
   margin-bottom: 8px;
 }
 
+.formGroup .inputError {
+  border: 1px solid var(--secondary-color-3);
+  color: var(--secondary-color-3);
+}
+
 .formGroup input {
   width: 100%;
   border: 1px solid var(--secondary-color-5);
@@ -115,3 +120,4 @@ button:hover {
     position: static;
   }
 }
+
