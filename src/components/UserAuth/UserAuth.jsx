@@ -18,7 +18,7 @@ const UserAuth = () => {
         aria-label="Open modal"
       >
         Sign in
-        <Icon id="user" width={28} height={28} className="icon-blue" />
+        <Icon id="user" width={28} height={28} className={css.icon} />
       </button>
     </nav>
   );
