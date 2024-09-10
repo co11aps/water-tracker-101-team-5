@@ -1,5 +1,6 @@
 .container {
-  background-image: url("../../images/background/mobile/icon-light-bottle-home-screen.svg");
+  background-image: var(--bottle-home-screen-mobile);
+  /* background-image: url("../../images/background/mobile/icon-light-bottle-home-screen.svg"); */
   background-size: auto;
   background-position: center 82px;
   background-repeat: no-repeat;
@@ -7,14 +8,16 @@
 
 @media screen and (min-width: 768px) {
   .container {
-    background-image: url("../../images/background/tablet/icon-light-bottle-home-screen.svg");
+    background-image: var(--bottle-home-screen-tablet);
+    /* background-image: url("../../images/background/tablet/icon-light-bottle-home-screen.svg"); */
     background-position: center 0;
   }
 }
 
 @media screen and (min-width: 1440px) {
   .container {
-    background-image: url("../../images/background/desktop/icon-light-bottle-home-screen.svg");
+    background-image: var(--bottle-home-screen-desktop);
+    /* background-image: url("../../images/background/desktop/icon-light-bottle-home-screen.svg"); */
     background-position: center -30px;
   }
 }

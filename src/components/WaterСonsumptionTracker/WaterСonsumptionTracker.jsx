@@ -48,7 +48,7 @@ export default function WaterСonsumptionTracker() {
               </li>
             </ul>
           </div>
-              <button className={css.button} type="button" onClick={handleClick}>Try tracker</button>
+              <button className={css.button} aria-label="Submit" type="button" onClick={handleClick}>Try tracker</button>
         </div>
     </div>
   );

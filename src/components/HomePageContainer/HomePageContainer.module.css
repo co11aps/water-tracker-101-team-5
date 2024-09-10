@@ -6,7 +6,8 @@
   padding-left: 20px;
   padding-right: 20px;
   padding-bottom: 40px;
-  background-image: url("../../images/background/mobile/icon-light-background-elem-home-screen.svg");
+  background-image: var(--background-elem-home-screen-mobile);
+  /* background-image: url("../../images/background/mobile/icon-light-background-elem-home-screen.svg"); */
   background-size: auto;
   background-repeat: no-repeat;
   width: 100%;
@@ -19,7 +20,8 @@
     padding-left: 32px;
     padding-right: 32px;
     padding-bottom: 44px;
-    background-image: url("../../images/background/tablet/icon-light-background-elem-home-screen.svg");
+    background-image: var(--background-elem-home-screen-tablet);
+    /* background-image: url("../../images/background/tablet/icon-light-background-elem-home-screen.svg"); */
   }
 }
 
@@ -30,6 +32,7 @@
     padding-left: 112px;
     padding-right: 112px;
     padding-bottom: 40px;
-    background-image: url("../../images/background/desktop/icon-light-background-elem-main-page.svg");
+    background-image: var(--background-elem-main-page-desktop);
+    /* background-image: url("../../images/background/desktop/icon-light-background-elem-main-page.svg"); */
   }
 }

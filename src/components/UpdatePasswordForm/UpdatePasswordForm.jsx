@@ -131,7 +131,7 @@ export default function UpdatePasswordForm() {
               className={css.error}
             />
           </div>
-          <button type="submit" className={css.button}>
+          <button type="submit" aria-label="Submit" className={css.button}>
             Update
           </button>
         </Form>
