@@ -29,17 +29,16 @@
 
 .editButton {
   all: unset;
-  color: #8baeff;
+  color: var(--secondary-color-4);
   font-size: 16px;
   line-height: 1.25;
 }
 
 .editButton:hover,
 .editButton:focus {
-
   color: var(--secondary-color-5-orange);
-   cursor: pointer;
-  
+  cursor: pointer;
+  box-shadow: none;
 }
 
 @media screen and (min-width: 768px) {

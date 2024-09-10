@@ -1,9 +1,13 @@
 import { useState } from "react";
-import css from "./AddWaterBtn.module.css"; 
+import css from "./AddWaterBtn.module.css";
 import Icon from "../Icon/Icon";
 import TodayListModal from "../TodayListModal/TodayListModal";
 
-export default function AddWaterBtn({className, iconId = "", iconClass = "" }) {
+export default function AddWaterBtn({
+  className,
+  iconId = "",
+  iconClass = "",
+}) {
   const [isModalOpen, setIsModalOpen] = useState(false);
 
   const closeModal = () => {
@@ -19,10 +23,11 @@ export default function AddWaterBtn({className, iconId = "", iconClass = "" }) {
       <button
         className={`${css.btn} ${className}`}
         type="button"
+        aria-label="Opens modal window for adding water"
         onClick={openModal}
       >
         <Icon
-          id={iconId} 
+          id={iconId}
           width="24"
           height="24"
           className={`${iconClass} ${css.customIconClass}`}
@@ -35,6 +40,3 @@ export default function AddWaterBtn({className, iconId = "", iconClass = "" }) {
     </>
   );
 }
-
-
-

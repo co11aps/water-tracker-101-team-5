@@ -12,7 +12,7 @@ const DailyNorma = () => {
   const waterNorma = dailyNorma ? (dailyNorma / 1000).toFixed(1) : "2.0"; // Default to 2.0 L if norma is not set
 
   useEffect(() => {
-    dispatch(getUserInfo()); 
+    dispatch(getUserInfo());
   }, [dispatch]);
 
   const closeModal = () => {
@@ -28,7 +28,12 @@ const DailyNorma = () => {
       <h2 className={css.header}>My daily norma:</h2>
       <div className={css.editContainer}>
         <p className={css.waterVolumeInfo}>{waterNorma} L</p>
-        <button className={css.editButton} type="button" onClick={openModal}>
+        <button
+          className={css.editButton}
+          type="button"
+          aria-label="Opens modal window for editing daily norma"
+          onClick={openModal}
+        >
           Edit
         </button>
         {isModalOpen && (
