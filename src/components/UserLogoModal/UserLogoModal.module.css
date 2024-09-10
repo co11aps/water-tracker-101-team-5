@@ -36,9 +36,22 @@
   cursor: pointer;
 }
 
-.title {
-  margin-bottom: 15px;
-  color: var(--primary-color-black);
+.icon {
+  background: transparent;
+  fill: none;
+  stroke: var(--primary-color-blue);
+}
+
+.button:hover {
+  box-shadow: none;
+}
+
+.button:hover .buttonText {
+  color: var(--secondary-color-5-orange);
+}
+
+.button:hover .icon {
+  stroke: var(--secondary-color-5-orange);
 }
 
 .block {

@@ -47,21 +47,11 @@ const UserLogoModal = ({ toggleModal }) => {
             onClick={(e) => e.stopPropagation()}
           >
             <button onClick={openSettingModal} className={css.button}>
-              <Icon
-                id="cogwheel"
-                width={24}
-                height={24}
-                className="icon-blue"
-              />
+              <Icon id="cogwheel" width={24} height={24} className={css.icon} />
               <span className={css.buttonText}>Settings</span>
             </button>
             <button onClick={openLogoutModal} className={css.button}>
-              <Icon
-                id="arrow-up"
-                width={24}
-                height={24}
-                className="icon-blue"
-              />
+              <Icon id="arrow-up" width={24} height={24} className={css.icon} />
               <span className={css.buttonText}>Log out</span>
             </button>
           </div>
@@ -83,7 +73,6 @@ const UserLogoModal = ({ toggleModal }) => {
             setIsLogoutModalOpen(false);
             closeAllModals();
           }}
-
           // isShow={isLogoutModalOpen}
 
           toggleModal={closeAllModals}
