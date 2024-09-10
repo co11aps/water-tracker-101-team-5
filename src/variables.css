@@ -38,23 +38,33 @@ body {
 
     /* desctop */
     --background-elem-main-page-desktop: url(../../images/background/desktop/icon-light-background-elem-main-page.svg);
+
     --background-main-page-desktop: url(../../images/background/desktop/icon-light-background-main-page.svg);
+
     --bottle-home-screen-desktop: url(../../images/background/desktop/icon-light-bottle-home-screen.svg);
+
     --bottle-signin-desktop: url(../../images/background/desktop/icon-light-bottle-signin.svg);
 
 
     /* dablet */
     --background-elem-home-screen-tablet: url(../../images/background/tablet/icon-light-background-elem-home-screen.svg);
+
     --background-main-page-tablet: url(../../images/background/tablet/icon-light-background-main-page.svg);
+
     --bottle-home-screen-tablet: url(../../images/background/tablet/icon-light-bottle-home-screen.svg);
+
     --bottle-signin-tablet: url(../../images/background/tablet/icon-light-bottle-signin.svg);
 
 
     /* mobile */
     --background-elem-home-screen-mobile: url(../../images/background/mobile/icon-light-background-elem-home-screen.svg);
+
     --background-elem-signin-mobile: url(../../images/background/mobile/icon-light-background-elem-signin.svg);
+
     --background-main-page-mobile: url(../../images/background/mobile/icon-light-background-main-page.svg);
+
     --bottle-home-screen-mobile: url(../../images/background/mobile/icon-light-bottle-home-screen.svg);
+
     --bottle-signin-mobile: url(../../images/background/mobile/icon-light-bottle-signin.svg);
 }
 
@@ -66,13 +76,11 @@ body.dark {
     --bottle-home-screen-desktop: url(../../images/background/desktop/icon-dark-bottle-home-screen.svg);
     --bottle-signin-desktop: url(../../images/background/desktop/icon-dark-bottle-signin.svg);
 
-
     /* dablet */
     --background-elem-home-screen-tablet: url(../../images/background/tablet/icon-dark-background-elem-home-screen.svg);
     --background-main-page-tablet: url(../../images/background/tablet/icon-dark-background-main-page.svg);
     --bottle-home-screen-tablet: url(../../images/background/tablet/icon-dark-bottle-home-screen.svg);
     --bottle-signin-tablet: url(../../images/background/tablet/icon-dark-bottle-signin.svg);
-
 
     /* mobile */
     --background-elem-home-screen-mobile: url(../../images/background/mobile/icon-dark-background-elem-home-screen.svg);
