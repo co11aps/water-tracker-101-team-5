@@ -13,7 +13,7 @@ const Header = () => {
     <div className={css.headerContainer}>
       <header className={css.header}>
         <Logo isAuthenticated={selectIsLoggedIn} />
-        {/* <ColorSchemeToggler /> */}
+        <ColorSchemeToggler />
         {isLoggedIn ? <UserLogo /> : <UserAuth />}
       </header>
     </div>

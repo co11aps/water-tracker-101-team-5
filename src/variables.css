@@ -13,7 +13,7 @@ body {
     --fill-color-blue: #c6d7ff;
     --fill-color-white: #f5f5f5;
 
-    --theme-toggler-shadow: 0 0 8px 0 #1f2438;
+    --theme-toggler-shadow: 0 0 26px 0 #9ebbff;
 
     transition: color 0.25s ease-in-out;
     transition: background-color 0.25s ease-in-out;
@@ -33,7 +33,7 @@ body.dark {
     --fill-color-blue: #272e59;
     --fill-color-white: #1b1b21;
 
-    --theme-toggler-shadow: 0 0 8px 0 #ffa756;
+    --theme-toggler-shadow: 0 0 16px 0 #ffa756;
 }
 
 /* Shadow variables */
