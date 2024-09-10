@@ -21,22 +21,6 @@ const handleFulfilled = (state) => {
   state.error = null;
 };
 
-// const handleUpdateWater = (state, action) => {
-//   const index = state.dailyWater.waterIntakes.findIndex(
-//     (item) => item._id === action.payload._id
-//   );
-
-//   state.dailyWater.waterIntakes[index] = action.payload;
-// };
-
-// const handleDeleteWater = (state, action) => {
-//   const index = state.dailyWater.waterIntakes.findIndex(
-//     (item) => item._id === action.payload._id
-//   );
-
-//   state.dailyWater.waterIntakes.splice(index, 1);
-// };
-
 const waterSlice = createSlice({
   name: "water",
   initialState: {
@@ -65,24 +49,15 @@ const waterSlice = createSlice({
       .addCase(getMonthlyWater.rejected, handleRejected)
 
       .addCase(addWater.pending, handlePending)
-      .addCase(addWater.fulfilled, (state, action) => {
-        handleFulfilled(state);
-        // state.dailyWater.waterIntakes.push(action.payload);
-      })
+      .addCase(addWater.fulfilled, handleFulfilled)
       .addCase(addWater.rejected, handleRejected)
 
       .addCase(updateWater.pending, handlePending)
-      .addCase(updateWater.fulfilled, (state, action) => {
-        handleFulfilled(state);
-        // handleUpdateWater(state, action);
-      })
+      .addCase(updateWater.fulfilled, handleFulfilled)
       .addCase(updateWater.rejected, handleRejected)
 
       .addCase(deleteWater.pending, handlePending)
-      .addCase(deleteWater.fulfilled, (state, action) => {
-        handleFulfilled(state);
-        // handleDeleteWater(state, action);
-      })
+      .addCase(deleteWater.fulfilled, handleFulfilled)
       .addCase(deleteWater.rejected, handleRejected);
   },
 });
