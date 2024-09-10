@@ -39,6 +39,7 @@
   font-size: 24px;
   font-weight: bold;
 }
+
 /* Ховаємо оригінальні радіо-кнопки */
 .radioInput {
   position: absolute;
@@ -74,7 +75,7 @@
   display: none;
 }
 
-.radioInput:checked ~ .customRadio:after {
+.radioInput:checked~.customRadio:after {
   display: block;
 }
 
@@ -86,9 +87,11 @@
   border-radius: 50%;
   background-color: var(--primary-color-blue);
 }
+
 .formGroup .error {
   border-color: var(--secondary-color-3);
 }
+
 .formGroup input[name="userName"] {
   margin-bottom: 24px;
 }
@@ -101,6 +104,7 @@
 .formGroup input::placeholder:active {
   color: var(--primary-color-blue);
 }
+
 .formGroup label {
   display: block;
   margin-bottom: 8px;
@@ -109,6 +113,7 @@
 .formGroup button {
   margin-top: 8px;
 }
+
 .formGroupOther {
   display: flex;
   flex-direction: column;
@@ -152,10 +157,12 @@
   display: flex;
   flex-direction: column;
 }
+
 .inputWrap {
   position: relative;
   width: 256px;
 }
+
 .input {
   border-radius: 4px;
   background-color: var(--primary-color-white);
@@ -165,14 +172,17 @@
   border-radius: 4px;
   color: var(--secondary-color-4);
 }
+
 @media screen and (min-width: 768px) {
   .input {
     width: 392px;
   }
+
   .inputWrap {
     width: 392px;
   }
 }
+
 .input:focus {
   color: var(--primary-color-blue);
 }
@@ -191,6 +201,7 @@
   margin-top: 4px;
   margin-bottom: 8px;
 }
+
 .formGroup {
   position: relative;
 }
@@ -205,6 +216,7 @@
   box-shadow: 0 4px 8px 0 rgba(64, 123, 255, 0.2);
   margin-top: 24px;
 }
+
 .saveBtn:hover {
   box-shadow: 0 4px 14px 0 rgba(64, 123, 255, 0.2);
 }
@@ -250,9 +262,6 @@
   line-height: 1.25;
 }
 
-.formGroup input:focus::placeholder {
-  color: var(--primary-color-blue);
-}
 
 .formGroup input[type="text"],
 input[type="password"] {
@@ -271,6 +280,7 @@ input[type="password"] {
   width: 16px;
   box-shadow: none;
 }
+
 .avatarPreviewWrapper {
   width: 100px;
   height: 100px;
@@ -280,12 +290,14 @@ input[type="password"] {
   justify-content: center;
   align-items: center;
 }
+
 .avatar {
   width: 80px;
   height: 80px;
   border-radius: 50%;
   object-fit: cover;
 }
+
 .error {
   color: var(--secondary-color-3);
   font-size: 14px;
@@ -298,9 +310,11 @@ input[type="password"] {
   border: 1px solid var(--secondary-color-3);
   color: var(--secondary-color-3);
 }
+
 .errorMessageEmail {
   bottom: 2px;
 }
+
 .errorMessage {
   bottom: -22px;
 }
@@ -309,6 +323,7 @@ input[type="password"] {
   .modal {
     width: 1008px;
   }
+
   .inputGroup {
     display: grid;
     grid-template-columns: 1fr 1fr;
@@ -318,6 +333,7 @@ input[type="password"] {
   .formGroup input[name="email"] {
     margin-bottom: 0;
   }
+
   .errorMessageEmail {
     bottom: -22px;
   }
