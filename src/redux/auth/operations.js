@@ -183,7 +183,6 @@ export const forgotPassword = createAsyncThunk(
       });
       return response.data;
     } catch (error) {
-      console.error("Error details:", error); // логування
       const errorMessage =
         error.response?.data?.message || "Failed to send reset email.";
       return thunkAPI.rejectWithValue(errorMessage);
@@ -196,17 +195,13 @@ export const updatePassword = createAsyncThunk(
   "auth/updatePassword",
   async ({ token, password }, thunkAPI) => {
     try {
-      // Запит на оновлення паролю
-      console.log("Token: ", token);
       const response = await axiosInstance.post(`/auth/reset-password`, {
-        token, // токен тільки в тілі
+        token,
         password,
       });
-      console.log("Server response:", response.data); // лог для відповіді сервера
 
       return response.data;
     } catch (error) {
-      console.log("Error response:", error.response?.data); // лог для помилки
       const errorMessage =
         error.response?.data?.message || "Failed to update password";
       return thunkAPI.rejectWithValue(errorMessage);

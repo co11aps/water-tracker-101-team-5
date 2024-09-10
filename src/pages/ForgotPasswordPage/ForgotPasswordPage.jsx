@@ -5,7 +5,7 @@ export default function ForgotPasswordPage() {
   return (
     <div className={css.container}>
       <div className={css.containerBox}>
-        <div>
+        <div className={css.block}>
           <ForgotPasswordForm />
         </div>
         <div className={css.bottleBg}></div>
