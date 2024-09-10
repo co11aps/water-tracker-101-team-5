@@ -34,8 +34,14 @@
 }
 
 .userName {
-  font-size: 22px;
+  font-size: 16px;
+  line-height: 1.25;
   color: var(--primary-color-black);
+  width: 68px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  text-align: right;
 }
 
 .userLogoModal {
@@ -83,4 +89,19 @@
 
 .iconRotate {
   transform: rotate(180deg);
+}
+
+
+@media only screen and (min-width: 768px) {
+  .userName {
+    line-height: 1.333;
+    width: 128px;
+    font-size: 18px;
+  }
+}
+
+@media only screen and (min-width: 1440px) {
+  .userName {
+    width: 168px;
+  }
 }

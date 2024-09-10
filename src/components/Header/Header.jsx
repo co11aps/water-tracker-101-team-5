@@ -12,7 +12,7 @@ const Header = () => {
   return (
     <div className={css.headerContainer}>
       <header className={css.header}>
-        <Logo isAuthenticated={selectIsLoggedIn} />
+        <Logo />
         <ColorSchemeToggler />
         {isLoggedIn ? <UserLogo /> : <UserAuth />}
       </header>
