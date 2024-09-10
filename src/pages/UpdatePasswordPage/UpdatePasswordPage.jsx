@@ -5,7 +5,7 @@ export default function UpdatePasswordPage() {
   return (
       <div className={css.container}>
           <div className={css.containerBox}>
-        <div>
+        <div className={css.block}>
           <UpdatePasswordForm />
         </div>
         <div className={css.bottleBg}></div>

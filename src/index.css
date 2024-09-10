@@ -1,4 +1,5 @@
 @import url("./fonts/fonts.css");
+@import url("./variables.css");
 
 :root {
   font-family: "Roboto", sans-serif;
@@ -88,20 +89,6 @@ body {
   transition: background-color 0.25s ease-in-out;
 }
 
-body.dark {
-  --primary-color-white: #1c1d26;
-  --primary-color-black: #d5dff5;
-  --primary-color-blue: #5082f2;
-
-  --secondary-color-2: #1f2438;
-  --secondary-color-3: #f16161;
-  --secondary-color-4: #2f3875;
-  --secondary-color-5-orange: #ffa756;
-  --secondary-color-5: #2a3052;
-
-  --fill-color-blue: #272e59;
-  --fill-color-white: #1b1b21;
-}
 
 /* common styles */
 a {

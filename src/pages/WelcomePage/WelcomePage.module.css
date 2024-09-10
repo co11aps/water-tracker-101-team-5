@@ -1,11 +1,13 @@
 .backgroundContainer {
-  /*marging-top: 24px;*/ /*Крістіна марджин під Header */
+  /*marging-top: 24px;*/
+  /*Крістіна марджин під Header */
   padding-top: 24px;
   padding-left: 20px;
   padding-right: 20px;
   padding-bottom: 40px;
-  background-image: url("../../images/background/mobile/icon-light-background-main-page.svg");
-  background-size: cover; /* cover або contain */
+  background-image: var(--background-main-page-mobile);
+  background-size: cover;
+  /* cover або contain */
   background-position: center;
   background-repeat: no-repeat;
   /* width: 100%;
@@ -13,36 +15,38 @@
   box-sizing: border-box;
   display: flex;
   flex-direction: column;
-  overflow-y: auto; /*робочий варіант*/
+  overflow-y: auto;
+  /*робочий варіант*/
 }
 
-@media only screen and (max-width: 767px) {
-}
+@media only screen and (max-width: 767px) {}
 
 @media only screen and (min-width: 768px) {
   .backgroundContainer {
-    /*marging-top: 40px;*/ /*Крістіна марджин під Header */
+    /*marging-top: 40px;*/
+    /*Крістіна марджин під Header */
     width: 768px;
     /* height: 680px; */
     padding-top: 40px;
     padding-left: 32px;
     padding-right: 32px;
     padding-bottom: 50px;
-    background-image: url("../../images/background/tablet/icon-light-background-main-page.svg");
+    background-image: var(--background-main-page-tablet);
+    ;
   }
 }
 
 @media only screen and (min-width: 1440px) {
   .backgroundContainer {
-    /*marging-top: 49px;*/ /*Крістіна марджин під Header */
+    /*marging-top: 49px;*/
+    /*Крістіна марджин під Header */
     width: 1440px;
     /* height: 800px; */
     padding-top: 49px;
     padding-left: 18px;
     padding-right: 18px;
     padding-bottom: 109px;
-    background-image: url("../../images/background/desktop/icon-light-background-main-page.svg"),
-      url("../../images/background/desktop/icon-light-background-elem-main-page.svg");
+    background-image: var(--background-main-page-desktop), var(--background-elem-main-page-desktop);
     /* background-image: url("../../images/background/desktop/icon-light-background-elem-main-page.svg"),
       url("../../images/background/desktop/icon-light-background-main-page.svg"); */
 
