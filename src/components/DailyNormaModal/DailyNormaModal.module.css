@@ -236,12 +236,11 @@
 }
 
 .ValidationError {
+  position: absolute;
 color: var(--secondary-color-3);
 font-size: 14px;
 font-weight: 400;
 line-height: 18px;
 margin-top: 4px;
 }
-
-
 
