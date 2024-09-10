@@ -37,7 +37,12 @@ const DailyNorma = () => {
           Edit
         </button>
         {isModalOpen && (
-          <DailyNormaModal isShow={isModalOpen} onClose={closeModal} />
+          <DailyNormaModal
+  isShow={isModalOpen}
+  onClose={closeModal}
+  initialWaterToDrink={waterNorma.replace(',', '.')} 
+/>
+
         )}
       </div>
     </div>
@@ -45,3 +50,6 @@ const DailyNorma = () => {
 };
 
 export default DailyNorma;
+
+
+
