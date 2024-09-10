@@ -183,7 +183,7 @@ export const forgotPassword = createAsyncThunk(
       });
       return response.data;
     } catch (error) {
-      console.error("Error details:", error); // Додаткове логування
+      console.error("Error details:", error); // логування
       const errorMessage =
         error.response?.data?.message || "Failed to send reset email.";
       return thunkAPI.rejectWithValue(errorMessage);
@@ -191,24 +191,12 @@ export const forgotPassword = createAsyncThunk(
   }
 );
 
-//===========ДОДАЛА =================
+//=========== ДОДАЛА updatePassword =================
 export const updatePassword = createAsyncThunk(
   "auth/updatePassword",
   async ({ token, password }, thunkAPI) => {
     try {
       // Запит на оновлення паролю
-      //1 варіант
-      // const response = await axiosInstance.post(
-      //   `/auth/reset-password`,
-      //   {
-      //     headers: {
-      //       Authorization: `Bearer ${token}`, // токен тільки в заголовку
-      //     },
-      //   },
-      //   { password }
-      // );
-
-      //2 варіант
       console.log("Token: ", token);
       const response = await axiosInstance.post(`/auth/reset-password`, {
         token, // токен тільки в тілі
@@ -216,30 +204,9 @@ export const updatePassword = createAsyncThunk(
       });
       console.log("Server response:", response.data); // лог для відповіді сервера
 
-      // 3 варіант
-      // const response = await axiosInstance.post(
-      //   `/auth/reset-password`,
-      //   { token, password }, // передаємо токен у тілі
-      //   {
-      //     headers: {
-      //       Authorization: `Bearer ${token}`, // передаємо токен у заголовку
-      //     },
-      //   }
-      // );
-
-      // 4 варіант
-      // const response = await axiosInstance({
-      //   method: "post",
-      //   url: "/auth/reset-password",
-      //   data: { token, password },
-      //   headers: {
-      //     "Content-Type": "application/json", // Вказуємо тип контенту
-      //   },
-      // });
-
       return response.data;
     } catch (error) {
-      console.log("Error response:", error.response?.data); // додала лог для помилки
+      console.log("Error response:", error.response?.data); // лог для помилки
       const errorMessage =
         error.response?.data?.message || "Failed to update password";
       return thunkAPI.rejectWithValue(errorMessage);
