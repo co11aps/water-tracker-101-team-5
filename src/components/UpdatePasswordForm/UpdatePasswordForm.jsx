@@ -74,6 +74,7 @@ export default function UpdatePasswordForm() {
         validationSchema={validationSchema}
         onSubmit={handleSubmit}
       >
+        {({ errors, touched }) => (
         <Form>
           <div className={css.form}>
             <label htmlFor="password" className={css.label}>New Password</label>
@@ -83,7 +84,7 @@ export default function UpdatePasswordForm() {
                 name="password"
                 id="password"
                 placeholder="Password"
-                className={css.input}
+                className={`${css.input} ${errors.password && touched.password ? css.inputError : ''}`}
               />
               <span
                 className={css.passwordToggleIcon}
@@ -107,7 +108,7 @@ export default function UpdatePasswordForm() {
                 name="confirmPassword"
                 id="confirmPassword"
                 placeholder="Confirm Password"
-                className={css.input}
+                className={`${css.input} ${errors.confirmPassword && touched.confirmPassword ? css.inputError : ''}`}
               />
               <span
                 className={css.passwordToggleIcon}
@@ -130,7 +131,8 @@ export default function UpdatePasswordForm() {
           <button type="submit" aria-label="Submit" className={css.button}>
             Update
           </button>
-        </Form>
+          </Form>
+          )}
       </Formik>
     </div>
   );
