@@ -2,6 +2,7 @@
   padding-left: 12px;
   padding-right: 12px;
   padding-bottom: 24px;
+  
 }
 
 @media screen and (min-width: 768px) {
@@ -138,29 +139,43 @@
   margin-top: 8px;
   color: var(--primary-color-blue);
   background-color: var(--primary-color-white);
+  outline: none;
 }
 
-.Input::placeholder {
+.InputError {
+  border: 1px solid var(--secondary-color-3); 
+  color: var(--secondary-color-3);
+}
+
+.InputError::placeholder {
+  color: var(--secondary-color-3);
+}
+
+.InputValid {
+  border: 1px solid var(--primary-color-blue); 
   color: var(--primary-color-blue);
 }
 
+.InputValid::placeholder {
+  color: var(--primary-color-blue);
+}
+
+.Input::placeholder {
+  color: var(--secondary-color-4);
+}
+
 .Input:hover {
-  color: var(--primary-color-black);
-  border: 1px solid var(--secondary-color-5);
+  border: 1px solid  var(--primary-color-blue);
 }
 
 .Input:focus {
   outline: none;
-  border: 1px solid var(--secondary-color-5);
+  border: 1px solid var(--primary-color-blue);
 }
 
-.Input:not(:placeholder-shown) {
-  color: var(--primary-color-blue);
-}
-
-.Input[type="number"]::-webkit-outer-spin-button,
-.Input[type="number"]::-webkit-inner-spin-button {
-  -webkit-appearance: none;
+.Input::-webkit-inner-spin-button,
+.Input::-webkit-outer-spin-button {
+  -webkit-appearance: none; 
   margin: 0;
 }
 
@@ -173,6 +188,7 @@
 
   font-weight: 400;
   line-height: 20px;
+  
 }
 
 .FormResult strong {
@@ -180,7 +196,7 @@
 
   font-weight: 700;
   line-height: 24px;
-
+  margin-left: 6px;
   white-space: nowrap;
   color: var(--primary-color-blue);
 }
@@ -218,3 +234,14 @@
     width: 160px;
   }
 }
+
+.ValidationError {
+color: var(--secondary-color-3);
+font-size: 14px;
+font-weight: 400;
+line-height: 18px;
+margin-top: 4px;
+}
+
+
+
