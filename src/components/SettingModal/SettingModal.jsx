@@ -217,7 +217,7 @@ const SettingModal = ({ onClose, isShow }) => {
                       id="arrow-up"
                       width={16}
                       height={16}
-                      className="icon-blue"
+                      className={css.iconUpload}
                     />
                     Upload a photo
                   </button>

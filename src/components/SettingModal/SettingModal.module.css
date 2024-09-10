@@ -132,7 +132,7 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  background-color: #ccc;
+  background-color: var(--secondary-color-5);
   border-radius: 50%;
   font-size: 30px;
   font-weight: 500;
@@ -249,6 +249,20 @@
   padding: 0;
   border: none;
   background: none;
+}
+
+.iconUpload {
+  background: transparent;
+  stroke: var(--primary-color-blue);
+}
+
+.uploadButton:hover {
+  box-shadow: none;
+  color: var(--secondary-color-5-orange);
+
+  .iconUpload {
+    stroke: var(--secondary-color-5-orange);
+  }
 }
 
 .uploadBtnGroup {
