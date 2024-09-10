@@ -13,6 +13,12 @@ export const BaseModal = ({ isShow, children, title, onClose }) => {
     onClose();
   }, [onClose]);
 
+  const handleBackdropClick = (e) => {
+    if (e.target === e.currentTarget) {
+      handleClose();
+    }
+  };
+
   useEffect(() => {
     const handleEsc = (e) => {
       if (e.code === "Escape") {
@@ -36,7 +42,7 @@ export const BaseModal = ({ isShow, children, title, onClose }) => {
   }
 
   const baseModalContent = (
-    <div className={css.modalBox} onClick={onClose}>
+    <div className={css.modalBox} onClick={handleBackdropClick}>
       <div className={css.modalContent} onClick={(e) => e.stopPropagation()}>
         <div
           className={`${css.modalHeader} ${
