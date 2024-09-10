@@ -17,6 +17,21 @@ body {
     transition: background-color 0.25s ease-in-out;
 }
 
+body.dark {
+    --primary-color-white: #1c1d26;
+    --primary-color-black: #d5dff5;
+    --primary-color-blue: #5082f2;
+
+    --secondary-color-2: #1f2438;
+    --secondary-color-3: #f16161;
+    --secondary-color-4: #2f3875;
+    --secondary-color-5-orange: #ffa756;
+    --secondary-color-5: #2a3052;
+
+    --fill-color-blue: #272e59;
+    --fill-color-white: #1b1b21;
+}
+
 /* Shadow variables */
 body {
     /* Кнопка нормал box-shadow: */
@@ -37,57 +52,57 @@ body {
 body {
 
     /* desctop */
-    --background-elem-main-page-desktop: url(../../images/background/desktop/icon-light-background-elem-main-page.svg);
+    --background-elem-main-page-desktop: url(/src/images/background/desktop/icon-light-background-elem-main-page.svg);
 
-    --background-main-page-desktop: url(../../images/background/desktop/icon-light-background-main-page.svg);
+    --background-main-page-desktop: url(/src/images/background/desktop/icon-light-background-main-page.svg);
 
-    --bottle-home-screen-desktop: url(../../images/background/desktop/icon-light-bottle-home-screen.svg);
+    --bottle-home-screen-desktop: url(/src/images/background/desktop/icon-light-bottle-home-screen.svg);
 
-    --bottle-signin-desktop: url(../../images/background/desktop/icon-light-bottle-signin.svg);
+    --bottle-signin-desktop: url(/src/images/background/desktop/icon-light-bottle-signin.svg);
 
 
-    /* dablet */
-    --background-elem-home-screen-tablet: url(../../images/background/tablet/icon-light-background-elem-home-screen.svg);
+    /* tablet */
+    --background-elem-home-screen-tablet: url(/src/images/background/tablet/icon-light-background-elem-home-screen.svg);
 
-    --background-main-page-tablet: url(../../images/background/tablet/icon-light-background-main-page.svg);
+    --background-main-page-tablet: url(/src/images/background/tablet/icon-light-background-main-page.svg);
 
-    --bottle-home-screen-tablet: url(../../images/background/tablet/icon-light-bottle-home-screen.svg);
+    --bottle-home-screen-tablet: url(/src/images/background/tablet/icon-light-bottle-home-screen.svg);
 
-    --bottle-signin-tablet: url(../../images/background/tablet/icon-light-bottle-signin.svg);
+    --bottle-signin-tablet: url(/src/images/background/tablet/icon-light-bottle-signin.svg);
 
 
     /* mobile */
-    --background-elem-home-screen-mobile: url(../../images/background/mobile/icon-light-background-elem-home-screen.svg);
+    --background-elem-home-screen-mobile: url(/src/images/background/mobile/icon-light-background-elem-home-screen.svg);
 
-    --background-elem-signin-mobile: url(../../images/background/mobile/icon-light-background-elem-signin.svg);
+    --background-elem-signin-mobile: url(/src/images/background/mobile/icon-light-background-elem-signin.svg);
 
-    --background-main-page-mobile: url(../../images/background/mobile/icon-light-background-main-page.svg);
+    --background-main-page-mobile: url(/src/images/background/mobile/icon-light-background-main-page.svg);
 
-    --bottle-home-screen-mobile: url(../../images/background/mobile/icon-light-bottle-home-screen.svg);
+    --bottle-home-screen-mobile: url(/src/images/background/mobile/icon-light-bottle-home-screen.svg);
 
-    --bottle-signin-mobile: url(../../images/background/mobile/icon-light-bottle-signin.svg);
+    --bottle-signin-mobile: url(/src/images/background/mobile/icon-light-bottle-signin.svg);
 }
 
 body.dark {
 
     /* desctop */
-    --background-elem-main-page-desktop: url(../../images/background/desktop/icon-dark-background-elem-main-page.svg);
-    --background-main-page-desktop: url(../../images/background/desktop/icon-dark-background-main-page.svg);
-    --bottle-home-screen-desktop: url(../../images/background/desktop/icon-dark-bottle-home-screen.svg);
-    --bottle-signin-desktop: url(../../images/background/desktop/icon-dark-bottle-signin.svg);
+    --background-elem-main-page-desktop: url(/src/images/background/desktop/icon-dark-background-elem-main-page.svg);
+    --background-main-page-desktop: url(/src/images/background/desktop/icon-dark-background-main-page.svg);
+    --bottle-home-screen-desktop: url(/src/images/background/desktop/icon-dark-bottle-home-screen.svg);
+    --bottle-signin-desktop: url(/src/images/background/desktop/icon-dark-bottle-signin.svg);
 
     /* dablet */
-    --background-elem-home-screen-tablet: url(../../images/background/tablet/icon-dark-background-elem-home-screen.svg);
-    --background-main-page-tablet: url(../../images/background/tablet/icon-dark-background-main-page.svg);
-    --bottle-home-screen-tablet: url(../../images/background/tablet/icon-dark-bottle-home-screen.svg);
-    --bottle-signin-tablet: url(../../images/background/tablet/icon-dark-bottle-signin.svg);
+    --background-elem-home-screen-tablet: url(/src/images/background/tablet/icon-dark-background-elem-home-screen.svg);
+    --background-main-page-tablet: url(/src/images/background/tablet/icon-dark-background-main-page.svg);
+    --bottle-home-screen-tablet: url(/src/images/background/tablet/icon-dark-bottle-home-screen.svg);
+    --bottle-signin-tablet: url(/src/images/background/tablet/icon-dark-bottle-signin.svg);
 
     /* mobile */
-    --background-elem-home-screen-mobile: url(../../images/background/mobile/icon-dark-background-elem-home-screen.svg);
-    --background-elem-signin-mobile: url(../../images/background/mobile/icon-dark-background-elem-signin.svg);
-    --background-main-page-mobile: url(../../images/background/mobile/icon-dark-background-main-page.svg);
-    --bottle-home-screen-mobile: url(../../images/background/mobile/icon-dark-bottle-home-screen.svg);
-    --bottle-signin-mobile: url(../../images/background/mobile/icon-dark-bottle-signin.svg);
+    --background-elem-home-screen-mobile: url(/src/images/background/mobile/icon-dark-background-elem-home-screen.svg);
+    --background-elem-signin-mobile: url(/src/images/background/mobile/icon-dark-background-elem-signin.svg);
+    --background-main-page-mobile: url(/src/images/background/mobile/icon-dark-background-main-page.svg);
+    --bottle-home-screen-mobile: url(/src/images/background/mobile/icon-dark-bottle-home-screen.svg);
+    --bottle-signin-mobile: url(/src/images/background/mobile/icon-dark-bottle-signin.svg);
 }
 
 

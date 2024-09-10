@@ -31,7 +31,8 @@
     padding-left: 32px;
     padding-right: 32px;
     padding-bottom: 50px;
-    background-image: url(../../images/background/tablet/icon-light-background-main-page.svg);
+    background-image: var(--background-main-page-tablet);
+    ;
   }
 }
 
@@ -45,7 +46,7 @@
     padding-left: 18px;
     padding-right: 18px;
     padding-bottom: 109px;
-    background-image: var(--background-main-page-desctop), var(--background-elem-main-page-desktop);
+    background-image: var(--background-main-page-desktop), var(--background-elem-main-page-desktop);
     /* background-image: url("../../images/background/desktop/icon-light-background-elem-main-page.svg"),
       url("../../images/background/desktop/icon-light-background-main-page.svg"); */
 
