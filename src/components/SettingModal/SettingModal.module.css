@@ -75,7 +75,7 @@
   display: none;
 }
 
-.radioInput:checked~.customRadio:after {
+.radioInput:checked ~ .customRadio:after {
   display: block;
 }
 
@@ -98,7 +98,7 @@
 
 .formGroup input[name="currentPassword"],
 .formGroup input[name="newPassword"] {
-  margin-bottom: 12px;
+  margin-bottom: 20px;
 }
 
 .formGroup input::placeholder:active {
@@ -111,7 +111,7 @@
 }
 
 .formGroup button {
-  margin-top: 8px;
+  margin-top: 11px;
 }
 
 .formGroupOther {
@@ -148,7 +148,7 @@
 .gender {
   display: flex;
   gap: 30px;
-  padding-bottom: 52px;
+  padding-bottom: 64px;
   margin-top: 4px;
 }
 
@@ -167,7 +167,7 @@
   border-radius: 4px;
   background-color: var(--primary-color-white);
   width: 256px;
-  padding: 10px;
+  padding: 10px 10px 12px 12px;
   border: 1px solid var(--secondary-color-5);
   border-radius: 4px;
   color: var(--secondary-color-4);
@@ -218,7 +218,7 @@
 }
 
 .saveBtn:hover {
-  box-shadow: 0 4px 14px 0 rgba(64, 123, 255, 0.2);
+  box-shadow: 0px 4px 14px 0px rgba(64, 123, 255, 0.54);
 }
 
 @media screen and (min-width: 768px) {
@@ -276,10 +276,9 @@
   line-height: 1.25;
 }
 
-
 .formGroup input[type="text"],
 input[type="password"] {
-  padding: 8px 40px 8px 8px;
+  padding: 10px 40px 12px 12px;
 }
 
 .buttonSvg {
@@ -316,7 +315,7 @@ input[type="password"] {
   color: var(--secondary-color-3);
   font-size: 14px;
   position: absolute;
-  bottom: -10px;
+  bottom: -2px;
   white-space: nowrap;
 }
 
@@ -350,5 +349,8 @@ input[type="password"] {
 
   .errorMessageEmail {
     bottom: -22px;
+  }
+  .formGroup input[name="userName"] {
+    margin-bottom: 36px;
   }
 }
