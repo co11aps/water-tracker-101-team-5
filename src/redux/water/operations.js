@@ -1,6 +1,13 @@
 import { createAsyncThunk } from "@reduxjs/toolkit";
 import { axiosInstance } from "../../services/axiosConfig";
 
+const getCurrentYearAndMonth = () => {
+  const now = new Date();
+  const year = now.getFullYear();
+  const month = now.getMonth() + 1;
+  return { year, month };
+};
+
 export const getDailyWater = createAsyncThunk(
   "water/oneDayWater",
   async (_, thunkAPI) => {
@@ -35,7 +42,10 @@ export const addWater = createAsyncThunk(
   async (waterData, thunkAPI) => {
     try {
       const response = await axiosInstance.post("water/add", waterData);
+
+      const { year, month } = getCurrentYearAndMonth();
       await thunkAPI.dispatch(getDailyWater());
+      await thunkAPI.dispatch(getMonthlyWater({ year, month }));
       return response.data.data;
     } catch (e) {
       return thunkAPI.rejectWithValue(e.message);
@@ -51,7 +61,10 @@ export const updateWater = createAsyncThunk(
         `water/update/${id}`,
         waterData
       );
+
+      const { year, month } = getCurrentYearAndMonth();
       await thunkAPI.dispatch(getDailyWater());
+      await thunkAPI.dispatch(getMonthlyWater({ year, month }));
       return response.data.data;
     } catch (e) {
       return thunkAPI.rejectWithValue(e.message);
@@ -64,7 +77,10 @@ export const deleteWater = createAsyncThunk(
   async (id, thunkAPI) => {
     try {
       await axiosInstance.delete(`water/delete/${id}`);
+
+      const { year, month } = getCurrentYearAndMonth();
       await thunkAPI.dispatch(getDailyWater());
+      await thunkAPI.dispatch(getMonthlyWater({ year, month }));
       return { _id: id };
     } catch (e) {
       return thunkAPI.rejectWithValue(e.message);

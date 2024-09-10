@@ -3,7 +3,6 @@ import { useDispatch, useSelector } from "react-redux";
 import { getMonthlyWater } from "../../redux/water/operations";
 import {
   selectMonthlyWater,
-  selectDailyWater,
   selectIsLoading,
   selectError,
 } from "../../redux/water/selectors";
@@ -29,7 +28,6 @@ const months = [
 const MonthStatsTable = () => {
   const dispatch = useDispatch();
   const monthlyWater = useSelector(selectMonthlyWater);
-  const { waterIntakes } = useSelector(selectDailyWater);
   const dailyNorma = useSelector(selectDailyNorma);
   const isLoading = useSelector(selectIsLoading);
   const error = useSelector(selectError);
@@ -43,7 +41,7 @@ const MonthStatsTable = () => {
 
   useEffect(() => {
     dispatch(getMonthlyWater({ year, month: month + 1 }));
-  }, [dispatch, year, month, waterIntakes, dailyNorma]);
+  }, [dispatch, year, month, dailyNorma]);
 
   const handlePrevMonth = () => {
     if (month === 0) {

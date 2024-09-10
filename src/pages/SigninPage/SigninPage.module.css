@@ -5,7 +5,8 @@
   background-size: contain;
   background-position: center;
   background-repeat: no-repeat;
-  background-image: url(../../images/background/mobile/icon-light-background-elem-signin.svg);
+  background-image: var(--background-elem-signin-mobile);
+  /* background-image: url(../../images/background/mobile/icon-light-background-elem-signin.svg); */
 }
 
 .containerBox {
@@ -17,7 +18,8 @@
 
 .bottleBg {
   margin-top: 66px;
-  background-image: url(../../images/background/mobile/icon-light-bottle-signin.svg);
+  background-image: var(--bottle-signin-mobile);
+  /* background-image: url(../../images/background/mobile/icon-light-bottle-signin.svg); */
   background-size: contain;
   background-repeat: no-repeat;
   width: 280px;
@@ -29,7 +31,8 @@
   .container {
     width: 768px;
     padding: 0 32px;
-    background-image: url(../../images/background/tablet/icon-light-bottle-signin.svg);
+    background-image: var(--bottle-signin-tablet);
+    /* background-image: url(../../images/background/tablet/icon-light-bottle-signin.svg); */
     background-size: contain;
     background-position: center top;
   }
@@ -49,7 +52,8 @@
     width: 1440px;
     height: 800px;
     padding-right: 210px;
-    background-image: url(../../images/background/desktop/icon-light-background-elem-main-page.svg);
+    background-image: var(--background-elem-main-page-desktop);
+    /* background-image: url(../../images/background/desktop/icon-light-background-elem-main-page.svg); */
   }
   .containerBox {
     flex-direction: row-reverse;
@@ -58,6 +62,7 @@
   .bottleBg {
     width: 916px;
     min-height: 680px;
-    background-image: url(../../images/background/desktop/icon-light-bottle-home-screen.svg);
+    background-image: var(--bottle-home-screen-desktop);
+    /* background-image: url(../../images/background/desktop/icon-light-bottle-home-screen.svg); */
   }
 }

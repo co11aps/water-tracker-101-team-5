@@ -10,19 +10,29 @@ const DailyNormaModal = ({ onClose, isShow }) => {
   const [weight, setWeight] = useState("");
   const [activityTime, setActivityTime] = useState("");
   const [dailyNorm, setDailyNorm] = useState(0.0);
-  const [waterToDrink, setWaterToDrink] = useState("");
+  const [waterToDrink, setWaterToDrink] = useState("2");
+  const [isTouched, setIsTouched] = useState(false);
+  const [validationError, setValidationError] = useState("");
   const dispatch = useDispatch();
+  const toastStyle = {
+    style: {
+      background: "var(--primary-color-white)",
+      border: "1px solid var(--primary-color-black)",
+      padding: "16px",
+      color: "var(--primary-color-black)",
+    },
+  };
 
   useEffect(() => {
     const m = parseFloat(weight);
     const t = parseFloat(activityTime);
 
-    if (gender && !isNaN(m) && !isNaN(t)) {
+    if (!isNaN(m)) {
       let v = 0;
       if (gender === "female") {
-        v = m * 0.03 + t * 0.4;
+        v = m * 0.03 + (isNaN(t) ? 0 : t * 0.4);
       } else if (gender === "male") {
-        v = m * 0.04 + t * 0.6;
+        v = m * 0.04 + (isNaN(t) ? 0 : t * 0.6);
       }
       setDailyNorm(v.toFixed(1));
     } else {
@@ -52,6 +62,9 @@ const DailyNormaModal = ({ onClose, isShow }) => {
     const value = e.target.value;
     if (value === "" || Number(value) >= 0) {
       setWaterToDrink(value);
+      if (Number(value) > 0) {
+        setValidationError(""); 
+      }
     }
   };
 
@@ -59,9 +72,11 @@ const DailyNormaModal = ({ onClose, isShow }) => {
     e.preventDefault();
 
     if (isNaN(waterToDrink) || waterToDrink <= 0) {
-      toast.error("Please enter a valid amount of water to drink.");
+      setValidationError("Please enter a valid amount");
       return;
     }
+
+    setValidationError("");
 
     const waterToDrinkInMl = parseFloat(waterToDrink) * 1000;
 
@@ -72,11 +87,11 @@ const DailyNormaModal = ({ onClose, isShow }) => {
     try {
       await dispatch(updateDailyNorma(data));
       await dispatch(getUserInfo());
-      toast.success("Daily norm saved successfully!");
+      toast.success("Daily norma saved successfully!", toastStyle);
       onClose();
     } catch (error) {
-      console.error("Error saving daily norma:", error);
-      toast.error("Failed to save daily norma. Please try again.");
+      
+      toast.error(`Failed to save daily norma: ${error.message}`, toastStyle);
     }
   };
 
@@ -157,19 +172,26 @@ const DailyNormaModal = ({ onClose, isShow }) => {
               </div>
               <div className={css.FormResult}>
                 The required amount of water in liters per day:
-                <strong> {dailyNorm} L</strong>
+                <strong>{dailyNorm} L</strong>
               </div>
               <div>
                 <p className={css.TitleModal}>
                   Write down how much water you will drink:
                 </p>
                 <input
-                  className={css.Input}
+                  className={`${css.Input} ${isTouched ? (validationError ? css.InputError : css.InputValid) : ''}`}
                   type="number"
                   placeholder="0"
                   value={waterToDrink}
-                  onChange={handleWaterToDrinkChange}
+                  onChange={(e) => {
+                    handleWaterToDrinkChange(e);
+                    setIsTouched(true); 
+                  }}
+                  onBlur={() => setIsTouched(true)} 
                 />
+                {validationError && (
+                  <p className={css.ValidationError}>{validationError}</p>
+                )}
               </div>
               <button type="submit" className={css.Button}>
                 Save
@@ -183,3 +205,5 @@ const DailyNormaModal = ({ onClose, isShow }) => {
 };
 
 export default DailyNormaModal;
+
+
