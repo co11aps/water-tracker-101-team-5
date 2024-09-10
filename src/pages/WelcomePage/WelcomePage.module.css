@@ -31,8 +31,7 @@
     padding-left: 32px;
     padding-right: 32px;
     padding-bottom: 50px;
-    background-image: var(--background-main-page-tablet);
-    ;
+    background-image: url(../../images/background/tablet/icon-light-background-main-page.svg);
   }
 }
 
