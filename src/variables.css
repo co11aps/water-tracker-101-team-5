@@ -15,6 +15,8 @@ body {
 
     --theme-toggler-shadow: 0 0 26px 0 #9ebbff;
 
+    --base-backdrop-color: rgba(0, 0, 0, 0.8);
+
     transition: color 0.25s ease-in-out;
     transition: background-color 0.25s ease-in-out;
 }
@@ -108,7 +110,6 @@ body.dark {
     --bottle-home-screen-mobile: url(/src/images/background/mobile/icon-dark-bottle-home-screen.svg);
     --bottle-signin-mobile: url(/src/images/background/mobile/icon-dark-bottle-signin.svg);
 }
-
 
 
 

@@ -63,42 +63,24 @@ input {
   outline: none;
 }
 
-/* colour variables */
-body {
-  --primary-color-white: #ffffff;
-  --primary-color-black: #2f2f2f;
-  --primary-color-blue: #407bff;
-
-  --secondary-color-2: #ecf2ff;
-  --secondary-color-3: #ef5050;
-  --secondary-color-4: #9ebbff;
-  --secondary-color-5-orange: #ff9d43;
-  --secondary-color-5: #d7e3ff;
-
-  --fill-color-blue: #c6d7ff;
-  --fill-color-white: #f5f5f5;
-
-  --box-shadow: 0 4px 8px 0 rgba(64, 123, 255, 0.2);
-  --box-shadow-2: 0px 4px 14px 0px rgba(64, 123, 255, 0.3);
-  --box-shadow-3: 0px 4px 14px 0px rgba(64, 123, 255, 0.54);
-
-  --base-backdrop-color: rgba(0, 0, 0, 0.8);
-  --backdrop-color: rgba(64, 123, 255, 0.1);
-
-  transition: color 0.25s ease-in-out;
-  transition: background-color 0.25s ease-in-out;
-}
-
-
 /* common styles */
 a {
   font-weight: 400;
   color: var(--primary-color-blue);
-  text-decoration: inherit;
+}
+
+a:hover {
+  text-decoration: none;
+  color: var(--secondary-color-5-orange);
+  transition: color 0.25s ease-in-out;
 }
 
 
+
+
 body {
+  font-family: "Roboto", sans-serif;
+  line-height: 1.5;
   color: var(--primary-color-black);
   background-color: var(--primary-color-white);
   margin: 0 auto;
