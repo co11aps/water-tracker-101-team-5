@@ -51,9 +51,9 @@ const AuthForm = ({ isSignup }) => {
           console.log("Register success");
         })
         .catch((err) => {
-          const errorMessage = err.message;
+          const errorMessage = err.response.data.message;
           dispatch(showNotification(`Registration error: ${errorMessage}`));
-          console.log("Registration error:", err.message);
+          console.log("Registration error:", err.response);
         });
     } else {
       dispatch(logIn({ email: values.email, password: values.password }))
@@ -62,8 +62,12 @@ const AuthForm = ({ isSignup }) => {
           console.log("Login success");
         })
         .catch((err) => {
-          dispatch(showNotification("Incorrect email or password"));
-          console.log("Login error:", err.message);
+          console.log("Form message. Login failed:", err);
+          // const errorMessage = err.response;
+          // dispatch(
+          //   showNotification(errorMessage || "Incorrect email or password")
+          // );
+          // console.log("Login error:", err.response);
         });
     }
     setSubmitting(false);
@@ -82,7 +86,9 @@ const AuthForm = ({ isSignup }) => {
             <div className={css.formGroup}>
               <label htmlFor="email">Enter your email</label>
               <Field
-                className={`${css.input} ${errors.email && touched.email ? css.inputError : ""}`}
+                className={`${css.input} ${
+                  errors.email && touched.email ? css.inputError : ""
+                }`}
                 type="email"
                 name="email"
                 id="email"
@@ -97,9 +103,10 @@ const AuthForm = ({ isSignup }) => {
             <div className={css.formGroup}>
               <label htmlFor="password">Enter your password</label>
               <div className={css.passwordWrapper}>
-                
                 <Field
-                  className={`${css.input} ${errors.password && touched.password ? css.inputError : ""}`}
+                  className={`${css.input} ${
+                    errors.password && touched.password ? css.inputError : ""
+                  }`}
                   type={showPassword ? "text" : "password"}
                   name="password"
                   id="password"
@@ -128,7 +135,11 @@ const AuthForm = ({ isSignup }) => {
                 <label htmlFor="confirmPassword">Repeat Password</label>
                 <div className={css.passwordWrapper}>
                   <Field
-                    className={`${css.input} ${errors.confirmPassword && touched.confirmPassword ? css.inputError : ""}`}
+                    className={`${css.input} ${
+                      errors.confirmPassword && touched.confirmPassword
+                        ? css.inputError
+                        : ""
+                    }`}
                     type={showConfirmPassword ? "text" : "password"}
                     name="confirmPassword"
                     id="confirmPassword"

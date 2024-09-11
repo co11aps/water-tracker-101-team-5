@@ -43,7 +43,10 @@ export const logIn = createAsyncThunk(
       setAuthHeader(res.data.accessToken);
       return res.data;
     } catch (error) {
-      return thunkAPI.rejectWithValue(error);
+      console.log("Operation. Error status:", error.response.status);
+      console.log("Operation. Error data:", error.response.data);
+      console.log("operation login catch error");
+      return thunkAPI.rejectWithValue(error.response.data);
     }
   }
 );
@@ -72,6 +75,7 @@ export const refreshToken = createAsyncThunk(
       // setAuthHeader(res.data.accessToken);
       return res.data;
     } catch (error) {
+      console.log("Operation refresh error:", error);
       return thunkAPI.rejectWithValue(error);
     }
   },
