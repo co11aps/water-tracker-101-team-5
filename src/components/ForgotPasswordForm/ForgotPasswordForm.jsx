@@ -38,6 +38,7 @@ export default function ForgotPasswordForm() {
         validationSchema={validationSchema}
         onSubmit={handleSubmit}
       >
+         {({ errors, touched }) => (
         <Form>
           <div className={css.form}>
             <label htmlFor="email" className={css.label}>Enter your email</label>
@@ -46,7 +47,7 @@ export default function ForgotPasswordForm() {
               name="email"
               id="email"
               placeholder="E-mail"
-              className={css.input}
+                className={`${css.input} ${errors.email && touched.email ? css.inputError : ''}`}
             />
             <ErrorMessage
               name="email"
@@ -54,13 +55,13 @@ export default function ForgotPasswordForm() {
               className={css.error}
             />
           </div>
-                  <button type="submit" aria-label="Submit" disabled={isSubmitting} className={css.button}>
+          <button type="submit" aria-label="Submit" disabled={isSubmitting} className={css.button}>
                       {isSubmitting ? "Submitting..." : "Send"}
-                  </button>
-        </Form>
+          </button>
+          </Form>
+          )}
       </Formik>
       {forgotPasswordError && <div className={css.error}>{forgotPasswordError}</div>}
-      {/* <div onClick={() => navigate("/signin")} className={css.navigation}>Sign in</div> */}
       <div className={css.navigation}>
           <p>
             <a href="/signin">Sign in</a>
