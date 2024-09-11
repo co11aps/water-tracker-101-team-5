@@ -5,12 +5,12 @@ import css from "./DailyNormaModal.module.css";
 import { updateDailyNorma, getUserInfo } from "../../redux/auth/operations.js";
 import { toast } from "react-hot-toast";
 
-const DailyNormaModal = ({ onClose, isShow }) => {
+const DailyNormaModal = ({ onClose, isShow, initialWaterToDrink }) => {
   const [gender, setGender] = useState("female");
   const [weight, setWeight] = useState("");
   const [activityTime, setActivityTime] = useState("");
   const [dailyNorm, setDailyNorm] = useState(0.0);
-  const [waterToDrink, setWaterToDrink] = useState("2");
+  const [waterToDrink, setWaterToDrink] = useState(initialWaterToDrink || "2");
   const [validationError, setValidationError] = useState("");
   const dispatch = useDispatch();
   const toastStyle = {
@@ -66,7 +66,8 @@ const DailyNormaModal = ({ onClose, isShow }) => {
   };
 
   const handleWaterToDrinkChange = (e) => {
-    setWaterToDrink(e.target.value);
+    const value = e.target.value.replace(',', '.');
+    setWaterToDrink(value);
   };
 
   const handleSave = async (e) => {
@@ -160,7 +161,7 @@ const DailyNormaModal = ({ onClose, isShow }) => {
               <input
                 className={css.Input}
                 type="number"
-                min="0"
+                                min="0"
                 placeholder="0"
                 value={activityTime}
                 onChange={handleActivityTimeChange}
@@ -174,23 +175,25 @@ const DailyNormaModal = ({ onClose, isShow }) => {
               <p className={css.TitleModal}>
                 Write down how much water you will drink:
               </p>
-             <input
-  className={css.Input}
-  style={{ 
-    border: validationError ? '1px solid var(--secondary-color-3)' : '1px solid var(--secondary-color-5)', 
-    color: validationError ? 'var(--secondary-color-3)' : 'var(--primary-color-blue)' 
-  }}
-  type="number"
+              <input
+                className={css.Input}
+
+                style={{ 
+                  border: validationError ? '1px solid var(--secondary-color-3)' : '1px solid var(--secondary-color-5)', 
+                  color: validationError ? 'var(--secondary-color-3)' : 'var(--primary-color-blue)' 
+                }}
+                type="number"
+                
   placeholder="0"
-  value={waterToDrink}
+  value={waterToDrink.replace(',', '.')}
   onChange={handleWaterToDrinkChange}
-/>
+              />
 
               {validationError && (
                 <p className={css.ValidationError}>{validationError}</p>
               )}
             </div>
-            <button type="submit" className={css.Button}>
+            <button type="submit" className={css.Button} disabled={!!validationError}>
               Save
             </button>
           </form>
@@ -201,5 +204,6 @@ const DailyNormaModal = ({ onClose, isShow }) => {
 };
 
 export default DailyNormaModal;
+
 
 

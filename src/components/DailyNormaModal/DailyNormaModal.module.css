@@ -244,3 +244,13 @@ line-height: 18px;
 margin-top: 4px;
 }
 
+@media screen and (max-width: 767px) {
+  .ValidationError {
+    font-size: 12px;
+  }
+  .Button {
+    margin-top: 18px; 
+  }
+}
+
+
