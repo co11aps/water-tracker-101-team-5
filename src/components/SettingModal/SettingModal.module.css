@@ -170,7 +170,7 @@
   padding: 10px 10px 12px 12px;
   border: 1px solid var(--secondary-color-5);
   border-radius: 4px;
-  color: var(--secondary-color-4);
+  color: var(--primary-color-blue);
 }
 
 @media screen and (min-width: 768px) {
