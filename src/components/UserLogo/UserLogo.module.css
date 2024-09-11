@@ -27,7 +27,7 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  background-color: #ccc;
+  background-color: var(--secondary-color-4);
   border-radius: 50%;
   font-size: 20px;
   color: var(--primary-color-white);

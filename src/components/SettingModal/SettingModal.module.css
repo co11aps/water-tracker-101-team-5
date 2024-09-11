@@ -75,7 +75,7 @@
   display: none;
 }
 
-.radioInput:checked ~ .customRadio:after {
+.radioInput:checked~.customRadio:after {
   display: block;
 }
 
@@ -132,7 +132,7 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  background-color: var(--secondary-color-5);
+  background-color: var(--secondary-color-4);
   border-radius: 50%;
   font-size: 30px;
   font-weight: 500;
@@ -253,6 +253,7 @@
 
 .iconUpload {
   background: transparent;
+  fill: none;
   stroke: var(--primary-color-blue);
 }
 
@@ -350,6 +351,7 @@ input[type="password"] {
   .errorMessageEmail {
     bottom: -22px;
   }
+
   .formGroup input[name="userName"] {
     margin-bottom: 36px;
   }
