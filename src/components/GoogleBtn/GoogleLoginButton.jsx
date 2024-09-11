@@ -7,7 +7,6 @@ const GoogleLoginButton = () => {
   const [loading, setLoading] = useState(false);
 
   useEffect(() => {
-    
     const urlParams = new URLSearchParams(window.location.search);
     const code = urlParams.get('code');
 
@@ -21,7 +20,6 @@ const GoogleLoginButton = () => {
     setError(null);
 
     try {
-    
       const response = await fetch('https://water-tracker-backend-101-team-5.onrender.com/auth/get-oauth-url');
 
       if (response.ok) {
@@ -29,7 +27,6 @@ const GoogleLoginButton = () => {
         console.log('Successful response:', data);
 
         if (data.data.url) {
-          
           window.location.href = data.data.url;
         } else {
           console.error('OAuth URL not found in the response data.');
@@ -49,8 +46,7 @@ const GoogleLoginButton = () => {
 
   const handleOAuthCode = async (code) => {
     try {
-      
-      const response = await fetch('https://water-tracker-backend-101-team-5.onrender.com/auth/oauth-callback', {
+      const response = await fetch('https://water-tracker-backend-101-team-5.onrender.com/auth/confirm-oauth', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
@@ -59,12 +55,11 @@ const GoogleLoginButton = () => {
       });
 
       if (response.ok) {
-        const data = await response.json();
-        console.log('OAuth callback successful:', data);
+        const code = await response.json();
+        console.log('OAuth callback successful:', code);
 
-        
-        if (data.token) {
-          localStorage.setItem('token', data.token); 
+        if (code.token) {
+          localStorage.setItem('token', code.token); 
           window.location.href = '/home';
         } else {
           setError('Token not found in the response');
@@ -82,12 +77,17 @@ const GoogleLoginButton = () => {
   return (
     <>
       <button 
-        className={styles.buttonAuth} 
+        className={`${styles.buttonAuth} gsi-material-button`} 
         onClick={handleGoogleLogin}
         disabled={loading}
       >
-        <FcGoogle className={styles.icon} />
-        {loading ? 'Signing In...' : 'Sign In with Google'}
+        <div className="gsi-material-button-icon">
+          <FcGoogle className={styles.iconGoogle} />
+        </div>
+        <div className="gsi-material-button-content-wrapper">
+          <div className="gsi-material-button-contents">Sign in with Google</div>
+          
+        </div>
       </button>
       {error && <p className={styles.error}>{error}</p>}
     </>

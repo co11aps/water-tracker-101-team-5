@@ -1,6 +1,5 @@
-.gsi-material-button {
-
-  background-color: var(--primary-color-white);
+.buttonAuth {
+    background-color: var(--primary-color-white);
   background-image: none;
   border: 1px solid var(--google-stroke);
   -webkit-border-radius: 4px;
@@ -22,19 +21,23 @@
   transition: background-color .218s, border-color .218s, box-shadow .218s;
   vertical-align: middle;
   white-space: nowrap;
-  width: auto;
+  width: 100%;
   max-width: 400px;
   min-width: min-content;
+  margin-top: 12px;
+  display: flex; 
+  align-items: center;
+  justify-content: center; 
 }
 
-.gsi-material-button .gsi-material-button-icon {
+.buttonAuth .iconGoogle {
   height: 20px;
   margin-right: 12px;
   min-width: 20px;
   width: 20px;
 }
 
-.gsi-material-button .gsi-material-button-content-wrapper {
+.buttonAuth .buttonContentWrapper {
   -webkit-align-items: center;
   align-items: center;
   display: flex;
@@ -48,7 +51,7 @@
   width: 100%;
 }
 
-.gsi-material-button .gsi-material-button-contents {
+.buttonAuth .buttonContents {
   -webkit-flex-grow: 1;
   flex-grow: 1;
   font-family: 'Roboto', arial, sans-serif;
@@ -58,7 +61,7 @@
   vertical-align: top;
 }
 
-.gsi-material-button .gsi-material-button-state {
+.buttonAuth .buttonState {
   -webkit-transition: opacity .218s;
   transition: opacity .218s;
   bottom: 0;
@@ -69,42 +72,28 @@
   top: 0;
 }
 
-.gsi-material-button:disabled {
-  cursor: default;
-  background-color: #ffffff61;
-  border-color: var(--google-font-color);
-}
-
-.gsi-material-button:disabled .gsi-material-button-contents {
+.buttonAuth:disabled .buttonContents {
   opacity: 38%;
 }
 
-.gsi-material-button:disabled .gsi-material-button-icon {
+.buttonAuth:disabled .iconGoogle {
   opacity: 38%;
 }
 
-.gsi-material-button:not(:disabled):active .gsi-material-button-state, 
-.gsi-material-button:not(:disabled):focus .gsi-material-button-state {
-  background-color: #303030;
+.buttonAuth:not(:disabled):active .buttonState, 
+.buttonAuth:not(:disabled):focus .buttonState {
+  
   opacity: 12%;
 }
 
-.gsi-material-button:not(:disabled):hover {
+.buttonAuth:not(:disabled):hover {
   -webkit-box-shadow: 0 1px 2px 0 rgba(60, 64, 67, .30), 0 1px 3px 1px rgba(60, 64, 67, .15);
   box-shadow: 0 1px 2px 0 rgba(60, 64, 67, .30), 0 1px 3px 1px rgba(60, 64, 67, .15);
 }
 
-.gsi-material-button:not(:disabled):hover .gsi-material-button-state {
-  background-color: #303030;
+.buttonAuth:not(:disabled):hover .buttonState {
+  
   opacity: 8%;
 }
 
-.buttonAuth {
-    margin-top: 12px;
-}
-
-.error {
-  color: var(--secondary-color-3);
-  font-size: 14px;
-}
 
