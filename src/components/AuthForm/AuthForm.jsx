@@ -9,7 +9,7 @@ import { useEffect } from "react";
 import Icon from "../Icon/Icon";
 import { selectIsLoggedIn } from "../../redux/auth/selectors";
 import { showNotification } from "../../redux/notification/slice";
-
+import GoogleLoginButton from "../GoogleBtn/GoogleLoginButton";
 const AuthForm = ({ isSignup }) => {
   const dispatch = useDispatch();
   const navigate = useNavigate();
@@ -51,9 +51,9 @@ const AuthForm = ({ isSignup }) => {
           console.log("Register success");
         })
         .catch((err) => {
-          const errorMessage = err.response.data.message;
+          const errorMessage = err.message;
           dispatch(showNotification(`Registration error: ${errorMessage}`));
-          console.log("Registration error:", err.response);
+          console.log("Registration error:", err.message);
         });
     } else {
       dispatch(logIn({ email: values.email, password: values.password }))
@@ -62,12 +62,8 @@ const AuthForm = ({ isSignup }) => {
           console.log("Login success");
         })
         .catch((err) => {
-          console.log("Form message. Login failed:", err);
-          // const errorMessage = err.response;
-          // dispatch(
-          //   showNotification(errorMessage || "Incorrect email or password")
-          // );
-          // console.log("Login error:", err.response);
+          dispatch(showNotification("Incorrect email or password"));
+          console.log("Login error:", err.message);
         });
     }
     setSubmitting(false);
@@ -86,9 +82,7 @@ const AuthForm = ({ isSignup }) => {
             <div className={css.formGroup}>
               <label htmlFor="email">Enter your email</label>
               <Field
-                className={`${css.input} ${
-                  errors.email && touched.email ? css.inputError : ""
-                }`}
+                className={`${css.input} ${errors.email && touched.email ? css.inputError : ""}`}
                 type="email"
                 name="email"
                 id="email"
@@ -103,10 +97,9 @@ const AuthForm = ({ isSignup }) => {
             <div className={css.formGroup}>
               <label htmlFor="password">Enter your password</label>
               <div className={css.passwordWrapper}>
+                
                 <Field
-                  className={`${css.input} ${
-                    errors.password && touched.password ? css.inputError : ""
-                  }`}
+                  className={`${css.input} ${errors.password && touched.password ? css.inputError : ""}`}
                   type={showPassword ? "text" : "password"}
                   name="password"
                   id="password"
@@ -135,11 +128,7 @@ const AuthForm = ({ isSignup }) => {
                 <label htmlFor="confirmPassword">Repeat Password</label>
                 <div className={css.passwordWrapper}>
                   <Field
-                    className={`${css.input} ${
-                      errors.confirmPassword && touched.confirmPassword
-                        ? css.inputError
-                        : ""
-                    }`}
+                    className={`${css.input} ${errors.confirmPassword && touched.confirmPassword ? css.inputError : ""}`}
                     type={showConfirmPassword ? "text" : "password"}
                     name="confirmPassword"
                     id="confirmPassword"
@@ -170,6 +159,7 @@ const AuthForm = ({ isSignup }) => {
           </Form>
         )}
       </Formik>
+       <GoogleLoginButton />
       <div className={css.navigation}>
         {isSignup ? (
           <p>
@@ -191,3 +181,5 @@ const AuthForm = ({ isSignup }) => {
 };
 
 export default AuthForm;
+
+
