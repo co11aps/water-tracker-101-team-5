@@ -9,7 +9,7 @@
   color: var(--google-font-color);
   cursor: pointer;
   font-family: 'Roboto', arial, sans-serif;
-  font-size: 14px;
+  font-size: 20px;
   height: 40px;
   letter-spacing: 0.25px;
   outline: none;
@@ -96,4 +96,8 @@
   opacity: 8%;
 }
 
-
+@media (max-width: 767px) {
+  .buttonAuth {
+    font-size: 14px; 
+  }
+}
