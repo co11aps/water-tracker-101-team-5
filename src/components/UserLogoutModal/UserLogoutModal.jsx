@@ -17,9 +17,6 @@ const UserLogoutModal = ({ toggleModal, onClose, isShow }) => {
       .then(() => {
         navigate("/signin");
       })
-      .then(() => {
-        console.log("LogOut success");
-      })
       .catch((err) => {
         console.log("Register error", err);
       });

@@ -29,7 +29,6 @@ const GoogleLoginButton = () => {
 
       if (response.ok) {
         const data = await response.json();
-        console.log("Successful response:", data);
 
         if (data.data.url) {
           window.location.href = data.data.url;
