@@ -214,11 +214,10 @@ export const oAuthLogin = createAsyncThunk(
       const response = await axiosInstance.post("/auth/confirm-oauth", {
         code,
       });
+      setAuthHeader(response.data.accessToken);
       return response.data;
     } catch (error) {
-      const errorMessage =
-        error.response?.data?.message || "Failed to update password";
-      return thunkAPI.rejectWithValue(errorMessage);
+      return thunkAPI.rejectWithValue(error.response);
     }
   }
 );

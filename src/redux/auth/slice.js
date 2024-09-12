@@ -61,7 +61,7 @@ const authSlice = createSlice({
       })
       .addCase(logOut.fulfilled, (state) => {
         state.user = {
-          name: null,
+          userName: null,
           email: null,
           gender: null,
           dailyNorma: null,
@@ -125,7 +125,7 @@ const authSlice = createSlice({
       .addCase(oAuthLogin.fulfilled, (state, action) => {
         // state.user = action.payload.user;
         state.user = {
-          name: "John Doe",
+          userName: "John Doe",
           email: "null@example.com",
           gender: "woman",
           dailyNorma: "1.5",
