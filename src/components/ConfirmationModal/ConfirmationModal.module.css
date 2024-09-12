@@ -25,19 +25,21 @@
   border-radius: 10px;
   background-color: var(--secondary-color-5);
   color: var(--primary-color-blue);
+  padding: 10px;
   font-size: 16px;
   font-weight: 500;
+  align-content: center;
   border: none;
+  cursor: pointer;
+  transition: box-shadow 0.25s ease-in-out;
+  &:hover {
+    box-shadow: var(--box-shadow-3);
+  }
 }
 
 .confirmButton {
   background-color: var(--secondary-color-3);
   color: var(--primary-color-white);
-  box-shadow: var(--box-shadow);
-  transition: box-shadow 0.25s ease-in-out;
-  &:hover {
-    box-shadow: 0 4px 14px rgba(64, 123, 255, 0.54);
-  }
 }
 
 @media (min-width: 768px) {
