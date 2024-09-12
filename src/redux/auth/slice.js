@@ -123,7 +123,14 @@ const authSlice = createSlice({
         state.isRefreshing = true;
       })
       .addCase(oAuthLogin.fulfilled, (state, action) => {
-        state.user = action.payload.user;
+        // state.user = action.payload.user;
+        state.user = {
+          name: "John Doe",
+          email: "null@example.com",
+          gender: "woman",
+          dailyNorma: "1.5",
+          photo: null,
+        };
         state.accessToken = action.payload.accessToken;
         state.isLoggedIn = true;
         state.isRefreshing = false;
