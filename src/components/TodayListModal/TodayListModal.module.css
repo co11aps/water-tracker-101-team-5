@@ -176,12 +176,19 @@ h3 {
   outline: none;
   box-shadow: var(--box-shadow-3);
 }
-/* .manualInput input[type="number"] {
-  appearance: none;
+.numberInput::-webkit-inner-spin-button,
+.numberInput::-webkit-outer-spin-button {
   -webkit-appearance: none;
-  -moz-appearance: textfield;
-} */
+  margin: 0;
+}
+.numberInput.error {
+  border: 1px solid red;
+}
 
+.validationError {
+  color: red;
+  font-size: 12px;
+}
 /* ====================================== */
 .buttons {
   display: flex;
