@@ -182,11 +182,12 @@ h3 {
   margin: 0;
 }
 .numberInput.error {
-  border: 1px solid red;
+  border: 1px solid var(--secondary-color-3);
+  color: var(--secondary-color-3);
 }
 
 .validationError {
-  color: red;
+  color: var(--secondary-color-3);
   font-size: 12px;
 }
 /* ====================================== */
