@@ -40,8 +40,6 @@
     margin-right: 84px;
   }
 }
-
-/* Стилізація кнопки входу */
 header button {
   font-weight: 400;
   border-radius: unset;
@@ -70,7 +68,6 @@ header button:hover {
   box-shadow: none;
 }
 
-/* Стилізація іконки у кнопці */
 .buttonSvg {
   margin-left: 8px;
   width: 24px;

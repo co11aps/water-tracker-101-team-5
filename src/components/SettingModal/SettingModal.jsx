@@ -54,6 +54,7 @@ const SettingModal = ({ onClose, isShow }) => {
   const [ShowCurrentPassword, setShowCurrentPassword] = useState(false);
   const [showNewPassword, setShowNewPassword] = useState(false);
   const [showConfirmNewPassword, setShowConfirmNewPassword] = useState(false);
+  const [passwordError, setPasswordError] = useState("");
 
   useEffect(() => {
     setPreview(userData.avatar);
@@ -81,20 +82,28 @@ const SettingModal = ({ onClose, isShow }) => {
 
   const handleSubmit = async (values, { resetForm }) => {
     try {
-      const { currentPassword, newPassword, ...formData } = values;
+      const { currentPassword, newPassword, confirmNewPassword, ...formData } =
+        values;
 
       const trimmedCurrentPassword = currentPassword?.trim();
       const trimmedNewPassword = newPassword?.trim();
+      const trimmedConfirmNewPassword = confirmNewPassword?.trim();
 
-      if (
-        (trimmedCurrentPassword && !trimmedNewPassword) ||
-        (!trimmedCurrentPassword && trimmedNewPassword)
-      ) {
-        console.log(
-          "Both currentPassword and newPassword must be filled or left empty."
-        );
+      const allPasswordsFilled =
+        trimmedCurrentPassword &&
+        trimmedNewPassword &&
+        trimmedConfirmNewPassword;
+      const allPasswordsEmpty =
+        !trimmedCurrentPassword &&
+        !trimmedNewPassword &&
+        !trimmedConfirmNewPassword;
+
+      if (!allPasswordsFilled && !allPasswordsEmpty) {
+        setPasswordError("All password fields must be filled or left empty!");
         return;
       }
+
+      setPasswordError("");
 
       const jsonData = {
         ...Object.fromEntries(
@@ -399,6 +408,11 @@ const SettingModal = ({ onClose, isShow }) => {
                     </div>
                   </div>
                 </div>
+                {passwordError && (
+                  <div className={`${css.error} ${css.errorPasswords}`}>
+                    {passwordError}
+                  </div>
+                )}
 
                 <div className={css.contBtn}>
                   <button
