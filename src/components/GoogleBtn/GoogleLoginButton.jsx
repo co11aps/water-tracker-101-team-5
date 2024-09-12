@@ -58,7 +58,7 @@ const GoogleLoginButton = () => {
   return (
     <>
       <button
-        className={`${styles.buttonAuth} gsi-material-button`}
+        className={`${styles.googleLoginButton} gsi-material-button`}
         onClick={handleGoogleLogin}
         disabled={loading}
       >
