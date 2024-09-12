@@ -17,7 +17,7 @@ const GoogleLoginButton = () => {
     if (code) {
       handleOAuthCode(code);
     }
-  }, [handleOAuthCode]);
+  }, []);
 
   const handleGoogleLogin = async () => {
     setLoading(true);
