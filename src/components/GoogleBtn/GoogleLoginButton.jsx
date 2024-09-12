@@ -1,11 +1,13 @@
 import { useEffect, useState } from "react";
 import { FcGoogle } from "react-icons/fc";
 import styles from "./GoogleLoginButton.module.css";
-import { store } from "../../redux/store";
+import { useDispatch } from "react-redux";
+import { oAuthLogin } from "../../redux/auth/operations";
 
 const GoogleLoginButton = () => {
   const [error, setError] = useState(null);
   const [loading, setLoading] = useState(false);
+  const dispatch = useDispatch();
 
   useEffect(() => {
     const urlParams = new URLSearchParams(window.location.search);
@@ -48,38 +50,45 @@ const GoogleLoginButton = () => {
   };
 
   const handleOAuthCode = async (code) => {
-    try {
-      const response = await fetch(
-        "https://water-tracker-backend-101-team-5.onrender.com/auth/confirm-oauth",
-        {
-          method: "POST",
-          headers: {
-            "Content-Type": "application/json",
-          },
-          body: JSON.stringify({ code }),
-        }
-      );
-
-      if (response.ok) {
-        const code = await response.json();
-        console.log("OAuth callback successful:", code);
-
-        if (code.token) {
-          localStorage.setItem("token", code.token);
-          store.isLoggedIn = true;
-          window.location.href = "/home";
-        } else {
-          setError("Token not found in the response");
-        }
-      } else {
-        console.error("Error:", response.statusText);
-        setError(`Error: ${response.statusText}`);
-      }
-    } catch (error) {
-      console.error("Error sending OAuth code:", error);
-      setError("An error occurred while sending the OAuth code.");
-    }
+    dispatch(oAuthLogin({ code }))
+      .unwrap()
+      .then(() => {})
+      .catch((err) => {
+        console.log(err);
+      });
   };
+  // const handleOAuthCode = async (code) => {
+  //   try {
+  //     const response = await fetch(
+  //       "https://water-tracker-backend-101-team-5.onrender.com/auth/confirm-oauth",
+  //       {
+  //         method: "POST",
+  //         headers: {
+  //           "Content-Type": "application/json",
+  //         },
+  //         body: JSON.stringify({ code }),
+  //       }
+  //     );
+
+  //     if (response.ok) {
+  //       const code = await response.json();
+  //       console.log("OAuth callback successful:", code);
+
+  //       if (code.token) {
+  //         localStorage.setItem("token", code.token);
+  //         window.location.href = "/home";
+  //       } else {
+  //         setError("Token not found in the response");
+  //       }
+  //     } else {
+  //       console.error("Error:", response.statusText);
+  //       setError(`Error: ${response.statusText}`);
+  //     }
+  //   } catch (error) {
+  //     console.error("Error sending OAuth code:", error);
+  //     setError("An error occurred while sending the OAuth code.");
+  //   }
+  // };
 
   return (
     <>

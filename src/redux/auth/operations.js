@@ -193,11 +193,27 @@ export const updatePassword = createAsyncThunk(
   "auth/updatePassword",
   async ({ token, password }, thunkAPI) => {
     try {
-      const response = await axiosInstance.post(`/auth/reset-password`, {
+      const response = await axiosInstance.post("/auth/reset-password", {
         token,
         password,
       });
 
+      return response.data;
+    } catch (error) {
+      const errorMessage =
+        error.response?.data?.message || "Failed to update password";
+      return thunkAPI.rejectWithValue(errorMessage);
+    }
+  }
+);
+
+export const oAuthLogin = createAsyncThunk(
+  "auth/OauthLogin",
+  async ({ code }, thunkAPI) => {
+    try {
+      const response = await axiosInstance.post("/auth/confirm-oauth", {
+        code,
+      });
       return response.data;
     } catch (error) {
       const errorMessage =

@@ -10,6 +10,7 @@ import {
   updateDailyNorma,
   forgotPassword, //додала
   updatePassword, //додала
+  oAuthLogin,
 } from "./operations";
 
 const authSlice = createSlice({
@@ -117,6 +118,18 @@ const authSlice = createSlice({
       .addCase(updatePassword.rejected, (state, action) => {
         state.isSubmitting = false;
         state.updatePasswordError = action.payload;
+      })
+      .addCase(oAuthLogin.pending, (state) => {
+        state.isRefreshing = true;
+      })
+      .addCase(oAuthLogin.fulfilled, (state, action) => {
+        state.user = action.payload.user;
+        state.accessToken = action.payload.accessToken;
+        state.isLoggedIn = true;
+        state.isRefreshing = false;
+      })
+      .addCase(oAuthLogin.rejected, (state) => {
+        state.isRefreshing = false;
       });
   },
 });
