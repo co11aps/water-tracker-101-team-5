@@ -128,10 +128,9 @@ export default function TodayListModal({ isShow, onClose, item }) {
           </label>
           <input
             type="number"
-            value={amount}
-            onChange={(e) =>
-              handleAmountChange(Math.max(0, Number(e.target.value)))
-            }
+            value={amount === 0 ? "" : amount}
+            placeholder="0"
+            onChange={(e) => handleAmountChange(e.target.value)}
             min="0"
             className={`${css.numberInput} ${validationError ? css.error : ""}`}
           />
