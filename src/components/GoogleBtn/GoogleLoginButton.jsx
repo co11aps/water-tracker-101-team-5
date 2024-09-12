@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { FcGoogle } from "react-icons/fc";
+
 import styles from "./GoogleLoginButton.module.css";
 import { useDispatch } from "react-redux";
 import { oAuthLogin } from "../../redux/auth/operations";
@@ -64,7 +64,7 @@ const GoogleLoginButton = () => {
         xmlns="http://www.w3.org/2000/svg"
         viewBox="0 0 48 48"
         xmlnsXlink="http://www.w3.org/1999/xlink"
-        style={{ display: 'block' }}
+        
       >
         <path
           fill="#EA4335"
@@ -83,10 +83,11 @@ const GoogleLoginButton = () => {
           d="M24 48c6.48 0 11.93-2.13 15.89-5.81l-7.73-6c-2.15 1.45-4.92 2.3-8.16 2.3-6.26 0-11.57-4.22-13.47-9.91l-7.98 6.19C6.51 42.62 14.62 48 24 48z"
         ></path>
         <path fill="none" d="M0 0h48v48H0z"></path>
-      </svg>
+            </svg>
+            <span className={styles.buttonContents}>Sign in with Google</span>
     </div>
-    <span className={styles.buttonContents}>Sign in with Google</span>
-    <span style={{ display: 'none' }}>Sign in with Google</span>
+    
+   
   </div>
 </button>
 
