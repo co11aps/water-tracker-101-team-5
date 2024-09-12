@@ -1,33 +1,42 @@
 import { useState, useEffect } from "react";
-import { Formik, Form, Field, ErrorMessage } from 'formik';
-import * as Yup from 'yup';
-import { useDispatch } from 'react-redux';
-import { useNavigate, useLocation } from 'react-router-dom';
-import { updatePassword } from '../../redux/auth/operations';
-import toast from 'react-hot-toast';
+import { Formik, Form, Field, ErrorMessage } from "formik";
+import * as Yup from "yup";
+import { useDispatch } from "react-redux";
+import { useNavigate, useLocation } from "react-router-dom";
+import { updatePassword } from "../../redux/auth/operations";
+import toast from "react-hot-toast";
 import Icon from "../Icon/Icon";
-import css from './UpdatePasswordForm.module.css';
+import css from "./UpdatePasswordForm.module.css";
 
 export default function UpdatePasswordForm() {
   const dispatch = useDispatch();
   const navigate = useNavigate();
   const location = useLocation();
 
-  const [token, setToken] = useState('');
+  const [token, setToken] = useState("");
   const [showPassword, setShowPassword] = useState(false);
   const [showConfirmPassword, setShowConfirmPassword] = useState(false);
+
+  const toastStyle = {
+    style: {
+      background: "var(--primary-color-white)",
+      border: "1px solid var(--primary-color-black)",
+      padding: "16px",
+      color: "var(--primary-color-black)",
+    },
+  };
 
   useEffect(() => {
     const getTokenFromQuery = () => {
       const params = new URLSearchParams(location.search);
-      return params.get('token');
+      return params.get("token");
     };
 
     const tokenFromQuery = getTokenFromQuery();
     if (tokenFromQuery) {
       setToken(tokenFromQuery);
     } else {
-      toast.error('Token not found in the URL.');
+      toast.error("Token not found in the URL.");
     }
   }, [location.search]);
 
@@ -41,28 +50,28 @@ export default function UpdatePasswordForm() {
 
   const validationSchema = Yup.object().shape({
     password: Yup.string()
-      .min(8, 'Password must be at least 8 characters')
-      .required('Password is required'),
+      .min(8, "Password must be at least 8 characters")
+      .required("Password is required"),
     confirmPassword: Yup.string()
-      .oneOf([Yup.ref('password'), null], 'Passwords must match')
-      .required('Please confirm your password'),
+      .oneOf([Yup.ref("password"), null], "Passwords must match")
+      .required("Please confirm your password"),
   });
 
   const handleSubmit = async (values, { resetForm }) => {
     const { password } = values;
 
     if (!token) {
-      toast.error('Token is required.');
+      toast.error("Token is required.", toastStyle);
       return;
     }
 
     try {
       await dispatch(updatePassword({ token, password })).unwrap();
-      toast.success('Password updated successfully!');
-      navigate('/signin');
+      toast.success("Password updated successfully!", toastStyle);
+      navigate("/signin");
       resetForm();
     } catch (error) {
-      toast.error(error.message || 'Failed to update password');
+      toast.error(error.message || "Failed to update password", toastStyle);
     }
   };
 
@@ -70,69 +79,83 @@ export default function UpdatePasswordForm() {
     <div className={css.box}>
       <h1 className={css.title}>Update Password</h1>
       <Formik
-        initialValues={{ password: '', confirmPassword: '' }}
+        initialValues={{ password: "", confirmPassword: "" }}
         validationSchema={validationSchema}
         onSubmit={handleSubmit}
       >
         {({ errors, touched }) => (
-        <Form>
-          <div className={css.form}>
-            <label htmlFor="password" className={css.label}>New Password</label>
-            <div className={css.passwordWrapper}>
-              <Field
-                type={showPassword ? "text" : "password"}
+          <Form>
+            <div className={css.form}>
+              <label htmlFor="password" className={css.label}>
+                New Password
+              </label>
+              <div className={css.passwordWrapper}>
+                <Field
+                  type={showPassword ? "text" : "password"}
+                  name="password"
+                  id="password"
+                  placeholder="Password"
+                  className={`${css.input} ${
+                    errors.password && touched.password ? css.inputError : ""
+                  }`}
+                />
+                <span
+                  className={css.passwordToggleIcon}
+                  onClick={togglePasswordVisibility}
+                >
+                  <Icon
+                    id={showPassword ? "eye" : "eye-slash"}
+                    width={16}
+                    height={16}
+                    className={css.icon}
+                  />
+                </span>
+              </div>
+              <ErrorMessage
                 name="password"
-                id="password"
-                placeholder="Password"
-                className={`${css.input} ${errors.password && touched.password ? css.inputError : ''}`}
+                component="div"
+                className={css.error}
               />
-              <span
-                className={css.passwordToggleIcon}
-                onClick={togglePasswordVisibility}
-              >
-                <Icon
-                  id={showPassword ? "eye" : "eye-slash"}
-                  width={16}
-                  height={16}
-                  className={css.icon}
-                />
-              </span>
             </div>
-            <ErrorMessage name="password" component="div" className={css.error} />
-          </div>
-          <div className={css.form}>
-            <label htmlFor="confirmPassword" className={css.label}>Confirm Password</label>
-            <div className={css.passwordWrapper}>
-              <Field
-                type={showConfirmPassword ? "text" : "password"}
+            <div className={css.form}>
+              <label htmlFor="confirmPassword" className={css.label}>
+                Confirm Password
+              </label>
+              <div className={css.passwordWrapper}>
+                <Field
+                  type={showConfirmPassword ? "text" : "password"}
+                  name="confirmPassword"
+                  id="confirmPassword"
+                  placeholder="Confirm Password"
+                  className={`${css.input} ${
+                    errors.confirmPassword && touched.confirmPassword
+                      ? css.inputError
+                      : ""
+                  }`}
+                />
+                <span
+                  className={css.passwordToggleIcon}
+                  onClick={toggleConfirmPasswordVisibility}
+                >
+                  <Icon
+                    id={showConfirmPassword ? "eye" : "eye-slash"}
+                    width={16}
+                    height={16}
+                    className={css.icon}
+                  />
+                </span>
+              </div>
+              <ErrorMessage
                 name="confirmPassword"
-                id="confirmPassword"
-                placeholder="Confirm Password"
-                className={`${css.input} ${errors.confirmPassword && touched.confirmPassword ? css.inputError : ''}`}
+                component="div"
+                className={css.error}
               />
-              <span
-                className={css.passwordToggleIcon}
-                onClick={toggleConfirmPasswordVisibility}
-              >
-                <Icon
-                  id={showConfirmPassword ? "eye" : "eye-slash"}
-                  width={16}
-                  height={16}
-                  className={css.icon}
-                />
-              </span>
             </div>
-            <ErrorMessage
-              name="confirmPassword"
-              component="div"
-              className={css.error}
-            />
-          </div>
-          <button type="submit" aria-label="Submit" className={css.button}>
-            Update
-          </button>
+            <button type="submit" aria-label="Submit" className={css.button}>
+              Update
+            </button>
           </Form>
-          )}
+        )}
       </Formik>
     </div>
   );
