@@ -9,6 +9,7 @@ export default function TodayListModal({ isShow, onClose, item }) {
   const dispatch = useDispatch();
   const [amount, setAmount] = useState(item ? item.amount : 50);
   const [time, setTime] = useState(item ? item.time : getCurrentTime());
+  const [validationError, setValidationError] = useState("");
 
   function getCurrentTime() {
     const now = new Date();
@@ -19,16 +20,27 @@ export default function TodayListModal({ isShow, onClose, item }) {
   }
 
   const handleAmountChange = (value) => {
-    setAmount(Math.max(0, value)); //кількість не негативна- додаткову перевірку+
+    const newValue = Math.max(0, value);
+    setAmount(newValue);
+
+    if (newValue <= 0) {
+      setValidationError("The amount must be a number greater than 0");
+    } else {
+      setValidationError("");
+    }
   };
 
   const handleSave = () => {
-    if (item) {
-      dispatch(updateWater({ id: item._id, waterData: { amount, time } }));
+    if (amount > 0) {
+      if (item) {
+        dispatch(updateWater({ id: item._id, waterData: { amount, time } }));
+      } else {
+        dispatch(addWater({ amount, time }));
+      }
+      onClose();
     } else {
-      dispatch(addWater({ amount, time }));
+      setValidationError("The amount must be a number greater than 0");
     }
-    onClose();
   };
 
   return (
@@ -115,11 +127,17 @@ export default function TodayListModal({ isShow, onClose, item }) {
             Enter the value of the water used:
           </label>
           <input
-            // type="number"
+            type="number"
             value={amount}
-            onChange={(e) => handleAmountChange(Number(e.target.value))}
-            className={css.numberInput}
+            onChange={(e) =>
+              handleAmountChange(Math.max(0, Number(e.target.value)))
+            }
+            min="0"
+            className={`${css.numberInput} ${validationError ? css.error : ""}`}
           />
+          {validationError && (
+            <p className={css.validationError}>{validationError}</p>
+          )}
         </div>
         <div className={css.buttons}>
           <span className={css.savedAmount}>{amount} ml</span>
