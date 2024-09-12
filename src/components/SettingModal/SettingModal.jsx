@@ -73,7 +73,6 @@ const SettingModal = ({ onClose, isShow }) => {
       .unwrap()
       .then(() => {
         setPreview(previewUrl);
-        console.log("Avatar update success");
       })
       .catch((err) => {
         console.log("User updating error", err);
@@ -116,12 +115,10 @@ const SettingModal = ({ onClose, isShow }) => {
           }).filter(([_, value]) => value !== undefined && value !== "")
         ),
       };
-      console.log(jsonData);
+
       dispatch(updateUserInfo(jsonData))
         .unwrap()
-        .then(() => {
-          console.log("User update success");
-        })
+        .then(() => {})
         .catch((err) => {
           console.log("User updating error", err);
         });
