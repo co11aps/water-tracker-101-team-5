@@ -43,10 +43,7 @@ export const logIn = createAsyncThunk(
       setAuthHeader(res.data.accessToken);
       return res.data;
     } catch (error) {
-      console.log("Operation. Error status:", error.response.status);
-      console.log("Operation. Error data:", error.response.data);
-      console.log("operation login catch error");
-      return thunkAPI.rejectWithValue(error.response.data);
+      return thunkAPI.rejectWithValue(error.response);
     }
   }
 );
@@ -75,7 +72,6 @@ export const refreshToken = createAsyncThunk(
       // setAuthHeader(res.data.accessToken);
       return res.data;
     } catch (error) {
-      console.log("Operation refresh error:", error);
       return thunkAPI.rejectWithValue(error);
     }
   },
@@ -173,7 +169,6 @@ export const updateDailyNorma = createAsyncThunk(
   }
 );
 
-//===========ДОДАЛА forgotPassword=================
 /**
  * POST @ /auth/send-reset-email
  * body: { email }
@@ -194,7 +189,6 @@ export const forgotPassword = createAsyncThunk(
   }
 );
 
-//=========== ДОДАЛА updatePassword =================
 export const updatePassword = createAsyncThunk(
   "auth/updatePassword",
   async ({ token, password }, thunkAPI) => {

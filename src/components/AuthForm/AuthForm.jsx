@@ -47,23 +47,38 @@ const AuthForm = ({ isSignup }) => {
     if (isSignup) {
       dispatch(register({ email: values.email, password: values.password }))
         .unwrap()
-        .then(() => {
-          console.log("Register success");
-        })
+        .then(() => {})
         .catch((err) => {
-          const errorMessage = err.message;
-          dispatch(showNotification(`Registration error: ${errorMessage}`));
-          console.log("Registration error:", err.message);
+          if (err.response.status === 409) {
+            dispatch(
+              showNotification(
+                "Email already in use. Please try to log in or use a different email."
+              )
+            );
+            return;
+          } else {
+            const errorMessage = err.response.data.message;
+            dispatch(showNotification(`Registration error: ${errorMessage}`));
+          }
         });
     } else {
       dispatch(logIn({ email: values.email, password: values.password }))
         .unwrap()
-        .then(() => {
-          console.log("Login success");
-        })
+        .then(() => {})
         .catch((err) => {
-          dispatch(showNotification("Incorrect email or password"));
-          console.log("Login error:", err.message);
+          console.log(err.status); //in case of 401 error returns Undefined
+          if (err.status === 404) {
+            dispatch(
+              showNotification(
+                "User not found. Please try to register first or use a different email."
+              )
+            );
+            return;
+          } else {
+            dispatch(
+              showNotification("Login error, incorrect email or password")
+            );
+          }
         });
     }
     setSubmitting(false);
