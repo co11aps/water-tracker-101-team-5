@@ -181,7 +181,7 @@ const AuthForm = ({ isSignup }) => {
           </Form>
         )}
       </Formik>
-      {/* <GoogleLoginButton /> */}
+      <GoogleLoginButton />
       <div className={css.navigation}>
         {isSignup ? (
           <p>

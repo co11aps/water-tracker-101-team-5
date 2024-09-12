@@ -3,11 +3,13 @@ import { FcGoogle } from "react-icons/fc";
 import styles from "./GoogleLoginButton.module.css";
 import { useDispatch } from "react-redux";
 import { oAuthLogin } from "../../redux/auth/operations";
+import { useNavigate } from "react-router-dom";
 
 const GoogleLoginButton = () => {
   const [error, setError] = useState(null);
   const [loading, setLoading] = useState(false);
   const dispatch = useDispatch();
+  const navigate = useNavigate();
 
   useEffect(() => {
     const urlParams = new URLSearchParams(window.location.search);
@@ -52,7 +54,9 @@ const GoogleLoginButton = () => {
   const handleOAuthCode = async (code) => {
     dispatch(oAuthLogin({ code }))
       .unwrap()
-      .then(() => {})
+      .then(() => {
+        navigate("/home");
+      })
       .catch((err) => {
         console.log(err);
       });
