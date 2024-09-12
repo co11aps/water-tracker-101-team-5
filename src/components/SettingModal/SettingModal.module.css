@@ -360,6 +360,13 @@ input[type="password"] {
     margin-bottom: 24px;
   }
 
+  .errorPasswords {
+    /* bottom: -45px; */
+    top: 435px;
+    font-size: 18px;
+    height: 30px;
+  }
+
   .formGroup input[name="email"] {
     margin-bottom: 0;
   }
