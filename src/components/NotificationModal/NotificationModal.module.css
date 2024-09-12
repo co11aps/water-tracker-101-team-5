@@ -1,92 +1,92 @@
 .backDrop {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background-color: var(--base-backdrop-color);
-    z-index: 999;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: var(--base-backdrop-color);
+  z-index: 999;
 }
 
 .messageWindow {
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    background: var(--primary-color-white);
-    padding: 32px 24px;
-    border-radius: 10px;
-    /* box-shadow: var(--box-shadow); */
-    z-index: 1000;
-    width: 280px;
-    min-height: 212px;
-    /* text-align: left; */
-    color: var(--primary-color-black);
-    transition: opacity 0.3s ease;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background: var(--primary-color-white);
+  padding: 32px 24px;
+  border-radius: 10px;
+  /* box-shadow: var(--box-shadow); */
+  z-index: 1000;
+  width: 280px;
+  min-height: 212px;
+  /* text-align: left; */
+  color: var(--primary-color-black);
+  transition: opacity 0.3s ease;
 }
 
 .closeBtn {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    position: absolute;
-    top: 36px;
-    right: 24px;
-    width: 24px;
-    height: 24px;
-    border-radius: 50%;
-    background-color: transparent;
-    cursor: pointer;
-    border: none;
-    padding: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: absolute;
+  top: 36px;
+  right: 24px;
+  width: 24px;
+  height: 24px;
+  border-radius: 50%;
+  background-color: transparent;
+  cursor: pointer;
+  border: none;
+  padding: 0;
 }
 
 .okBtn {
-    width: 232px;
-    height: 36px;
-    margin: 0 auto;
-    border-radius: 10px;
-    font-size: 16px;
-    font-weight: 500;
-    padding: 8px;
-    background-color: var(--secondary-color-3);
-    color: var(--primary-color-white);
-    box-shadow: var(--box-shadow);
-    transition: box-shadow 0.25s ease-in-out;
+  width: 232px;
+  height: 36px;
+  margin: 0 auto;
+  border-radius: 10px;
+  font-size: 16px;
+  font-weight: 500;
+  padding: 8px;
+  background-color: var(--secondary-color-3);
+  color: var(--primary-color-white);
+  box-shadow: var(--box-shadow);
+  transition: box-shadow 0.25s ease-in-out;
 
-    &:hover {
-        box-shadow: 0 4px 14px rgba(64, 123, 255, 0.54);
-    }
+  &:hover {
+    box-shadow: var(--box-shadow-3);
+  }
 }
 
 .header {
-    font-family: "Roboto", sans-serif;
-    font-weight: 500;
-    font-size: 26px;
-    margin-bottom: 24px;
-    line-height: 1.23077;
-    color: var(--primary-color-black);
+  font-family: "Roboto", sans-serif;
+  font-weight: 500;
+  font-size: 26px;
+  margin-bottom: 24px;
+  line-height: 1.23077;
+  color: var(--primary-color-black);
 }
 
 .messageText {
-    font-weight: 500;
-    font-size: 18px;
-    margin-bottom: 24px;
-    font-size: 18px;
-    line-height: 1.5;
+  font-weight: 500;
+  font-size: 18px;
+  margin-bottom: 24px;
+  font-size: 18px;
+  line-height: 1.5;
 }
 
 @media (min-width: 768px) {
-    .messageWindow {
-        width: 592px;
-        min-height: 208px;
-    }
+  .messageWindow {
+    width: 592px;
+    min-height: 208px;
+  }
 
-    .okBtn {
-        font-size: 18px;
-        width: 160px;
-        height: 44px;
-        padding: 10px;
-        margin-left: 380px;
-    }
+  .okBtn {
+    font-size: 18px;
+    width: 160px;
+    height: 44px;
+    padding: 10px;
+    margin-left: 380px;
+  }
 }

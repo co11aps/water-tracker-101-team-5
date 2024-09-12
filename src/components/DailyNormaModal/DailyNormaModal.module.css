@@ -2,7 +2,6 @@
   padding-left: 12px;
   padding-right: 12px;
   padding-bottom: 24px;
-  
 }
 
 @media screen and (min-width: 768px) {
@@ -143,7 +142,7 @@
 }
 
 .InputError {
-  border: 1px solid var(--secondary-color-3); 
+  border: 1px solid var(--secondary-color-3);
   color: var(--secondary-color-3);
 }
 
@@ -152,7 +151,7 @@
 }
 
 .InputValid {
-  border: 1px solid var(--primary-color-blue); 
+  border: 1px solid var(--primary-color-blue);
   color: var(--primary-color-blue);
 }
 
@@ -165,7 +164,7 @@
 }
 
 .Input:hover {
-  border: 1px solid  var(--primary-color-blue);
+  border: 1px solid var(--primary-color-blue);
 }
 
 .Input:focus {
@@ -175,7 +174,7 @@
 
 .Input::-webkit-inner-spin-button,
 .Input::-webkit-outer-spin-button {
-  -webkit-appearance: none; 
+  -webkit-appearance: none;
   margin: 0;
 }
 
@@ -188,7 +187,6 @@
 
   font-weight: 400;
   line-height: 20px;
-  
 }
 
 .FormResult strong {
@@ -220,13 +218,13 @@
   width: 100%;
   height: 44px;
   margin-left: auto;
-  box-shadow: 0px 4px 8px 0px rgba(64, 123, 255, 0.34);
+  box-shadow: var(--box-shadow);
   border: none;
 }
 
 .Button:hover {
   outline: none;
-  box-shadow: 0px 4px 14px 0px rgba(64, 123, 255, 0.54);
+  box-shadow: var(--box-shadow-3);
 }
 
 @media screen and (min-width: 768px) {
@@ -237,11 +235,11 @@
 
 .ValidationError {
   position: absolute;
-color: var(--secondary-color-3);
-font-size: 14px;
-font-weight: 400;
-line-height: 18px;
-margin-top: 4px;
+  color: var(--secondary-color-3);
+  font-size: 14px;
+  font-weight: 400;
+  line-height: 18px;
+  margin-top: 4px;
 }
 
 @media screen and (max-width: 767px) {
@@ -249,8 +247,6 @@ margin-top: 4px;
     font-size: 12px;
   }
   .Button {
-    margin-top: 18px; 
+    margin-top: 18px;
   }
 }
-
-
