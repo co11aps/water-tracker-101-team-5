@@ -81,9 +81,15 @@ export default function TodayListModal({ isShow, onClose, item }) {
             />
           </button>
         </div>
-        <div className={css.timeInput}>
+        <div
+          className={`${css.timeInput} ${item ? css.editMode : css.addMode}`}
+        >
           <label className={css.timeLabel}>Recording time:</label>
-          <select value={time} onChange={(e) => setTime(e.target.value)}>
+          <select
+            value={time}
+            onChange={(e) => setTime(e.target.value)}
+            className={css.timeSelect}
+          >
             {Array.from({ length: 24 * 12 }, (_, i) => {
               const hours = Math.floor(i / 12);
               const minutes = (i % 12) * 5;
@@ -102,12 +108,14 @@ export default function TodayListModal({ isShow, onClose, item }) {
             })}
           </select>
         </div>
-        <div className={css.manualInput}>
+        <div
+          className={`${css.manualInput} ${item ? css.editMode : css.addMode}`}
+        >
           <label className={css.manualInputLabel}>
             Enter the value of the water used:
           </label>
           <input
-            type="number"
+            // type="number"
             value={amount}
             onChange={(e) => handleAmountChange(Number(e.target.value))}
             className={css.numberInput}
