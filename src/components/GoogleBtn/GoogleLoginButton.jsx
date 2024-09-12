@@ -4,6 +4,7 @@ import styles from "./GoogleLoginButton.module.css";
 import { useDispatch } from "react-redux";
 import { oAuthLogin } from "../../redux/auth/operations";
 import { useNavigate } from "react-router-dom";
+import BASE_URL from "../../constants/constants";
 
 const GoogleLoginButton = () => {
   const [loading, setLoading] = useState(false);
@@ -23,13 +24,9 @@ const GoogleLoginButton = () => {
     setLoading(true);
 
     try {
-      const response = await fetch(
-        "https://water-tracker-backend-101-team-5.onrender.com/auth/get-oauth-url"
-      );
-
+      const response = await fetch(`${BASE_URL}/auth/get-oauth-url`);
       if (response.ok) {
         const data = await response.json();
-
         if (data.data.url) {
           window.location.href = data.data.url;
         } else {
