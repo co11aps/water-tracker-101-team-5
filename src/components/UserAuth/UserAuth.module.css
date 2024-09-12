@@ -1,23 +1,19 @@
 .headerButton {
-    border: none;
-    box-shadow: none;
+  border: none;
+  box-shadow: none;
 }
 
 .headerButton:hover {
-    box-shadow: none;
-    color: var(--secondary-color-5-orange);
+  box-shadow: none;
+  color: var(--secondary-color-5-orange);
 
-    .icon {
-        stroke: var(--secondary-color-5-orange);
-    }
+  .icon {
+    stroke: var(--secondary-color-5-orange);
+  }
 }
 
-/* .headerButton:hover .icon {
-    stroke: var(--secondary-color-5-orange);
-} */
-
 .icon {
-    background: transparent;
-    fill: none;
-    stroke: var(--primary-color-blue);
+  background: transparent;
+  fill: none;
+  stroke: var(--primary-color-blue);
 }

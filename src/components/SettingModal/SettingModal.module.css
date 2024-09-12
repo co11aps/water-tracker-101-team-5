@@ -40,14 +40,12 @@
   font-weight: bold;
 }
 
-/* Ховаємо оригінальні радіо-кнопки */
 .radioInput {
   position: absolute;
   opacity: 0;
   cursor: pointer;
 }
 
-/* Стилізація контейнера радіо-кнопки */
 .radioLabel {
   display: flex;
   align-items: center;
@@ -75,7 +73,7 @@
   display: none;
 }
 
-.radioInput:checked~.customRadio:after {
+.radioInput:checked ~ .customRadio:after {
   display: block;
 }
 
@@ -292,6 +290,8 @@ input[type="password"] {
   border: none;
   padding: 0;
   width: 16px;
+}
+.buttonSvg:hover {
   box-shadow: none;
 }
 
@@ -332,7 +332,10 @@ input[type="password"] {
 .errorMessage {
   bottom: -22px;
 }
-
+.errorPasswords {
+  top: 200px;
+  font-size: 18px;
+}
 @media screen and (min-width: 1440px) {
   .modal {
     width: 1008px;
@@ -354,5 +357,10 @@ input[type="password"] {
 
   .formGroup input[name="userName"] {
     margin-bottom: 36px;
+  }
+  .errorPasswords {
+    top: 100px;
+    right: 130px;
+    font-size: 18px;
   }
 }
