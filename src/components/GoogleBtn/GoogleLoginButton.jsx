@@ -4,7 +4,7 @@ import styles from "./GoogleLoginButton.module.css";
 import { useDispatch } from "react-redux";
 import { oAuthLogin } from "../../redux/auth/operations";
 import { useNavigate } from "react-router-dom";
-import BASE_URL from "../../constants/constants";
+import { BASE_URL } from "../../constants/constants";
 
 const GoogleLoginButton = () => {
   const [loading, setLoading] = useState(false);
