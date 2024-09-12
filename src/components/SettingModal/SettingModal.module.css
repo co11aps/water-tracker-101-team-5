@@ -13,7 +13,7 @@
 }
 
 .formGroup input[name="email"] {
-  margin-bottom: 50px;
+  margin-bottom: 24px;
 }
 
 @media screen and (min-width: 768px) {
@@ -326,14 +326,14 @@ input[type="password"] {
 }
 
 .errorMessageEmail {
-  bottom: 28px;
+  bottom: 2px;
 }
 
 .errorMessage {
   bottom: -22px;
 }
 .errorPasswords {
-  bottom: -45px;
+  top: 200px;
   font-size: 18px;
   height: 30px;
 }
@@ -362,11 +362,6 @@ input[type="password"] {
   .errorPasswords {
     top: 100px;
     right: 130px;
-  }
-  .formGroup input[name="email"] {
-    margin-bottom: 24px;
-  }
-  .errorMessageEmail {
-    bottom: 2px;
+    font-size: 18px;
   }
 }
