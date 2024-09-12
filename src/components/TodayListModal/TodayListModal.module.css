@@ -2,7 +2,7 @@
   padding-left: 12px;
   padding-right: 12px;
   padding-bottom: 24px;
-  min-width: 256px;
+  min-width: 280px;
 }
 
 /* ========================== */
@@ -41,7 +41,7 @@
 /* ============================================== */
 
 h3 {
-  margin-top: 16px;
+  /* margin-top: 16px; */
   margin-bottom: 16px;
   font-size: 18px;
 }
@@ -51,7 +51,7 @@ h3 {
 .amountInput {
   display: flex;
   align-items: center;
-  padding: 10px;
+  padding: 10px 0;
 }
 .amountInputButton {
   width: 44px;
@@ -65,6 +65,11 @@ h3 {
   font-size: 24px;
   cursor: pointer;
   box-shadow: var(--box-shadow);
+  transition: background-color 0.2s ease;
+}
+.amountInputButton:hover {
+  outline: none;
+  box-shadow: var(--box-shadow-3);
 }
 .iconMinus {
   width: 24px;
@@ -77,15 +82,17 @@ h3 {
   stroke: var(--primary-color-blue);
 }
 .amountInput span {
+  min-width: 92px;
   background: var(--secondary-color-5);
   border-radius: 20px;
   display: flex;
   align-items: center;
+  justify-content: center;
   gap: 12px;
   font-size: 18px;
   font-weight: bold;
   color: var(--primary-color-blue);
-  padding: 6px 18px;
+  padding: 6px 10px;
   margin: 0 6px;
   box-sizing: border-box;
 }
@@ -96,40 +103,64 @@ h3 {
   display: flex;
   flex-direction: column;
   gap: 16px;
-  background-color: var(--primary-color-light-gray);
+  /* background-color: var(--primary-color-light-gray); */
   padding: 10px 0;
-  border-radius: 10px;
+
+  /* border-radius: 10px; */
 }
 .timeInput select {
   padding: 10px;
-  border-radius: 10px;
+  border-radius: 6px;
   border: 1px solid var(--secondary-color-4);
-  margin-top: 5px;
-  width: 100%;
+  /* width: 100%; */
   font-size: 16px;
   color: var(--primary-color-blue);
+  background-color: transparent;
+  width: 50%;
+  cursor: pointer;
+  transition: background-color 0.2s ease;
+  appearance: none;
 }
+.timeInput select:hover {
+  outline: none;
+  box-shadow: var(--box-shadow-3);
+}
+
 .manualInput {
   display: flex;
   flex-direction: column;
-  gap: 16px;
-  background-color: var(--primary-color-light-gray);
+  gap: 10px;
+  /* background-color: var(--primary-color-light-gray); */
   padding: 10px 0;
-  border-radius: 10px;
 }
 .manualInputLabel {
   font-size: 18px;
   font-weight: 500;
 }
 .manualInput input {
-  padding: 10px;
-  border-radius: 10px;
+  padding: 12px 10px;
+  border-radius: 6px;
   border: 1px solid var(--secondary-color-4);
-  margin-top: 5px;
-  width: 100%;
+  width: 50%;
   font-size: 16px;
   color: var(--primary-color-blue);
+  background-color: transparent;
+  cursor: pointer;
+  transition: background-color 0.2s ease;
+  appearance: none;
+  -webkit-appearance: none;
+  -moz-appearance: textfield;
 }
+.manualInput input:hover {
+  outline: none;
+  box-shadow: var(--box-shadow-3);
+}
+/* .manualInput input[type="number"] {
+  appearance: none;
+  -webkit-appearance: none;
+  -moz-appearance: textfield;
+} */
+
 /* ====================================== */
 .buttons {
   display: flex;
@@ -153,11 +184,12 @@ h3 {
   padding-top: 10px;
   padding-bottom: 10px;
   border-radius: 10px;
-  font-size: 18px;
   width: 100%;
-  height: 44px;
+  height: 36px;
   box-shadow: var(--box-shadow);
   border: none;
+  cursor: pointer;
+  transition: background-color 0.2s ease;
 }
 .saveButton:hover {
   outline: none;
@@ -166,7 +198,10 @@ h3 {
 
 @media screen and (min-width: 768px) {
   .modal {
-    width: 656px;
+    width: 704px;
+  }
+  .previousRecord {
+    width: 254px;
   }
   .buttons {
     flex-direction: row;
@@ -176,10 +211,16 @@ h3 {
   .saveButton {
     width: 160px;
   }
+  .manualInput input {
+    width: 100%;
+  }
+  .timeInput select {
+    width: 100%;
+  }
 }
 
 @media screen and (min-width: 1440px) {
   .modal {
-    width: 544px;
+    width: 592px;
   }
 }
