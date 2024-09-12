@@ -131,7 +131,7 @@ const authSlice = createSlice({
           dailyNorma: "1.5",
           photo: null,
         };
-        state.accessToken = action.payload.accessToken;
+        state.accessToken = action.payload.data.accessToken;
         state.isLoggedIn = true;
         state.isRefreshing = false;
       })
