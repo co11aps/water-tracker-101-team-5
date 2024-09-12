@@ -40,7 +40,7 @@ const DailyNormaModal = ({ onClose, isShow, initialWaterToDrink }) => {
   }, [gender, weight, activityTime]);
 
   useEffect(() => {
-    if (waterToDrink === "" || Number(waterToDrink) <= 0 || Number(waterToDrink) > 15) {
+    if (waterToDrink === "" || Number(waterToDrink) < 0.5 || Number(waterToDrink) > 15) {
       setValidationError("Please enter a number between 0.5 and 15");
     } else {
       setValidationError("");
@@ -161,7 +161,7 @@ const DailyNormaModal = ({ onClose, isShow, initialWaterToDrink }) => {
               <input
                 className={css.Input}
                 type="number"
-                                min="0"
+                min="0"
                 placeholder="0"
                 value={activityTime}
                 onChange={handleActivityTimeChange}
@@ -177,18 +177,18 @@ const DailyNormaModal = ({ onClose, isShow, initialWaterToDrink }) => {
               </p>
               <input
                 className={css.Input}
-
                 style={{ 
                   border: validationError ? '1px solid var(--secondary-color-3)' : '1px solid var(--secondary-color-5)', 
                   color: validationError ? 'var(--secondary-color-3)' : 'var(--primary-color-blue)' 
                 }}
                 type="number"
-                
-  placeholder="0"
-  value={waterToDrink.replace(',', '.')}
-  onChange={handleWaterToDrinkChange}
+                step="0.1" 
+                min="0.5" 
+                max="15"
+                placeholder="0"
+                value={waterToDrink.replace(',', '.')}
+                onChange={handleWaterToDrinkChange}
               />
-
               {validationError && (
                 <p className={css.ValidationError}>{validationError}</p>
               )}
@@ -204,6 +204,3 @@ const DailyNormaModal = ({ onClose, isShow, initialWaterToDrink }) => {
 };
 
 export default DailyNormaModal;
-
-
-
