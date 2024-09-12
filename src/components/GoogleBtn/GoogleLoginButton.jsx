@@ -6,7 +6,6 @@ import { oAuthLogin } from "../../redux/auth/operations";
 import { useNavigate } from "react-router-dom";
 
 const GoogleLoginButton = () => {
-  const [error, setError] = useState(null);
   const [loading, setLoading] = useState(false);
   const dispatch = useDispatch();
   const navigate = useNavigate();
@@ -18,11 +17,10 @@ const GoogleLoginButton = () => {
     if (code) {
       handleOAuthCode(code);
     }
-  }, []);
+  }, [handleOAuthCode]);
 
   const handleGoogleLogin = async () => {
     setLoading(true);
-    setError(null);
 
     try {
       const response = await fetch(
@@ -37,15 +35,12 @@ const GoogleLoginButton = () => {
           window.location.href = data.data.url;
         } else {
           console.error("OAuth URL not found in the response data.");
-          setError("OAuth URL not found.");
         }
       } else {
         console.error("Error:", response.statusText);
-        setError(`Error: ${response.statusText}`);
       }
     } catch (error) {
       console.error("Error sending request:", error);
-      setError("An error occurred while sending the request.");
     } finally {
       setLoading(false);
     }
@@ -61,38 +56,6 @@ const GoogleLoginButton = () => {
         console.log(err);
       });
   };
-  // const handleOAuthCode = async (code) => {
-  //   try {
-  //     const response = await fetch(
-  //       "https://water-tracker-backend-101-team-5.onrender.com/auth/confirm-oauth",
-  //       {
-  //         method: "POST",
-  //         headers: {
-  //           "Content-Type": "application/json",
-  //         },
-  //         body: JSON.stringify({ code }),
-  //       }
-  //     );
-
-  //     if (response.ok) {
-  //       const code = await response.json();
-  //       console.log("OAuth callback successful:", code);
-
-  //       if (code.token) {
-  //         localStorage.setItem("token", code.token);
-  //         window.location.href = "/home";
-  //       } else {
-  //         setError("Token not found in the response");
-  //       }
-  //     } else {
-  //       console.error("Error:", response.statusText);
-  //       setError(`Error: ${response.statusText}`);
-  //     }
-  //   } catch (error) {
-  //     console.error("Error sending OAuth code:", error);
-  //     setError("An error occurred while sending the OAuth code.");
-  //   }
-  // };
 
   return (
     <>
@@ -110,7 +73,6 @@ const GoogleLoginButton = () => {
           </div>
         </div>
       </button>
-      {error && <p className={styles.error}>{error}</p>}
     </>
   );
 };
