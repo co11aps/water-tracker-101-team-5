@@ -66,7 +66,7 @@ const GoogleLoginButton = () => {
 
         if (code.token) {
           localStorage.setItem("token", code.token);
-          store.state.isLoggedIn = true;
+          store.isLoggedIn = true;
           window.location.href = "/home";
         } else {
           setError("Token not found in the response");
