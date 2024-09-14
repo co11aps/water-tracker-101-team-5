@@ -58,17 +58,15 @@ const GoogleLoginButton = () => {
   return (
     <>
       <button
-        className={`${styles.googleLoginButton} gsi-material-button`}
+        className={styles.googleLoginButton}
         onClick={handleGoogleLogin}
         disabled={loading}
       >
-        <div className="gsi-material-button-icon">
-          <FcGoogle className={styles.iconGoogle} />
-        </div>
-        <div className="gsi-material-button-content-wrapper">
-          <div className="gsi-material-button-contents">
-            Sign in with Google
+        <div className={styles.buttonContentWrapper}>
+          <div className={styles.buttonIcon}>
+            <FcGoogle className={styles.iconGoogle} />
           </div>
+          <div className={styles.buttonContents}>Sign in with Google</div>
         </div>
       </button>
     </>

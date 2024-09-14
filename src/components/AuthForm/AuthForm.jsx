@@ -181,20 +181,24 @@ const AuthForm = ({ isSignup }) => {
           </Form>
         )}
       </Formik>
-      <GoogleLoginButton />
       <div className={css.navigation}>
         {isSignup ? (
-          <p>
-            <a href="/signin">Sign in</a>
-          </p>
+          <ul className={css.navigationList}>
+            <li>
+              <a href="/signin">Sign in</a>
+            </li>
+          </ul>
         ) : (
           <>
-            <p>
-              <a href="/forgot-password">Forgot password?</a>
-            </p>
-            <p>
-              <a href="/signup">Sign up</a>
-            </p>
+            <ul className={css.navigationList}>
+              <li>
+                <a href="/signup">Sign up</a>
+              </li>
+              <li>
+                <a href="/forgot-password">Forgot password?</a>
+              </li>
+            </ul>
+            <GoogleLoginButton />
           </>
         )}
       </div>
